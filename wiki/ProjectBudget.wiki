@@ -1,0 +1,3 @@
+#summary Budgeting Information for Project VINYL
+
+This page will be used to document the budget of Project VINYL.
