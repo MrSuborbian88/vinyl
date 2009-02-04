@@ -9,7 +9,7 @@
 
 || Use Case || ModifyRoster ||
 ||Identified || T6 ||
-|| Description: || The PostAnnouncement use case models a Teacher adding and/or removing one or more student from any of their classes.||
+|| Description: || The ModifyRoster use case models a Teacher adding and/or removing one or more student from any of their classes.||
 ||Actors|| Teacher||
 || Preconditions: || 1. Teacher must be successfully logged in with Teacher privileges via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when a Teacher selects Modify Roster.||
