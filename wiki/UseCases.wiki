@@ -2,30 +2,32 @@
 
 This page will be used to develop Use Cases for Project VINYL.
 
+I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organized.  Feel free to change them or remove them. -Dan S.
+
 = Teacher Use Cases =
 
-  * Post Announcement
-  * Post Assignment
-  * Post Document
-  * Download Document
-  * Post Reminder
-  * Modify Roster
-  * Make Test/Quiz
-  * Post Grades
-  * Log In
-  * Log Out
+  * Post Announcement (T1)
+  * Post Assignment (T2)
+  * Post Document (T3)
+  * Download Document (TS4)
+  * Post Reminder (T5)
+  * Modify Roster (T6)
+  * Make Test/Quiz (T7)
+  * Post Grades (T8)
+  * Log In (TSA1)
+  * Log Out (TSA2)
 
 = Student Use Cases =
 
-  * Read Announcement
-  * Read Assignment
-  * Read Document
-  * Download Document
-  * View Reminder
-  * Join Class
-  * Leave Class
-  * Take Test/Quiz
-  * View Grades
+  * Read Announcement (TS1)
+  * Read Assignment (TS2)
+  * Read Document (TS3)
+  * Download Document (TS4)
+  * View Reminder (TS5)
+  * Join Class (S1)
+  * Leave Class (S2)
+  * Take Test/Quiz (S3)
+  * View Grades (S4)
 
 = Administrator Use Cases =
 
