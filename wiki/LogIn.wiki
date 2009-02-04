@@ -8,7 +8,7 @@
 || Use Case || LogIn ||
 ||Identified || TSA1 ||
 || Description: || The LogIn use case models a Student, Teacher, or Admin verifying his, her, or its access to VINYL.|| 
-||Actors|| Any Individual (including Student, Teacher, and Admin)||
+||Actors|| Any Individual with computer and internet access (including Student, Teacher, and Admin)||
 || Preconditions: || 1. Individual must be at Log In page.||
 ||Flow of Events: ||1. The use case starts when an Individual enters Log In page.||
 ||                ||2. The Individual will be prompted to enter a username and password. ||
