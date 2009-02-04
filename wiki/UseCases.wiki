@@ -15,7 +15,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
   * Make Test/Quiz (T7)
   * Post Grades (T8)
   * LogIn (TSA1)
-  * Log Out (TSA2)
+  * LogOut (TSA2)
 
 = Student Use Cases =
 
