@@ -6,7 +6,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
 
 = Teacher Use Cases =
 
-  * Post Announcement (T1)
+  * PostAnnouncement (T1)
   * Post Assignment (T2)
   * Post Document (T3)
   * Download Document (TS4)
