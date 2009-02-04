@@ -21,7 +21,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
 = Student Use Cases =
 
   * Read Announcement (TS1)
-  * Read Assignment (TS2)
+  * ReadAssignment (TS2)
   * Read Document (TS3)
   * Download Document (TS4)
   * View Reminder (TS5)
