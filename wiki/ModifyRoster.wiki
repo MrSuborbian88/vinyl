@@ -1,0 +1,23 @@
+#summary Use Case: ModifyRoster
+#labels UseCase,Teacher
+
+==UseCases==
+
+
+= PostAnnouncement =
+
+
+|| Use Case || ModifyRoster ||
+||Identified || T6 ||
+|| Description: || The PostAnnouncement use case models a Teacher adding and/or removing one or more student from any of their classes.||
+||Actors|| Teacher||
+|| Preconditions: || 1. Teacher must be successfully logged in with Teacher privileges via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Teacher selects Modify Roster.||
+||                ||2. The Teacher will be asked to select a class from list of options. ||
+||                ||2.1 If the Teacher selects a class, move on to step 3. ||
+||                ||2.2        If the Teacher fails to select class, error message will occur reflecting that a class has not been chosen.||
+||                ||3. The Teacher will be presented with a roster for the chosen class.||
+||                ||3.1 The Teacher will optionally select one or more students to remove from the chosen class. ||
+||                ||3.2 The Teacher will optionally select/type the name of (method TBD) of one or more students to add to the chosen course. ||
+||                ||4. The Teacher will receive a message, “Roster Successfully Modified” along with a list of changes made to the roster. ||
+||Post Condition:|| 1. The Roster for the modified class will now show the updated class list.||
