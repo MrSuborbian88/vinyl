@@ -4,11 +4,11 @@ This page will track the current activities project members should focus on.
 
 == Immediate Activities ==
 
-  * Fleshing Out Use Cases (2/5)
+  * Fleshing Out [UseCases Use Cases] (2/5)
 
 == Upcoming Activities ==
 
-  * Work on Vision Statement, Glossary, and Scheduling (For 2/5)
+  * Work on [VisionStatement Vision Statement], [Glossary], and [Scheduling] (For 2/5)
 
 == Completed ==
 
