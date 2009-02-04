@@ -12,6 +12,7 @@ This page will be used to develop Use Cases for Project VINYL.
   * Modify Roster
   * Make Test/Quiz
   * Post Grades
+  * Log In
 
 = Student Use Cases =
 
