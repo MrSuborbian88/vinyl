@@ -1,3 +1,28 @@
 #summary Use Cases for Project VINYL
 
 This page will be used to develop Use Cases for Project VINYL.
+
+= Teacher Use Cases =
+
+== Post Announcement ==
+== Post Assignment ==
+== Post Document ==
+== Download Document ==
+== Post Reminder ==
+== Modify Roster ==
+== Make Test/Quiz ==
+== Post Grades ==
+
+= Student Use Cases =
+
+== Read Announcement ==
+== Read Assignment ==
+== Read Document ==
+== Download Document ==
+== View Reminder ==
+== Join Class ==
+== Leave Class ==
+== Take Test/Quiz ==
+== View Grades ==
+
+= Administrator Use Cases =
