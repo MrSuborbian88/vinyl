@@ -1,0 +1,3 @@
+#summary Schedule for Project VINYL
+
+This page will be used to develop a schedule of the phases and iterations of Project VINYL.
