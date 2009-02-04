@@ -1,4 +1,5 @@
 #summary Use Cases for Project VINYL
+#labels UseCase,Teacher,Student,Admin
 
 This page will be used to develop Use Cases for Project VINYL.
 
@@ -7,7 +8,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
 = Teacher Use Cases =
 
   * PostAnnouncement (T1)
-  * Post Assignment (T2)
+  * PostAssignment (T2)
   * Post Document (T3)
   * Download Document (TS4)
   * Post Reminder (T5)
