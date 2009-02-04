@@ -7,29 +7,38 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
 
 = Teacher Use Cases =
 
-  * PostAnnouncement (T1)
-  * PostAssignment (T2)
-  * Post Document (T3)
-  * Download Document (TS4)
-  * Post Reminder (T5)
-  * ModifyRoster (T6)
-  * Make Test/Quiz (T7)
-  * Post Grades (T8)
-  * LogIn (TSA1)
-  * LogOut (TSA2)
+  * (T1) [PostAnnouncement Post Announcement]
+  * (TS1) [ReadAnnouncement Read Announcement]
+  * (T2) [PostAssignment Post Assignment]
+  * (TS2) [ReadAssignment Read Assignment]
+  * (T3) [PostDocument Post Document]
+  * (TS3) [ReadDocument Read Document]
+  * (TS4) [DownloadDocument Download Document]
+  * (T5) [PostReminder Post Reminder]
+  * (TS5) [ViewReminder View Reminder]
+  * (T6) [ModifyRoster Modify Roster]
+  * (T7) [MakeTest Make Test/Quiz]
+  * (T8) [PostGrades Post Grades]
+  * (TSA1) [LogIn Log In]
+  * (TSA2) [LogOut Log Out]
 
 = Student Use Cases =
 
-  * Read Announcement (TS1)
-  * ReadAssignment (TS2)
-  * Read Document (TS3)
-  * Download Document (TS4)
-  * View Reminder (TS5)
-  * Join Class (S1)
-  * Leave Class (S2)
-  * Take Test/Quiz (S3)
-  * View Grades (S4)
+  * (TS1) [ReadAnnouncement Read Announcement]
+  * (TS2) [ReadAssignment Read Assignment]
+  * (TS3) [ReadDocument Read Document]
+  * (TS4) [DownloadDocument Download Document]
+  * (TS5) [ViewReminder View Reminder]
+  * (S1) [JoinClass Join Class]
+  * (S2) [LeaveClass Leave Class]
+  * (S3) [TakeTest Take Test/Quiz]
+  * (S4) [ViewGrades View Grades]
+  * (TSA1) [LogIn Log In]
+  * (TSA2) [LogOut Log Out]
 
 = Administrator Use Cases =
 
-  <i>Admin Use Cases will be added as needed when the internal structure of the project becomes more concrete.</i>
+  * (TSA1) [LogIn Log In]
+  * (TSA2) [LogOut Log Out]
+
+  <i>More Admin Use Cases will be added as needed when the internal structure of the project becomes more concrete.</i>
