@@ -6,6 +6,7 @@
 || Use Case || PostAnnouncement ||
 ||Identified || T1 ||
 || Description: || The PostAnnouncement use case models a Teacher posting an announcement on VINYL for students to see. ||
+||Actors|| Teacher||
 || Preconditions: || 1. Teacher must be successfully logged in with Teacher privileges via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when a Teacher selects the Post Announcement.||
 ||                ||2. The Teacher will be asked to select a class from dropdown menu. ||
