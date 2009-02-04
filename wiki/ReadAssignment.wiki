@@ -1,0 +1,19 @@
+#summary Use Case: ReadAssignment
+#labels UseCase,Teacher,Student
+
+==UseCases==
+
+
+= ReadAssignment =
+
+
+|| Use Case || ReadAssignment ||
+||Identified || TS2 ||
+|| Description: || The ReadAssignment use case models a Teacher or Student viewing an assignment on VINYL. ||
+||Actors|| Teacher||
+|| Preconditions: || 1. Teacher or Student must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Teacher or Student selects View Assignment. ||
+||                ||2. The Teacher or Student will be asked to select a class from list of options. ||
+||                ||3. A list of assignments for that class will be displayed. ||
+||                ||4. The Teacher or Student selects an assignment to view. ||
+||Post Condition: || 1. The selected assignment will be displayed.||
