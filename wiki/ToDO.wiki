@@ -1,0 +1,15 @@
+#summary Current Items of Interest
+
+This page will track the current activities project members should focus on.
+
+== Immediate Activities ==
+
+  * Fleshing Out Use Cases (2/5)
+
+== Upcoming Activities ==
+
+  * Work on Vision Statement, Glossary, and Scheduling (For 2/5)
+
+== Completed ==
+
+  * Project Budget
