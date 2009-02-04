@@ -1,3 +1,35 @@
 #summary Glossary of terms used in Project VINYL
 
 This page will be used as a Glossary for terms used in Project VINYL.
+
+_I've populated the page with some initial terms I think we'll end up defining. Russ_
+
+----
+
+*Admin*
+
+*Announcement*
+
+*Assignment*
+
+*Class*
+
+A collection of Students and a Teacher.
+
+*Document*
+
+*Grade*
+
+*Quiz*
+
+*Reminder*
+
+*Roster*
+
+A list of Students in a given class.
+
+*Student*
+
+*Teacher*
+
+*Test*
