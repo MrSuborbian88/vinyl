@@ -26,3 +26,5 @@ This page will be used to develop Use Cases for Project VINYL.
   * View Grades
 
 = Administrator Use Cases =
+
+  <i>Admin Use Cases will be added as needed when the internal structure of the project becomes more concrete.</i>
