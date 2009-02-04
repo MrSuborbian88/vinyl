@@ -5,9 +5,15 @@ This page will be used to develop a schedule of the phases and iterations of Pro
 = Important Deadlines =
 
 *February 12* - Inception Deliverables due
+
 *March 5* - Elaboration Deliverables due
+
 *March 16* - Iteration 3 (Construction) ends (suggested)
+
 *March 30* - Iteration 4 (Construction) ends (suggested)
+
 *April 13* - Iteration 5 (Construction) ends (suggested)
+
 *April 16* - Construction Deliverables due
+
 *April 27* - All Deliverables due
