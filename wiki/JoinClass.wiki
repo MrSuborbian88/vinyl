@@ -1,4 +1,5 @@
 #summary UseCase: JoinClass
+#labels UseCase,Student
 
 ==UseCases==
 
