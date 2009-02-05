@@ -27,6 +27,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
   * (S1) [JoinClass Join Class]
   * (S2) [LeaveClass Leave Class]
   * (S3) [TakeTest Take Test/Quiz]
+  * (S3A) [SubmitAnswer Submit Answer]
   * (S4) [ViewGrades View Grades]
   * (TS1) [ReadAnnouncement Read Announcement]
   * (TS2) [ReadAssignment Read Assignment]
