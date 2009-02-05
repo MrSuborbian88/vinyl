@@ -1,0 +1,23 @@
+#summary Use Case: PostDocument
+#labels UseCase,Teacher
+==UseCases==
+
+
+= PostDocument =
+
+
+|| Use Case || PostDocument||
+||Identified || T4 ||
+|| Description: || The PostDocument use case models a Teacher posting a document from his or her personal computer to VINYL.|| 
+||Actors|| Teacher||
+|| Preconditions: || 1. Teacher must be successfully logged in via the Login use case.||
+||Flow of Events: ||1. The use case starts when a Teacher clicks the Post Document button.||
+||                ||2. The Teacher will be presented with a list of classes.||
+||                ||2.1 The Teacher will choose a class from the list.||
+||                ||3. The Teacher will be prompted to locate the file(s) on his or her personal computer.||
+||                ||4. The Teacher will click the Upload button.||
+||                || 4.1 If the files upload successfully, the Teacher will receive the message, “Document(s) successfully uploaded.” ||
+||                ||4.2 If the files did not upload successfully, the Teacher will receive an error message reflecting the error.||
+||                ||4.2.1 The Teacher will be brought back to step 3. || 
+||Post Condition:|| 1. The chosen document(s) from the Teacher’s computer will be uploaded to VINYL.||
+||                         || 2.The Users associated with the chosen class will be able to view and download the uploaded documents.||
