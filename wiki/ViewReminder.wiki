@@ -1,0 +1,17 @@
+#summary Use Case: ViewReminder
+==UseCases==
+
+
+= View Reminder =
+
+
+|| Use Case || View Reminder||
+||Identified || TS5 ||
+|| Description: || The ViewReminder use case models a Teacher or Student viewing his or her reminders.|| 
+||Actors|| Teacher, Student||
+|| Preconditions: || 1. User must be successfully logged in via the Login use case.||
+||Flow of Events: ||1. The use case starts when a User clicks the Reminder button.||
+||                ||2. A popup window will be opened with a list of reminders.||
+||                ||2.1 If the User has no reminders, a message reflecting that notion will be there in its place||
+||                ||2.2 Else, User can view reminders.||
+||Post Condition:|| 1. User has a popup window with a list of reminders.||
