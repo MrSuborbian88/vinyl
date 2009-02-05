@@ -6,7 +6,7 @@ This page will be used as a Glossary for terms used in Project VINYL.
 
 *Admin*
 
-Any User who works with VINL directly (the program itself) rather than as an educational interface, such as a system administrator, technical support professional, database manager, etc.
+Any User who works with VINL from a technical standpoint rather than using VINL as an educational interface; examples include a system administrator, technical support professional, database manager, etc.
 
 *Announcement*
 
