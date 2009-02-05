@@ -1,0 +1,25 @@
+#summary Use Case: PostReminder
+#labels UseCase,Teacher
+
+==UseCases==
+
+
+= PostReminder =
+
+
+|| Use Case || PostReminder ||
+||Identified || T4 ||
+|| Description: || The PostReminder use case models a Teacher posting a reminder on VINYL for students to see. ||
+||Actors|| Teacher||
+|| Preconditions: || 1. Teacher must be successfully logged in with Teacher privileges via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Teacher selects Post Reminder.||
+||                ||2. The Teacher will be asked to select a class from list of options. ||
+||                ||2.1 If the Teacher selects a class, move on to step 3. ||
+||                ||2.2        If the Teacher fails to select class, error message will occur reflecting that a class has not been chosen.||
+||                ||3. The Teacher will be prompted to enter text.||
+||                ||3.1 The Teacher will enter desired message. ||
+||                ||3.2 The Teacher will enter a desired date and time for the reminder to appear. ||
+||                ||3.3 The Teacher will hit Post button. ||
+||                ||4. If the Teacher failed to enter text, date, and time, an error message will occur reflecting that notion. ||
+||                ||5. Else  the Teacher will receive a message, “Reminder Successfully Posted” ||
+||Post Condition:|| 1. Entered text will be displayed on front page of the course at the date and time indicated.||
