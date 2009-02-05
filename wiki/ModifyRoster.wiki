@@ -8,7 +8,7 @@
 
 
 || Use Case || ModifyRoster ||
-||Identified || T6 ||
+||Identified || T5 ||
 || Description: || The ModifyRoster use case models a Teacher adding and/or removing one or more student from any of their classes.||
 ||Actors|| Teacher||
 || Preconditions: || 1. Teacher must be successfully logged in with Teacher privileges via the LogIn use case. ||
