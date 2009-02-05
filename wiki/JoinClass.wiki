@@ -1,0 +1,22 @@
+#summary UseCase: JoinClass
+
+==UseCases==
+
+
+= JoinClass =
+
+
+|| Use Case || JoinClass ||
+||Identified || S1 ||
+|| Description: || The JoinClass use case models a Student adding membership status for a Class. ||
+||Actor(s)|| Student||
+||Preconditions: || 1. Student must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Student selects Add Class.||
+||                ||2. The system will display a list of Classes in which it is possible for the Student to register. ||
+||                ||3. The Student will select a Class from the list which the user desires to add. ||
+||                ||3.1. Alternately, the Student may search for a class based on teacher, subject, name, or other criteria rather than choosing it from an exhaustive list.
+||                ||4. The system will display a confirmation/warning message, asking the Student to confirm the action. ||
+||                ||4.1 If the Student chooses "Confirm," he will be notified that he has succesfully been added to the Class. ||
+||                ||4.2 Else if the Student chooses "Cancel," he will be returned to the list of classes that he may join.||
+||                ||5. The Student will be redirected to the View Active Classes screen.  ||
+||Post Condition:|| 1. The added class will now be displayed on the Student's View Active Classes screen, and the Student will begin receiving messages, announcements, etc. related to the new Class.||
