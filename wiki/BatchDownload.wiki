@@ -1,0 +1,26 @@
+#summary UseCase: BatchDownload
+
+==UseCases==
+
+
+= BatchDownload =
+
+
+|| Use Case || BatchDownload ||
+||Identified || T8 ||
+|| Description: || The BatchDownload use case models a Teacher downloading a group of related file from VINL to his computer in a single operation. ||
+||Actor(s)|| Teacher||
+||Preconditions: || 1. Teacher must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Teacher clicks on Batch Download.||
+||                ||2. The Teacher will be presented with a drop-down box of options: Assignment, Student, and Selection. ||
+||                ||2.1. If "Assignment" is chosen, the Teacher is presented with a list of assignments he has created; when the Teacher selects one, proceed to step 3.1. ||
+||                ||2.2. If "Student" is chosen, the Teacher is presented with a list of students in any of his classes; when the Teacher selects one, proceed to step 3.2. ||
+||                ||2.3. If "Selection" is chosen, the Teacher is presented with a list of documents submitted by any of his students for any assignments he has created; when the Teacher selects one or more of these, proceed to step 3.3. ||
+||                ||3. The Teacher will be prompted to choose a download location for the documents on his local computer. ||
+||                ||3.1. If the Teacher chose "Assignment," all documents that have been submitted for that assignment will be downloaded sequentially to the chosen download location. ||
+||                ||3.2. If the Teacher chose "Student," all documents that have been submitted by that student will be downloaded sequentially to the chosen download location. ||
+||                ||3.3. If the Teacher chose "Selection," all documents that the Teacher highlighted/selected will be downloaded sequentially to the chosen download location. ||
+||                ||4. If a valid location is chosen, the download will begin, with an accompanying progress bar notifying the User of download status. ||
+||                ||4.1. Else an error message will be displayed indicating that the documents may not be downloaded to that location.||
+||
+||Post Condition:|| 1. The chosen documents will be on the User's local computer in the location specified.||
