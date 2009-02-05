@@ -8,28 +8,52 @@ _I've populated the page with some initial terms I think we'll end up defining. 
 
 *Admin*
 
+Any User who works with VINL as a program, such as a system administrator, technical support professional, database manager, etc.
+
 *Announcement*
+
+A text-only message posted to one or more Classes by a Teacher which is visible to all Students in those Classes.
 
 *Assignment*
 
+A message posted to one or more Classes by a Teacher which is visible to all Students in those Classes; it contains a text description along with an optional due date and document(s) for Students to download.
+
 *Class*
 
-A collection of Students and a Teacher.
+A collection of Students and one or more Teachers.
 
 *Document*
 
+A file in any format (text, images, etc.) that may be uploaded to, and downloaded from, VINL.
+
 *Grade*
+
+A numerical indicator of a Student's progress on an Assignment, uploaded by a Teacher and visible to the Student in question as well as any Teachers in the given class.
 
 *Quiz*
 
+A set of questions created by a Teacher that a Student must answer which may optionally be graded automatically; a quiz is most often composed in a simple format (multiple-choice, true/false, etc.).
+
 *Reminder*
+
+1) An automated reminder of a due date associated with an Assignment, given within a User-specified proximity to the deadline.  2) A note regarding an Assignment, Document, Quiz, etc. which a User may create for himself.
 
 *Roster*
 
-A list of Students in a given class.
+A list of Students in a given class, to which a Teacher may add or remove students and to which a Student may add or remove himself.
 
 *Student*
 
+A User with Student privileges (the ability to perform tasks described under the Student use cases).
+
 *Teacher*
 
+A User with Teacher privileges (the ability to perform tasks described under the Teacher use cases).
+
 *Test*
+
+A set of questions created by a Teacher that a Student must answer which is most often simply forwarded to a Teacher to grade manually due to its more complex question format (short-answer or open-ended questions, essays, etc.).
+
+*User*
+
+A collective term for a user of VINL, who may have Admin, Student, or Teacher privileges.
