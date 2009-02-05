@@ -1,0 +1,24 @@
+#summary UseCase: TakeTest
+#labels UseCase,Student
+
+==UseCases==
+
+
+= TakeTest =
+
+
+|| Use Case || TakeTest ||
+||Identified || S3 ||
+|| Description: || The TakeTest use case models a Student completing an Online Test. ||
+||Actors|| Student||
+|| Preconditions: || 1. Student must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Student selects View Pending Tests.||
+||                ||2. The system will display a list of the Online Tests which the student has yet to take. ||
+||                ||3. The Student will select "Take/Continue Test" next to the specific Online Test they wish to take. ||
+||                ||4. The Student will be routed to the last question on the test that they worked on.||
+||                ||5.1 The Student completes the specified question as specified in the SubmitAnswer use case.  If this is the last question on the test, go to step 7.1.  Otherwise, go to step 6. ||
+||                ||5.2 The Student selects "Save and Quit".  Go to step 7.2.  ||
+||                ||6. The Student may choose to either continue the test, or save his/her progress and quit the test.  For the former, go to step 5.1.  Otherwise, go to step 5.2||
+||                ||7.1 The system will display a "Test Breakdown" page, showing the Student's final numerical grade and enumerating the Student's answers versus the correct answers.  The Student will click O.K.  This completes the use case.||
+||                ||7.2 The system will display confirmation message that the test was saved.  The due date for the test will also be displayed.  The Student will click O.K.  This completes the use case.||
+||Post Condition:|| 1. The Student will be routed back to the View Pending Tests page.  The modified status of the recently taken test will be displayed.||
