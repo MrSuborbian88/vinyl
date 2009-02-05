@@ -2,8 +2,6 @@
 
 This page will be used as a Glossary for terms used in Project VINYL.
 
-_I've populated the page with some initial terms I think we'll end up defining. Russ_
-
 ----
 
 *Admin*
