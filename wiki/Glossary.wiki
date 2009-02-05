@@ -10,7 +10,7 @@ Any User who works with VINL from a technical standpoint rather than using VINL 
 
 *Announcement*
 
-A text-only message posted to one or more Classes by a Teacher which is visible to all Students in those Classes.
+A text-only message which is posted to one or more Classes by a Teacher and which is visible to all Students in those Classes.
 
 *Assignment*
 
