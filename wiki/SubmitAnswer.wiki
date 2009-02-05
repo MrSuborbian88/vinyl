@@ -6,4 +6,4 @@
 
 = SubmitAnswer =
 
-This UseCase needs to be written.  It needs to include notes on multiple-submission rules, question formatting, etc.
+This use case needs to be written.  It needs to include notes on multiple-submission rules, question formatting, etc.
