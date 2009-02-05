@@ -1,4 +1,5 @@
 #summary Use Case: ViewGrades
+#labels UseCase,Student
 ==UseCases==
 
 
