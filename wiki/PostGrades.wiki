@@ -1,0 +1,20 @@
+#summary Use Case: PostGrades
+#labels UseCase,Teacher
+==UseCases==
+
+
+= PostGrades=
+
+
+|| Use Case || PostGrades ||
+||Identified || T7 ||
+|| Description: || The PostGrades use case models a Teacher posting grades for an assignment.|| 
+||Actors|| Teacher||
+|| Preconditions: || 1. User must be successfully logged in as a Teacher via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when a Teacher decides to post his grades.||
+||                ||2. The Teacher clicks the Post Grades button.||
+||                ||3. The Teacher is prompted to select a class from a list of options.||
+||                ||4. The Teacher will see a apreadsheet of assignments and students for the chosen class.||
+||                ||5. The Teacher will enter and/or change one or more grades in the spreadsheet.||
+||                ||6. The Teacher will press the Post Grades button.||
+||Post Condition: ||1. The Teacher will be at the screen to select a class to post grades for.||
