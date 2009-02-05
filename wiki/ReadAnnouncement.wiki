@@ -8,7 +8,7 @@
 
 
 || Use Case || ReadAnnouncement ||
-||Identified || TS3 ||
+||Identified || TS1 ||
 || Description: || The ReadAnnouncement use case models a Teacher or Student viewing a class announcement on VINYL. ||
 ||Actors|| User (Includes Teacher and Student) ||
 || Preconditions: || 1. User must be successfully logged in via the LogIn use case. ||
