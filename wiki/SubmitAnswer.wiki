@@ -1,5 +1,5 @@
 #summary UseCase: SubmitAnswer
-#labels UseCase,SubmitAnswer
+#labels UseCase,Student
 
 ==UseCases==
 
