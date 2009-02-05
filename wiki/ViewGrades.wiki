@@ -1,0 +1,18 @@
+#summary Use Case: ViewGrades
+==UseCases==
+
+
+= ViewGrades=
+
+
+|| Use Case || ViewGrades ||
+||Identified || S4 ||
+|| Description: || The ViewGrades use case models a Student checking his or her grades.|| 
+||Actors|| Student||
+|| Preconditions: || 1. User must be at logged in to the VINYL system as a Student.||
+||Flow of Events: ||1. The use case starts when a Student decides to view his or her grades.||
+||                ||2. The Student clicks the View Grades button. ||
+||                ||3. The Student is prompted to select a class from a list of options. ||
+||                ||4. The Student will see a table with grades organized by assignment.||
+||Post Condition:|| 1. The Student will be at the grades page for selected class.||
+||                         || 2. The Student can view all available grades for selected class.||
