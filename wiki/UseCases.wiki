@@ -14,6 +14,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
   * (T5) [ModifyRoster Modify Roster]
   * (T6) [MakeTest Make Test/Quiz]
   * (T7) [PostGrades Post Grades]
+  * (T8) [BatchDownload Batch Download]
   * (TS1) [ReadAnnouncement Read Announcement]
   * (TS2) [ReadAssignment Read Assignment]
   * (TS3) [ReadDocument Read Document]
