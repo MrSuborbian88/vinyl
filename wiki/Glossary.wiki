@@ -16,6 +16,10 @@ A text-only message which is posted to one or more Classes by a Teacher and whic
 
 A message posted to one or more Classes by a Teacher which is posted to one or more Classes by a Teacher and which is visible to all Students in those Classes; it contains a text description along with an optional due date and document(s) for Students to download.
 
+*BlackBoard*
+
+BlackBoard is a websystem designed for schools.  It allows teachers and students to post and view credentials related to specific courses at the school.
+
 *Class*
 
 A collection of Students and one or more Teachers.
@@ -30,7 +34,7 @@ A numerical indicator of a Student's progress on an Assignment, uploaded by a Te
 
 *LMS*
 
-LMS stands for Learning Management System.  It is RPI's blackboard system used as a website for to assist teachers and students.
+LMS stands for Learning Management System.  It is RPI's BlackBoard system used as a website to assist teachers and students.
 http://rpilms.rpi.edu/webct/entryPageIns.dowebct
 
 *Quiz*
