@@ -30,7 +30,7 @@ A numerical indicator of a Student's progress on an Assignment, uploaded by a Te
 
 *Quiz*
 
-A set of questions created by a Teacher that a Student must answer, which may be automatically graded at the Teacher's option; a quiz is most often composed in a simple format (multiple-choice, true/false, etc.).
+A set of questions created by a Teacher that a Student must answer, which may be either automatically graded when completed or forwarded to the Teacher for manual grading, at the Teacher's option.
 
 *Reminder*
 
@@ -50,7 +50,7 @@ A User with Teacher privileges (the ability to perform tasks described under the
 
 *Test*
 
-A set of questions created by a Teacher that a Student must answer which is most often simply forwarded to a Teacher to grade manually due to its more complex question format (short-answer or open-ended questions, essays, etc.).
+See "Quiz."
 
 *User*
 
