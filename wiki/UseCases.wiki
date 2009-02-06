@@ -22,9 +22,7 @@ I've assigned arbitrary Use Case Identifiers in parenthesis to keep things organ
   * (TS5) [ViewReminder View Reminder]
   * (TSA1) [LogIn Log In]
   * (TSA2) [LogOut Log Out]
-
   ==Test Editor Use Cases==
-
   * (TE1) [MakeQuestion Create New Question]
   * (TE2) [FormatQuestion Edit/Design Question]
   * (TE3) [TEQuestionSubmission Edit/Design Answer Submission Rules]
