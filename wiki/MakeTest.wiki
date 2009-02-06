@@ -14,8 +14,7 @@
 ||Preconditions: || 1. Teacher must be successfully logged in via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when a Teacher navigates to the "My Tests" page.||
 ||                ||2. The system will display a list of the Teacher's useable tests.  The teacher selects "Make New Test". ||
-||                ||3. A Graphical Interface for creating a test will be displayed.||
-||                ||   Consult the Test Editor (TE-) use cases for details.||
+||                ||3. A Graphical Interface for creating a test will be displayed.  Consult the Test Editor (TE-) use cases for details.||
 ||                ||4. When the Teacher is finished making their test:||
 ||                ||4.1 The Teacher selects "Save and Quit". ||
 ||                ||4.2 The Teacher selects "Discard Test". ||
