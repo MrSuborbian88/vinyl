@@ -17,6 +17,7 @@
 ||                ||3. A Graphical Interface for creating a test will be displayed.||
 ||                ||   Consult the Test Editor (TE-) use cases for details.||
 ||                ||4. When the Teacher is finished making their test:||
-||                ||4.1 The Teacher selects "Save and Quit".  This completes the use case.||
-||                ||4.2 The Teacher selects "Discard Test".  This completes the use case.||
+||                ||4.1 The Teacher selects "Save and Quit". ||
+||                ||4.2 The Teacher selects "Discard Test". ||
+||                ||5. The system will display an appropriate confirmation message for the Teacher's requested action.  This completes the use case. ||
 ||Post Condition:|| 1. The Teacher will be routed back to their "My Tests", where, if it was completed/saved, the new test will be shown. ||
