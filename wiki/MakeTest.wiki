@@ -8,7 +8,7 @@
 
 
 || Use Case || MakeTest ||
-||Identified || T1 ||
+||Identified || T6 ||
 || Description: || The MakeTest use case models a Teacher creating an Online Test. ||
 ||Actor(s)|| Teacher ||
 ||Preconditions: || 1. Teacher must be successfully logged in via the LogIn use case. ||
