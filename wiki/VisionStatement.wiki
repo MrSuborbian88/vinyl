@@ -2,15 +2,16 @@
 #labels Phase-Requirements
 
 == Executive Summary ==
-
 VINL is a system designed to improve the educational process by providing an interface through which teachers can more freely communicate to their students, and students in turn can more easily understand and interact with the course material.  VINL is a centralized, web-based system with an intuitive and clean graphical interface for the transfer of data and utilization of specific appropriately useful internal applications.  VINL is geared towards its clients, with a genuine feedback system to make it more user-friendly, and to encourage a more robust design, so as to improve on its main competitor, RPILMS, which this project is intended to replace.
 
 == Business Case ==
-
-_"Include a short analysis of the competition, market space, or similar commercial off the shelf software."_
+Our main competitor is LMS/Blackboard/WebCT.  It is a preexisting learning management software which is competent at what it does, but is full of flaws upon which we will improve, has some feature bloat, does not have an intuitive interface, and does not respond to feedback of users.  Since it is proprietary software, over which its user have no control, it is unlikely to improve in the immediate future.
 
 == Stakeholders ==
+Our three main stakeholders are teachers who currently use Blackboard and dislike it, students who are required to use some form of learning management software and would prefer something easier and more intuitive, and administrators who would like to use software that is cheaper and more reliable.
 
 == Features ==
+_Fill in from Use Cases. -Russ_
 
 == Major Risks ==
+The primary risk is schools, having already signed a contract with other providers of learning management software, would not be in a position to adopt our software.
