@@ -30,7 +30,8 @@ A numerical indicator of a Student's progress on an Assignment, uploaded by a Te
 
 *LMS*
 
-LMS stands for Learning Management System.  http://rpilms.rpi.edu/webct/entryPageIns.dowebct
+LMS stands for Learning Management System.  It is RPI's blackboard system used as a website for to assist teachers and students.
+http://rpilms.rpi.edu/webct/entryPageIns.dowebct
 
 *Quiz*
 
