@@ -28,6 +28,10 @@ A file in any format (text, images, etc.) that may be uploaded to, and downloade
 
 A numerical indicator of a Student's progress on an Assignment, uploaded by a Teacher and visible to the Student in question as well as any Teachers in the given class.
 
+*LMS*
+
+LMS stands for Learning Management System.  http://rpilms.rpi.edu/webct/entryPageIns.dowebct
+
 *Quiz*
 
 A set of questions created by a Teacher that a Student must answer, which may be either automatically graded when completed or forwarded to the Teacher for manual grading, at the Teacher's option.
