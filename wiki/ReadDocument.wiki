@@ -1,0 +1,19 @@
+#summary Use Case: ReadAssignment
+#labels UseCase,Teacher,Student
+
+==UseCases==
+
+
+= ReadDocument =
+
+
+|| Use Case || ReadDocument ||
+||Identified || TS3 ||
+|| Description: || The ReadDocument use case models a Teacher or Student viewing a document on VINYL. ||
+||Actors|| User (Includes Teacher and Student) ||
+|| Preconditions: || 1. User must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when User selects View Document. ||
+||                ||2. User will be asked to select a class from list of options. ||
+||                ||3. A list of documents for that class will be displayed. ||
+||                ||4. User selects an document to view. ||
+||Post Condition: || 1. The selected document will be displayed.||
