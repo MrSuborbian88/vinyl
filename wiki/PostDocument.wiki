@@ -16,8 +16,9 @@
 ||                ||2.1 Teacher will choose a class from the list.||
 ||                ||3. Teacher will be prompted to locate the file(s) on his or her personal computer.||
 ||                ||4. Teacher will click the Upload button.||
-||                || 4.1 If the files upload successfully, the Teacher will receive the message, “Document(s) successfully uploaded.” ||
-||                ||4.2 If the files did not upload successfully, the Teacher will receive an error message reflecting the error.||
-||                ||4.2.1 The Teacher will be brought back to step 3. || 
-||Post Condition:|| 1. The chosen document(s) from the Teacher’s computer will be uploaded to VINYL.||
-||                         || 2.The Users associated with the chosen class will be able to view and download the uploaded documents.||
+||                || 4.1 If files upload successfully, Teacher will receive the message, “Document(s) successfully uploaded.” ||
+||                ||4.2 If files did not upload successfully, Teacher will receive an error message reflecting the error.||
+||                ||4.2.1 Teacher returns to step 3. || 
+||Post Condition:|| 1. The chosen document(s) from Teacher’s computer will be uploaded to VINL.||
+||               || 2.Users associated with the chosen class will be able to view the documents via the ReadDocument use case.||
+||               || 3.Users associated with the chosen class will be able to download the documents via the DownloadDocument use case.||
