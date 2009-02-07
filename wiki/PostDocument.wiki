@@ -8,7 +8,7 @@
 
 || Use Case || PostDocument||
 ||Identified || T4 ||
-|| Description: || The PostDocument use case models Teacher posting a document from his or her personal computer to VINL.|| 
+|| Description: || The PostDocument use case models Teacher posting a Document from his or her personal computer to VINL.|| 
 ||Actors|| Teacher||
 || Preconditions: || 1. User must be successfully logged in with Teacher privileges via the Login use case.||
 ||Flow of Events: ||1. The use case starts when Teacher clicks the Post Document button.||
