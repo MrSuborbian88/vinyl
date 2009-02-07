@@ -28,6 +28,10 @@ A collection of Students and one or more Teachers.
 
 A file in any format (text, images, etc.) that may be uploaded to, and downloaded from, VINL.
 
+*Individual*
+
+A potential User who has not yet been properly identified.
+
 *Grade*
 
 A numerical indicator of a Student's progress on an Assignment, uploaded by a Teacher and visible to the Student in question as well as any Teachers in the given class.
