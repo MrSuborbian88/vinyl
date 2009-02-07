@@ -9,7 +9,7 @@
 
 || Use Case || PostAssignment ||
 ||Identified || T2 ||
-|| Description: || The PostAssignment use case models Teacher posting an assignment on VINL. ||
+|| Description: || The PostAssignment use case models Teacher posting an Assignment on VINL. ||
 ||Actors|| Teacher||
 || Preconditions: || 1. User must be successfully logged in with Teacher privileges via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when Teacher selects Post Assignment.||
