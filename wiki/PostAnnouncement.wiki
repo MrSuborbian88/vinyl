@@ -9,7 +9,7 @@
 
 || Use Case || PostAnnouncement ||
 ||Identified || T1 ||
-|| Description: || The PostAnnouncement use case models Teacher posting an announcement on VINL. ||
+|| Description: || The PostAnnouncement use case models Teacher posting an Announcement on VINL. ||
 ||Actors|| Teacher||
 || Preconditions: || 1. User must be successfully logged in with Teacher privileges via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when Teacher selects Post Announcement.||
@@ -21,4 +21,4 @@
 ||                ||3.2 Teacher will hit Post button. ||
 ||                ||4. If Teacher failed to enter text, an error message will occur reflecting that text has not been entered. ||
 ||                ||5. Else, Teacher will receive a message, “Announcement Successfully Posted” ||
-||Post Condition:|| 1. The assignment will be available for viewing by the appropriate parties through the ReadAnnouncement use case.||
+||Post Condition:|| 1. The Assignment will be available for viewing by the appropriate parties through the ReadAnnouncement use case.||
