@@ -9,14 +9,14 @@
 
 || Use Case || DownloadDocument ||
 ||Identified || TS4 ||
-|| Description: || The DownloadDocument use case models a Student or Teacher downloading a file from VINL to their respective computer. ||
+|| Description: || The DownloadDocument use case models Student or Teacher downloading a file from VINL to their respective computer. ||
 ||Actor(s)|| Student, Teacher||
 ||Preconditions: || 1. User must be successfully logged in via the LogIn use case. ||
-||Flow of Events: ||1. The use case starts when a User clicks on a link to a document stored in VINL.||
-||                ||2. If the User has the necessary privileges to download the chosen document, proceed to step 3. ||
-||                ||2.1. Else an error message will be displayed indicating that the User is forbidden to download the specified document. ||
-||                ||3. The User will be prompted to choose a download location for the document on his local computer. ||
-||                ||4. If a valid location is chosen, the download will begin, with an accompanying progress bar notifying the User of download status. ||
-||                ||4.1. Else an error message will be displayed indicating that the document may not be downloaded to that location.||
+||Flow of Events: ||1. The use case starts when User clicks on a link to a Document stored in VINL.||
+||                ||2. If User has the necessary privileges to download the chosen Document, proceed to step 3. ||
+||                ||2.1. Else an error message will be displayed indicating that User is forbidden to download the specified Document. ||
+||                ||3. User will be prompted to choose a download location for the Document on his local computer. ||
+||                ||4. If a valid location is chosen, the download will begin, with an accompanying progress bar notifying User of download status. ||
+||                ||4.1. Else an error message will be displayed indicating that the Document may not be downloaded to that location.||
 ||
-||Post Condition:|| 1. The chosen document will be on the User's local computer in the location specified.||
+||Post Condition:|| 1. The chosen Document will be on User's local computer in the location specified.||
