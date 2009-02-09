@@ -15,3 +15,4 @@ _Fill in from Use Cases. -Russ_
 
 == Major Risks ==
 The primary risk is schools, having already signed a contract with other providers of learning management software, would not be in a position to adopt our software.
+Secondary risks include project failure due to certain sources, either external or internal.  External risks include potential legal roadblocks, unknown problems with Moodle source code, etc.  Internal risks include general human error in coding, and potentially overwhelming incompetency due to lack of knowledge.
