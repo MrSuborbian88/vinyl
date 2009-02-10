@@ -4,16 +4,17 @@ This page will track the current activities project members should focus on.
 
 == Immediate Activities ==
 
-  * Fleshing Out [UseCases Use Cases] (2/12)
-
-== Upcoming Activities ==
-
-  * Shrink Use Cases and change terminology (more terse)
-  * Add terms to Glossary (esp. !BlackBoard and WebCT)
   * Specifically mention Moodle and Open Source in [VisionStatement Vision Statement]
   * Expand on Risks
   * Ask John about Budget stuff (email)
 
+== Upcoming Activities ==
+
+
+
 == Completed ==
 
   * Project Budget
+  * Fleshing Out [UseCases Use Cases]
+  * Shrink Use Cases and change terminology
+  * Add terms to Glossary (esp. !BlackBoard and WebCT)
