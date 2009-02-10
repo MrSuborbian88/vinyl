@@ -8,11 +8,11 @@
 
 || Use Case || LogOut ||
 ||Identified || TSA2 ||
-|| Description: || The LogOut use case models Student, Teacher, or Admin leaving VINL (although why would anyone ever want to do that).|| 
+|| Description: || The LogOut use case models Student, Teacher, or Admin securely leaving VINL (although why would anyone ever want to do that).|| 
 ||Actors|| User (including Student, Teacher, and Admin)||
-|| Preconditions: || 1. User has been logged in using the LogIn use case.||
-||Flow of Events: ||1. The use case starts when User decides to leave the VINL system.||
+|| Preconditions: || 	 1. User must be successfully logged in via the LogIn use case. ||
+||Flow of Events: ||1. The use case starts when User decides to leave VINL.||
 ||                ||2. User clicks the Log Out button. ||
-||                ||3. User is brought to the Log In page. ||
-||Post Condition:|| 1. User will be logged out of the VINL system. ||
-||               || 2. User is brought to the log in page.||
+||                ||3. User returns to the Log In page. ||
+||Post Condition:|| 1. User logged out of VINL. ||
+||               || 2. User returns to Log In page.||
