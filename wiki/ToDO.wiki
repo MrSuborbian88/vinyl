@@ -5,12 +5,13 @@ This page will track the current activities project members should focus on.
 == Immediate Activities ==
 
   * Specifically mention Moodle and Open Source in [VisionStatement Vision Statement]
-  * Expand on Risks
-  * Ask John about Budget stuff (email)
+  * Download a copy of the Moodle Source Code (Everyone)
+  * Flesh out schedule
+  * Compile Inception Deliverables for WebCT submission
 
 == Upcoming Activities ==
 
-
+  * Analyze and understand Moodle Code
 
 == Completed ==
 
