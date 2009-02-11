@@ -58,7 +58,7 @@ Collectively, the developers working on this project: Russ Johnson, Jamie !McAta
 
 *User*
 
-A collective term for a user of VINL, who may have Admin, Student, or Teacher privileges.  Also referred to as an "individual" if he has not yet been properly identified.
+A collective term for a user of VINL, who may have Admin, Student, or Teacher privileges.  Also referred to as an "individual" if it is ambiguous as to which set of privileges he possesses.
 
 *VINL*
 
