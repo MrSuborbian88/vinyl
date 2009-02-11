@@ -14,7 +14,7 @@ Because it is not a free/open-source LMS, RPILMS does not respond to or request 
 Our main customers are teachers who currently use Blackboard and dislike it, students who are required to use some form of learning management software and would prefer something easier and more intuitive, and administrators who would like to use software that is cheaper and more reliable.
  
 == Stakeholders ==
-The main stakeholders in this project are first and foremost, Team Awesome (Russ Johnson, Jamie !McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza).  In addition, while the VINL developers are primarily self-managed, Team Instructor (John Sturman and Anita Kuchera) is also a group of stakeholders, and is assisting in a managerial capacity.
+The main stakeholders in this project are, primarily, the developers of Team Awesome (Russ Johnson, Jamie !McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza).  In addition, while the VINL developers are primarily self-managed, Team Instructor (consisting of John Sturman, Anita Kuchera, Tom Kiehl, and Raam Kumar Ganesan) is VINL's secondary group of stakeholders, and is assisting in a managerial capacity.
 
 == Features ==
 _Fill in from Use Cases. -Russ_
