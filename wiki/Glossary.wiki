@@ -54,7 +54,7 @@ A User with Teacher privileges (the ability to perform tasks described under the
 
 *Team Awesome*
 
-Collectively, the developers working on this project: Russ Johnson, Jamie McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza.
+Collectively, the developers working on this project: Russ Johnson, Jamie !McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza.
 
 *User*
 
