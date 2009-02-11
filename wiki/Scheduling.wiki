@@ -1,4 +1,5 @@
 #summary Schedule for Project VINYL
+#labels Phase-Implementation
 
 This page will be used to develop a schedule of the phases and iterations of Project VINYL.
 
@@ -8,11 +9,32 @@ This page will be used to develop a schedule of the phases and iterations of Pro
 
 *March 5* - Elaboration Deliverables due
 
-*March 16* - Iteration 3 (Construction) ends (suggested)
+*March 16* - Iteration 3 (Construction) ends
+  * [PostDocument Post Document]
+  * [ReadDocument Read Document]
+  * [DownloadDocument Download Document]
+  * [ModifyRoster Modify Roster]
+  * [JoinClass Join Class]
+  * [LeaveClass Leave Class]
 
-*March 30* - Iteration 4 (Construction) ends (suggested)
+*March 30* - Iteration 4 (Construction) ends
+  * [PostAssignment Post Assignment]
+  * [ReadAssignment Read Assignment]
+  * [PostAnnouncement Post Annoucement]
+  * [ReadAnnouncement Read Annoucement]
+  * [PostPostReminder Post Reminder]
+  * [ViewReminder View Reminder]
+  * [PostGrades Post Grades]
+  * [ViewGrades View Grades]
 
-*April 13* - Iteration 5 (Construction) ends (suggested)
+*April 13* - Iteration 5 (Construction) ends
+  * [MakeTest Make Test/Quiz]
+  * [TakeTest Take Test/Quiz]
+  * [Submit Answer]
+  * [MakeQuestion Create New Question]
+  * [FormatQuestion Edit/Design Question]
+  * [TEQuestionSubmission Edit/Design Answer Submission Rules]
+  * [LayoutTest Order/Design Test Layout]
 
 *April 16* - Construction Deliverables due
 
