@@ -5,9 +5,14 @@ This page will be used to develop a schedule of the phases and iterations of Pro
 
 = Important Deadlines =
 
-*February 12* - Inception Deliverables due
+*February 12* - Iteration 1 (Inception) ends
+  * [VisionStatement Vision Statement]
+  * [UseCases Enumeration of Use Cases]
+  * [ProjectRisks Risks and Issues]
+  * [Glossary Glossary]
+  * [ProjectBudget Budget]
 
-*March 5* - Elaboration Deliverables due
+*March 5* - Iteration 2 (Elaboration) Deliverables due
 
 *March 16* - Iteration 3 (Construction) ends
   * [PostDocument Post Document]
@@ -36,6 +41,8 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [TEQuestionSubmission Edit/Design Answer Submission Rules]
   * [LayoutTest Order/Design Test Layout]
 
-*April 16* - Construction Deliverables due
+*April 16* - Iteration 6 (Construction)
+  * Construction completed
 
-*April 27* - All Deliverables due
+*April 27* - Iteration 7
+  * Project completed
