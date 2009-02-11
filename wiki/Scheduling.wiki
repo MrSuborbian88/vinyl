@@ -30,7 +30,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
 *April 13* - Iteration 5 (Construction) ends
   * [MakeTest Make Test/Quiz]
   * [TakeTest Take Test/Quiz]
-  * [Submit Answer]
+  * [SubmitAnswer Submit Answer]
   * [MakeQuestion Create New Question]
   * [FormatQuestion Edit/Design Question]
   * [TEQuestionSubmission Edit/Design Answer Submission Rules]
