@@ -7,14 +7,14 @@ VINL is a system designed to improve the educational process by providing an int
 == Business Case ==
 Our main competitor is an LMS know variously as RPILMS, Blackboard, WebCT.  It is a preexisting learning management software which is competent at what it does, but is full of flaws upon which we will improve, has some feature bloat, does not have an intuitive interface, and does not respond to feedback of users.  Since it is proprietary software, over which its user have no control, it is unlikely to improve in the immediate future.
 
+Our main customers are teachers who currently use Blackboard and dislike it, students who are required to use some form of learning management software and would prefer something easier and more intuitive, and administrators who would like to use software that is cheaper and more reliable.
+ 
 == Stakeholders ==
-Our three main stakeholders are teachers who currently use Blackboard and dislike it, students who are required to use some form of learning management software and would prefer something easier and more intuitive, and administrators who would like to use software that is cheaper and more reliable.  In addition, while the VINL developers are primarily self-managed, Team Instructor does have a vested interest in its success, and is assisting in a managerial capacity.
+The main stakeholders in this project are first and foremost, Team Awesome (Russ Johnson, Jamie !McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza).  In addition, while the VINL developers are primarily self-managed, Team Instructor (John Sturman and Anita Kuchera) is also a group of stakeholders, and is assisting in a managerial capacity.
 
 == Features ==
 _Fill in from Use Cases. -Russ_
 
 == Major Risks ==
-The primary risk is that schools, having already signed a contract with other providers of learning management software, would not be in a position to adopt our software.
-Secondary risks include project failure due to certain sources, either external or internal.
-External risks include potential legal roadblocks, unknown problems with Moodle source code, etc.
-Internal risks include insufficient code review, and lack of familiarity with the language in which the project is implemented.
+External risks include potential legal roadblocks (i.e. copyright and/or trademark issues), existing errors with Moodle source code, etc.
+Internal risks include lack of familiarity with the language in which the project is implemented (PHP and MySQL).
