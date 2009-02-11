@@ -22,7 +22,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [ReadAssignment Read Assignment]
   * [PostAnnouncement Post Annoucement]
   * [ReadAnnouncement Read Annoucement]
-  * [PostPostReminder Post Reminder]
+  * [PostReminder Post Reminder]
   * [ViewReminder View Reminder]
   * [PostGrades Post Grades]
   * [ViewGrades View Grades]
