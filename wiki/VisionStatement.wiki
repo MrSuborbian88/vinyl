@@ -17,7 +17,7 @@ Our main customers are teachers who currently use Blackboard and dislike it, stu
 The main stakeholders in this project are, primarily, the developers of Team Awesome (Russ Johnson, Jamie !McAtamney, Bill Oparowski, Daniel Ploch, and Daniel Souza).  In addition, while the VINL developers are primarily self-managed, Team Instructor (consisting of John Sturman, Anita Kuchera, Tom Kiehl, and Raam Kumar Ganesan) is VINL's secondary group of stakeholders, and is assisting in a managerial capacity.
 
 == Features ==
-_Fill in from Use Cases. -Russ_
+Main features of VINL include but are not limited to the ability to post, view, and download assignments, announcements, reminders, documents, and grades, as well as create, take, and score online tests and quizzes.
 
 == Major Risks ==
 External risks include potential legal roadblocks (i.e. copyright and/or trademark issues), existing errors with Moodle source code, etc.
