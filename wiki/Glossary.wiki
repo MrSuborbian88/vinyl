@@ -62,4 +62,4 @@ A collective term for a user of VINL, who may have Admin, Student, or Teacher pr
 
 *VINL*
 
-The teacher-oriented LMS which this project intends to create.  VINL is a recursive acronym for VINL Is Not LMS, illustrating Team Awesome's goal that RPILMS be replaced with this system.  The project as a whole, however, goes by the name Project VINYL (for VINYL Is Not _Yet_ LMS), so when documentation refers to this project, it may be written as either VINL or VINYL, and both are correct.
+The teacher-oriented LMS which this project intends to create.  VINL is a recursive acronym for VINL Is Not LMS, illustrating Team Awesome's goal that RPILMS be replaced with this system.  The project as a whole, however, goes by the name Project VINYL (for VINYL Is Not _Yet_ LMS)--VINYL is the project and VINL is the final product.  When documentation refers to this project, it may be written as either VINL or VINYL, and both are correct.
