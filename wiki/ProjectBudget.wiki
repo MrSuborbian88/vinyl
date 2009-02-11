@@ -8,6 +8,6 @@
   * Copyright - $300
   * Lawyer - Pro Bono
   * (2-5) Marketing - $10/hr
-  * Office Space - $2000/year
+  * Office Space - $2000/month
 
-*Total:* $123,410
+*Total:* $129,410
