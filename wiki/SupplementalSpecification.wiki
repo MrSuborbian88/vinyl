@@ -1,0 +1,7 @@
+#summary Page for the development Supplemental Specifications.
+
+= Introduction =
+
+_Include a complete set of requirements for your project.  Use the FURPS+ model to find any and all requirements for your project.  The functional requirement list must include requirements drawn out of the use cases.  All requirements must be numbered and have an assigned priority using a ranking system such as MoSCoW._
+
+= Details =
