@@ -1,4 +1,4 @@
-#summary Page for discussion and development of the Domain Model Diagram.
+#summary Page for the development of the Domain Model Diagram.
 
 = Introduction =
 
