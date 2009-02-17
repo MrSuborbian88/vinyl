@@ -4,18 +4,19 @@ This page will track the current activities project members should focus on.
 
 == Immediate Activities ==
 
-  * Specifically mention Moodle and Open Source in [VisionStatement Vision Statement]
-  * Download a copy of the Moodle Source Code (Everyone)
-  * Flesh out schedule
-  * Compile Inception Deliverables for WebCT submission
+  * Analyze and understand Moodle Code
 
 == Upcoming Activities ==
 
-  * Analyze and understand Moodle Code
+
 
 == Completed ==
 
   * Project Budget
   * Fleshing Out [UseCases Use Cases]
-  * Shrink Use Cases and change terminology
+  * Shrink [UseCases Use Cases] and change terminology
   * Add terms to Glossary (esp. !BlackBoard and WebCT)
+  * Specifically mention Moodle and Open Source in [VisionStatement Vision Statement]
+  * Download a copy of the Moodle Source Code (Everyone)
+  * Flesh out [Scheduling schedule]
+  * Compile Inception Deliverables for WebCT submission
