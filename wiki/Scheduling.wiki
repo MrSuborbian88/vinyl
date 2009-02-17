@@ -18,7 +18,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [SystemSequenceDiagrams System Sequence Diagrams]
   * [DeploymentDiagram Deployment Diagram]
   * [UseCases Use Cases (80% Complete)]
-  * [WorkBreakdownStructure Work Breakdown Structure/Updated Schedule]
+  * [WorkBreakdownStructure Work Breakdown Structure]/Updated [Scheduling Schedule]
 
 *March 16* - Iteration 3 (Construction) ends
   * [PostDocument Post Document]
