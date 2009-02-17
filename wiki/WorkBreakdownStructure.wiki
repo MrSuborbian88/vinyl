@@ -1,0 +1,7 @@
+#summary Page for development of the WBS.
+
+= Introduction =
+
+_A detailed list of the tasks associated with your project based upon the vision, scope, and use cases.  The list of tasks should be granular as possible so that the team and see clearly everything that needs to be accomplished in order to complete the project._
+
+= Details =
