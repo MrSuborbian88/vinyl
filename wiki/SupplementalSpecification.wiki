@@ -1,4 +1,4 @@
-#summary Page for the development Supplemental Specifications.
+#summary Page for the development of Supplemental Specifications.
 
 = Introduction =
 
