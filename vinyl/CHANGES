@@ -1,0 +1,1259 @@
+CHANGES
+=======
+
+This file contains all the raw change logs from the past month,
+so that you can see exactly what changes have been made recently.
+
+---------------------------------------------------------------
+
+2009-02-10 Tuesday 14:40  tjhunt
+
+	* question/type/datasetdependent/abstractqtype.php: 
+	
+	datasetdependant qtype: fix whitespace.
+
+2009-02-10 Tuesday 12:27  tjhunt
+
+	* lib/weblib.php: 
+	
+	weblib: XHTML strict.
+
+2009-02-10 Tuesday 08:42  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090210
+
+2009-02-09 Monday 18:53  danmarsden
+
+	* lang/en_utf8/choice.php: 
+	
+	MDL-17198 - show better confirmation of choice selection. missed
+	lang file
+
+2009-02-09 Monday 18:52  danmarsden
+
+	* mod/choice/view.php: 
+	
+	MDL-17198 - show better confirmation of choice selection. merged
+	from HEAD
+
+2009-02-09 Monday 18:31  danmarsden
+
+	* mod/choice/lib.php: 
+	
+	MDL-18092 - better checking for empty vars when no users are in
+	course. wrong place for empty check!
+
+2009-02-09 Monday 18:26  danmarsden
+
+	* mod/choice/: lib.php, report.php: 
+	
+	MDL-18092 - better checking for empty vars when no users are in
+	course. merged from HEAD
+
+2009-02-09 Monday 08:35  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090209
+
+2009-02-09 Monday 08:29  moodlerobot
+
+	* install/lang/: fr_utf8/installer.php, ja_utf8/installer.php,
+	ko_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090209)
+
+2009-02-09 Monday 06:30  skodak
+
+	* lib/environmentlib.php: 
+	
+	MDL-9796 fixed error array when environment file broken
+
+2009-02-08 Sunday 08:38  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090208
+
+2009-02-08 Sunday 07:54  skodak
+
+	* login/index.php: 
+	
+	MDL-18138 added option to supply username as GET param - based on
+	patch by Robert Allerstorfer
+
+2009-02-08 Sunday 07:48  skodak
+
+	* lib/moodlelib.php: 
+	
+	MDL-18137 all cookies now secure if configured to be; backported
+	from HEAD
+
+2009-02-08 Sunday 07:31  skodak
+
+	* course/report/log/lib.php: 
+	
+	MDL-18150 fixed typo- thanks Chris Potter
+
+2009-02-08 Sunday 07:24  skodak
+
+	* admin/settings/plugins.php: 
+	
+	MDL-18151 fixed problem in legacy filter code - thanks Mark Nielsen
+
+2009-02-07 Saturday 20:14  skodak
+
+	* lib/adminlib.php: 
+	
+	MDL-14924 fixed typo - thanks bouley Hélène
+
+2009-02-07 Saturday 09:58  stronk7
+
+	* lib/filterlib.php: 
+	
+	MDL-18165 filterlib - Use one exclusive separator, instead of "."
+	(dot) to avoid saved tags to match with phrases being processed
+
+2009-02-07 Saturday 08:37  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090207
+
+2009-02-06 Friday 17:19  exe-cutor
+
+	* auth/shibboleth/README.txt, auth/shibboleth/auth.php,
+	auth/shibboleth/config.html, auth/shibboleth/login.php,
+	lang/en_utf8/auth.php: 
+	
+	authentication: MDL-18116 Added Shibboleth logout handler URL,
+	remove hard-coded strings to lang file, updated README - Added a
+	new setting logout_handler to the Shibboleth authentication
+	settings - Removed hard-coded strings in the configuration settings
+	and replaced them with proper print_string expressions - Added a
+	logoutpage_hook function that (optinally) sends a user who clicks
+	on the logout button to the Shibboleth logout handler after Moodle
+	logout - Updated README
+
+2009-02-06 Friday 16:18  jerome
+
+	* filter/mediaplugin/: mp3player.fla.zip, mp3player.swf: 
+	
+	mp3 flash player MDL-7549 MP3 flash player now plays the end of the
+	mp3 file
+
+2009-02-06 Friday 10:55  stronk7
+
+	* backup/lib.php: 
+	
+	MDL-18066 import_backup_file_silently() - delete dangerous code
+
+2009-02-06 Friday 09:36  jerome
+
+	* mnet/xmlrpc/client.php: 
+	
+	mnet MDL-10935 fix unicode character when the remote site send the
+	course name for updating enrolment
+
+2009-02-06 Friday 08:39  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090206
+
+2009-02-05 Thursday 22:41  stronk7
+
+	* course/mod.php: 
+	
+	MDL-10583 course format - some more uses of the get_section_name()
+	added
+
+2009-02-05 Thursday 22:28  stronk7
+
+	* course/editsection.php: 
+	
+	MDL-10583 course format - discovered the get_section_name() that
+	performs the fallback harcoded in previous commit.
+
+2009-02-05 Thursday 22:12  stronk7
+
+	* course/editsection.php: 
+	
+	MDL-10583 course format - allow course formats to specify their
+	section name
+
+2009-02-05 Thursday 11:25  jerome
+
+	* lib/filelib.php: 
+	
+	link resource MDL-16272 fix anchor into the url (not urlescaped
+	anymore)
+
+2009-02-05 Thursday 09:35  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090205
+
+2009-02-05 Thursday 03:59  piers
+
+	* mod/scorm/locallib.php: 
+	
+	MDL-17832 - consistent adding and removing of slashes for track
+	data. backport 1.9.
+
+2009-02-05 Thursday 03:40  piers
+
+	* mod/scorm/datamodels/: scorm_13.js.php, scorm_12.js.php: 
+	
+	MDL-18023 - add type check to check against default to avoid 0
+	error. backport 1.9.
+
+2009-02-05 Thursday 02:19  stronk7
+
+	* backup/restorelib.php: 
+	
+	MDL-8848 restore section summaries - now restored if target course
+	have them empty
+
+2009-02-05 Thursday 01:39  stronk7
+
+	* blog/lib.php: 
+	
+	MDL-18129 blog_print_entry() - avoid double format_text()
+
+2009-02-04 Wednesday 18:24  tjhunt
+
+	* pix/t/: delete.gif, down.gif, left.gif, right.gif, up.gif: 
+	
+	themes / pix: MDL-10441 better up, down, left and right icons
+	without a white fringe.
+	
+	Since these are not anti-aliased on a white background, they look
+	better against a wider range of background colours. Since all the
+	lines are at 90 or 45 degrees, jagged edges are not a problem.
+	
+	Thanks to Dag Klimas for these.
+
+2009-02-04 Wednesday 18:15  tjhunt
+
+	* user/index.php: 
+	
+	themes / participants: MDL-17526 add class name to search form on
+	the participants page.
+
+2009-02-04 Wednesday 17:42  tjhunt
+
+	* pix/f/dmg.gif, theme/chameleon/pix/f/dmg.gif: 
+	
+	themes / pix: MDL-18052 dmg.gif icon should not contain excessive
+	colour profile information.
+	
+	This reduces the files size from 3.7k to 200b.
+
+2009-02-04 Wednesday 17:21  tjhunt
+
+	* lib/weblib.php: 
+	
+	weblib: MDL-17525 Give previous and next links in paging bars class
+	names, so they can be themed.
+	
+	Thanks to Daniel Neis for the patch.
+	
+	I checked the standard theme, and I don't see any rules there that
+	would erroneously apply to these class names in paging bars.
+
+2009-02-04 Wednesday 16:34  tjhunt
+
+	* lib/weblib.php: 
+	
+	weblib: MDL-14901 Fix misleading comment on print_navigation
+
+2009-02-04 Wednesday 11:15  tjhunt
+
+	* admin/settings/plugins.php: 
+	
+	admin reports: MDL-18134 Third-party admin reports not listed with
+	the correct name.
+	
+	Regression caused by MDL-17372.
+
+2009-02-04 Wednesday 08:43  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090204
+
+2009-02-04 Wednesday 08:41  moodlerobot
+
+	* install/lang/sl_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090204)
+
+2009-02-03 Tuesday 18:32  tjhunt
+
+	* lib/weblib.php: 
+	
+	theme / navbar: MDL-14133 every link in the nav bar was getting
+	class="first"!
+
+2009-02-03 Tuesday 16:47  tjhunt
+
+	* lib/weblib.php: 
+	
+	theme / weblib: MDL-14400 Setting $THEME->makenavmenulist = true
+	causes a php notice
+
+2009-02-03 Tuesday 08:44  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090203
+
+2009-02-03 Tuesday 07:09  piers
+
+	* mod/workshop/view.php: 
+	
+	MDL-17498 - fix grading output for submissions.
+
+2009-02-03 Tuesday 06:08  stronk7
+
+	* filter/tex/texdebug.php: 
+	
+	MDL-18100 tex filted debug - fix missing quote. Credit goes to
+	Paulo Matos.
+
+2009-02-03 Tuesday 02:44  poltawski
+
+	* lib/moodlelib.php: 
+	
+	mnet/ email links rewritten MDL-18118
+
+2009-02-02 Monday 22:15  skodak
+
+	* admin/report/security/lib.php: 
+	
+	MDL-18040 fixed adminrisk query too - now much faster; backported
+	from HEAD
+
+2009-02-02 Monday 08:44  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090202
+
+2009-02-02 Monday 08:42  moodlerobot
+
+	* install/lang/ko_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090202)
+
+2009-02-02 Monday 01:22  skodak
+
+	* admin/environment.xml, lang/en_utf8/admin.php: 
+	
+	MDL-10275 backporting gd environment test
+
+2009-02-01 Sunday 08:47  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090201
+
+2009-02-01 Sunday 08:45  moodlerobot
+
+	* install/lang/fr_ca_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090201)
+
+2009-02-01 Sunday 06:37  skodak
+
+	* lib/moodlelib.php: 
+	
+	MDL-17808 more lastname support when resetting passwords
+
+2009-01-31 Saturday 08:48  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090131
+
+2009-01-31 Saturday 08:46  moodlerobot
+
+	* install/lang/ko_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090131)
+
+2009-01-30 Friday 22:17  stronk7
+
+	* backup/lib.php: 
+	
+	MDL-18066 import_backup_file_silently - reverting last commit.
+
+2009-01-30 Friday 20:30  mudrd8mz
+
+	* lang/en_utf8/forum.php, mod/forum/lib.php: 
+	
+	MDL-17940 Display the count of ratings together with the aggregated
+	grade for the post
+
+2009-01-30 Friday 19:12  stronk7
+
+	* course/report/participation/index.php: 
+	
+	MDL-18076 course participation report - fix actions dropdown not
+	working. Credit goes to Paul Holden.
+
+2009-01-30 Friday 18:56  stronk7
+
+	* backup/lib.php: 
+	
+	MDL-18066 - import_backup_file_silently - better handling of
+	missing $USER. Credit goes to Gabriel Mazetto.
+
+2009-01-30 Friday 15:22  jerome
+
+	* blocks/calendar_month/block_calendar_month.php: 
+	
+	calendar MDL-14693 fix month link when calendar is displayed on a
+	text page resource
+
+2009-01-30 Friday 08:44  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090130
+
+2009-01-30 Friday 06:24  danmarsden
+
+	* mod/choice/report.php: 
+	
+	MDL-18086 backport fix for incorrect ODS export
+
+2009-01-29 Thursday 22:43  jamiesensei
+
+	* user/profile/field/menu/field.class.php: 
+	
+	MDL-18085 "custom user profile fields : in a list box field if one
+	of the admin chosen values has an apostrophe in it it breaks the
+	query to update / save the value"
+
+2009-01-29 Thursday 21:32  mudrd8mz
+
+	* lang/en_utf8/forum.php, mod/forum/lib.php: 
+	
+	MDL-13449 Fix the problem with displaying aggregation type "Count
+	of ratings"
+
+2009-01-29 Thursday 08:46  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090129
+
+2009-01-29 Thursday 08:44  stronk7
+
+	* backup/version.php: 
+	
+	Bump
+
+2009-01-29 Thursday 08:42  stronk7
+
+	* admin/environment.xml: 
+	
+	MDL-18073 environment - enforce PHP 5.2.8 req for Moodle 2.0 ;
+	merged from 18_STABLE
+
+2009-01-29 Thursday 07:51  skodak
+
+	* admin/report/security/lib.php: 
+	
+	MDL-18040 rewritten XSS query, I hope this will be much faster;
+	backported from HEAD
+
+2009-01-29 Thursday 03:16  piers
+
+	* mod/scorm/: api.php, locallib.php, report.php,
+	datamodels/debug.js.php: 
+	
+	MDL-16184 - patch to correct the calculation of first, and last
+	access to a SCORM attempt. backport to 1.9. + missing php tag in
+	debug.
+
+2009-01-29 Thursday 03:14  piers
+
+	* mod/scorm/datamodels/scorm_13.js.php: 
+	
+	MDL-17821 - fix incorrect data validation regexs for 2004. thanks
+	Peter Chamberlin. backport to 1.9.
+
+2009-01-29 Thursday 01:08  mudrd8mz
+
+	* mod/forum/lib.php: 
+	
+	MDL-13449 Reverting the previous commit, sorry - not working yet
+
+2009-01-29 Thursday 00:51  mudrd8mz
+
+	* mod/forum/lib.php: 
+	
+	MDL-13449 If the count exceeds the forum scale, then set the score
+	to the max grade
+
+2009-01-28 Wednesday 22:11  sam_marshall
+
+	* mod/forum/discuss.php, lib/weblib.php: 
+	
+	MDL-381: Added 'Move' button to reduce accidentally moving forum
+	posts.
+
+2009-01-28 Wednesday 21:10  sam_marshall
+
+	* calendar/event_new.html, lib/weblib.php: 
+	
+	MDL-17974: Calendar 'new entry' accessibility improvement
+
+2009-01-28 Wednesday 16:37  moodler
+
+	* version.php: 
+	
+	Bumping to post 1.9.4
+
+2009-01-28 Wednesday 15:20  moodler
+
+	* version.php: 
+	
+	Bumping to Moodle 1.9.4 for release!
+
+2009-01-28 Wednesday 15:10  moodler
+
+	* lang/en_utf8/report_security.php: 
+	
+	report/security MDL-18039 Just some trivial text fixes
+
+2009-01-28 Wednesday 08:54  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090128
+
+2009-01-28 Wednesday 03:08  stronk7
+
+	* mod/forum/rate.php: 
+	
+	MDL-17365 forum rate - fix error message. Merged from 18_STABLE
+
+2009-01-28 Wednesday 02:51  stronk7
+
+	* lang/en_utf8/forum.php: 
+	
+	MDL-17365 forum rate - add 'invalidrate' string.
+
+2009-01-28 Wednesday 02:40  stronk7
+
+	* mod/forum/rate.php: 
+	
+	MDL-17365 forum rate - validate rating against scale values.
+
+2009-01-28 Wednesday 02:38  skodak
+
+	* admin/report/security/lib.php: 
+	
+	MDL-18057 fixed XSS test
+
+2009-01-28 Wednesday 01:22  skodak
+
+	* admin/report/security/index.php, admin/report/security/lib.php,
+	lang/en_utf8/report_security.php, theme/standard/styles_layout.css:
+	
+	
+	MDL-18040 adding warning that the security report processing may
+	take a long time; backported from HEAD
+
+2009-01-28 Wednesday 00:06  skodak
+
+	* admin/report/security/index.php: 
+	
+	MDL-18055 adding timeout protection to security report
+
+2009-01-27 Tuesday 18:58  skodak
+
+	* lang/en_utf8/report_security.php: 
+	
+	MDL-18015 improved lang strings - thanks Andrea!
+
+2009-01-27 Tuesday 16:32  tjhunt
+
+	* lang/en_utf8/help/qtype_multianswer/multianswer.html: 
+	
+	multianswer help file: Many XHTML strict issues.
+
+2009-01-27 Tuesday 15:35  tjhunt
+
+	* course/scales.php, lang/en_utf8/moodle.php, mod/forum/lib.php: 
+	
+	forum rating: MDL-18044 notice sometimes when a forum is rated,
+	also XHTML strict problems and fix incorrect help text.
+
+2009-01-27 Tuesday 14:33  gbateson
+
+	* mod/hotpot/lib.php, lang/en_utf8/hotpot.php: 
+	
+	MDL-17679: implement course reset for HotPot module (thanks to
+	Albert Gasset)
+
+2009-01-27 Tuesday 13:44  tjhunt
+
+	* mod/quiz/view.php: 
+	
+	quiz view: MDL-18038 Open close dates displayed to teachers
+	incorrectly.
+
+2009-01-27 Tuesday 08:55  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090127
+
+2009-01-27 Tuesday 08:53  moodlerobot
+
+	* install/lang/it_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090127)
+
+2009-01-26 Monday 10:27  pichetp
+
+	* question/type/multianswer/questiontype.php: 
+	
+	MDL-17995 replacing is_null()  by empty(). Merged from HEAD
+
+2009-01-26 Monday 10:26  pichetp
+
+	* question/type/multianswer/edit_multianswer_form.php: 
+	
+	MDL-17995 replacing != ''   by !empty(). Merged from HEAD
+
+2009-01-26 Monday 08:54  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090126
+
+2009-01-25 Sunday 23:52  pichetp
+
+	* question/type/multianswer/questiontype.php: 
+	
+	MDL-17995 replacing $wrapped !='' by !is_null($wrapped) Merge from
+	HEAD
+
+2009-01-25 Sunday 08:55  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090125
+
+2009-01-24 Saturday 09:20  stronk7
+
+	* backup/: backuplib.php, restorelib.php: 
+	
+	MDL-17835 backup & restore - encode/decode content links from/to
+	course formats info.  Credit goes to Mark Nielsen. Thanks!
+
+2009-01-24 Saturday 08:55  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090124
+
+2009-01-24 Saturday 08:53  moodlerobot
+
+	* install/lang/: eu_utf8/installer.php, fr_ca_utf8/installer.php,
+	it_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090124)
+
+2009-01-24 Saturday 08:28  stronk7
+
+	* backup/lib.php: 
+	
+	MDL-17886 backup & restore - Add some defaults to
+	import_backup_file_silently() Credit goes to Mark Nielsen. Thanks!
+	- CVS:
+	-------------------------------------------------------------------
+	---
+
+2009-01-24 Saturday 01:30  stronk7
+
+	* mod/forum/rate_ajax.js: 
+	
+	MDL-17998 forum ajax rating - avoid 'null' printout + improved
+	search by class (IE7, you know)
+
+2009-01-23 Friday 11:19  tjhunt
+
+	* question/type/match/questiontype.php: 
+	
+	matching qtype: MDL-17981 extra distractors feature was not working
+	on MS SQL server, since MDL-14420 was fixed.
+
+2009-01-23 Friday 11:10  tjhunt
+
+	* admin/index.php: 
+	
+	admin: xhtml strict problems.
+
+2009-01-23 Friday 08:56  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090123
+
+2009-01-22 Thursday 08:56  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090122
+
+2009-01-22 Thursday 08:55  moodlerobot
+
+	* install/lang/zh_tw_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090122)
+
+2009-01-22 Thursday 01:21  wildgirl
+
+	* lang/en_utf8/scorm.php: 
+	
+	scorm lang string: MDL-16651 added scorm:deleteresponses
+
+2009-01-22 Thursday 00:42  skodak
+
+	* version.php, admin/report/courseoverview/version.php,
+	admin/report/unittest/version.php, course/report/log/version.php,
+	course/report/participation/version.php,
+	course/report/outline/version.php, course/report/stats/version.php:
+	
+	
+	MDL-17463 bumped version report number numbers again - I found 3
+	sites that did not have the caps installed after upgrade - weird
+
+2009-01-21 Wednesday 19:57  mudrd8mz
+
+	* admin/report/security/lib.php: 
+	
+	MDL-17982 Security overview report backported to 1.9 uses 2.0 API
+	
+	Fixes: - admin/roles/manage.php instead of new
+	admin/roles/define.php - results returned by old
+	get_recordset_sql() must be iterated using rs_fetch_next_record()
+	instead of new foreach()
+
+2009-01-21 Wednesday 08:54  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090121
+
+2009-01-20 Tuesday 19:43  wildgirl
+
+	* lang/en_utf8/forum.php: 
+	
+	forum lang string: MDL-17364 small rewording
+
+2009-01-20 Tuesday 16:54  moodler
+
+	* mod/forum/lib.php: 
+	
+	forum/css MDL-16749 added a div named "posting" around the posting
+
+2009-01-20 Tuesday 15:56  tjhunt
+
+	* admin/index.php: 
+	
+	upgrade reload icon MDL-17924 unobfuscate Martin's reload icon.
+
+2009-01-20 Tuesday 15:21  moodler
+
+	* calendar/: export.php, export_execute.php: 
+	
+	calendar ical MDL-17964 Better hostname derived from wwwroot
+
+2009-01-20 Tuesday 14:57  moodler
+
+	* admin/maintenance.php, theme/standard/styles_layout.css: 
+	
+	maintenance mode MDL-15700 Just some little tidyups of the
+	maintenance mode page
+
+2009-01-20 Tuesday 13:24  tjhunt
+
+	* question/backuplib.php: 
+	
+	quiz backup: MDL-17970 MSSQL text / varchar compare issue.
+	
+	Commiting this fix so it gets into 1.9.4. I've tested and it does
+	not break sensible databases, and probably fixes the problem on
+	MSSQL.
+
+2009-01-20 Tuesday 12:16  tjhunt
+
+	* lang/en_utf8/moodle.php, lib/moodlelib.php,
+	question/restorelib.php, admin/index.php, admin/register.php,
+	backup/backuplib.php, backup/lib.php, backup/restore_check.html,
+	backup/restore_execute.html, backup/restorelib.php: 
+	
+	backup/restore: MDL-16614 more reliable test for when we are
+	restoring a backup that was made of the same site that we are
+	restoring to.
+	
+	* Use this to fix a question restore bug.  * Replace older code
+	that does something similar with the new test.	* Refactor
+	initialisation of $CFG->siteidentifier into a function. There were
+	about 4 copies of this code ;-)
+
+2009-01-20 Tuesday 12:07  moodler
+
+	* calendar/export_execute.php: 
+	
+	calendar/export MDL-17964 explicitly define a non-random UID for
+	each event
+
+2009-01-20 Tuesday 08:54  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090120
+
+2009-01-20 Tuesday 08:52  moodlerobot
+
+	* install/lang/it_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090120)
+
+2009-01-19 Monday 23:18  sam_marshall
+
+	* mod/forum/discuss.php: 
+	
+	MDL-17965: Prevent forum move to forum you can't start discussions
+	in
+
+2009-01-19 Monday 10:55  dongsheng
+
+	* filter/mediaplugin/filter.php, theme/standard/styles_layout.css: 
+	
+	"FILTER/MDL-17703, use classname instead of inline style"
+
+2009-01-19 Monday 10:36  dongsheng
+
+	* mod/forum/view.php: 
+	
+	"FORUM/MDL-17709, replace p with div in forum summary"
+
+2009-01-19 Monday 08:52  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090119
+
+2009-01-19 Monday 08:50  moodlerobot
+
+	* install/lang/es_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090119)
+
+2009-01-18 Sunday 09:02  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090118
+
+2009-01-18 Sunday 04:37  stronk7
+
+	* lang/en_utf8/forum.php: 
+	
+	MDL-17364 forum ajax rating - needed strings ; backported from HEAD
+
+2009-01-18 Sunday 04:30  stronk7
+
+	* mod/forum/: discuss.php, lib.php, rate.php, rate_ajax.js,
+	rate_ajax.php, settings.php: 
+	
+	MDL-17364 forum ajax rating working ; backporting from HEAD
+
+2009-01-18 Sunday 04:14  stronk7
+
+	* mod/forum/: rate_ajax.js, rate_ajax.php: 
+	
+	MDL-17364 forum ajax rating working
+
+2009-01-18 Sunday 04:14  stronk7
+
+	* mod/forum/rate_ajax.js: 
+	
+	file rate_ajax.js was added on branch MOODLE_19_STABLE on
+	2009-01-17 19:30:08 +0000
+
+2009-01-18 Sunday 04:14  stronk7
+
+	* mod/forum/rate_ajax.php: 
+	
+	file rate_ajax.php was added on branch MOODLE_19_STABLE on
+	2009-01-17 19:30:08 +0000
+
+2009-01-18 Sunday 03:25  stronk7
+
+	* pix/i/loading_small.gif: 
+	
+	Adding small loading gif for AJAX processing.
+
+2009-01-18 Sunday 03:09  stronk7
+
+	* lib/weblib.php: 
+	
+	MDL-17331 choose_from_menu() - backport listbox, multiple and class
+	params
+
+2009-01-17 Saturday 09:06  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090117
+
+2009-01-17 Saturday 09:04  moodlerobot
+
+	* install/lang/: eu_utf8/installer.php, it_utf8/installer.php: 
+	
+	Automatic installer.php lang files by installer_builder (20090117)
+
+2009-01-16 Friday 23:56  nicolasconnault
+
+	* grade/lib.php: 
+	
+	MDL-17883 Added title attribute to grade item link
+
+2009-01-16 Friday 19:20  nicolasconnault
+
+	* grade/edit/settings/form.php: 
+	
+	MDL-13778 Added new display types to course settings
+
+2009-01-16 Friday 17:59  dongsheng
+
+	* mod/glossary/view.php: 
+	
+	"GLOSSARY/MDL-17707, remove extra div"
+
+2009-01-16 Friday 17:52  dongsheng
+
+	* mod/quiz/view.php: 
+	
+	"MDL-17710, remove extra div"
+
+2009-01-16 Friday 17:34  tjhunt
+
+	* lib/adminlib.php: 
+	
+	adminlib: MDL-6160 mess up my lovely code just to keep PHP4 happy.
+	
+	Thanks to Ashley Holman for noticing my mistake.
+
+2009-01-16 Friday 14:37  dongsheng
+
+	* mod/wiki/index.php: 
+	
+	"WIKI/MDL-17704, wrap wiki summary by div"
+
+2009-01-16 Friday 14:31  dongsheng
+
+	* mod/quiz/view.php: 
+	
+	"QUIZ/MDL-17710, wrap quiz summary by div"
+
+2009-01-16 Friday 14:20  dongsheng
+
+	* filter/mediaplugin/filter.php: 
+	
+	"FILTER/MDL-17703, wrap object tag by div"
+
+2009-01-16 Friday 13:55  dongsheng
+
+	* mod/glossary/print.php: 
+	
+	"GLOSSARY/MDL-17708, use css selector instead of inline style"
+
+2009-01-16 Friday 13:52  dongsheng
+
+	* mod/forum/view.php: 
+	
+	"FORUM/MDL-17709, use css selector instead of inline style"
+
+2009-01-16 Friday 13:47  tjhunt
+
+	* mod/quiz/attempt.php, mod/quiz/review.php,
+	mod/quiz/reviewquestion.php, question/type/questiontype.php: 
+	
+	quiz / questions: MDL-17919 Bad link edit questions from quiz
+	preview page.
+	
+	Thanks to Ann Adamcik for noticing this. It was a regression from
+	MDL-6085.
+
+2009-01-16 Friday 13:46  dongsheng
+
+	* mod/glossary/view.php: 
+	
+	"MDL-17707, replace p with div in module summary"
+
+2009-01-16 Friday 13:18  tjhunt
+
+	* lib/moodlelib.php: 
+	
+	moodlelib: MDL-17761 More consistent error handling in get_string.
+
+2009-01-16 Friday 12:39  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090116
+
+2009-01-16 Friday 11:37  moodler
+
+	* admin/index.php, pix/i/reload.gif: 
+	
+	admin update reload MDL-17924 Changed reload form to an icon
+	(merged from head)
+
+2009-01-16 Friday 11:29  moodler
+
+	* pix/i/reload.gif: 
+	
+	file reload.gif was added on branch MOODLE_19_STABLE on 2009-01-16
+	02:37:29 +0000
+
+2009-01-16 Friday 11:29  moodler
+
+	* pix/i/reload.gif: 
+	
+	upgrade reload icon  MDL-17924 Replaced form with an icon
+
+2009-01-16 Friday 06:25  whchuang
+
+	* lang/en_utf8/help/quiz/itemanalysis.html: 
+	
+	Fixed a trivial typo in the quiz "item analysis table" help file -
+	it was spelled as "stadard" which should be "standard"
+
+2009-01-16 Friday 05:16  skodak
+
+	* admin/report/security/index.php, admin/report/security/lib.php,
+	admin/report/security/version.php, theme/standard/styles_color.css,
+	version.php, admin/report/security/settings.php,
+	admin/report/security/db/access.php,
+	lang/en_utf8/report_security.php: 
+	
+	MDL-17222 backported security report into 1.9.x
+
+2009-01-16 Friday 03:30  skodak
+
+	* admin/report/security/lib.php: 
+	
+	file lib.php was added on branch MOODLE_19_STABLE on 2009-01-15
+	20:16:12 +0000
+
+2009-01-16 Friday 03:30  skodak
+
+	* admin/report/security/: index.php, lib.php: 
+	
+	MDL-17222 imrpoved configuration links
+
+2009-01-16 Friday 03:30  skodak
+
+	* admin/report/security/index.php: 
+	
+	file index.php was added on branch MOODLE_19_STABLE on 2009-01-15
+	20:16:12 +0000
+
+2009-01-15 Thursday 16:29  tjhunt
+
+	* question/type/: questiontype.php, shortanswer/questiontype.php: 
+	
+	questiontypes: MDL-17800 Add extra_question_fields() support to
+	backup/restore functions.
+	
+	* Implement this in the base class, and * use this in the
+	shortanswer type as a proof of concept.
+	
+	This makes writing new question type subclasses a bit easier.
+	Thanks to Oleg Sychev for this code.
+
+2009-01-15 Thursday 14:15  tjhunt
+
+	* question/type/questiontype.php: 
+	
+	question engine: MDL-17651 this context is not used anywhere, so
+	remove it.
+	
+	(There was a bug in the get_context_instance call.)
+
+2009-01-15 Thursday 12:07  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090115
+
+2009-01-15 Thursday 05:15  wildgirl
+
+	* lang/en_utf8/help/: lesson/questiontypes.html, textformat.html: 
+	
+	help files: MDL-14319 small XHTML fixes, as reported by Chris Bandy
+
+2009-01-15 Thursday 02:47  stronk7
+
+	* course/report/log/lib.php: 
+	
+	MDL-17837 apply some limits to the dropdown of users in first
+	instance.
+
+2009-01-15 Thursday 02:44  stronk7
+
+	* lib/: datalib.php, deprecatedlib.php: 
+	
+	MDL-17837 opt limit resultsets returned by some get_xxxx_users()
+	function.
+
+2009-01-14 Wednesday 19:06  thepurpleblob
+
+	* user/profile/lib.php: 
+	
+	MDL-17048: Added additional check for non-visible fields in signup
+	page.
+
+2009-01-14 Wednesday 16:03  tjhunt
+
+	* mod/quiz/report/grading/report.php, mod/quiz/index.php,
+	mod/quiz/db/access.php, mod/quiz/lib.php, mod/quiz/review.php,
+	mod/quiz/reviewquestion.php, mod/quiz/version.php,
+	mod/quiz/view.php, mod/quiz/report/overview/overviewgraph.php,
+	lang/en_utf8/quiz.php, mod/quiz/report/overview/report.php: 
+	
+	quiz: MDL-14926 New capability mod/quiz:reviewmyattempts, separate
+	from mod/quiz:attempt.
+
+2009-01-14 Wednesday 13:55  dongsheng
+
+	* mod/forum/: discuss.php, post.php, view.php: 
+	
+	"MDL-6926, force language in forum module"
+
+2009-01-14 Wednesday 13:47  dongsheng
+
+	* course/lib.php, admin/settings/frontpage.php,
+	lang/en_utf8/admin.php: 
+	
+	"MDL-17747, add max category depth setting"
+
+2009-01-14 Wednesday 13:45  tjhunt
+
+	* lib/adminlib.php: 
+	
+	admin settings: MDL-17877 Remember to pass u.id to
+	get_users_by_capability.
+
+2009-01-14 Wednesday 13:44  tjhunt
+
+	* lib/accesslib.php: 
+	
+	accesslib: Nice debug developer warning if you call
+	get_users_with_capability without including u.id in the list of
+	fields.
+
+2009-01-14 Wednesday 13:35  dongsheng
+
+	* mod/chat/gui_header_js/chatinput.php: 
+	
+	"MDL-14949, reverse changes to permission which can cause problems"
+
+2009-01-14 Wednesday 08:58  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090114
+
+2009-01-13 Tuesday 22:15  thepurpleblob
+
+	* user/profile/lib.php: 
+	
+	MDL-17048 Corrected misuse of formslib - works now.
+
+2009-01-13 Tuesday 19:21  wildgirl
+
+	* lang/en_utf8/help/resource/frameifpossible.html: 
+	
+	embedding files in a frame: MDL-10021 small rewording of help file
+
+2009-01-13 Tuesday 18:02  skodak
+
+	* lib/adminlib.php, admin/index.php, lang/en_utf8/admin.php: 
+	
+	MDL-17868 detection of incorrect hadnling of floats in version
+	numbers - this should prevent dataloss in case it does not work as
+	expected
+
+2009-01-13 Tuesday 15:03  tjhunt
+
+	* lib/moodlelib.php, lang/en_utf8/error.php: 
+	
+	edit profile: MDL-15607 Edit profile form breaks if the list of
+	countries in the language pack is broken.
+	
+	After this patch it still breaks, unavoidably, but at least there
+	is now an error message.
+
+2009-01-13 Tuesday 09:01  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090113
+
+2009-01-13 Tuesday 06:51  wildgirl
+
+	* lang/en_utf8/report_security.php: 
+	
+	security overview report: MDL-17222 lang string rewording
+
+2009-01-13 Tuesday 06:51  skodak
+
+	* lang/en_utf8/report_security.php: 
+	
+	file report_security.php was added on branch MOODLE_19_STABLE on
+	2009-01-15 20:16:13 +0000
+
+2009-01-12 Monday 15:22  dongsheng
+
+	* lib/moodlelib.php: 
+	
+	"MDL-12077, add course delete hook for course format"
+
+2009-01-12 Monday 15:03  tjhunt
+
+	* lib/blocklib.php: 
+	
+	Fix typo.
+
+2009-01-12 Monday 11:05  peterbulmer
+
+	* user/: edit_form.php, editadvanced_form.php: 
+	
+	MDL-10498: Apostrophe / Quote in username or email breaks profile
+	update
+	
+	Author: Aaron Barnes <aaronb@catalyst.net.nz>
+
+2009-01-12 Monday 08:55  moodlerobot
+
+	* version.php: 
+	
+	Updated the 19 build version to 20090112
+
