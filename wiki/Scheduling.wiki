@@ -1,5 +1,5 @@
 #summary Schedule for Project VINYL
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 This page will be used to develop a schedule of the phases and iterations of Project VINYL.
 
