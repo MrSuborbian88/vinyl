@@ -4,11 +4,17 @@ This page will track the current activities project members should focus on.
 
 == Immediate Activities ==
 
-  * Analyze and understand Moodle Code
+  System Sequence Diagrams:
+  * Post Announcement
+  * Read Announcement
+  * Upload Document
+  * Download Document
 
 == Upcoming Activities ==
 
-
+  * Feedback on Domain Model
+  * Deployment Diagram
+  * Work Breakdown Structure / Updated Schedule
 
 == Completed ==
 
