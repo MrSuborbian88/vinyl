@@ -1,7 +1,31 @@
 #summary Page for the development of Supplemental Specifications.
+#labels Phase-Requirements
 
 = Introduction =
 
 _Include a complete set of requirements for your project.  Use the FURPS+ model to find any and all requirements for your project.  The functional requirement list must include requirements drawn out of the use cases.  All requirements must be numbered and have an assigned priority using a ranking system such as MoSCoW._
 
-= Details =
+== Functionality ==
+
+
+== Usability ==
+
+
+== Reliability ==
+
+
+== Performance ==
+|| REQ # || Priority || Summary ||
+|| P01 || S || System start up will take at most 2 minutes || 
+|| P02 || S || System shut down will take at most 2 minutes||
+|| P03 || C || System will respond to all user requests in at most 5 seconds ||
+
+== Supportability ==
+|| REQ # || Priority || Summary ||
+|| S01 || S || System installation will take at most 10 minutes ||
+|| S02 || M || System will support multiple languages ||
+|| S03 || M || New module installation will not require changes to other modules ||
+
+== + (Miscellaneous) ==
+|| REQ # || Priority || Summary ||
+|| M01 || S || At least 7 out of 10 test users will agree the system interface is user friendly ||
