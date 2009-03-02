@@ -4,11 +4,7 @@ This page will track the current activities project members should focus on.
 
 == Immediate Activities ==
 
-  System Sequence Diagrams:
-  * Post Announcement
-  * Read Announcement
-  * Upload Document
-  * Download Document
+  * Prepare Elaboration deliverable.
 
 == Upcoming Activities ==
 
@@ -26,3 +22,8 @@ This page will track the current activities project members should focus on.
   * Download a copy of the Moodle Source Code (Everyone)
   * Flesh out [Scheduling schedule]
   * Compile Inception Deliverables for WebCT submission
+  * [http://vinyl.googlecode.com/files/VINYL.zargo System Sequence Diagrams]:
+    * Post Announcement
+    * Read Announcement
+    * Upload Document
+    * Download Document
