@@ -1,5 +1,5 @@
 #summary Use Cases for Project VINYL
-#labels UseCase,Teacher,Student,Admin
+#labels UseCase,Inception,Teacher,Student,Admin
 
 This page will be used to develop Use Cases for Project VINYL.
 
