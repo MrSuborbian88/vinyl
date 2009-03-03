@@ -1,4 +1,5 @@
 #summary Page for development of System Sequence Diagrams.
+#labels Elaboration
 
 = Introduction =
 
