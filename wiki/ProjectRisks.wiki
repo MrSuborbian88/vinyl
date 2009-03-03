@@ -1,5 +1,5 @@
 #summary A list of known Risks and Issues.
-#labels Phase-Design
+#labels Phase-Design,Inception
 
 || *Risk or Issue* || *Status* ||
 || Potential legal roadblocks || Risk ||
