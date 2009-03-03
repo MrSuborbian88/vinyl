@@ -29,3 +29,51 @@ _Include a complete set of requirements for your project.  Use the FURPS+ model 
 == + (Miscellaneous) ==
 || REQ # || Priority || Summary ||
 || M01 || S || At least 7 out of 10 test users will agree the system interface is user friendly ||
+
+== Functionality ==
+== Capabilities ==
+Must be capable of storing user and class data in an SQL database.
+Must be capable of storing uploaded files on the server for later retrieval.
+Must be capable of offering different GUIs based on user privileges.
+Must be capable of handling at least 100 concurrent student accesses at once.
+== Security ==
+Must store passwords in an encrypted format (MD5).
+Must prevent students from accessing other students' information.
+Must restrict teachers to accessing the information about students in their own classes.
+Must prevent students from accessing teacher functionality.
+Must prevent students and teachers from accessing admin functionality.
+== Human Factors ==
+Must use as few steps (button clicks/screens/etc.) as possible to accomplish a given task.
+Must minimize clutter on each screen.
+Must provide some form of user feedback.
+== Usability ==
+== Aesthetics ==
+Must possess minimally-intrusive graphical background.
+Must possess non-distracting color scheme.
+Must label all user-interactive features as such (buttons/links/etc.).
+Must possess unambiguous icons.
+== Consistency ==
+Must ensure similar design and format of screens throughout VINL.
+Must use same icons/buttons/etc. Throughout VINL.
+Must adhere to standard web protocol (standard menus/shortcuts/etc.) where possible.
+== Documentation ==
+Must display tooltips to denote functionality whenever possible.
+Must provide explanation of all features and how to use them.
+Must provide tutorial for first-time users.
+Must provide FAQs if and when they are asked.
+== Frequency and Severity of Failure ==
+Must fail “gracefully” (error messages rather than crashes, etc.)
+Must notify the user as to circumstances of failure.
+Must exhibit partitioned failure—one failure shouldn't cause another component to fail.
+== Recoverability ==
+Must exhibit modularity—a single component can be fixed without altering others.
+Must exhibit sufficient logging to allow fast determination of what error(s) occurred.
+== Reliability ==
+== Predictability ==
+Must deliver same results every time a given command is used.
+Must log any variations from normal behavior and the cause(s) thereof.
+== Mean Time to Failure ==
+Must last at least one scholastic year before catastrophic failure, to allow summer repair.
+== Efficiency ==
+Must load pages faster than 3 seconds under minimum load, 30 under maximum load.
+Must use fastest methods for information retrieval/authentication/etc. wherever possible.
