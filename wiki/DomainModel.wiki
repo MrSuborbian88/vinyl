@@ -1,4 +1,5 @@
 #summary Page for the development of the Domain Model Diagram.
+#labels Elaboration
 
 = Introduction =
 
