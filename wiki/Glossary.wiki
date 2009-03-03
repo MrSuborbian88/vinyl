@@ -1,4 +1,5 @@
 #summary Glossary of terms used in Project VINYL
+#labels Inception
 
 This page will be used as a Glossary for terms used in Project VINYL.
 
