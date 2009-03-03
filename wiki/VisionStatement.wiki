@@ -1,5 +1,5 @@
 #summary Vision Statement for Project VINYL
-#labels Phase-Requirements
+#labels Phase-Requirements,Inception
 
 == Executive Summary ==
 VINL is a system designed to improve the educational process by providing an interface through which teachers can more freely communicate to their students, and students in turn can more easily understand and interact with the course material.  VINL is a centralized, web-based system with an intuitive and clean graphical interface for the transfer of data and utilization of specific appropriately useful internal applications.  VINL is geared towards its clients, with a genuine feedback system to make it more user-friendly, and to encourage a more robust design, so as to improve on its main competitor, RPILMS, which this project is intended to replace.
