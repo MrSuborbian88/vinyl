@@ -44,14 +44,13 @@ _Include a complete set of requirements for your project.  Use the FURPS+ model 
 || RO1 || || Must deliver same results every time a given command is used ||
 || RO2 || || Must log any variations from normal behavior and the cause(s) thereof ||
 || RO3 || || Must last at least one scholastic year before catastrophic failure, to allow summer repair ||
-|| RO4 || || Must load pages faster than 3 seconds under minimum load, 30 under maximum load ||
 || RO5 || || Must use fastest methods for information retrieval/authentication/etc. wherever possible ||
 
 == Performance ==
 || REQ # || Priority || Summary ||
 || P01 || S || System start up will take at most 2 minutes || 
 || P02 || S || System shut down will take at most 2 minutes||
-|| P03 || C || System will respond to all user requests in at most 5 seconds ||
+|| P03 || C || System will respond to all user requests in at most 3 seconds ||
 
 == Supportability ==
 || REQ # || Priority || Summary ||
