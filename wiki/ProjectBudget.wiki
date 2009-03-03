@@ -1,4 +1,5 @@
 #summary Budgeting Information for Project VINYL
+#labels Inception
 
   * Server - IBM X3200 M2 - Value $1500
   * (5) Payroll - $30/hr per developer (40 hours/week)
