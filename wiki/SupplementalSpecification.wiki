@@ -41,11 +41,11 @@ _Include a complete set of requirements for your project.  Use the FURPS+ model 
 
 == Reliability ==
 || REQ # || Priority || Summary ||
-|| R01 || || Must deliver same results every time a given command is used ||
-|| R02 || || Must log any variations from normal behavior and the cause(s) thereof ||
-|| R03 || || Must last at least one scholastic year before catastrophic failure, to allow summer repair ||
-|| R04 || || Must load pages faster than 3 seconds under minimum load, 30 under maximum load ||
-|| R05 || || Must use fastest methods for information retrieval/authentication/etc. wherever possible ||
+|| !R01 || || Must deliver same results every time a given command is used ||
+|| !R02 || || Must log any variations from normal behavior and the cause(s) thereof ||
+|| !R03 || || Must last at least one scholastic year before catastrophic failure, to allow summer repair ||
+|| !R04 || || Must load pages faster than 3 seconds under minimum load, 30 under maximum load ||
+|| !R05 || || Must use fastest methods for information retrieval/authentication/etc. wherever possible ||
 
 == Performance ==
 || REQ # || Priority || Summary ||
