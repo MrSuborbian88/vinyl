@@ -1,4 +1,5 @@
 #summary Page for development of the Deployment Diagram.
+#labels Elaboration
 
 = Introduction =
 
