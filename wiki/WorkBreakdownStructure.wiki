@@ -8,26 +8,26 @@ _A detailed list of the tasks associated with your project based upon the vision
 
 == Inception ==
 _Inception was completed on February 12._
-||Vision Statement||
-||Enumeration of Use Cases||
-||Risks and Issues||
-||Glossary||
-||Budget||
+||Vision Statement|| The deliverable as described in the syllabus. ||
+||Enumeration of Use Cases|| (20% Complete) The deliverable as described in the syllabus. ||
+||Risks and Issues|| The risks and issues associated with our project.  These will be updated for each status report. ||
+||Glossary|| The deliverable as described in the syllabus. ||
+||Budget|| The deliverable as described in the syllabus. ||
 
 == Elaboration == 
 _Elaboration was completed on March 5._
-||Domain Model Diagram||
-||Supplemental Specification||
-||System Sequence Diagrams||
-||Deployment Diagram||
-||Use Cases (80%)||
-||Work Breakdown Structure/Updated Schedule||
+||Domain Model Diagram|| The deliverable as described in the syllabus. ||
+||Supplemental Specification|| The deliverable as described in the syllabus. ||
+||System Sequence Diagrams|| The deliverable as described in the syllabus. ||
+||Deployment Diagram|| The deliverable as described in the syllabus. ||
+||Use Cases (80%)|| The deliverable as described in the syllabus. ||
+||Work Breakdown Structure/Updated Schedule|| The deliverable as described in the syllabus. ||
 
 == Construction: Phase 1 ==
 _The most crucial components of our system as determined by the team from our Use Cases.  Construction: Phase 1 will be completed on March 16._
-||Main Server||
-||Post Document||
-||Read Document||
+||Main Server|| The server that will host project VINYL is setup and running.  Team Awesome will have access to the code on the server and will be able to upload/change and test the code. ||
+||Post Document|| The ability for a student or teacher to upload files into a database associated with the course. ||
+||Read Document|| The ability for a student or teacher to view the files associated with the course. ||
 ||Download Document||
 ||Modify Roster||
 ||Join Class||
