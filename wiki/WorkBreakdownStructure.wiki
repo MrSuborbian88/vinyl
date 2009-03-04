@@ -43,9 +43,9 @@ _The most crucial components of our system as determined by the team from our Us
 || U04 || Dan S. ||
 || U06 || Daniel P. ||
 || U08 || Daniel P. ||
-|| RO1 ||  ||
+|| RO1 || Jamie ||
 || S02 || Bill ||
-|| S03 ||  ||
+|| S03 || Hamie ||
 
 == Construction: Phase 2 ==
 _The secondary components of our system as determined by the team from our Use Cases.  Construction: Phase 2 will be completed on March 30._
