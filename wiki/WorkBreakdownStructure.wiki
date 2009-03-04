@@ -27,7 +27,7 @@ _Elaboration was completed on March 5._
 
 == Construction: Phase 1 ==
 _The most crucial components of our system as determined by the team from our Use Cases.  Construction: Phase 1 will be completed on March 16._
-||Main Server|| ||
+||Main Server|| Bill ||
 ||Post Document|| Daniel P.||
 ||Read Document|| Daniel P.||
 ||Download Document|| Daniel P.||
@@ -35,17 +35,17 @@ _The most crucial components of our system as determined by the team from our Us
 ||Join Class|| Russ ||
 ||Leave Class|| Russ ||
 
-|| F01 ||
-|| F02 ||
-|| F06 ||
-|| F08 ||
-|| F09 ||
-|| U04 ||
-|| U06 ||
-|| U08 ||
-|| RO1 ||
-|| S02 ||
-|| S03 ||
+|| F01 || Jamie ||
+|| F02 || Daniel P. ||
+|| F06 || Russ ||
+|| F08 || Russ ||
+|| F09 || Russ ||
+|| U04 || Dan S. ||
+|| U06 || Daniel P. ||
+|| U08 || Daniel P. ||
+|| RO1 ||  ||
+|| S02 || Bill ||
+|| S03 ||  ||
 
 == Construction: Phase 2 ==
 _The secondary components of our system as determined by the team from our Use Cases.  Construction: Phase 2 will be completed on March 30._
