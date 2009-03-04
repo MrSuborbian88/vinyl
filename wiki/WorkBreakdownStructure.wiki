@@ -5,4 +5,72 @@
 
 _A detailed list of the tasks associated with your project based upon the vision, scope, and use cases.  The list of tasks should be granular as possible so that the team and see clearly everything that needs to be accomplished in order to complete the project._
 
-= Details =
+
+== Inception ==
+_Inception was completed on February 12._
+||Vision Statement||
+||Enumeration of Use Cases||
+||Risks and Issues||
+||Glossary||
+||Budget||
+
+== Elaboration == 
+_Elaboration was completed on March 5._
+||Domain Model Diagram||
+||Supplemental Specification||
+||System Sequence Diagrams||
+||Deployment Diagram||
+||Use Cases (80%)||
+||Work Breakdown Structure/Updated Schedule||
+
+== Construction: Phase 1 ==
+_The most crucial components of our system as determined by the team from our Use Cases.  Construction: Phase 1 will be completed on March 16._
+||Main Server||
+||Post Document||
+||Read Document||
+||Download Document||
+||Modify Roster||
+||Join Class||
+||Leave Class||
+
+== Construction: Phase 2 ==
+_The secondary components of our system as determined by the team from our Use Cases.  Construction: Phase 2 will be completed on March 30._
+||Post Assignment||
+||Read Assignment||
+||Post Assignment||
+||Read Assignment||
+||Post Reminder||
+||View Reminder||
+||Post Grades||
+||View Grades||
+
+== Construction: Phase 3 ==
+_The tertiary components of our system as determined by the team from our Uses Cases.  Construction: Phase 3 will be completed on April 13._
+||Make Test/Quiz||
+||Take Test/Quiz||
+||Submit Answer||
+||Create New Question||
+||Edit/Design Question||
+||Edit/Design Answer Submission Rules||
+||Order/Design Test Layout||
+
+== Construction: Final Phase ==
+_The final phase of Construction will be completed on April 16._
+||Construction Completed||
+||Beta Release||
+||Interaction Diagram||
+||Static Class Diagram||
+||Code Review||
+||Testing Documents||
+
+== Transition ==
+_Transition will be completed on April 27._
+||Project Complete||
+||Final Release||
+||User Documentation||
+||Final Test Results||
+||Best Practices Evidence||
+||Peer Reviews||
+
+== Final Presentation ==
+_The Final Presentation of project VINYL will occur on the day assigned to Team Awesome._
