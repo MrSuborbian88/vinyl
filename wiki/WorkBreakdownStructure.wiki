@@ -28,9 +28,9 @@ _Elaboration was completed on March 5._
 == Construction: Phase 1 ==
 _The most crucial components of our system as determined by the team from our Use Cases.  Construction: Phase 1 will be completed on March 16._
 ||Main Server|| ||
-||Post Document|| Daniel ||
-||Read Document|| Daniel ||
-||Download Document|| Daniel ||
+||Post Document|| Daniel P.||
+||Read Document|| Daniel P.||
+||Download Document|| Daniel P.||
 ||Modify Roster||  Russ ||
 ||Join Class|| Russ ||
 ||Leave Class|| Russ ||
