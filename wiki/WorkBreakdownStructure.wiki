@@ -49,44 +49,44 @@ _The most crucial components of our system as determined by the team from our Us
 
 == Construction: Phase 2 ==
 _The secondary components of our system as determined by the team from our Use Cases.  Construction: Phase 2 will be completed on March 30._
-||Post Assignment||
-||Read Assignment||
-||Post Assignment||
-||Read Assignment||
-||Post Reminder||
-||View Reminder||
-||Post Grades||
-||View Grades||
+||Post Assignment||Jamie||
+||Read Assignment||Jamie||
+||Post Announcement||Jamie||
+||Read Announcement||Jamie||
+||Post Reminder||Jamie||
+||View Reminder||Jamie||
+||Post Grades|| Daniel P. ||
+||View Grades|| Daniel P. ||
 
-|| F04 ||
-|| F05 ||
-|| F11 ||
-|| U02 ||
-|| U03 ||
-|| U07 ||
-|| U09 ||
-|| RO2 ||
-|| P01 ||
-|| P02 ||
-|| S01 ||
-|| M01 ||
+|| F04 || Bill ||
+|| F05 || Jamie ||
+|| F11 || Dan S. ||
+|| U02 || Dan S. ||
+|| U03 || Bill ||
+|| U07 || Daniel P. ||
+|| U09 || Russ ||
+|| RO2 || Bill ||
+|| P01 || Bill ||
+|| P02 || Bill ||
+|| S01 || Russ ||
+|| M01 || Dan S. ||
 
 == Construction: Phase 3 ==
 _The tertiary components of our system as determined by the team from our Uses Cases.  Construction: Phase 3 will be completed on April 13._
-||Make Test/Quiz||
-||Take Test/Quiz||
-||Submit Answer||
-||Create New Question||
-||Edit/Design Question||
-||Edit/Design Answer Submission Rules||
-||Order/Design Test Layout||
+||Make Test/Quiz|| Daniel P. ||
+||Take Test/Quiz|| Russ ||
+||Submit Answer|| Russ ||
+||Create New Question|| Daniel P. ||
+||Edit/Design Question|| Dan S. ||
+||Edit/Design Answer Submission Rules|| Jamie ||
+||Order/Design Test Layout|| Dan S. ||
 
-|| F03 ||
-|| F07 ||
-|| F10 ||
-|| U01 ||
-|| U05 ||
-|| P03 ||
+|| F03 || Russ ||
+|| F07 || Bill ||
+|| F10 || Bill ||
+|| U01 || Daniel P. ||
+|| U05 || Dan S. ||
+|| P03 || Bill ||
 
 == Construction: Final Phase ==
 _The final phase of Construction will be completed on April 16._
