@@ -10,7 +10,8 @@
 ||Identified || TE4 ||
 || Description: || The LayoutTest use case models Teacher modifying the Layout of an Online Test. ||
 ||Actor(s)|| Teacher ||
-||Preconditions: || 1. Teacher has navigated to the Test GUI via the EditTest (TE5) use case. ||
+||Preconditions: || 1. User successfully logged in as Teacher via the LogIn use case. ||
+||               || 2. The User has navigated to the desired Test in the Test GUI. ||
 ||Flow of Events: ||1. The use case starts when Teacher navigates to the aforementioned page. ||
 ||                ||2. The system displays a drag-and-drop interface for ordering questions on the Test. ||
 ||                ||3. The Teacher may change the order of the questions by use of the drag-and-drop interface. ||
