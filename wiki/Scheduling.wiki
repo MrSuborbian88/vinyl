@@ -20,7 +20,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [UseCases Use Cases (80% Complete)]
   * [WorkBreakdownStructure Work Breakdown Structure]/Updated [Scheduling Schedule]
 
-*March 16* - Iteration 3 (Construction) ends
+*March 23* - Iteration 3 (Construction) ends
   * [PostDocument Post Document]
   * [ReadDocument Read Document]
   * [DownloadDocument Download Document]
@@ -28,7 +28,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [JoinClass Join Class]
   * [LeaveClass Leave Class]
 
-*March 30* - Iteration 4 (Construction) ends
+*April 6* - Iteration 4 (Construction) ends
   * [PostAssignment Post Assignment]
   * [ReadAssignment Read Assignment]
   * [PostAnnouncement Post Annoucement]
