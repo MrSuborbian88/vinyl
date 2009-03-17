@@ -20,7 +20,10 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [UseCases Use Cases (80% Complete)]
   * [WorkBreakdownStructure Work Breakdown Structure]/Updated [Scheduling Schedule]
 
-*March 23* - Iteration 3 (Construction) ends
+*March 16* - Iteration 3 (Construction) ends
+  * Nothing was accomplished, added in a new Iteration
+
+*March 23* - Iteration 4 (Construction) ends
   * [PostDocument Post Document]
   * [ReadDocument Read Document]
   * [DownloadDocument Download Document]
@@ -28,7 +31,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [JoinClass Join Class]
   * [LeaveClass Leave Class]
 
-*April 6* - Iteration 4 (Construction) ends
+*April 6* - Iteration 5 (Construction) ends
   * [PostAssignment Post Assignment]
   * [ReadAssignment Read Assignment]
   * [PostAnnouncement Post Annoucement]
@@ -38,7 +41,7 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [PostGrades Post Grades]
   * [ViewGrades View Grades]
 
-*April 13* - Iteration 5 (Construction) ends
+*April 13* - Iteration 6 (Construction) ends
   * [MakeTest Make Test/Quiz]
   * [TakeTest Take Test/Quiz]
   * [SubmitAnswer Submit Answer]
@@ -47,8 +50,8 @@ This page will be used to develop a schedule of the phases and iterations of Pro
   * [TEQuestionSubmission Edit/Design Answer Submission Rules]
   * [LayoutTest Order/Design Test Layout]
 
-*April 16* - Iteration 6 (Construction)
+*April 16* - Iteration 7 (Construction)
   * Construction completed
 
-*April 27* - Iteration 7
+*April 27* - Iteration 8
   * Project completed
