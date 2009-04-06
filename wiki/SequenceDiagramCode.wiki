@@ -33,3 +33,35 @@ else Error
     Course-->Teacher: void
 end
 end
+
+= Code for Join/Drop Course =
+loop Drop/Join Class
+    Student->Course: requestList() 
+
+    Course->DatabaseWrapper?: queryRoster() 
+
+    DatabaseWrapper?-->Course: CourseList? 
+
+    Course->Course: displayroster() 
+
+    Course-->Student: void 
+
+    Student->Course: drop/join(x) 
+
+    Course->DatabaseWrapper?: modifyRoster(x) 
+
+alt Success
+
+    DatabaseWrapper?-->Course: ReturnStatus? 
+
+    Course-->Student: void 
+
+else Error
+
+    DatabaseWrapper?-->Course: ReturnError? 
+
+    Course->Course: displayError() 
+
+    Course-->Student: void 
+
+end end 
