@@ -2,7 +2,7 @@
 
 //  Manage all uploaded files in a course file area
 
-//  All the Moodle-specific stuff is in this top section
+//  All the VINL-specific stuff is in this top section
 //  Configuration and access control occurs here.
 //  Must define:  USER, basedir, baseweb, html_header and html_footer
 //  USER is a persistent variable using sessions
