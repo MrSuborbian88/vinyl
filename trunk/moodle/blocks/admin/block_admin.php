@@ -127,13 +127,13 @@ class block_admin extends block_list {
 
 
     /// Manage groups in this course
-
+/*
         if (($course->id!==SITEID) && ($course->groupmode || !$course->groupmodeforce) && has_capability('moodle/course:managegroups', $context)) {
             $strgroups = get_string('groups');
             $this->content->items[]='<a title="'.$strgroups.'" href="'.$CFG->wwwroot.'/group/index.php?id='.$this->instance->pageid.'">'.$strgroups.'</a>';
             $this->content->icons[]='<img src="'.$CFG->pixpath.'/i/group.gif" class="icon" alt="" />';
         }
-
+*/
     /// Backup this course
 
         if ($course->id!==SITEID and has_capability('moodle/site:backup', $context)) {
