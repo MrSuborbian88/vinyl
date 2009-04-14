@@ -158,7 +158,7 @@ define('ROLENAME_ORIGINAL', 0);// the name as defined in the role definition
 define('ROLENAME_ALIAS', 1);   // the name as defined by a role alias 
 define('ROLENAME_BOTH', 2);    // Both, like this:  Role alias (Original)
 
-require_once($CFG->dirroot.'/group/lib.php');
+//require_once($CFG->dirroot.'/group/lib.php');
 
 $context_cache    = array();    // Cache of all used context objects for performance (by level and instance)
 $context_cache_id = array();    // Index to above cache by id
