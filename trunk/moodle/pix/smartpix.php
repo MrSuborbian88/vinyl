@@ -6,7 +6,7 @@ $matches=array(); // Reusable array variable for preg_match
  
 // This does NOT use config.php. This is because doing that makes database requests
 // which cause this to take longer (I benchmarked this at 16ms, 256ms with config.php)
-// A version using normal Moodle functions is included in comment at end in case we
+// A version using normal VINL functions is included in comment at end in case we
 // want to switch to it in future. 
 
 function error($text,$notfound=false) {
@@ -197,7 +197,7 @@ $handle=fopen($file,'r');
 fpassthru($handle);
 fclose($handle);
 
-// Slower Moodle-style version follows:
+// Slower VINL-style version follows:
  
 //// Outputs pictures from theme or core pix folder. Only used if $CFG->smartpix is
 //// turned on.
