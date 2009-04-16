@@ -19,7 +19,7 @@
 ||                ||3. Teacher prompted to enter text.||
 ||                ||3.1 Teacher enters desired message. ||
 ||                ||3.2 Teacher enters a desired date and time for the reminder to appear. ||
-||                ||3.3 Teacher hits Post button. ||
+||                ||3.3 Teacher posts the reminder. ||
 ||                ||4. If Teacher fails to enter text, date, and time, Teacher receives an error message reflecting the missing information.||
 ||                ||5. Else Teacher receives a message, “Reminder Successfully Posted” ||
 ||Post Condition:||1. Reminder posted to selected class. ||
