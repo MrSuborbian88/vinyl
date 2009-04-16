@@ -12,10 +12,10 @@
 ||Actors|| Teacher||
 || Preconditions: || 1. User successfully logged in as Teacher via the LogIn use case. ||
 ||Flow of Events: ||1. The use case starts when Teacher decides to post his Grades.||
-||                ||2. Teacher clicks the Post Grades button.||
+||                ||2. Teacher selects Post Grades.||
 ||                ||3. Teacher prompted to select a class from a list of options.||
-||                ||4. Teacher sees a spreadsheet of assignments and students for the chosen class.||
-||                ||5. Teacher enters and/or changes one or more Grades in the spreadsheet.||
-||                ||6. Teacher presses the Post Grades button.||
-||Post Condition: ||1. Teacher returns to the screen to select a class to post grades for (step 3).||
-||                ||2. Grades for selected class updated.||
+||                ||4. Teacher sees a list of assignments and students for the chosen class.||
+||                ||5. Teacher enters and/or changes one or more Grades.||
+||                ||6. Teacher posts the grades.||
+||Post Condition: ||1. Teacher is returned to step 3.||
+||                ||2. Grades for selected class are updated.||
