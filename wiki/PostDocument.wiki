@@ -11,7 +11,7 @@
 || Description: || The PostDocument use case models Teacher posting a Document from his or her personal computer to VINL.|| 
 ||Actors|| Teacher||
 || Preconditions: || 1. User successfully logged in as Teacher via the Login use case.||
-||Flow of Events: ||1. The use case starts when Teacher clicks the Post Document button.||
+||Flow of Events: ||1. The use case starts when Teacher decides to post a document.||
 ||                ||2. Teacher is presented with a list of classes.||
 ||                ||2.1 Teacher chooses a class from the list.||
 ||                ||3. Teacher prompted to locate the file(s) on his or her personal computer.||
