@@ -15,7 +15,7 @@
 ||                ||2. Teacher is presented with a list of classes.||
 ||                ||2.1 Teacher chooses a class from the list.||
 ||                ||3. Teacher prompted to locate the file(s) on his or her personal computer.||
-||                ||4. Teacher clicks the Upload button.||
+||                ||4. Teacher uploads the document.||
 ||                || 4.1 If files upload successfully, Teacher receives the message, “Document(s) successfully uploaded.” ||
 ||                ||4.2 If files did not upload successfully, Teacher receives an error message reflecting the error.||
 ||                ||4.2.1 Teacher returns to step 3. || 
