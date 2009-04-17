@@ -43,16 +43,16 @@ define('QUESTION_EVENTS_GRADED', QUESTION_EVENTGRADE.','.
  * The core question types.
  */
 define("SHORTANSWER",   "shortanswer");
-define("TRUEFALSE",     "truefalse");
+//define("TRUEFALSE",     "truefalse");
 define("MULTICHOICE",   "multichoice");
-define("RANDOM",        "random");
-define("MATCH",         "match");
-define("RANDOMSAMATCH", "randomsamatch");
-define("DESCRIPTION",   "description");
+//define("RANDOM",        "random");
+//define("MATCH",         "match");
+//define("RANDOMSAMATCH", "randomsamatch");
+//define("DESCRIPTION",   "description");
 define("NUMERICAL",     "numerical");
 define("MULTIANSWER",   "multianswer");
 define("CALCULATED",    "calculated");
-define("ESSAY",         "essay");
+//define("ESSAY",         "essay");
 /**#@-*/
 
 /**
