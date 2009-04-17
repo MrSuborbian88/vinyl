@@ -1,6 +1,8 @@
 <?php // $Id: mod.php,v 1.127.2.3 2009/02/05 13:41:18 stronk7 Exp $
 
 //  Moves, adds, updates, duplicates or deletes modules in a course
+//VINL changes: changed the amount that the move right and move left commands change by (times 2 now)
+//added a maximum number of indents that can be added (maximum now 40)
 
     require("../config.php");
     require_once("lib.php");
@@ -321,11 +323,15 @@
         $context = get_context_instance(CONTEXT_COURSE, $cm->course);
         require_capability('moodle/course:manageactivities', $context);
 
-        $cm->indent += $indent;
+        $cm->indent += $indent*2; //VINL change: *2 now
 
         if ($cm->indent < 0) {
             $cm->indent = 0;
         }
+		
+		if ($cm->indent > 40) { //VINL change: 40 is the max number of indents
+			$cm->indent = 40;
+		}
 
         if (!set_field("course_modules", "indent", $cm->indent, "id", $cm->id)) {
             error("Could not update the indent level on that course module");
