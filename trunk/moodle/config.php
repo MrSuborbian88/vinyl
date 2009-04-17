@@ -10,9 +10,9 @@ $CFG->dbpass    = '';
 $CFG->dbpersist =  false;
 $CFG->prefix    = 'mdl_';
 
-$CFG->wwwroot   = 'http://localhost';
-$CFG->dirroot   = 'C:\Documents and Settings\johnsr6\Desktop\server\moodle';
-$CFG->dataroot  = 'C:\Documents and Settings\johnsr6\Desktop\server/moodledata';
+$CFG->wwwroot   = 'http://128.113.91.132';
+$CFG->dirroot   = 'C:\Users\plochd\Documents\Course Files Spring 2009\Software Design and Documentation\moodlecopy\server\moodle';
+$CFG->dataroot  = 'C:\Users\plochd\Documents\Course Files Spring 2009\Software Design and Documentation\moodlecopy\server/moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 00777;  // try 02777 on a server in Safe Mode
