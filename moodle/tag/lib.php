@@ -11,7 +11,7 @@
  * A "record" is a php array (note that an object will work too) that contains 
  * the following variables : 
  *  - type: the table containing the record that we are tagging (eg: for a
- *    blog, this is table 'post', and for a user it is 'user')
+ *	blog, this is table 'post', and for a user it is 'user')
  *  - id: the id of the record 
  *
  * TODO: turn this into a full-fledged categorization system. This could start 
@@ -21,10 +21,10 @@
  *
  * BASIC INSTRUCTIONS : 
  *  - to "tag a blog post" (for example): 
- *        tag_set('post', $blog_post->id, $array_of_tags);
+ *		tag_set('post', $blog_post->id, $array_of_tags);
  *
  *  - to "remove all the tags on a blog post":
- *        tag_set('post', $blog_post->id, array());
+ *		tag_set('post', $blog_post->id, array());
  *
  * Tag set will create tags that need to be created.
  *
@@ -61,106 +61,106 @@ require_once($CFG->dirroot .'/tag/locallib.php');
  * interface, which contains all tags assigned to a record.
  *
  * @param string $record_type the type of record to tag ('post' for blogs, 
- *     'user' for users, 'tag' for tags, etc.
+ *	 'user' for users, 'tag' for tags, etc.
  * @param int $record_id the id of the record to tag
  * @param array $tags the array of tags to set on the record. If 
- *     given an empty array, all tags will be removed.
+ *	 given an empty array, all tags will be removed.
  * @return void 
  */
 function tag_set($record_type, $record_id, $tags) {
 
-    static $in_recursion_semaphore = false; // this is to prevent loops when tagging a tag
-    if ( $record_type == 'tag' && !$in_recursion_semaphore) {
-        $current_tagged_tag_name = tag_get_name($record_id);
-    }
+	static $in_recursion_semaphore = false; // this is to prevent loops when tagging a tag
+	if ( $record_type == 'tag' && !$in_recursion_semaphore) {
+		$current_tagged_tag_name = tag_get_name($record_id);
+	}
 
-    $tags_ids = tag_get_id($tags, TAG_RETURN_ARRAY); // force an array, even if we only have one tag.
-    $cleaned_tags = tag_normalize($tags);
-    //echo 'tags-in-tag_set'; var_dump($tags); var_dump($tags_ids); var_dump($cleaned_tags);
+	$tags_ids = tag_get_id($tags, TAG_RETURN_ARRAY); // force an array, even if we only have one tag.
+	$cleaned_tags = tag_normalize($tags);
+	//echo 'tags-in-tag_set'; var_dump($tags); var_dump($tags_ids); var_dump($cleaned_tags);
 
-    $current_ids = tag_get_tags_ids($record_type, $record_id);
-    //var_dump($current_ids); 
+	$current_ids = tag_get_tags_ids($record_type, $record_id);
+	//var_dump($current_ids); 
 
-    // for data coherence reasons, it's better to remove deleted tags
-    // before adding new data: ordering could be duplicated.
-    foreach($current_ids as $current_id) {
-        if (!in_array($current_id, $tags_ids)) {
-            tag_delete_instance($record_type, $record_id, $current_id);
-            if ( $record_type == 'tag' && !$in_recursion_semaphore) {
-                // if we are removing a tag-on-a-tag (manually related tag), 
-                // we need to remove the opposite relationship as well.
-                tag_delete_instance('tag', $current_id, $record_id);
-            }
-        }
-    }
+	// for data coherence reasons, it's better to remove deleted tags
+	// before adding new data: ordering could be duplicated.
+	foreach($current_ids as $current_id) {
+		if (!in_array($current_id, $tags_ids)) {
+			tag_delete_instance($record_type, $record_id, $current_id);
+			if ( $record_type == 'tag' && !$in_recursion_semaphore) {
+				// if we are removing a tag-on-a-tag (manually related tag), 
+				// we need to remove the opposite relationship as well.
+				tag_delete_instance('tag', $current_id, $record_id);
+			}
+		}
+	}
 
-    foreach($tags as $ordering => $tag) {
-        $tag = trim($tag);
-        if (!$tag) {
-            continue;
-        }
+	foreach($tags as $ordering => $tag) {
+		$tag = trim($tag);
+		if (!$tag) {
+			continue;
+		}
 
-        $clean_tag = $cleaned_tags[$tag];
-        $tag_current_id = $tags_ids[$clean_tag];
-        
-        if ( is_null($tag_current_id) ) {
-            // create new tags
-            //echo "call to add tag $tag\n";
-            $new_tag = tag_add($tag);
-            $tag_current_id = $new_tag[$clean_tag];
-        }
+		$clean_tag = $cleaned_tags[$tag];
+		$tag_current_id = $tags_ids[$clean_tag];
+		
+		if ( is_null($tag_current_id) ) {
+			// create new tags
+			//echo "call to add tag $tag\n";
+			$new_tag = tag_add($tag);
+			$tag_current_id = $new_tag[$clean_tag];
+		}
 
-        tag_assign($record_type, $record_id, $tag_current_id, $ordering);
+		tag_assign($record_type, $record_id, $tag_current_id, $ordering);
 
-        // if we are tagging a tag (adding a manually-assigned related tag), we
-        // need to create the opposite relationship as well.
-        if ( $record_type == 'tag' && !$in_recursion_semaphore) {
-            $in_recursion_semaphore = true;
-            tag_set_add('tag', $tag_current_id, $current_tagged_tag_name);
-            $in_recursion_semaphore = false;
-        }
-    }
+		// if we are tagging a tag (adding a manually-assigned related tag), we
+		// need to create the opposite relationship as well.
+		if ( $record_type == 'tag' && !$in_recursion_semaphore) {
+			$in_recursion_semaphore = true;
+			tag_set_add('tag', $tag_current_id, $current_tagged_tag_name);
+			$in_recursion_semaphore = false;
+		}
+	}
 }
 
 /**
  * Adds a tag to a record, without overwriting the current tags.
  * 
  * @param string $record_type the type of record to tag ('post' for blogs, 
- *     'user' for users, etc.
+ *	 'user' for users, etc.
  * @param int $record_id the id of the record to tag
  * @param string $tag the tag to add
  * @return void
  */
 function tag_set_add($record_type, $record_id, $tag) {
 
-    $new_tags = array();
-    foreach( tag_get_tags($record_type, $record_id) as $current_tag ) {
-        $new_tags[] = $current_tag->rawname;
-    }
-    $new_tags[] = $tag;
-    
-    return tag_set($record_type, $record_id, $new_tags);
+	$new_tags = array();
+	foreach( tag_get_tags($record_type, $record_id) as $current_tag ) {
+		$new_tags[] = $current_tag->rawname;
+	}
+	$new_tags[] = $tag;
+	
+	return tag_set($record_type, $record_id, $new_tags);
 }
 
 /**
  * Removes a tag from a record, without overwriting other current tags.
  * 
  * @param string $record_type the type of record to tag ('post' for blogs, 
- *     'user' for users, etc.
+ *	 'user' for users, etc.
  * @param int $record_id the id of the record to tag
  * @param string $tag the tag to delete
  * @return void
  */
 function tag_set_delete($record_type, $record_id, $tag) {
 
-    $new_tags = array();
-    foreach( tag_get_tags($record_type, $record_id) as $current_tag ) {
-        if ($current_tag->name != $tag) {  // Keep all tags but the one specified
-            $new_tags[] = $current_tag->name;
-        }
-    }
+	$new_tags = array();
+	foreach( tag_get_tags($record_type, $record_id) as $current_tag ) {
+		if ($current_tag->name != $tag) {  // Keep all tags but the one specified
+			$new_tags[] = $current_tag->name;
+		}
+	}
 
-    return tag_set($record_type, $record_id, $new_tags);
+	return tag_set($record_type, $record_id, $new_tags);
 }
 
 /**
@@ -173,12 +173,12 @@ function tag_set_delete($record_type, $record_id, $tag) {
  * @return true on success, false otherwise
  */
 function tag_type_set($tagid, $type) {
-    if ($tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id')) {
-        $tag->tagtype = addslashes($type);
-        $tag->timemodified = time();
-        return update_record('tag', $tag);
-    }
-    return false;
+	if ($tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id')) {
+		$tag->tagtype = addslashes($type);
+		$tag->timemodified = time();
+		return update_record('tag', $tag);
+	}
+	return false;
 }
 
 
@@ -191,13 +191,13 @@ function tag_type_set($tagid, $type) {
  * @return true on success, false otherwise 
  */
 function tag_description_set($tagid, $description, $descriptionformat) {
-    if ($tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id')) {
-        $tag->description = addslashes($description);
-        $tag->descriptionformat = addslashes($descriptionformat);
-        $tag->timemodified = time();
-        return update_record('tag', $tag);
-    }
-    return false;
+	if ($tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id')) {
+		$tag->description = addslashes($description);
+		$tag->descriptionformat = addslashes($descriptionformat);
+		$tag->timemodified = time();
+		return update_record('tag', $tag);
+	}
+	return false;
 }
 
 
@@ -217,10 +217,10 @@ function tag_description_set($tagid, $description, $descriptionformat) {
  *
  **/
 function tag_get($field, $value, $returnfields='id, name, rawname') {
-    if ($field == 'name') {
-        $value = addslashes(moodle_strtolower($value));   // To cope with input that might just be wrong case
-    }
-    return get_record('tag', $field, $value, '', '', '', '', $returnfields);
+	if ($field == 'name') {
+		$value = addslashes(moodle_strtolower($value));   // To cope with input that might just be wrong case
+	}
+	return get_record('tag', $field, $value, '', '', '', '', $returnfields);
 }
 
 
@@ -231,36 +231,36 @@ function tag_get($field, $value, $returnfields='id, name, rawname') {
  * @param string $record_type the record type for which we want to get the tags 
  * @param int $record_id the record id for which we want to get the tags 
  * @param string $type the tag type (either 'default' or 'official'). By default,
- *     all tags are returned.
+ *	 all tags are returned.
  * @return array the array of tags
  */
 function tag_get_tags($record_type, $record_id, $type=null) {
-    
-    global $CFG;
+	
+	global $CFG;
 
-    if ($type) {
-        $type = "AND tg.tagtype = '$type'";
-    }
+	if ($type) {
+		$type = "AND tg.tagtype = '$type'";
+	}
 
-    // if the fields in this query are changed, you need to do the same changes in tag_get_correlated_tags
-    $tags = get_records_sql("SELECT tg.id, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
-        "FROM {$CFG->prefix}tag_instance ti INNER JOIN {$CFG->prefix}tag tg ON tg.id = ti.tagid ".
-        "WHERE ti.itemtype = '{$record_type}' AND ti.itemid = '{$record_id}' {$type} ".
-        "ORDER BY ti.ordering ASC");
-    // This version of the query, reversing the ON clause, "correctly" returns 
-    // a row with NULL values for instances that are still in the DB even though 
-    // the tag has been deleted.  This shouldn't happen, but if it did, using 
-    // this query could help "clean it up".  This causes bugs at this time.
-    //$tags = get_records_sql("SELECT ti.tagid, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
-    //    "FROM {$CFG->prefix}tag_instance ti LEFT JOIN {$CFG->prefix}tag tg ON ti.tagid = tg.id ".
-    //    "WHERE ti.itemtype = '{$record_type}' AND ti.itemid = '{$record_id}' {$type} ".
-    //    "ORDER BY ti.ordering ASC");
+	// if the fields in this query are changed, you need to do the same changes in tag_get_correlated_tags
+	$tags = get_records_sql("SELECT tg.id, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
+		"FROM {$CFG->prefix}tag_instance ti INNER JOIN {$CFG->prefix}tag tg ON tg.id = ti.tagid ".
+		"WHERE ti.itemtype = '{$record_type}' AND ti.itemid = '{$record_id}' {$type} ".
+		"ORDER BY ti.ordering ASC");
+	// This version of the query, reversing the ON clause, "correctly" returns 
+	// a row with NULL values for instances that are still in the DB even though 
+	// the tag has been deleted.  This shouldn't happen, but if it did, using 
+	// this query could help "clean it up".  This causes bugs at this time.
+	//$tags = get_records_sql("SELECT ti.tagid, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
+	//	"FROM {$CFG->prefix}tag_instance ti LEFT JOIN {$CFG->prefix}tag tg ON ti.tagid = tg.id ".
+	//	"WHERE ti.itemtype = '{$record_type}' AND ti.itemid = '{$record_id}' {$type} ".
+	//	"ORDER BY ti.ordering ASC");
 
-    if (!$tags) { 
-        return array();
-    } else {
-        return $tags;
-    }
+	if (!$tags) { 
+		return array();
+	} else {
+		return $tags;
+	}
 }
 
 /**
@@ -269,15 +269,15 @@ function tag_get_tags($record_type, $record_id, $type=null) {
  * @param string $record_type the record type for which we want to get the tags
  * @param int $record_id the record id for which we want to get the tags
  * @param string $type the tag type (either 'default' or 'official'). By default,
- *     all tags are returned.
+ *	 all tags are returned.
  * @return array the array of tags (with the value returned by tag_display_name), indexed by id
  */
 function tag_get_tags_array($record_type, $record_id, $type=null) {
-    $tags = array();
-    foreach(tag_get_tags($record_type, $record_id, $type) as $tag) {
-        $tags[$tag->id] = tag_display_name($tag);
-    }
-    return $tags;
+	$tags = array();
+	foreach(tag_get_tags($record_type, $record_id, $type) as $tag) {
+		$tags[$tag->id] = tag_display_name($tag);
+	}
+	return $tags;
 }
 
 /**
@@ -287,23 +287,23 @@ function tag_get_tags_array($record_type, $record_id, $type=null) {
  * @param string $record_type the record type for which we want to get the tags
  * @param int $record_id the record id for which we want to get the tags
  * @param int $html either TAG_RETURN_HTML or TAG_RETURN_TEXT, depending
- *     on the type of output desired
+ *	 on the type of output desired
  * @param string $type either 'official' or 'default', if null, all tags are
- *     returned
+ *	 returned
  * @return string the comma-separated list of tags.
  */
 function tag_get_tags_csv($record_type, $record_id, $html=TAG_RETURN_HTML, $type=null) {
-    global $CFG;
+	global $CFG;
 
-    $tags_names = array();
-    foreach(tag_get_tags($record_type, $record_id, $type) as $tag) {
-        if ($html == TAG_RETURN_TEXT) {
-            $tags_names[] = tag_display_name($tag, TAG_RETURN_TEXT);
-        } else { // TAG_RETURN_HTML
-            $tags_names[] = '<a href="'. $CFG->wwwroot .'/tag/index.php?tag='. rawurlencode($tag->name) .'">'. tag_display_name($tag) .'</a>';
-        }
-    }
-    return implode(', ', $tags_names);
+	$tags_names = array();
+	foreach(tag_get_tags($record_type, $record_id, $type) as $tag) {
+		if ($html == TAG_RETURN_TEXT) {
+			$tags_names[] = tag_display_name($tag, TAG_RETURN_TEXT);
+		} else { // TAG_RETURN_HTML
+			$tags_names[] = '<a href="'. $CFG->wwwroot .'/tag/index.php?tag='. rawurlencode($tag->name) .'">'. tag_display_name($tag) .'</a>';
+		}
+	}
+	return implode(', ', $tags_names);
 }
 
 /**
@@ -314,19 +314,19 @@ function tag_get_tags_csv($record_type, $record_id, $html=TAG_RETURN_HTML, $type
  * @return array of tag ids, indexed and sorted by 'ordering'
  */
 function tag_get_tags_ids($record_type, $record_id) {
-    
-    $tag_ids = array();
-    foreach (tag_get_tags($record_type, $record_id) as $tag) {
-        if ( array_key_exists($tag->ordering, $tag_ids) ) {
-            // until we can add a unique constraint, in table tag_instance,
-            // on (itemtype, itemid, ordering), this is needed to prevent a bug
-            // TODO : modify database in 2.0
-            $tag->ordering++;
-        }
-        $tag_ids[$tag->ordering] = $tag->id;
-    }
-    ksort($tag_ids);
-    return $tag_ids;
+	
+	$tag_ids = array();
+	foreach (tag_get_tags($record_type, $record_id) as $tag) {
+		if ( array_key_exists($tag->ordering, $tag_ids) ) {
+			// until we can add a unique constraint, in table tag_instance,
+			// on (itemtype, itemid, ordering), this is needed to prevent a bug
+			// TODO : modify database in 2.0
+			$tag->ordering++;
+		}
+		$tag_ids[$tag->ordering] = $tag->id;
+	}
+	ksort($tag_ids);
+	return $tag_ids;
 }
 
 /** 
@@ -334,58 +334,58 @@ function tag_get_tags_ids($record_type, $record_id) {
  * 
  * @param mixed $tags one tag, or array of tags, to look for.
  * @param bool $return_value specify the type of the returned value. Either 
- *     TAG_RETURN_OBJECT, or TAG_RETURN_ARRAY (default). If TAG_RETURN_ARRAY 
- *     is specified, an array will be returned even if only one tag was 
- *     passed in $tags.
+ *	 TAG_RETURN_OBJECT, or TAG_RETURN_ARRAY (default). If TAG_RETURN_ARRAY 
+ *	 is specified, an array will be returned even if only one tag was 
+ *	 passed in $tags.
  * @return mixed tag-indexed array of ids (or objects, if second parameter is 
- *     TAG_RETURN_OBJECT), or only an int, if only one tag is given *and* the 
- *     second parameter is null. No value for a key means the tag wasn't found.
+ *	 TAG_RETURN_OBJECT), or only an int, if only one tag is given *and* the 
+ *	 second parameter is null. No value for a key means the tag wasn't found.
  */
 function tag_get_id($tags, $return_value=null) {
-    global $CFG;
-    static $tag_id_cache = array();
+	global $CFG;
+	static $tag_id_cache = array();
 
-    $return_an_int = false;
-    if (!is_array($tags)) {
-        if(is_null($return_value) || $return_value == TAG_RETURN_OBJECT) {
-            $return_an_int = true; 
-        }
-        $tags = array($tags);
-    }
+	$return_an_int = false;
+	if (!is_array($tags)) {
+		if(is_null($return_value) || $return_value == TAG_RETURN_OBJECT) {
+			$return_an_int = true; 
+		}
+		$tags = array($tags);
+	}
    
-    $result = array();
-    
-    //TODO: test this and see if it helps performance without breaking anything
-    //foreach($tags as $key => $tag) {
-    //    $clean_tag = moodle_strtolower($tag);
-    //    if ( array_key_exists($clean_tag), $tag_id_cache) ) {
-    //        $result[$clean_tag] = $tag_id_cache[$clean_tag];
-    //        $tags[$key] = ''; // prevent further processing for this one.
-    //    }
-    //}
+	$result = array();
+	
+	//TODO: test this and see if it helps performance without breaking anything
+	//foreach($tags as $key => $tag) {
+	//	$clean_tag = moodle_strtolower($tag);
+	//	if ( array_key_exists($clean_tag), $tag_id_cache) ) {
+	//		$result[$clean_tag] = $tag_id_cache[$clean_tag];
+	//		$tags[$key] = ''; // prevent further processing for this one.
+	//	}
+	//}
 
-    $tags = array_values(tag_normalize($tags));
-    foreach($tags as $key => $tag) {
-        $tags[$key] = addslashes(moodle_strtolower($tag)); 
-        $result[moodle_strtolower($tag)] = null; // key must exists : no value for a key means the tag wasn't found.
-    }
-    $tag_string = "'". implode("', '", $tags) ."'";
+	$tags = array_values(tag_normalize($tags));
+	foreach($tags as $key => $tag) {
+		$tags[$key] = addslashes(moodle_strtolower($tag)); 
+		$result[moodle_strtolower($tag)] = null; // key must exists : no value for a key means the tag wasn't found.
+	}
+	$tag_string = "'". implode("', '", $tags) ."'";
 
-    if ($rs = get_recordset_sql("SELECT * FROM {$CFG->prefix}tag WHERE name in ({$tag_string}) order by name")) {
-        while ($record = rs_fetch_next_record($rs)) {
-            if ($return_value == TAG_RETURN_OBJECT) {
-                $result[$record->name] = $record;
-            } else { // TAG_RETURN_ARRAY
-                $result[$record->name] = $record->id;
-            }
-        }
-    }
+	if ($rs = get_recordset_sql("SELECT * FROM {$CFG->prefix}tag WHERE name in ({$tag_string}) order by name")) {
+		while ($record = rs_fetch_next_record($rs)) {
+			if ($return_value == TAG_RETURN_OBJECT) {
+				$result[$record->name] = $record;
+			} else { // TAG_RETURN_ARRAY
+				$result[$record->name] = $record->id;
+			}
+		}
+	}
 
-    if ($return_an_int) {
-        return array_pop($result);
-    }
+	if ($return_an_int) {
+		return array_pop($result);
+	}
 
-    return $result;
+	return $result;
 }
 
 
@@ -397,32 +397,32 @@ function tag_get_id($tags, $return_value=null) {
  *   - correlated tags, which are a calculated
  *
  * @param string $tag_name_or_id is a single **normalized** tag name or the id 
- *     of a tag
+ *	 of a tag
  * @param int $type the function will return either manually 
- *     (TAG_RELATED_MANUAL) related tags or correlated (TAG_RELATED_CORRELATED) 
- *     tags. Default is TAG_RELATED_ALL, which returns everything.
+ *	 (TAG_RELATED_MANUAL) related tags or correlated (TAG_RELATED_CORRELATED) 
+ *	 tags. Default is TAG_RELATED_ALL, which returns everything.
  * @param int $limitnum return a subset comprising this many records (optional, 
- *     default is 10)
+ *	 default is 10)
  * @return array an array of tag objects
  */
 function tag_get_related_tags($tagid, $type=TAG_RELATED_ALL, $limitnum=10) {
 
-    $related_tags = array();
+	$related_tags = array();
 
-    if ( $type == TAG_RELATED_ALL || $type == TAG_RELATED_MANUAL) {
-        //gets the manually added related tags
-        $related_tags = tag_get_tags('tag', $tagid);
-    }
+	if ( $type == TAG_RELATED_ALL || $type == TAG_RELATED_MANUAL) {
+		//gets the manually added related tags
+		$related_tags = tag_get_tags('tag', $tagid);
+	}
 
-    if ( $type == TAG_RELATED_ALL || $type == TAG_RELATED_CORRELATED ) {
-        //gets the correlated tags
-        $automatic_related_tags = tag_get_correlated($tagid, $limitnum);
-        if (is_array($automatic_related_tags)) {
-            $related_tags = array_merge($related_tags, $automatic_related_tags);
-        }
-    }
+	if ( $type == TAG_RELATED_ALL || $type == TAG_RELATED_CORRELATED ) {
+		//gets the correlated tags
+		$automatic_related_tags = tag_get_correlated($tagid, $limitnum);
+		if (is_array($automatic_related_tags)) {
+			$related_tags = array_merge($related_tags, $automatic_related_tags);
+		}
+	}
 
-    return array_slice(object_array_unique($related_tags), 0 , $limitnum);
+	return array_slice(object_array_unique($related_tags), 0 , $limitnum);
 }
 
 /** 
@@ -433,19 +433,19 @@ function tag_get_related_tags($tagid, $type=TAG_RELATED_ALL, $limitnum=10) {
  * @return string comma-separated list
  */
 function tag_get_related_tags_csv($related_tags, $html=TAG_RETURN_HTML) {
-    global $CFG;
+	global $CFG;
 
-    $tags_names = array();
-    foreach($related_tags as $tag) {
-        if ( $html == TAG_RETURN_TEXT) {
-            $tags_names[] = tag_display_name($tag, TAG_RETURN_TEXT);
-        } else {
-            // TAG_RETURN_HTML
-            $tags_names[] = '<a href="'. $CFG->wwwroot .'/tag/index.php?tag='. rawurlencode($tag->name) .'">'. tag_display_name($tag) .'</a>';
-        }
-    }
+	$tags_names = array();
+	foreach($related_tags as $tag) {
+		if ( $html == TAG_RETURN_TEXT) {
+			$tags_names[] = tag_display_name($tag, TAG_RETURN_TEXT);
+		} else {
+			// TAG_RETURN_HTML
+			$tags_names[] = '<a href="'. $CFG->wwwroot .'/tag/index.php?tag='. rawurlencode($tag->name) .'">'. tag_display_name($tag) .'</a>';
+		}
+	}
 
-    return implode(', ', $tags_names);
+	return implode(', ', $tags_names);
 }
 
 /**
@@ -457,28 +457,28 @@ function tag_get_related_tags_csv($related_tags, $html=TAG_RETURN_HTML) {
  */
 function tag_rename($tagid, $newrawname) {
 
-    if (! $newrawname_clean = array_shift(tag_normalize($newrawname, TAG_CASE_ORIGINAL)) ) {
-        return false;
-    }
+	if (! $newrawname_clean = array_shift(tag_normalize($newrawname, TAG_CASE_ORIGINAL)) ) {
+		return false;
+	}
 
-    if (! $newname_clean = moodle_strtolower($newrawname_clean)) {
-        return false;
-    }
+	if (! $newname_clean = moodle_strtolower($newrawname_clean)) {
+		return false;
+	}
 
-    // Prevent the rename if a tag with that name already exists
-    if ($existing = tag_get('name', $newname_clean, 'id, name, rawname')) {
-        if ($existing->id != $tagid) {  // Another tag already exists with this name
-            return false; 
-        }
-    }
+	// Prevent the rename if a tag with that name already exists
+	if ($existing = tag_get('name', $newname_clean, 'id, name, rawname')) {
+		if ($existing->id != $tagid) {  // Another tag already exists with this name
+			return false; 
+		}
+	}
 
-    if ($tag = tag_get('id', $tagid, 'id, name, rawname')) {
-        $tag->rawname = addslashes($newrawname_clean); 
-        $tag->name = addslashes($newname_clean); 
-        $tag->timemodified = time();
-        return update_record('tag', $tag);
-    }
-    return false;
+	if ($tag = tag_get('id', $tagid, 'id, name, rawname')) {
+		$tag->rawname = addslashes($newrawname_clean); 
+		$tag->name = addslashes($newname_clean); 
+		$tag->timemodified = time();
+		return update_record('tag', $tag);
+	}
+	return false;
 }
 
 
@@ -490,24 +490,24 @@ function tag_rename($tagid, $newrawname) {
  */
 function tag_delete($tagids) {
 
-    if (!is_array($tagids)) {
-        $tagids = array($tagids);
-    }
+	if (!is_array($tagids)) {
+		$tagids = array($tagids);
+	}
 
-    $success = true;
-    foreach( $tagids as $tagid ) {
-        if (is_null($tagid)) { // can happen if tag doesn't exists
-            continue;
-        }
-        // only delete the main entry if there were no problems deleting all the 
-        // instances - that (and the fact we won't often delete lots of tags) 
-        // is the reason for not using delete_records_select()
-        if ( delete_records('tag_instance', 'tagid', $tagid) ) {
-            $success &= (bool) delete_records('tag', 'id', $tagid);
-        }
-    }
+	$success = true;
+	foreach( $tagids as $tagid ) {
+		if (is_null($tagid)) { // can happen if tag doesn't exists
+			continue;
+		}
+		// only delete the main entry if there were no problems deleting all the 
+		// instances - that (and the fact we won't often delete lots of tags) 
+		// is the reason for not using delete_records_select()
+		if ( delete_records('tag_instance', 'tagid', $tagid) ) {
+			$success &= (bool) delete_records('tag', 'id', $tagid);
+		}
+	}
 
-    return $success;
+	return $success;
 }
 
 /**
@@ -520,22 +520,22 @@ function tag_delete($tagids) {
  * @return bool true on success, false otherwise
  */
 function tag_delete_instance($record_type, $record_id, $tagid) {
-    global $CFG;
+	global $CFG;
 
-    if ( delete_records('tag_instance', 'tagid', $tagid, 'itemtype', $record_type, 'itemid', $record_id) ) {
-        if ( !record_exists_sql("SELECT tg.id ".
-                                  "FROM {$CFG->prefix}tag tg ".
-                                 "WHERE tg.id = $tagid AND ( tg.tagtype = 'official' OR ".
-                                    "EXISTS (SELECT 1 
-                                               FROM {$CFG->prefix}tag_instance ti 
-                                              WHERE ti.tagid=$tagid) )") ) { 
-            return tag_delete($tagid);
-        }
-    } else {
-        return false;
-    }
+	if ( delete_records('tag_instance', 'tagid', $tagid, 'itemtype', $record_type, 'itemid', $record_id) ) {
+		if ( !record_exists_sql("SELECT tg.id ".
+								  "FROM {$CFG->prefix}tag tg ".
+								 "WHERE tg.id = $tagid AND ( tg.tagtype = 'official' OR ".
+									"EXISTS (SELECT 1 
+											   FROM {$CFG->prefix}tag_instance ti 
+											  WHERE ti.tagid=$tagid) )") ) { 
+			return tag_delete($tagid);
+		}
+	} else {
+		return false;
+	}
 
-    return true;
+	return true;
 }
 
 
@@ -548,26 +548,26 @@ function tag_delete_instance($record_type, $record_id, $tagid) {
  */
 function tag_display_name($tagobject, $html=TAG_RETURN_HTML) {
 
-    global $CFG;
+	global $CFG;
 
-    if(!isset($tagobject->name)) {
-        return '';
-    }
+	if(!isset($tagobject->name)) {
+		return '';
+	}
 
-    if (empty($CFG->keeptagnamecase)) {
-        //this is the normalized tag name
-        $textlib = textlib_get_instance();
-        $tagname = $textlib->strtotitle($tagobject->name);
-    } else {
-        //original casing of the tag name
-        $tagname = $tagobject->rawname;
-    }
+	if (empty($CFG->keeptagnamecase)) {
+		//this is the normalized tag name
+		$textlib = textlib_get_instance();
+		$tagname = $textlib->strtotitle($tagobject->name);
+	} else {
+		//original casing of the tag name
+		$tagname = $tagobject->rawname;
+	}
 
-    if ($html == TAG_RETURN_TEXT) {
-        return $tagname;
-    } else { // TAG_RETURN_HTML
-        return htmlspecialchars($tagname);
-    } 
+	if ($html == TAG_RETURN_TEXT) {
+		return $tagname;
+	} else { // TAG_RETURN_HTML
+		return htmlspecialchars($tagname);
+	} 
 }
 
 /**
@@ -575,26 +575,26 @@ function tag_display_name($tagobject, $html=TAG_RETURN_HTML) {
  *
  * @param string $tag tag to look for
  * @param string $type type to restrict search to.  If null, every matching
- *     record will be returned
+ *	 record will be returned
  * @param int $limitfrom return a subset of records, starting at this point (optional, required if $limitnum is set).
  * @param int $limitnum return a subset comprising this many records (optional, required if $limitfrom is set).
  * @return array of matching objects, indexed by record id, from the table containing the type requested
  */
 function tag_find_records($tag, $type, $limitfrom='', $limitnum='') {
-    
-    global $CFG;
+	
+	global $CFG;
 
-    if (!$tag || !$type) {
-        return array();
-    }
+	if (!$tag || !$type) {
+		return array();
+	}
 
-    $tagid = tag_get_id($tag);
+	$tagid = tag_get_id($tag);
 
-    $query = "SELECT it.* ".
-        "FROM {$CFG->prefix}{$type} it INNER JOIN {$CFG->prefix}tag_instance tt ON it.id = tt.itemid ".
-        "WHERE tt.itemtype = '{$type}' AND tt.tagid = '{$tagid}'";
-    
-    return get_records_sql($query, $limitfrom, $limitnum); 
+	$query = "SELECT it.* ".
+		"FROM {$CFG->prefix}{$type} it INNER JOIN {$CFG->prefix}tag_instance tt ON it.id = tt.itemid ".
+		"WHERE tt.itemtype = '{$type}' AND tt.tagid = '{$tagid}'";
+	
+	return get_records_sql($query, $limitfrom, $limitnum); 
 }
 
 
@@ -609,44 +609,44 @@ function tag_find_records($tag, $type, $limitfrom='', $limitnum='') {
  *
  * @param mixed $tags one tag, or an array of tags, to be created
  * @param string $type type of tag to be created ("default" is the default 
- *     value and "official" is the only other supported value at this time). An
- *     official tag is kept even if there are no records tagged with it.
+ *	 value and "official" is the only other supported value at this time). An
+ *	 official tag is kept even if there are no records tagged with it.
  * @return an array of tags ids, indexed by their lowercase normalized names. 
- *     Any boolean false in the array indicates an error while adding the tag.
+ *	 Any boolean false in the array indicates an error while adding the tag.
  */
 function tag_add($tags, $type="default") {
-    global $USER;
+	global $USER;
 
-    require_capability('moodle/tag:create', get_context_instance(CONTEXT_SYSTEM)); 
+	require_capability('moodle/tag:create', get_context_instance(CONTEXT_SYSTEM)); 
 
-    if (!is_array($tags)) {
-        $tags = array($tags);
-    }
+	if (!is_array($tags)) {
+		$tags = array($tags);
+	}
 
-    $tag_object = new StdClass;
-    $tag_object->tagtype = $type;
-    $tag_object->userid = $USER->id;
-    $tag_object->timemodified   = time();
+	$tag_object = new StdClass;
+	$tag_object->tagtype = $type;
+	$tag_object->userid = $USER->id;
+	$tag_object->timemodified   = time();
 
-    $clean_tags = tag_normalize($tags, TAG_CASE_ORIGINAL);
+	$clean_tags = tag_normalize($tags, TAG_CASE_ORIGINAL);
 
-    $tags_ids = array();
-    foreach($clean_tags as $tag) {
-        $tag = trim($tag);
-        if (!$tag) {
-            $tags_ids[$tag] = false;
-        } else {
-            // note that the difference between rawname and name is only 
-            // capitalization : the rawname is NOT the same at the rawtag. 
-            $tag_object->rawname = addslashes($tag); 
-            $tag_name_lc = moodle_strtolower($tag);
-            $tag_object->name = addslashes($tag_name_lc);
-            //var_dump($tag_object);
-            $tags_ids[$tag_name_lc] = insert_record('tag', $tag_object);
-        }
-    }
+	$tags_ids = array();
+	foreach($clean_tags as $tag) {
+		$tag = trim($tag);
+		if (!$tag) {
+			$tags_ids[$tag] = false;
+		} else {
+			// note that the difference between rawname and name is only 
+			// capitalization : the rawname is NOT the same at the rawtag. 
+			$tag_object->rawname = addslashes($tag); 
+			$tag_name_lc = moodle_strtolower($tag);
+			$tag_object->name = addslashes($tag_name_lc);
+			//var_dump($tag_object);
+			$tags_ids[$tag_name_lc] = insert_record('tag', $tag_object);
+		}
+	}
 
-    return $tags_ids;
+	return $tags_ids;
 }
 
 /**
@@ -661,21 +661,21 @@ function tag_add($tags, $type="default") {
  */
 function tag_assign($record_type, $record_id, $tagid, $ordering) {
 
-    require_capability('moodle/tag:create', get_context_instance(CONTEXT_SYSTEM));
+	require_capability('moodle/tag:create', get_context_instance(CONTEXT_SYSTEM));
 
-    if ( $tag_instance_object = get_record('tag_instance', 'tagid', $tagid, 'itemtype', $record_type, 'itemid', $record_id, 'id') ) {
-        $tag_instance_object->ordering = $ordering;
-        $tag_instance_object->timemodified = time();
-        return update_record('tag_instance', $tag_instance_object);
-    } else { 
-        $tag_instance_object = new StdClass;
-        $tag_instance_object->tagid = $tagid;
-        $tag_instance_object->itemid = $record_id;
-        $tag_instance_object->itemtype = $record_type;
-        $tag_instance_object->ordering = $ordering;
-        $tag_instance_object->timemodified = time();
-        return insert_record('tag_instance', $tag_instance_object);
-    }
+	if ( $tag_instance_object = get_record('tag_instance', 'tagid', $tagid, 'itemtype', $record_type, 'itemid', $record_id, 'id') ) {
+		$tag_instance_object->ordering = $ordering;
+		$tag_instance_object->timemodified = time();
+		return update_record('tag_instance', $tag_instance_object);
+	} else { 
+		$tag_instance_object = new StdClass;
+		$tag_instance_object->tagid = $tagid;
+		$tag_instance_object->itemid = $record_id;
+		$tag_instance_object->itemtype = $record_type;
+		$tag_instance_object->ordering = $ordering;
+		$tag_instance_object->timemodified = time();
+		return insert_record('tag_instance', $tag_instance_object);
+	}
 }
 
 /**
@@ -685,8 +685,8 @@ function tag_assign($record_type, $record_id, $tagid, $ordering) {
  * @return mixed an array of objects, or false if no records were found or an error occured.
  */
 function tag_autocomplete($text) {
-    global $CFG;
-    return get_records_sql("SELECT tg.id, tg.name, tg.rawname FROM {$CFG->prefix}tag tg WHERE tg.name LIKE '". moodle_strtolower($text) ."%'");
+	global $CFG;
+	return get_records_sql("SELECT tg.id, tg.name, tg.rawname FROM {$CFG->prefix}tag tg WHERE tg.name LIKE '". moodle_strtolower($text) ."%'");
 }
 
 /** 
@@ -698,50 +698,50 @@ function tag_autocomplete($text) {
  * function to call: don't run at peak time.
  */
 function tag_cleanup() {
-    global $CFG;
+	global $CFG;
 
-    $instances = get_recordset('tag_instance');
+	$instances = get_recordset('tag_instance');
 
-    // cleanup tag instances
-    while ($instance = rs_fetch_next_record($instances)) {
-        $delete = false;
-        
-        if (!record_exists('tag', 'id', $instance->tagid)) {
-            // if the tag has been removed, instance should be deleted.
-            $delete = true;
-        } else {
-            switch ($instance->itemtype) {
-                case 'user': // users are marked as deleted, but not actually deleted
-                    if (record_exists('user', 'id', $instance->itemid, 'deleted', 1)) {
-                        $delete = true;
-                    }
-                    break;
-                default: // anything else, if the instance is not there, delete.
-                    if (!record_exists($instance->itemtype, 'id', $instance->itemid)) {
-                        $delete = true;
-                    }
-                    break;
-            }
-        }
-        if ($delete) {
-            tag_delete_instance($instance->itemtype, $instance->itemid, $instance->tagid);
-            //debugging('deleting tag_instance #'. $instance->id .', linked to tag id #'. $instance->tagid, DEBUG_DEVELOPER);
-        }
-    }
-    rs_close($instances);
+	// cleanup tag instances
+	while ($instance = rs_fetch_next_record($instances)) {
+		$delete = false;
+		
+		if (!record_exists('tag', 'id', $instance->tagid)) {
+			// if the tag has been removed, instance should be deleted.
+			$delete = true;
+		} else {
+			switch ($instance->itemtype) {
+				case 'user': // users are marked as deleted, but not actually deleted
+					if (record_exists('user', 'id', $instance->itemid, 'deleted', 1)) {
+						$delete = true;
+					}
+					break;
+				default: // anything else, if the instance is not there, delete.
+					if (!record_exists($instance->itemtype, 'id', $instance->itemid)) {
+						$delete = true;
+					}
+					break;
+			}
+		}
+		if ($delete) {
+			tag_delete_instance($instance->itemtype, $instance->itemid, $instance->tagid);
+			//debugging('deleting tag_instance #'. $instance->id .', linked to tag id #'. $instance->tagid, DEBUG_DEVELOPER);
+		}
+	}
+	rs_close($instances);
 
-    // TODO: this will only clean tags of type 'default'.  This is good as
-    // it won't delete 'official' tags, but the day we get more than two
-    // types, we need to fix this.
-    $unused_tags = get_recordset_sql("SELECT tg.id FROM {$CFG->prefix}tag tg WHERE tg.tagtype = 'default' AND NOT EXISTS (".
-        "SELECT 'x' FROM {$CFG->prefix}tag_instance ti WHERE ti.tagid = tg.id)");
+	// TODO: this will only clean tags of type 'default'.  This is good as
+	// it won't delete 'official' tags, but the day we get more than two
+	// types, we need to fix this.
+	$unused_tags = get_recordset_sql("SELECT tg.id FROM {$CFG->prefix}tag tg WHERE tg.tagtype = 'default' AND NOT EXISTS (".
+		"SELECT 'x' FROM {$CFG->prefix}tag_instance ti WHERE ti.tagid = tg.id)");
 
-    // cleanup tags
-    while ($unused_tag = rs_fetch_next_record($unused_tags)) {
-        tag_delete($unused_tag->id);
-        //debugging('deleting unused tag #'. $unused_tag->id,  DEBUG_DEVELOPER);
-    }
-    rs_close($unused_tags);
+	// cleanup tags
+	while ($unused_tag = rs_fetch_next_record($unused_tags)) {
+		tag_delete($unused_tag->id);
+		//debugging('deleting unused tag #'. $unused_tag->id,  DEBUG_DEVELOPER);
+	}
+	rs_close($unused_tags);
 }
 
 /**
@@ -759,62 +759,62 @@ function tag_cleanup() {
  */
 function tag_compute_correlations($min_correlation=2) {
 
-    global $CFG;
+	global $CFG;
 
-    if (!$all_tags = get_records_list('tag')) {
-        return;
-    }
+	if (!$all_tags = get_records_list('tag')) {
+		return;
+	}
 
-    $tag_correlation_obj = new object();
-    foreach($all_tags as $tag) {
+	$tag_correlation_obj = new object();
+	foreach($all_tags as $tag) {
 
-        // query that counts how many times any tag appears together in items
-        // with the tag passed as argument ($tag_id)
-        $query = "SELECT tb.tagid ".
-            "FROM {$CFG->prefix}tag_instance ta INNER JOIN {$CFG->prefix}tag_instance tb ON ta.itemid = tb.itemid ".
-            "WHERE ta.tagid = {$tag->id} AND tb.tagid != {$tag->id} ".
-            "GROUP BY tb.tagid ".
-            "HAVING COUNT(*) > $min_correlation ".
-            "ORDER BY COUNT(*) DESC";  
+		// query that counts how many times any tag appears together in items
+		// with the tag passed as argument ($tag_id)
+		$query = "SELECT tb.tagid ".
+			"FROM {$CFG->prefix}tag_instance ta INNER JOIN {$CFG->prefix}tag_instance tb ON ta.itemid = tb.itemid ".
+			"WHERE ta.tagid = {$tag->id} AND tb.tagid != {$tag->id} ".
+			"GROUP BY tb.tagid ".
+			"HAVING COUNT(*) > $min_correlation ".
+			"ORDER BY COUNT(*) DESC";  
 
-        $correlated = array();
+		$correlated = array();
 
-        // Correlated tags happen when they appear together in more occasions 
-        // than $min_correlation.
-        if ($tag_correlations = get_records_sql($query)) {
-            foreach($tag_correlations as $correlation) {
-            // commented out - now done in query. kept here in case it breaks on some db
-            // if($correlation->nr >= $min_correlation){
-                    $correlated[] = $correlation->tagid;
-            // }
-            }
-        }
+		// Correlated tags happen when they appear together in more occasions 
+		// than $min_correlation.
+		if ($tag_correlations = get_records_sql($query)) {
+			foreach($tag_correlations as $correlation) {
+			// commented out - now done in query. kept here in case it breaks on some db
+			// if($correlation->nr >= $min_correlation){
+					$correlated[] = $correlation->tagid;
+			// }
+			}
+		}
 
-        if (empty($correlated)) {
-            continue;
-        }
+		if (empty($correlated)) {
+			continue;
+		}
 
-        $correlated = implode(',', $correlated);
-        //var_dump($correlated);
+		$correlated = implode(',', $correlated);
+		//var_dump($correlated);
 
-        //saves correlation info in the caching table
-        if ($tag_correlation_obj = get_record('tag_correlation', 'tagid', $tag->id, '', '', '', '', 'tagid')) {
-            $tag_correlation_obj->correlatedtags = $correlated;
-            update_record('tag_correlation', $tag_correlation_obj);
-        } else {
-            $tag_correlation_obj->tagid          = $tag->id;
-            $tag_correlation_obj->correlatedtags = $correlated;
-            insert_record('tag_correlation', $tag_correlation_obj);
-        }
-    }
+		//saves correlation info in the caching table
+		if ($tag_correlation_obj = get_record('tag_correlation', 'tagid', $tag->id, '', '', '', '', 'tagid')) {
+			$tag_correlation_obj->correlatedtags = $correlated;
+			update_record('tag_correlation', $tag_correlation_obj);
+		} else {
+			$tag_correlation_obj->tagid		  = $tag->id;
+			$tag_correlation_obj->correlatedtags = $correlated;
+			insert_record('tag_correlation', $tag_correlation_obj);
+		}
+	}
 }
 
 /**
  * Tasks that should be performed at cron time
  */
 function tag_cron() {
-    tag_compute_correlations();
-    tag_cleanup();
+	tag_compute_correlations();
+	tag_cleanup();
 }
 
 /**
@@ -828,22 +828,22 @@ function tag_cron() {
  */
 function tag_find_tags($text, $ordered=true, $limitfrom='', $limitnum='') {
 
-    global $CFG;
+	global $CFG;
 
-    $text = addslashes(array_shift(tag_normalize($text, TAG_CASE_LOWER)));
+	$text = addslashes(array_shift(tag_normalize($text, TAG_CASE_LOWER)));
 
-    if ($ordered) {
-        $query = "SELECT tg.id, tg.name, tg.rawname, COUNT(ti.id) AS count ".
-            "FROM {$CFG->prefix}tag tg LEFT JOIN {$CFG->prefix}tag_instance ti ON tg.id = ti.tagid ".
-            "WHERE tg.name LIKE '%{$text}%' ".
-            "GROUP BY tg.id, tg.name, tg.rawname ".
-            "ORDER BY count DESC";
-    } else {
-        $query = "SELECT tg.id, tg.name, tg.rawname ".
-            "FROM {$CFG->prefix}tag tg ".
-            "WHERE tg.name LIKE '%{$text}%'";
-    }
-    return get_records_sql($query, $limitfrom , $limitnum);
+	if ($ordered) {
+		$query = "SELECT tg.id, tg.name, tg.rawname, COUNT(ti.id) AS count ".
+			"FROM {$CFG->prefix}tag tg LEFT JOIN {$CFG->prefix}tag_instance ti ON tg.id = ti.tagid ".
+			"WHERE tg.name LIKE '%{$text}%' ".
+			"GROUP BY tg.id, tg.name, tg.rawname ".
+			"ORDER BY count DESC";
+	} else {
+		$query = "SELECT tg.id, tg.name, tg.rawname ".
+			"FROM {$CFG->prefix}tag tg ".
+			"WHERE tg.name LIKE '%{$text}%'";
+	}
+	return get_records_sql($query, $limitfrom , $limitnum);
 }
 
 /** 
@@ -854,22 +854,22 @@ function tag_find_tags($text, $ordered=true, $limitfrom='', $limitnum='') {
  */
 function tag_get_name($tagids) {
 
-    $return_a_string = false;
-    if ( !is_array($tagids) ) {
-        $return_a_string = true;
-        $tagids = array($tagids);
-    }
+	$return_a_string = false;
+	if ( !is_array($tagids) ) {
+		$return_a_string = true;
+		$tagids = array($tagids);
+	}
 
-    $tag_names = array();
-    foreach(get_records_list('tag', 'id', implode(',', $tagids)) as $tag) { 
-        $tag_names[$tag->id] = $tag->name;
-    }
+	$tag_names = array();
+	foreach(get_records_list('tag', 'id', implode(',', $tagids)) as $tag) { 
+		$tag_names[$tag->id] = $tag->name;
+	}
 
-    if ($return_a_string) {
-        return array_pop($tag_names);
-    }
+	if ($return_a_string) {
+		return array_pop($tag_names);
+	}
 
-    return $tag_names;
+	return $tag_names;
 }
 
 /**
@@ -881,22 +881,22 @@ function tag_get_name($tagids) {
  * @return array an array of tag objects, empty if no correlated tags are found
  */
 function tag_get_correlated($tag_id, $limitnum=null) {
-    global $CFG;
+	global $CFG;
 
-    $tag_correlation = get_record('tag_correlation', 'tagid', $tag_id);
+	$tag_correlation = get_record('tag_correlation', 'tagid', $tag_id);
 
-    if (!$tag_correlation || empty($tag_correlation->correlatedtags)) {
-        return array();
-    }
-     
-    // this is (and has to) return the same fields as the query in tag_get_tags
-    if ( !$result = get_records_sql("SELECT tg.id, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
-        "FROM {$CFG->prefix}tag tg INNER JOIN {$CFG->prefix}tag_instance ti ON tg.id = ti.tagid ".
-        "WHERE tg.id IN ({$tag_correlation->correlatedtags})") ) {
-        return array();
-    }
+	if (!$tag_correlation || empty($tag_correlation->correlatedtags)) {
+		return array();
+	}
+	 
+	// this is (and has to) return the same fields as the query in tag_get_tags
+	if ( !$result = get_records_sql("SELECT tg.id, tg.tagtype, tg.name, tg.rawname, tg.flag, ti.ordering ".
+		"FROM {$CFG->prefix}tag tg INNER JOIN {$CFG->prefix}tag_instance ti ON tg.id = ti.tagid ".
+		"WHERE tg.id IN ({$tag_correlation->correlatedtags})") ) {
+		return array();
+	}
   
-    return $result;
+	return $result;
 }
 
 /**
@@ -904,38 +904,38 @@ function tag_get_correlated($tag_id, $limitnum=null) {
  *
  * @param mixed $tags array of tags, or a single tag.
  * @param int $case case to use for returned value (default: lower case). 
- *     Either TAG_CASE_LOWER (default) or TAG_CASE_ORIGINAL
+ *	 Either TAG_CASE_LOWER (default) or TAG_CASE_ORIGINAL
  * @return array of lowercased normalized tags, indexed by the normalized tag, 
- *     in the same order as the original array. (Eg: 'Banana' => 'banana').
+ *	 in the same order as the original array. (Eg: 'Banana' => 'banana').
  */
 function tag_normalize($rawtags, $case = TAG_CASE_LOWER) {
 
-    // cache normalized tags, to prevent costly repeated calls to clean_param
-    static $cleaned_tags_lc = array(); // lower case - use for comparison
-    static $cleaned_tags_mc = array(); // mixed case - use for saving to database
+	// cache normalized tags, to prevent costly repeated calls to clean_param
+	static $cleaned_tags_lc = array(); // lower case - use for comparison
+	static $cleaned_tags_mc = array(); // mixed case - use for saving to database
 
-    if ( !is_array($rawtags) ) {
-        $rawtags = array($rawtags);
-    }
+	if ( !is_array($rawtags) ) {
+		$rawtags = array($rawtags);
+	}
 
-    $result = array();
-    foreach($rawtags as $rawtag) {
-        $rawtag = trim($rawtag);
-        if (!$rawtag) {
-            continue;
-        }
-        if ( !array_key_exists($rawtag, $cleaned_tags_lc) ) {
-            $cleaned_tags_lc[$rawtag] = moodle_strtolower( clean_param($rawtag, PARAM_TAG) );
-            $cleaned_tags_mc[$rawtag] = clean_param($rawtag, PARAM_TAG);
-        }
-        if ( $case == TAG_CASE_LOWER ) { 
-            $result[$rawtag] = $cleaned_tags_lc[$rawtag];
-        } else { // TAG_CASE_ORIGINAL
-            $result[$rawtag] = $cleaned_tags_mc[$rawtag];
-        }
-    }
-    
-    return $result;
+	$result = array();
+	foreach($rawtags as $rawtag) {
+		$rawtag = trim($rawtag);
+		if (!$rawtag) {
+			continue;
+		}
+		if ( !array_key_exists($rawtag, $cleaned_tags_lc) ) {
+			$cleaned_tags_lc[$rawtag] = moodle_strtolower( clean_param($rawtag, PARAM_TAG) );
+			$cleaned_tags_mc[$rawtag] = clean_param($rawtag, PARAM_TAG);
+		}
+		if ( $case == TAG_CASE_LOWER ) { 
+			$result[$rawtag] = $cleaned_tags_lc[$rawtag];
+		} else { // TAG_CASE_ORIGINAL
+			$result[$rawtag] = $cleaned_tags_mc[$rawtag];
+		}
+	}
+	
+	return $result;
 }
 
 /**
@@ -946,7 +946,7 @@ function tag_normalize($rawtags, $case = TAG_CASE_LOWER) {
  * @return int number of mathing tags.
  */
 function tag_record_count($record_type, $tagid) {
-    return count_records('tag_instance', 'itemtype', $record_type, 'tagid', $tagid);
+	return count_records('tag_instance', 'itemtype', $record_type, 'tagid', $tagid);
 }
 
 /**
@@ -958,11 +958,11 @@ function tag_record_count($record_type, $tagid) {
  * @return bool true if it is tagged, false otherwise
  */
 function tag_record_tagged_with($record_type, $record_id, $tag) {
-    if ($tagid = tag_get_id($tag)) {
-        return count_records('tag_instance', 'itemtype', $record_type, 'itemid', $record_id, 'tagid', $tagid);
-    } else {
-        return 0; // tag doesn't exist
-    }
+	if ($tagid = tag_get_id($tag)) {
+		return count_records('tag_instance', 'itemtype', $record_type, 'itemid', $record_id, 'tagid', $tagid);
+	} else {
+		return 0; // tag doesn't exist
+	}
 }
 
 /**
@@ -972,15 +972,15 @@ function tag_record_tagged_with($record_type, $record_id, $tag) {
  * @return void
  */
 function tag_set_flag($tagids) {
-    if ( !is_array($tagids) ) {
-        $tagids = array($tagids);
-    }
-    foreach ($tagids as $tagid) {
-        $tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id, flag');
-        $tag->flag++;
-        $tag->timemodified = time();
-        update_record('tag', $tag);
-    }
+	if ( !is_array($tagids) ) {
+		$tagids = array($tagids);
+	}
+	foreach ($tagids as $tagid) {
+		$tag = get_record('tag', 'id', $tagid, '', '', '', '', 'id, flag');
+		$tag->flag++;
+		$tag->timemodified = time();
+		update_record('tag', $tag);
+	}
 }
 
 /** 
@@ -990,15 +990,15 @@ function tag_set_flag($tagids) {
  * @return bool true if function succeeds, false otherwise
  */
 function tag_unset_flag($tagids) {
-    global $CFG;
+	global $CFG;
 
-    require_capability('moodle/tag:manage', get_context_instance(CONTEXT_SYSTEM));
+	require_capability('moodle/tag:manage', get_context_instance(CONTEXT_SYSTEM));
 
-    if ( is_array($tagids) ) {
-        $tagids = implode(',', $tagids);
-    }
-    $timemodified = time();
-    return execute_sql("UPDATE {$CFG->prefix}tag tg SET tg.flag = 0, tg.timemodified = $timemodified WHERE tg.id IN ($tagids)", false);
+	if ( is_array($tagids) ) {
+		$tagids = implode(',', $tagids);
+	}
+	$timemodified = time();
+	return execute_sql("UPDATE {$CFG->prefix}tag tg SET tg.flag = 0, tg.timemodified = $timemodified WHERE tg.id IN ($tagids)", false);
 }
 
 ?>

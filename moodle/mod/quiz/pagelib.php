@@ -18,17 +18,17 @@ $DEFINEDPAGES = array(PAGE_QUIZ_VIEW);
 
 class page_quiz extends page_generic_activity {
 
-    function init_quick($data) {
-        if(empty($data->pageid)) {
-            error('Cannot quickly initialize page: empty course id');
-        }
-        $this->activityname = 'quiz';
-        parent::init_quick($data);
-    }
+	function init_quick($data) {
+		if(empty($data->pageid)) {
+			error('Cannot quickly initialize page: empty course id');
+		}
+		$this->activityname = 'quiz';
+		parent::init_quick($data);
+	}
   
-    function get_type() {
-        return PAGE_QUIZ_VIEW;
-    }
+	function get_type() {
+		return PAGE_QUIZ_VIEW;
+	}
 }
 
 ?>

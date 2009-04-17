@@ -1,5 +1,5 @@
 <?PHP // $Id: quiz_analysis.php,v 1.5 2006/11/01 09:44:07 moodler Exp $ 
-      // quiz_analysis.php - created with Moodle 1.7 beta + (2006101003)
+	  // quiz_analysis.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['analysis'] = 'Item analysis';

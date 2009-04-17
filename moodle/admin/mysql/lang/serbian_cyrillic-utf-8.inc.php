@@ -3,8 +3,8 @@
 
 /**
  * Translated by:
- *     Mihailo Stefanovic <mikis@users.sourceforge.net>, Branislav Jovanovic <fangorn@eunet.yu>
- *     Igor Mladenovic <mligor@zimco.com>, David Trajkovic <tdavid@ptt.yu>
+ *	 Mihailo Stefanovic <mikis@users.sourceforge.net>, Branislav Jovanovic <fangorn@eunet.yu>
+ *	 Igor Mladenovic <mligor@zimco.com>, David Trajkovic <tdavid@ptt.yu>
  */
 
 $charset = 'utf-8';
@@ -337,7 +337,7 @@ $strHaveToShow = 'Морате изабрати бар једну колону �
 $strHebrew = 'Хебрејски';
 $strHelp = 'Помоћ';
 $strHexForBLOB = 'Користи хексадецимално за BLOB';
-$strHide         = 'Сакриј';
+$strHide		 = 'Сакриј';
 $strHideShowAll = 'Сакриј/прикажи све';
 $strHideShowNoRelation = 'Сакриј/прикажи табеле без релација';
 $strHomepageOfficial = 'phpMyAdmin веб сајт';

@@ -46,50 +46,50 @@ $string['databasecreationsettingssub'] = '<b>Uri:</b> ipinirmi ng pangluklok sa 
 <b>Kontrasenyas:</b> ang kontrasenyas ng datosan mo<br />
 <b>Unlapi ng Teybol:</b> opsiyonal na unlapi na gagamitin sa lahat ng pangalan ng teybol';
 $string['databasesettingshead'] = 'Ngayon naman ay kailangan mong isaayos ang datosan kung saan iimbakin
-    ang karamihan sa datos ng Moodle.  Dapat ay nalikha na ang datosan na ito
-    at may bansag at kontrasenyas na upang mapasok ito.';
+	ang karamihan sa datos ng Moodle.  Dapat ay nalikha na ang datosan na ito
+	at may bansag at kontrasenyas na upang mapasok ito.';
 $string['databasesettingssub'] = '<b>Uri:</b> mysql o postgres7<br />
-       <b>Host:</b> eg localhost o db.isp.com<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> opsiyonal na unlapi na gagamitin sa lahat ng pangalan ng teybol';
+	   <b>Host:</b> eg localhost o db.isp.com<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> opsiyonal na unlapi na gagamitin sa lahat ng pangalan ng teybol';
 $string['databasesettingssub_mssql'] = '<b>Uri:</b> SQL*Server (hindi UTF-8) <b><font color=\"red\">Eksperimental! (hindi dapat gamitin sa produksiyon)</font></b><br />
-       <b>Host:</b> eg localhost o db.isp.com<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
+	   <b>Host:</b> eg localhost o db.isp.com<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
 $string['databasesettingssub_mssql_n'] = '<b>Uri:</b> SQL*Server (gumagana ang UTF-8)<br />
-       <b>Host:</b> eg localhost o db.isp.com<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
+	   <b>Host:</b> eg localhost o db.isp.com<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
 $string['databasesettingssub_mysql'] = '<b>Uri:</b> MySQL<br />
-       <b>Host:</b> eg localhost o db.isp.com<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (opsiyonal)';
+	   <b>Host:</b> eg localhost o db.isp.com<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (opsiyonal)';
 $string['databasesettingssub_oci8po'] = '<b>Uri:</b> Oracle<br />
-       <b>Host:</b> hindi ginagamit, dapat ay iwang blangko<br />
-       <b>Pangalan:</b> ibinigay na pangalan ng koneksiyong tnsnames.ora<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan, 2cc. max)';
+	   <b>Host:</b> hindi ginagamit, dapat ay iwang blangko<br />
+	   <b>Pangalan:</b> ibinigay na pangalan ng koneksiyong tnsnames.ora<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan, 2cc. max)';
 $string['databasesettingssub_odbc_mssql'] = '<b>Uri:</b> SQL*Server (sa pamamgitan ng ODBC) <b><font color=\"red\">Eksperimental! (huwag gamitin sa produksiyon)</font></b><br />
-       <b>Host:</b> ibinigay na pangalan ng DSN sa OBDC control panel<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
+	   <b>Host:</b> ibinigay na pangalan ng DSN sa OBDC control panel<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
 $string['databasesettingssub_postgres7'] = '<b>Uri:</b> PostgreSQL<br />
-       <b>Host:</b> eg localhost o db.isp.com<br />
-       <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
-       <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
-       <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
-       <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
+	   <b>Host:</b> eg localhost o db.isp.com<br />
+	   <b>Pangalan:</b> pangalan ng datosan, eg moodle<br />
+	   <b>Tagagamit:</b> ang iyong bansag para sa datosan<br />
+	   <b>Kontrasenyas:</b> ang iyong kontrasenyas ng datosan<br />
+	   <b>Unlapi ng mga Teybol:</b> unlapi na gagamitin sa lahat ng pangalan ng teybol (kinakailangan)';
 $string['dataroot'] = 'Bugsok ng Datos';
 $string['datarooterror'] = 'Hindi matagpuan o malikha ang \'Bugsok ng Datos\' na ibinigay mo.  Alin sa dalawa, iwasto mo ang landas o lumikha ng bugsok nang mano-mano.';
 $string['dbconnectionerror'] = 'Hindi kami makakonekta sa ibinigay mong datosan.  Pakitsek ang kaayusan ng iyong datosan.';
@@ -198,18 +198,18 @@ $string['memorylimithelp'] = '<p>Ang memory limit ng PHP para sa server mo ay ka
    kung marami kang binuhay na modyul at/o marami kang tagagamit.</p>
 
 <p>Iminumungkahi namin na isaayos mo ang PHP na may mas mataas na limit kung maaari, tulad ng 40M.
-    May iba\'t-ibang paraan na magagawa kayo upang ito ay maiisakatuparan:</p>
+	May iba\'t-ibang paraan na magagawa kayo upang ito ay maiisakatuparan:</p>
 <ol>
 <li>Kunga maaari mong gawin, muling ikompayl ang PHP na may <i>--enable-memory-limit</i>.  
-     Pahihintulutan nito ang Moodle na itakda ang memory limit sa sarili nito.</li>
+	 Pahihintulutan nito ang Moodle na itakda ang memory limit sa sarili nito.</li>
 <li>Kung mapapasok mo ang iyong sakong php.ini, mababago mo ang <b>memory_limit</b> 
-    na kaayusan doon at gawin itong mga 40M.  Kung wala kang karapatang pasukin ito
-    baka puwede mong hilingin sa administrador na gawin ito para sa iyo.</li>
+	na kaayusan doon at gawin itong mga 40M.  Kung wala kang karapatang pasukin ito
+	baka puwede mong hilingin sa administrador na gawin ito para sa iyo.</li>
 <li>Sa ilang PHP serve maaari kang lumikha ng isang sakong .htaccess sa bugsok ng Moodle
-    na naglalaman ng linyang ito:
-    <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>Subali\'t sa ilang server ay pipigilin nito ang paggana ng <b>lahat</b> ng pahinang PHP 
-    (makakakita ka ng mga error kapag tumingin ka sa mga pahina) kaya\'t kakailanganin mong tanggalin ang sakong .htaccess.</p></li>
+	na naglalaman ng linyang ito:
+	<p><blockquote>php_value memory_limit 40M</blockquote></p>
+	<p>Subali\'t sa ilang server ay pipigilin nito ang paggana ng <b>lahat</b> ng pahinang PHP 
+	(makakakita ka ng mga error kapag tumingin ka sa mga pahina) kaya\'t kakailanganin mong tanggalin ang sakong .htaccess.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'May ilang nawawalang pitak na kailangan';
 $string['moodledocslink'] = 'Mga Dokyu ng Moodle para sa pahinang ito';

@@ -39,9 +39,9 @@ class PGTStorageFile extends PGTStorage
    * @private
    */
   function getPath()
-    {
-      return $this->_path;
-    }
+	{
+	  return $this->_path;
+	}
 
   /**
    * a string telling the format to use to store PGT's (plain or xml). Written by
@@ -59,9 +59,9 @@ class PGTStorageFile extends PGTStorage
    * @private
    */
   function getFormat()
-    {
-      return $this->_format;
-    }
+	{
+	  return $this->_format;
+	}
 
   // ########################################################################
   //  DEBUGGING
@@ -75,9 +75,9 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function getStorageType()
-    {
-      return "file";
-    }
+	{
+	  return "file";
+	}
 
   /**
    * This method returns an informational string giving informations on the
@@ -87,9 +87,9 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function getStorageInfo()
-    {
-      return 'path=`'.$this->getPath().'\', format=`'.$this->getFormat().'\'';
-    }
+	{
+	  return 'path=`'.$this->getPath().'\', format=`'.$this->getFormat().'\'';
+	}
 
   // ########################################################################
   //  CONSTRUCTOR
@@ -105,35 +105,35 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function PGTStorageFile($cas_parent,$format,$path)
-    {
-      phpCAS::traceBegin();
-      // call the ancestor's constructor
-      $this->PGTStorage($cas_parent);
+	{
+	  phpCAS::traceBegin();
+	  // call the ancestor's constructor
+	  $this->PGTStorage($cas_parent);
 
-      if (empty($format) ) $format = CAS_PGT_STORAGE_FILE_DEFAULT_FORMAT;
-      if (empty($path) ) $path = CAS_PGT_STORAGE_FILE_DEFAULT_PATH;
+	  if (empty($format) ) $format = CAS_PGT_STORAGE_FILE_DEFAULT_FORMAT;
+	  if (empty($path) ) $path = CAS_PGT_STORAGE_FILE_DEFAULT_PATH;
 
-      // check that the path is an absolute path
-      if ( $path[0] != '/' ) {
+	  // check that the path is an absolute path
+	  if ( $path[0] != '/' ) {
 	phpCAS::error('an absolute path is needed for PGT storage to file');
-      }
+	  }
 
-      // store the path (with a leading and trailing '/')      
-      $path = preg_replace('|[/]*$|','/',$path);
-      $path = preg_replace('|^[/]*|','/',$path);
-      $this->_path = $path;
+	  // store the path (with a leading and trailing '/')	  
+	  $path = preg_replace('|[/]*$|','/',$path);
+	  $path = preg_replace('|^[/]*|','/',$path);
+	  $this->_path = $path;
 
-      // check the format and store it
-      switch ($format) {
-      case CAS_PGT_STORAGE_FILE_FORMAT_PLAIN:
-      case CAS_PGT_STORAGE_FILE_FORMAT_XML:
+	  // check the format and store it
+	  switch ($format) {
+	  case CAS_PGT_STORAGE_FILE_FORMAT_PLAIN:
+	  case CAS_PGT_STORAGE_FILE_FORMAT_XML:
 	$this->_format = $format;
 	break;
-      default:
+	  default:
 	phpCAS::error('unknown PGT file storage format (`'.CAS_PGT_STORAGE_FILE_FORMAT_PLAIN.'\' and `'.CAS_PGT_STORAGE_FILE_FORMAT_XML.'\' allowed)');
-      }
-      phpCAS::traceEnd();      
-    }
+	  }
+	  phpCAS::traceEnd();	  
+	}
 
   // ########################################################################
   //  INITIALIZATION
@@ -145,15 +145,15 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function init()
-    {
-      phpCAS::traceBegin();
-      // if the storage has already been initialized, return immediatly
-      if ( $this->isInitialized() )
+	{
+	  phpCAS::traceBegin();
+	  // if the storage has already been initialized, return immediatly
+	  if ( $this->isInitialized() )
 	return;
-      // call the ancestor's method (mark as initialized)
-      parent::init();
-      phpCAS::traceEnd();      
-    }
+	  // call the ancestor's method (mark as initialized)
+	  parent::init();
+	  phpCAS::traceEnd();	  
+	}
 
   // ########################################################################
   //  PGT I/O
@@ -168,13 +168,13 @@ class PGTStorageFile extends PGTStorage
    * @private
    */
   function getPGTIouFilename($pgt_iou)
-    {
-      phpCAS::traceBegin();
-      $filename = $this->getPath().$pgt_iou.'.'.$this->getFormat();
+	{
+	  phpCAS::traceBegin();
+	  $filename = $this->getPath().$pgt_iou.'.'.$this->getFormat();
 
-      phpCAS::traceEnd($filename);
-      return $filename;
-    }
+	  phpCAS::traceEnd($filename);
+	  return $filename;
+	}
   
   /**
    * This method stores a PGT and its corresponding PGT Iou into a file. Echoes a
@@ -186,19 +186,19 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function write($pgt,$pgt_iou)
-    {
-      phpCAS::traceBegin();
-      $fname = $this->getPGTIouFilename($pgt_iou);
-      if ( $f=fopen($fname,"w") ) {
+	{
+	  phpCAS::traceBegin();
+	  $fname = $this->getPGTIouFilename($pgt_iou);
+	  if ( $f=fopen($fname,"w") ) {
 	if ( fputs($f,$pgt) === FALSE ) {
 	  phpCAS::error('could not write PGT to `'.$fname.'\'');
 	}
 	fclose($f);
-      } else {
+	  } else {
 	phpCAS::error('could not open `'.$fname.'\'');
-      }
-      phpCAS::traceEnd();      
-    }
+	  }
+	  phpCAS::traceEnd();	  
+	}
 
   /**
    * This method reads a PGT corresponding to a PGT Iou and deletes the 
@@ -211,26 +211,26 @@ class PGTStorageFile extends PGTStorage
    * @public
    */
   function read($pgt_iou)
-    {
-      phpCAS::traceBegin();
-      $pgt = FALSE;
-      $fname = $this->getPGTIouFilename($pgt_iou);
+	{
+	  phpCAS::traceBegin();
+	  $pgt = FALSE;
+	  $fname = $this->getPGTIouFilename($pgt_iou);
 
-      if ( !($f=fopen($fname,"r")) ) {
+	  if ( !($f=fopen($fname,"r")) ) {
 	phpCAS::trace('could not open `'.$fname.'\'');
-      } else {
+	  } else {
 	if ( ($pgt=fgets($f)) === FALSE ) {
 	  phpCAS::trace('could not read PGT from `'.$fname.'\'');
 	} 
 	fclose($f);
-      }
+	  }
 
-      // delete the PGT file
-      @unlink($fname);
+	  // delete the PGT file
+	  @unlink($fname);
 
-      phpCAS::traceEnd($pgt);
-      return $pgt;
-    }
+	  phpCAS::traceEnd($pgt);
+	  return $pgt;
+	}
   
   /** @} */
   

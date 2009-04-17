@@ -13,32 +13,32 @@ httpsrequired();
 
 $authsequence = get_enabled_auth_plugins(true); // auths, in sequence
 if (!in_array('ldap',$authsequence,true)) {
-    print_error('ldap_isdisabled','auth');
+	print_error('ldap_isdisabled','auth');
 }
 
 $authplugin = get_auth_plugin('ldap');
 if (empty($authplugin->config->ntlmsso_enabled)) {
-    print_error('ntlmsso_isdisabled','auth');
+	print_error('ntlmsso_isdisabled','auth');
 }
 
 $sesskey = required_param('sesskey', PARAM_RAW);
 $file = $CFG->dirroot . '/pix/spacer.gif';
 
 if ($authplugin->ntlmsso_magic($sesskey) 
-    && file_exists($file)) {
+	&& file_exists($file)) {
 
-    // Serve GIF
-    // Type
-    header('Content-Type: image/gif');
-    header('Content-Length: '.filesize($file));
+	// Serve GIF
+	// Type
+	header('Content-Type: image/gif');
+	header('Content-Length: '.filesize($file));
 
-    // Output file
-    $handle=fopen($file,'r');
-    fpassthru($handle);
-    fclose($handle);
-    exit;
+	// Output file
+	$handle=fopen($file,'r');
+	fpassthru($handle);
+	fclose($handle);
+	exit;
 } else {
-    print_error('ntlmsso_iwamagicnotenabled','auth');
+	print_error('ntlmsso_iwamagicnotenabled','auth');
 }
 
 ?>

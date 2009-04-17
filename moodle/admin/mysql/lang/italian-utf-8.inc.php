@@ -3,8 +3,8 @@
 
 /**
  * translated by: Pietro Danesi <danone at users.sourceforge.net>  2002-03-29
- * Revised by:    "DPhantom" <dphantom at users.sourceforge.net>  2002-04-16
- * Revised by:    "Luca Rebellato" <rebeluca at users.sourceforge.net>  2007-07-26
+ * Revised by:	"DPhantom" <dphantom at users.sourceforge.net>  2002-04-16
+ * Revised by:	"Luca Rebellato" <rebeluca at users.sourceforge.net>  2007-07-26
  */
 
 $charset = 'utf-8';
@@ -337,7 +337,7 @@ $strHaveToShow = 'Devi scegliere almeno una Colonna da mostrare';
 $strHebrew = 'Ebreo';
 $strHelp = 'Aiuto';
 $strHexForBLOB = 'Usa dati esadecimali per BLOB';
-$strHide         = 'Nascondi';
+$strHide		 = 'Nascondi';
 $strHideShowAll = 'Mostra/nascondi tutto';
 $strHideShowNoRelation = 'Mostra/nascondi tabella senza relazioni';
 $strHome = 'Home';

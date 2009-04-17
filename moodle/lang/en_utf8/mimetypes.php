@@ -1,5 +1,5 @@
 <?PHP // $Id: mimetypes.php,v 1.2 2006/11/01 09:44:06 moodler Exp $ 
-      // mimetypes.php - created with Moodle 1.7 beta + (2006101003)
+	  // mimetypes.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['application/msword'] = 'Word document';

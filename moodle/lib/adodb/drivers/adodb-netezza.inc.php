@@ -6,13 +6,13 @@
  Based on the previous postgres drivers.
  http://www.netezza.com/
  Major Additions/Changes:
-    MetaDatabasesSQL, MetaTablesSQL, MetaColumnsSQL
-    Note: You have to have admin privileges to access the system tables
-    Removed non-working keys code (Netezza has no concept of keys)
-    Fixed the way data types and lengths are returned in MetaColumns()
-    as well as added the default lengths for certain types
-    Updated public variables for Netezza
-    Still need to remove blob functions, as Netezza doesn't suppport blob
+	MetaDatabasesSQL, MetaTablesSQL, MetaColumnsSQL
+	Note: You have to have admin privileges to access the system tables
+	Removed non-working keys code (Netezza has no concept of keys)
+	Fixed the way data types and lengths are returned in MetaColumns()
+	as well as added the default lengths for certain types
+	Updated public variables for Netezza
+	Still need to remove blob functions, as Netezza doesn't suppport blob
 */
 // security - hide paths
 if (!defined('ADODB_DIR')) die();
@@ -20,14 +20,14 @@ if (!defined('ADODB_DIR')) die();
 include_once(ADODB_DIR.'/drivers/adodb-postgres64.inc.php');
 
 class ADODB_netezza extends ADODB_postgres64 {
-    var $databaseType = 'netezza';	
+	var $databaseType = 'netezza';	
 	var $dataProvider = 'netezza';
 	var $hasInsertID = false;
 	var $_resultid = false;
   	var $concat_operator='||';
   	var $random = 'random';
 	var $metaDatabasesSQL = "select objname from _v_object_data where objtype='database' order by 1";
-    var $metaTablesSQL = "select objname from _v_object_data where objtype='table' order by 1";
+	var $metaTablesSQL = "select objname from _v_object_data where objtype='table' order by 1";
 	var $isoDates = true; // accepts dates in ISO format
 	var $sysDate = "CURRENT_DATE";
 	var $sysTimeStamp = "CURRENT_TIMESTAMP";

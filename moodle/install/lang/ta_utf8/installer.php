@@ -12,12 +12,12 @@
 $string['admindirerror'] = 'The admin directory specified is incorrect';
 $string['admindirname'] = 'Admin Directory';
 $string['admindirsettinghead'] = 'Setting the admin directory ...';
-$string['admindirsettingsub'] = '    A very few webhosts use /admin as a special URL for you to access a 
-    control panel or something.  Unfortunately this conflicts with the 
-    standard location for the Moodle admin pages.  You can fix this by 
-    renaming the admin directory in your installation, and putting that 
-    new name here.  For example: <br /> <br /><b>moodleadmin</b><br /> <br />
-    This will fix admin links in Moodle.';
+$string['admindirsettingsub'] = '	A very few webhosts use /admin as a special URL for you to access a 
+	control panel or something.  Unfortunately this conflicts with the 
+	standard location for the Moodle admin pages.  You can fix this by 
+	renaming the admin directory in your installation, and putting that 
+	new name here.  For example: <br /> <br /><b>moodleadmin</b><br /> <br />
+	This will fix admin links in Moodle.';
 $string['bypassed'] = 'ஒதுக்கப்பட்டது';
 $string['cannotcreatelangdir'] = 'Cannot create lang dir.';
 $string['cannotcreatetempdir'] = 'Cannot create temp dir.';
@@ -42,23 +42,23 @@ $string['configurationcompletesub'] = 'Moodle made an attempt to save your confi
 $string['continue'] = 'தொடர்க';
 $string['database'] = 'Database';
 $string['databasecreationsettingshead'] = 'Now you need to configure the database settings where most Moodle data
-    will be stored.  This database will be created automatically by the installer
-    with the settings specified below.';
+	will be stored.  This database will be created automatically by the installer
+	with the settings specified below.';
 $string['databasecreationsettingssub'] = '<b>Type:</b> fixed to \"mysql\" by the installer<br />
-       <b>Host:</b> fixed to \"localhost\" by the installer<br />
-       <b>Name:</b> database name, eg moodle<br />
-       <b>User:</b> fixed to \"root\" by the installer<br />
-       <b>Password:</b> your database password<br />
-       <b>Tables Prefix:</b> optional prefix to use for all table names';
+	   <b>Host:</b> fixed to \"localhost\" by the installer<br />
+	   <b>Name:</b> database name, eg moodle<br />
+	   <b>User:</b> fixed to \"root\" by the installer<br />
+	   <b>Password:</b> your database password<br />
+	   <b>Tables Prefix:</b> optional prefix to use for all table names';
 $string['databasesettingshead'] = 'Now you need to configure the database where most Moodle data
-    will be stored.  This database must already have been created
-    and a username and password created to access it.';
+	will be stored.  This database must already have been created
+	and a username and password created to access it.';
 $string['databasesettingssub'] = '<b>Type:</b> mysql or postgres7<br />
-       <b>Host:</b> eg localhost or db.isp.com<br />
-       <b>Name:</b> database name, eg moodle<br />
-       <b>User:</b> your database username<br />
-       <b>Password:</b> your database password<br />
-       <b>Tables Prefix:</b> optional prefix to use for all table names';
+	   <b>Host:</b> eg localhost or db.isp.com<br />
+	   <b>Name:</b> database name, eg moodle<br />
+	   <b>User:</b> your database username<br />
+	   <b>Password:</b> your database password<br />
+	   <b>Tables Prefix:</b> optional prefix to use for all table names';
 $string['dataroot'] = 'Data Directory';
 $string['datarooterror'] = 'The \'Data Directory\' you specified could not be found or created.  Either correct the path or create that directory manually.';
 $string['dbconnectionerror'] = 'We could not connect to the database you specified. Please check your database settings.';
@@ -168,15 +168,15 @@ $string['memorylimithelp'] = '<p>The PHP memory limit for your server is current
    There are several ways of doing this that you can try:</p>
 <ol>
 <li>If you are able to, recompile PHP with <i>--enable-memory-limit</i>.  
-    This will allow Moodle to set the memory limit itself.</li>
+	This will allow Moodle to set the memory limit itself.</li>
 <li>If you have access to your php.ini file, you can change the <b>memory_limit</b> 
-    setting in there to something like 40M.  If you don\'t have access you might 
-    be able to ask your administrator to do this for you.</li>
+	setting in there to something like 40M.  If you don\'t have access you might 
+	be able to ask your administrator to do this for you.</li>
 <li>On some PHP servers you can create a .htaccess file in the Moodle directory 
-    containing this line:
-    <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>However, on some servers this will prevent <b>all</b> PHP pages from working 
-    (you will see errors when you look at pages) so you\'ll have to remove the .htaccess file.</p></li>
+	containing this line:
+	<p><blockquote>php_value memory_limit 40M</blockquote></p>
+	<p>However, on some servers this will prevent <b>all</b> PHP pages from working 
+	(you will see errors when you look at pages) so you\'ll have to remove the .htaccess file.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Some required field is missing';
 $string['moodledocslink'] = 'மூடூலின் ஆவணங்களுக்கு இங்கே சொடுக்கவும்';
@@ -223,17 +223,17 @@ $string['unicoderequired'] = 'It is required that you store all your data in Uni
 $string['user'] = 'பயனாளர்';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'You are seeing this page because you have successfully installed and 
-    launched the <strong>$a->packname $a->packversion</strong> package in your computer. Congratulations!';
+	launched the <strong>$a->packname $a->packversion</strong> package in your computer. Congratulations!';
 $string['welcomep30'] = 'This release of the <strong>$a->installername</strong> includes the applications 
-    to create an environment in which <strong>Moodle</strong> will operate, namely:';
+	to create an environment in which <strong>Moodle</strong> will operate, namely:';
 $string['welcomep40'] = 'The package also includes <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'The use of all the applications in this package is governed by their respective 
-    licences. The complete <strong>$a->installername</strong> package is 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">open source</a> and is distributed 
-    under the <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a> license.';
+	licences. The complete <strong>$a->installername</strong> package is 
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">open source</a> and is distributed 
+	under the <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a> license.';
 $string['welcomep60'] = 'The following pages will lead you through some easy to follow steps to 
-    configure and set up <strong>Moodle</strong> on your computer. You may accept the default 
-    settings or, optionally, amend them to suit your own needs.';
+	configure and set up <strong>Moodle</strong> on your computer. You may accept the default 
+	settings or, optionally, amend them to suit your own needs.';
 $string['welcomep70'] = 'Click the \"Next\" button below to continue with the set up of <strong>Moodle</strong>.';
 $string['wrongdestpath'] = 'Wrong destination path.';
 $string['wrongsourcebase'] = 'Wrong source URL base.';

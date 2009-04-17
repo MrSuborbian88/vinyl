@@ -6,27 +6,27 @@
  * @version $Id: excel.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
  *
  */
 if (isset($plugin_list)) {
-    $plugin_list['excel'] = array(
-        'text' => 'strStrucExcelCSV',
-        'extension' => 'csv',
-        'mime_type' => 'text/comma-separated-values',
-        'options' => array(
-            array('type' => 'text', 'name' => 'null', 'text' => 'strReplaceNULLBy'),
-            array('type' => 'bool', 'name' => 'columns', 'text' => 'strPutColNames'),
-            array('type' => 'select', 'name' => 'edition', 'values' => array('win' => 'Windows', 'mac' => 'Excel 2003 / Macintosh'), 'text' => 'strExcelEdition'),
-            array('type' => 'hidden', 'name' => 'data'),
-            ),
-        'options_text' => 'strOptions',
-        );
+	$plugin_list['excel'] = array(
+		'text' => 'strStrucExcelCSV',
+		'extension' => 'csv',
+		'mime_type' => 'text/comma-separated-values',
+		'options' => array(
+			array('type' => 'text', 'name' => 'null', 'text' => 'strReplaceNULLBy'),
+			array('type' => 'bool', 'name' => 'columns', 'text' => 'strPutColNames'),
+			array('type' => 'select', 'name' => 'edition', 'values' => array('win' => 'Windows', 'mac' => 'Excel 2003 / Macintosh'), 'text' => 'strExcelEdition'),
+			array('type' => 'hidden', 'name' => 'data'),
+			),
+		'options_text' => 'strOptions',
+		);
 } else {
-    /* Everything rest is coded in csv plugin */
-    require './libraries/export/csv.php';
+	/* Everything rest is coded in csv plugin */
+	require './libraries/export/csv.php';
 }
 ?>

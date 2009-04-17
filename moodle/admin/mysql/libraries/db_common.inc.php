@@ -5,7 +5,7 @@
  * @version $Id: db_common.inc.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -19,10 +19,10 @@ PMA_checkParameters(array('db'));
 $is_show_stats = $cfg['ShowStats'];
 
 if (PMA_MYSQL_INT_VERSION >= 50002 && $db == 'information_schema') {
-    $is_show_stats = false;
-    $db_is_information_schema = true;
+	$is_show_stats = false;
+	$db_is_information_schema = true;
 } else {
-    $db_is_information_schema = false;
+	$db_is_information_schema = false;
 }
 
 /**
@@ -37,25 +37,25 @@ $err_url   = $cfg['DefaultTabDatabase'] . '?' . PMA_generate_common_url($db);
  * headers
  */
 if (!isset($is_db) || !$is_db) {
-    // Not a valid db name -> back to the welcome page
-    if (strlen($db)) {
-        $is_db = PMA_DBI_select_db($db);
-    }
-    if (! strlen($db) || !$is_db) {
-        PMA_sendHeaderLocation($cfg['PmaAbsoluteUri'] . 'main.php?' . PMA_generate_common_url('', '', '&') . (isset($message) ? '&message=' . urlencode($message) : '') . '&reload=1');
-        exit;
-    }
+	// Not a valid db name -> back to the welcome page
+	if (strlen($db)) {
+		$is_db = PMA_DBI_select_db($db);
+	}
+	if (! strlen($db) || !$is_db) {
+		PMA_sendHeaderLocation($cfg['PmaAbsoluteUri'] . 'main.php?' . PMA_generate_common_url('', '', '&') . (isset($message) ? '&message=' . urlencode($message) : '') . '&reload=1');
+		exit;
+	}
 } // end if (ensures db exists)
 
 /**
  * Changes database charset if requested by the user
  */
 if (isset($submitcollation) && !empty($db_collation) && PMA_MYSQL_INT_VERSION >= 40101) {
-    list($db_charset) = explode('_', $db_collation);
-    $sql_query        = 'ALTER DATABASE ' . PMA_backquote($db) . ' DEFAULT' . PMA_generateCharsetQueryPart($db_collation);
-    $result           = PMA_DBI_query($sql_query);
-    $message          = $strSuccess;
-    unset($db_charset, $db_collation);
+	list($db_charset) = explode('_', $db_collation);
+	$sql_query		= 'ALTER DATABASE ' . PMA_backquote($db) . ' DEFAULT' . PMA_generateCharsetQueryPart($db_collation);
+	$result		   = PMA_DBI_query($sql_query);
+	$message		  = $strSuccess;
+	unset($db_charset, $db_collation);
 }
 
 $js_to_run = 'functions.js';

@@ -48,7 +48,7 @@ To force non-persistent connections, call adodb_session_open first before sessio
   );
   
   For oracle:
-    create table sessions (
+	create table sessions (
 	   SESSKEY char(32) not null,
 	   EXPIRY DECIMAL(16)  not null,
 	   EXPIREREF varchar(64),
@@ -58,7 +58,7 @@ To force non-persistent connections, call adodb_session_open first before sessio
 
 
   2. Then define the following parameters. You can either modify
-     this file, or define them before this file is included:
+	 this file, or define them before this file is included:
 	 
   	$ADODB_SESSION_DRIVER='database driver, eg. mysql or ibase';
 	$ADODB_SESSION_CONNECT='server to connect to';
@@ -299,7 +299,7 @@ function adodb_sess_write($key, $val)
 		$arr['expireref'] = $$var;
 	}
 	$rs = $ADODB_SESS_CONN->Replace($ADODB_SESSION_TBL,$arr,
-    	'sesskey',$autoQuote = true);
+		'sesskey',$autoQuote = true);
 	
 	if (!$rs) {
 		ADOConnection::outp( '

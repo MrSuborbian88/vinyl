@@ -24,7 +24,7 @@
 /**
  * Class for conversion between charsets.
  *
- *    Typo Id: class.t3lib_cs.php,v 1.56 2006/05/03 08:47:30 masi Exp $
+ *	Typo Id: class.t3lib_cs.php,v 1.56 2006/05/03 08:47:30 masi Exp $
  * Moodle $Id: class.t3lib_cs.php,v 1.7 2006/08/11 09:48:35 stronk7 Exp $
  *
  * @author	Kasper Skaarhoj <kasperYYYY@typo3.com>
@@ -36,53 +36,53 @@
  *
  *
  *  136: class t3lib_cs
- *  488:     function parse_charset($charset)
- *  507:     function get_locale_charset($locale)
+ *  488:	 function parse_charset($charset)
+ *  507:	 function get_locale_charset($locale)
  *
- *              SECTION: Charset Conversion functions
- *  560:     function conv($str,$fromCS,$toCS,$useEntityForNoChar=0)
- *  600:     function convArray(&$array,$fromCS,$toCS,$useEntityForNoChar=0)
- *  617:     function utf8_encode($str,$charset)
- *  663:     function utf8_decode($str,$charset,$useEntityForNoChar=0)
- *  706:     function utf8_to_entities($str)
- *  739:     function entities_to_utf8($str,$alsoStdHtmlEnt=0)
- *  773:     function utf8_to_numberarray($str,$convEntities=0,$retChar=0)
- *  823:     function UnumberToChar($cbyte)
- *  868:     function utf8CharToUnumber($str,$hex=0)
+ *			  SECTION: Charset Conversion functions
+ *  560:	 function conv($str,$fromCS,$toCS,$useEntityForNoChar=0)
+ *  600:	 function convArray(&$array,$fromCS,$toCS,$useEntityForNoChar=0)
+ *  617:	 function utf8_encode($str,$charset)
+ *  663:	 function utf8_decode($str,$charset,$useEntityForNoChar=0)
+ *  706:	 function utf8_to_entities($str)
+ *  739:	 function entities_to_utf8($str,$alsoStdHtmlEnt=0)
+ *  773:	 function utf8_to_numberarray($str,$convEntities=0,$retChar=0)
+ *  823:	 function UnumberToChar($cbyte)
+ *  868:	 function utf8CharToUnumber($str,$hex=0)
  *
- *              SECTION: Init functions
- *  911:     function initCharset($charset)
- *  973:     function initUnicodeData($mode=null)
- * 1198:     function initCaseFolding($charset)
- * 1260:     function initToASCII($charset)
+ *			  SECTION: Init functions
+ *  911:	 function initCharset($charset)
+ *  973:	 function initUnicodeData($mode=null)
+ * 1198:	 function initCaseFolding($charset)
+ * 1260:	 function initToASCII($charset)
  *
- *              SECTION: String operation functions
- * 1331:     function substr($charset,$string,$start,$len=null)
- * 1384:     function strlen($charset,$string)
- * 1414:     function crop($charset,$string,$len,$crop='')
- * 1467:     function strtrunc($charset,$string,$len)
- * 1501:     function conv_case($charset,$string,$case)
- * 1527:     function specCharsToASCII($charset,$string)
+ *			  SECTION: String operation functions
+ * 1331:	 function substr($charset,$string,$start,$len=null)
+ * 1384:	 function strlen($charset,$string)
+ * 1414:	 function crop($charset,$string,$len,$crop='')
+ * 1467:	 function strtrunc($charset,$string,$len)
+ * 1501:	 function conv_case($charset,$string,$case)
+ * 1527:	 function specCharsToASCII($charset,$string)
  *
- *              SECTION: Internal string operation functions
- * 1567:     function sb_char_mapping($str,$charset,$mode,$opt='')
+ *			  SECTION: Internal string operation functions
+ * 1567:	 function sb_char_mapping($str,$charset,$mode,$opt='')
  *
- *              SECTION: Internal UTF-8 string operation functions
- * 1622:     function utf8_substr($str,$start,$len=null)
- * 1655:     function utf8_strlen($str)
- * 1676:     function utf8_strtrunc($str,$len)
- * 1698:     function utf8_strpos($haystack,$needle,$offset=0)
- * 1723:     function utf8_strrpos($haystack,$needle)
- * 1745:     function utf8_char2byte_pos($str,$pos)
- * 1786:     function utf8_byte2char_pos($str,$pos)
- * 1809:     function utf8_char_mapping($str,$mode,$opt='')
+ *			  SECTION: Internal UTF-8 string operation functions
+ * 1622:	 function utf8_substr($str,$start,$len=null)
+ * 1655:	 function utf8_strlen($str)
+ * 1676:	 function utf8_strtrunc($str,$len)
+ * 1698:	 function utf8_strpos($haystack,$needle,$offset=0)
+ * 1723:	 function utf8_strrpos($haystack,$needle)
+ * 1745:	 function utf8_char2byte_pos($str,$pos)
+ * 1786:	 function utf8_byte2char_pos($str,$pos)
+ * 1809:	 function utf8_char_mapping($str,$mode,$opt='')
  *
- *              SECTION: Internal EUC string operation functions
- * 1885:     function euc_strtrunc($str,$len,$charset)
- * 1914:     function euc_substr($str,$start,$charset,$len=null)
- * 1939:     function euc_strlen($str,$charset)
- * 1966:     function euc_char2byte_pos($str,$pos,$charset)
- * 2007:     function euc_char_mapping($str,$charset,$mode,$opt='')
+ *			  SECTION: Internal EUC string operation functions
+ * 1885:	 function euc_strtrunc($str,$len,$charset)
+ * 1914:	 function euc_substr($str,$start,$charset,$len=null)
+ * 1939:	 function euc_strlen($str,$charset)
+ * 1966:	 function euc_char2byte_pos($str,$pos,$charset)
+ * 2007:	 function euc_char_mapping($str,$charset,$mode,$opt='')
  *
  * TOTAL FUNCTIONS: 35
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -535,9 +535,9 @@ class t3lib_cs {
 	/**
 	 * Get the charset of a locale.
 	 *
-	 * ln            language
-	 * ln_CN         language / country
-	 * ln_CN.cs      language / country / charset
+	 * ln			language
+	 * ln_CN		 language / country
+	 * ln_CN.cs	  language / country / charset
 	 * ln_CN.cs@mod  language / country / charset / modifier
 	 *
 	 * @param	string		Locale string
@@ -849,12 +849,12 @@ class t3lib_cs {
 	 * The binary representation of the character's integer value is thus simply spread across the bytes and the number of high bits set in the lead byte announces the number of bytes in the multibyte sequence:
 	 *
 	 *  bytes | bits | representation
-	 *      1 |    7 | 0vvvvvvv
-	 *      2 |   11 | 110vvvvv 10vvvvvv
-	 *      3 |   16 | 1110vvvv 10vvvvvv 10vvvvvv
-	 *      4 |   21 | 11110vvv 10vvvvvv 10vvvvvv 10vvvvvv
-	 *      5 |   26 | 111110vv 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv
-	 *      6 |   31 | 1111110v 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv
+	 *	  1 |	7 | 0vvvvvvv
+	 *	  2 |   11 | 110vvvvv 10vvvvvv
+	 *	  3 |   16 | 1110vvvv 10vvvvvv 10vvvvvv
+	 *	  4 |   21 | 11110vvv 10vvvvvv 10vvvvvv 10vvvvvv
+	 *	  5 |   26 | 111110vv 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv
+	 *	  6 |   31 | 1111110v 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv 10vvvvvv
 	 *
 	 * @param	integer		UNICODE integer
 	 * @return	string		UTF-8 multibyte character string
@@ -1720,7 +1720,7 @@ class t3lib_cs {
 			if ($i <= 0)	return ''; // sanity check
 			for ($bc=0, $mbs=ord($str{$i}); $mbs & 0x80; $mbs = $mbs << 1)	$bc++;	// calculate number of bytes
 			if ($bc+$i > $len)	return substr($str,0,$i);
-                        // fallthru: multibyte char fits into length
+						// fallthru: multibyte char fits into length
 		}
 		return substr($str,0,$len);
 	}
@@ -1939,7 +1939,7 @@ class t3lib_cs {
 			return substr($str,0,$len-1);	// we ended on a first byte
 		else
 			return substr($str,0,$len);
-        }
+		}
 
 	/**
 	 * Returns a part of a string in the EUC charset family.

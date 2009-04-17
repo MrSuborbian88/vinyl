@@ -1,5 +1,5 @@
 <?php // $Id: auth.php,v 1.30.2.18 2009/02/06 08:21:40 exe-cutor Exp $
-      // auth.php - created with Moodle 1.5 UNSTABLE DEVELOPMENT (2005010100)
+	  // auth.php - created with Moodle 1.5 UNSTABLE DEVELOPMENT (2005010100)
 
 
 $string['actauthhdr'] = 'Active authentication plugins';
@@ -208,13 +208,13 @@ $string['auth_ldap_user_type'] = 'Select how users are stored in LDAP. This sett
 $string['auth_ldap_version'] = 'The version of the LDAP protocol your server is using.';
 $string['auth_ldapdescription'] = 'This method provides authentication against an external LDAP server.
 
-                                  If the given username and password are valid, Moodle creates a new user
+								  If the given username and password are valid, Moodle creates a new user
 
-                                  entry in its database. This module can read user attributes from LDAP and prefill
+								  entry in its database. This module can read user attributes from LDAP and prefill
 
-                                  wanted fields in Moodle.  For following logins only the username and
+								  wanted fields in Moodle.  For following logins only the username and
 
-                                  password are checked.';
+								  password are checked.';
 $string['auth_ldap_ldap_encoding_key'] = 'LDAP encoding';
 $string['auth_ldap_host_url_key'] = 'Host URL';
 $string['auth_ldap_version_key'] = 'Version';
@@ -400,7 +400,7 @@ $string['stdchangepassword_explldap'] = 'NOTE: It is recommended that you use LD
 $string['update_oncreate'] = 'On creation';
 $string['update_onlogin']  = 'On every login';
 $string['update_onupdate']  = 'On update';
-$string['update_never']    = 'Never';
+$string['update_never']	= 'Never';
 $string['unlocked'] = 'Unlocked';
 $string['unlockedifempty'] = 'Unlocked if empty';
 $string['locked'] = 'Locked';

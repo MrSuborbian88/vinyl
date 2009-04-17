@@ -34,13 +34,13 @@ class PGTStorage
    * @protected
    */
   function PGTStorage($cas_parent)
-    {
-      phpCAS::traceBegin();
-      if ( !$cas_parent->isProxy() ) {
+	{
+	  phpCAS::traceBegin();
+	  if ( !$cas_parent->isProxy() ) {
 	phpCAS::error('defining PGT storage makes no sense when not using a CAS proxy'); 
-      }
-      phpCAS::traceEnd();
-    }
+	  }
+	  phpCAS::traceEnd();
+	}
 
   // ########################################################################
   //  DEBUGGING
@@ -53,9 +53,9 @@ class PGTStorage
    * @public
    */
   function getStorageType()
-    {
-      phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
-    }
+	{
+	  phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
+	}
 
   /**
    * This virtual method returns an informational string giving informations on the
@@ -64,9 +64,9 @@ class PGTStorage
    * @public
    */
   function getStorageInfo()
-    {
-      phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
-    }
+	{
+	  phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
+	}
 
   // ########################################################################
   //  ERROR HANDLING
@@ -92,9 +92,9 @@ class PGTStorage
    * @deprecated not used.
    */
   function setErrorMessage($error_message)
-    {
-      $this->_error_message = $error_message;
-    }
+	{
+	  $this->_error_message = $error_message;
+	}
 
   /**
    * This method returns an error message set by PGTStorage::setErrorMessage().
@@ -106,9 +106,9 @@ class PGTStorage
    * @deprecated not used.
    */
   function getErrorMessage()
-    {
-      return $this->_error_message;
-    }
+	{
+	  return $this->_error_message;
+	}
 
   // ########################################################################
   //  INITIALIZATION
@@ -131,9 +131,9 @@ class PGTStorage
    * @protected
    */
   function isInitialized()
-    {
-      return $this->_initialized;
-    }
+	{
+	  return $this->_initialized;
+	}
 
   /**
    * This virtual method initializes the object.
@@ -141,9 +141,9 @@ class PGTStorage
    * @protected
    */
   function init()
-    {
-      $this->_initialized = TRUE;
-    }
+	{
+	  $this->_initialized = TRUE;
+	}
 
   // ########################################################################
   //  PGT I/O
@@ -159,9 +159,9 @@ class PGTStorage
    * @protected
    */
   function write($pgt,$pgt_iou)
-    {
-      phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
-    }
+	{
+	  phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
+	}
 
   /**
    * This virtual method reads a PGT corresponding to a PGT Iou and deletes
@@ -173,9 +173,9 @@ class PGTStorage
    * @protected
    */
   function read($pgt_iou)
-    {
-      phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
-    }
+	{
+	  phpCAS::error(__CLASS__.'::'.__FUNCTION__.'() should never be called'); 
+	}
 
   /** @} */
   

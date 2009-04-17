@@ -55,7 +55,7 @@ class XML{
 	var $parser;   #a reference to the XML parser
 	var $document; #the entire XML structure built up so far
 	var $parent;   #a pointer to the current parent - the parent will be an array
-	var $stack;    #a stack of the most recent parent at each nesting level
+	var $stack;	#a stack of the most recent parent at each nesting level
 	var $last_opened_tag; #keeps track of the last tag opened.
 
 	function XML(){
@@ -68,7 +68,7 @@ class XML{
 	function destruct(){ xml_parser_free($this->parser); }
 	function & parse(&$data){
 		$this->document = array();
-		$this->stack    = array();
+		$this->stack	= array();
 		$this->parent   = &$this->document;
 		return xml_parse($this->parser, $data, true) ? $this->document : NULL;
 	}

@@ -13,10 +13,10 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
@@ -42,46 +42,46 @@ require_once 'Zend/Search/Lucene/Search/QueryParserException.php';
 
 /**
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 abstract class Zend_Search_Lucene_Search_QueryEntry
 {
-    /**
-     * Query entry boost factor
-     *
-     * @var float
-     */
-    protected $_boost = 1.0;
+	/**
+	 * Query entry boost factor
+	 *
+	 * @var float
+	 */
+	protected $_boost = 1.0;
 
 
-    /**
-     * Process modifier ('~')
-     *
-     * @param mixed $parameter
-     */
-    abstract public function processFuzzyProximityModifier($parameter = null);
+	/**
+	 * Process modifier ('~')
+	 *
+	 * @param mixed $parameter
+	 */
+	abstract public function processFuzzyProximityModifier($parameter = null);
 
 
-    /**
-     * Transform entry to a subquery
-     *
-     * @param string $encoding
-     * @return Zend_Search_Lucene_Search_Query
-     */
-    abstract public function getQuery($encoding);
+	/**
+	 * Transform entry to a subquery
+	 *
+	 * @param string $encoding
+	 * @return Zend_Search_Lucene_Search_Query
+	 */
+	abstract public function getQuery($encoding);
 
-    /**
-     * Boost query entry
-     *
-     * @param float $boostFactor
-     */
-    public function boost($boostFactor)
-    {
-        $this->_boost *= $boostFactor;
-    }
+	/**
+	 * Boost query entry
+	 *
+	 * @param float $boostFactor
+	 */
+	public function boost($boostFactor)
+	{
+		$this->_boost *= $boostFactor;
+	}
 
 
 }

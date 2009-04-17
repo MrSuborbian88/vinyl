@@ -1,28 +1,28 @@
 <?php // $Id: events.php,v 1.4.4.3 2008/07/06 22:54:05 skodak Exp $
 
 ///////////////////////////////////////////////////////////////////////////
-// Defines core event handlers                                           //
+// Defines core event handlers										   //
 ///////////////////////////////////////////////////////////////////////////
-//                                                                       //
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
-// Moodle - Modular Object-Oriented Dynamic Learning Environment         //
-//          http://moodle.org                                            //
-//                                                                       //
-// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com       //
-//                                                                       //
+//																	   //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
+// Moodle - Modular Object-Oriented Dynamic Learning Environment		 //
+//		  http://moodle.org											//
+//																	   //
+// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com	   //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
-//                                                                       //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -64,15 +64,15 @@ groups_grouping_created - object groups_grouping table record
 groups_grouping_updated - object groups_grouping table record
 groups_grouping_deleted - object groups_grouping table record
 
-groups_members_removed          - object courseid+userid - removed all users (or one user) from all groups in course
+groups_members_removed		  - object courseid+userid - removed all users (or one user) from all groups in course
 groups_groupings_groups_removed - int course id - removed all groups from all groupings in course
-groups_groups_deleted           - int course id - deleted all course groups
-groups_groupings_deleted        - int course id - deleted all course groupings
+groups_groups_deleted		   - int course id - deleted all course groups
+groups_groupings_deleted		- int course id - deleted all course groupings
 
 ==== role related evetns ====
 
-role_assigned         - object role_assignments table record
-role_unassigned       - object role_assignments table record
+role_assigned		 - object role_assignments table record
+role_unassigned	   - object role_assignments table record
 
 
 */

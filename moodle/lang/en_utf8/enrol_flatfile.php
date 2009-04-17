@@ -1,5 +1,5 @@
 <?PHP // $Id: enrol_flatfile.php,v 1.4 2006/11/01 09:44:05 moodler Exp $ 
-      // enrol_flatfile.php - created with Moodle 1.7 beta + (2006101003)
+	  // enrol_flatfile.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['description'] = 'This method will repeatedly check for and process a specially-formatted text file in the location that you specify.
@@ -7,12 +7,12 @@ The file is a comma separated file assumed to have four or six fields per line:
 <pre>
 *  operation, role, idnumber(user), idnumber(course) [, starttime, endtime]
 where:
-*  operation        = add | del
-*  role             = student | teacher | teacheredit
+*  operation		= add | del
+*  role			 = student | teacher | teacheredit
 *  idnumber(user)   = idnumber in the user table NB not id
 *  idnumber(course) = idnumber in the course table NB not id
-*  starttime        = start time (in seconds since epoch) - optional
-*  endtime          = end time (in seconds since epoch) - optional
+*  starttime		= start time (in seconds since epoch) - optional
+*  endtime		  = end time (in seconds since epoch) - optional
 </pre>
 It could look something like this:
 <pre>

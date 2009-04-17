@@ -1,5 +1,5 @@
 <?PHP // $Id: notes.php,v 1.4.2.4 2008/11/30 19:25:50 skodak Exp $
-      // note.php
+	  // note.php
 $string['addnewnote'] = 'Add a new note';
 $string['addnewnoteselect'] = 'Select users to write notes about';
 $string['bynameondate'] = 'by $a->name - $a->date';

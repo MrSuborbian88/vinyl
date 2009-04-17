@@ -9,9 +9,9 @@
    * "sendmail_path" setting to this file with a logfile parameter.
    *
    * - Set in php.ini (not settable in config.php):
-   *     sendmail_path=/path-to-moodle/admin/mailout-debugger.php');
+   *	 sendmail_path=/path-to-moodle/admin/mailout-debugger.php');
    *   Or from the commandline
-   *     php -d sendmail_path='/path-to-moodle/admin/mailout-debugger.php' /path/to/cron.php
+   *	 php -d sendmail_path='/path-to-moodle/admin/mailout-debugger.php' /path/to/cron.php
    *
    * - Create a file in admin called mailout-debugger.enable
    *   (this is a security check to prevent execution in prod environments)
@@ -30,28 +30,28 @@
 
 // Security check.
 if (!file_exists(dirname(__FILE__).'/mailout-debugger.enable')) {
-    mdie("Disabled.");
+	mdie("Disabled.");
 }
 $tmpdir=sys_get_temp_dir(); // default
 
 if (isset($_SERVER['REMOTE_ADDR'])) {
-    mdie("should not be called from web server!");
+	mdie("should not be called from web server!");
 }
 
 if (isset($_ENV['TMPDIR']) && is_dir($_ENV['TMPDIR'])) {
-    $tmpdir = $_ENV['TMPDIR'];
+	$tmpdir = $_ENV['TMPDIR'];
 }
 
 $tmpfile = $tmpdir . '/moodle-mailout.log';
 $fh = fopen($tmpfile, 'a+', false)
-    or mdie("Error openning $tmpfile on append\n");
+	or mdie("Error openning $tmpfile on append\n");
 fwrite($fh, "==== ".strftime("%a %b %e %H:%M:%S %Y", time())." ====\n");
 fwrite($fh, "==== Commandline: " . implode(' ',$argv) . "\n");
 
 $stdin = fopen('php://stdin', 'r');
 
 while ($line = fgets($stdin)) {
-    fwrite($fh, $line);
+	fwrite($fh, $line);
 }
 fwrite($fh, "\n");
 fclose($fh);
@@ -65,13 +65,13 @@ fclose($stdin);
  *
  * do_somethting() or mdie("Something went wrong");
  *
- * @param string  $msg       Error message
+ * @param string  $msg	   Error message
  * @param integer $errorcode Error code to emit
  *
  */
 function mdie($msg='', $errorcode=1) {
-    trigger_error($msg);
-    exit($errorcode);
+	trigger_error($msg);
+	exit($errorcode);
 }
 
 ?>

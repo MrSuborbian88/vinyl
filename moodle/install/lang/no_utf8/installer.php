@@ -186,7 +186,7 @@ Dette vil tillate Moodle å sette minnegrensen selv.</li>
 <li>Hvis du har tilgang til php.ini fila di, kan du endre <b>memory_limit</b> innstillinga der til omtrent 40M. Hvis du ikke har tilgang kan du be administrator gjøre dette for deg.</li>
 <li>På noen PHP-servere kan du lage en .htaccess fil i Moodlemappen som inneholder denne linjen:
 <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>Uansett, på noen servere kan dette forhindre <b>alle</b> PHP sider fra å virke (du vil se feilmeldinger når du ser på sider) og da må du fjerne .htaccess fila.</p></li>
+	<p>Uansett, på noen servere kan dette forhindre <b>alle</b> PHP sider fra å virke (du vil se feilmeldinger når du ser på sider) og da må du fjerne .htaccess fila.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Noen påkrevde felt mangler';
 $string['moodledocslink'] = 'Moodledokumentasjon for denne siden';

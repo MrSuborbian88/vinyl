@@ -1,13 +1,13 @@
 <?php
-    require("../../../../config.php");
+	require("../../../../config.php");
 
-    $id = optional_param('id', SITEID, PARAM_INT);
+	$id = optional_param('id', SITEID, PARAM_INT);
 
-    require_course_login($id);
-    @header('Content-Type: text/html; charset=utf-8');
+	require_course_login($id);
+	@header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -18,52 +18,52 @@ html, body { width: 238; height: 188; }
 <script type="text/javascript" src="popup.js"></script>
 <script type="text/javascript">
 function _CloseOnEsc() {
-    if (event.keyCode == 27) {
-        window.close();
-        return;
-    }
+	if (event.keyCode == 27) {
+		window.close();
+		return;
+	}
 }
 
 function Init() {
-    // run on page load
-    __dlg_init();
-    document.body.onkeypress = _CloseOnEsc;
+	// run on page load
+	__dlg_init();
+	document.body.onkeypress = _CloseOnEsc;
 
-    var color = window.dialogArguments;
-    color = ValidateColor(color) || '000000';
-    View(color); // set default color
+	var color = window.dialogArguments;
+	color = ValidateColor(color) || '000000';
+	View(color); // set default color
 }
 
 function View(color) {
-    // preview color
-    document.getElementById("ColorPreview").style.backgroundColor = '#' + color;
-    document.getElementById("ColorHex").value = '#' + color;
+	// preview color
+	document.getElementById("ColorPreview").style.backgroundColor = '#' + color;
+	document.getElementById("ColorHex").value = '#' + color;
 }
 
 function Set(string) {
-    // select color
-    var color = ValidateColor(string);
-    if (color == null) { alert("Invalid color code: " + string); }        // invalid color
-    else {                                                                // valid color
-        View(color); // show selected color
-        __dlg_close(color);
-    }
+	// select color
+	var color = ValidateColor(string);
+	if (color == null) { alert("Invalid color code: " + string); }		// invalid color
+	else {																// valid color
+		View(color); // show selected color
+		__dlg_close(color);
+	}
 }
 
-function ValidateColor(string) {                // return valid color code
-    string = string || '';
-    string = string + "";
-    string = string.toUpperCase();
-    var chars = '0123456789ABCDEF';
-    var out   = '';
+function ValidateColor(string) {				// return valid color code
+	string = string || '';
+	string = string + "";
+	string = string.toUpperCase();
+	var chars = '0123456789ABCDEF';
+	var out   = '';
 
-    for (var i=0; i<string.length; i++) {             // remove invalid color chars
-        var schar = string.charAt(i);
-        if (chars.indexOf(schar) != -1) { out += schar; }
-    }
+	for (var i=0; i<string.length; i++) {			 // remove invalid color chars
+		var schar = string.charAt(i);
+		if (chars.indexOf(schar) != -1) { out += schar; }
+	}
 
-    if (out.length != 6) { return null; }            // check length
-    return out;
+	if (out.length != 6) { return null; }			// check length
+	return out;
 }
 
 </script>
@@ -75,7 +75,7 @@ function ValidateColor(string) {                // return valid color code
  <tr>
   <td style="background:buttonface" valign=center><div style="background-color: #000000; padding: 1; height: 21px; width: 50px"><div id="ColorPreview" style="height: 100%; width: 100%"></div></div></td>
   <td style="background:buttonface" valign=center><input type="text" name="ColorHex"
-    id="ColorHex" value="" size=15 style="font-size: 12px" /></td>
+	id="ColorHex" value="" size=15 style="font-size: 12px" /></td>
   <td style="background:buttonface" width=100%></td>
  </tr>
 </table>

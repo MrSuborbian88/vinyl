@@ -15,24 +15,24 @@
  */
 function PMA_getDirContent($dir, $expression = '')
 {
-    if (file_exists($dir) && $handle = @opendir($dir)) {
-        $result = array();
-        if (substr($dir, -1) != '/') {
-            $dir .= '/';
-        }
-        while ($file = @readdir($handle)) {
-        // for PHP < 5.2.4, is_file() gives a warning when using open_basedir
-        // and verifying '..' or '.'
-            if ('.' != $file && '..' != $file && is_file($dir . $file) && ($expression == '' || preg_match($expression, $file))) {
-                $result[] = $file;
-            }
-        }
-        @closedir($handle);
-        asort($result);
-        return $result;
-    } else {
-        return FALSE;
-    }
+	if (file_exists($dir) && $handle = @opendir($dir)) {
+		$result = array();
+		if (substr($dir, -1) != '/') {
+			$dir .= '/';
+		}
+		while ($file = @readdir($handle)) {
+		// for PHP < 5.2.4, is_file() gives a warning when using open_basedir
+		// and verifying '..' or '.'
+			if ('.' != $file && '..' != $file && is_file($dir . $file) && ($expression == '' || preg_match($expression, $file))) {
+				$result[] = $file;
+			}
+		}
+		@closedir($handle);
+		asort($result);
+		return $result;
+	} else {
+		return FALSE;
+	}
 }
 
 /**
@@ -45,19 +45,19 @@ function PMA_getDirContent($dir, $expression = '')
  */
 function PMA_getFileSelectOptions($dir, $extensions = '', $active = '')
 {
-    $list = PMA_getDirContent($dir, $extensions);
-    if ($list === FALSE) {
-        return FALSE;
-    }
-    $result = '';
-    foreach ($list as $key => $val) {
-        $result .= '<option value="'. htmlspecialchars($val) . '"';
-        if ($val == $active) {
-            $result .= ' selected="selected"';
-        }
-        $result .= '>' . htmlspecialchars($val) . '</option>' . "\n";
-    }
-    return $result;
+	$list = PMA_getDirContent($dir, $extensions);
+	if ($list === FALSE) {
+		return FALSE;
+	}
+	$result = '';
+	foreach ($list as $key => $val) {
+		$result .= '<option value="'. htmlspecialchars($val) . '"';
+		if ($val == $active) {
+			$result .= ' selected="selected"';
+		}
+		$result .= '>' . htmlspecialchars($val) . '</option>' . "\n";
+	}
+	return $result;
 }
 
 /**
@@ -67,28 +67,28 @@ function PMA_getFileSelectOptions($dir, $extensions = '', $active = '')
  */
 function PMA_supportedDecompressions()
 {
-    global $cfg;
+	global $cfg;
 
-    $compressions = '';
+	$compressions = '';
 
-    if ($cfg['GZipDump'] && @function_exists('gzopen')) {
-        if (!empty($compressions)) {
-            $compressions .= '|';
-        }
-        $compressions .= 'gz';
-    }
-    if ($cfg['BZipDump'] && @function_exists('bzopen')) {
-        if (!empty($compressions)) {
-            $compressions .= '|';
-        }
-        $compressions .= 'bz2';
-    }
-    if ($cfg['ZipDump'] && @function_exists('gzinflate')) {
-        if (!empty($compressions)) {
-            $compressions .= '|';
-        }
-        $compressions .= 'zip';
-    }
+	if ($cfg['GZipDump'] && @function_exists('gzopen')) {
+		if (!empty($compressions)) {
+			$compressions .= '|';
+		}
+		$compressions .= 'gz';
+	}
+	if ($cfg['BZipDump'] && @function_exists('bzopen')) {
+		if (!empty($compressions)) {
+			$compressions .= '|';
+		}
+		$compressions .= 'bz2';
+	}
+	if ($cfg['ZipDump'] && @function_exists('gzinflate')) {
+		if (!empty($compressions)) {
+			$compressions .= '|';
+		}
+		$compressions .= 'zip';
+	}
 
-    return $compressions;
+	return $compressions;
 }

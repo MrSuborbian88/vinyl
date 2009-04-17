@@ -1,5 +1,5 @@
 <?PHP // $Id: forum.php,v 1.21.4.15 2009/01/30 11:30:21 mudrd8mz Exp $
-      // forum.php - created with Moodle 1.7 beta + (2006101003)
+	  // forum.php - created with Moodle 1.7 beta + (2006101003)
 
 $string['addanewdiscussion'] = 'Add a new discussion topic';
 $string['addanewquestion'] = 'Add a new question';

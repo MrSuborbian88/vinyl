@@ -1,26 +1,26 @@
 <?php // $Id: index.php,v 1.3.2.1 2007/10/27 15:35:16 skodak Exp $
 
 ///////////////////////////////////////////////////////////////////////////
-//                                                                       //
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
-// Moodle - Modular Object-Oriented Dynamic Learning Environment         //
-//          http://moodle.com                                            //
-//                                                                       //
-// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com       //
-//                                                                       //
+//																	   //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
+// Moodle - Modular Object-Oriented Dynamic Learning Environment		 //
+//		  http://moodle.com											//
+//																	   //
+// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com	   //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
-//                                                                       //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
 
 require_once '../../../config.php';
@@ -31,7 +31,7 @@ require_once 'form.php';
 $courseid  = optional_param('id', SITEID, PARAM_INT);
 
 if (!$course = get_record('course', 'id', $courseid)) {
-    print_error('nocourseid');
+	print_error('nocourseid');
 }
 require_login($course);
 $context = get_context_instance(CONTEXT_COURSE, $course->id);
@@ -54,24 +54,24 @@ $settings = grade_get_settings($course->id);
 $mform->set_data($settings);
 
 if ($mform->is_cancelled()) {
-    redirect($returnurl);
+	redirect($returnurl);
 
 } else if ($data = $mform->get_data()) {
-    $data = (array)$data;
-    $general = array('displaytype', 'decimalpoints', 'aggregationposition');
-    foreach ($data as $key=>$value) {
-        if (!in_array($key, $general) and strpos($key, 'report_') !== 0
-                                      and strpos($key, 'import_') !== 0
-                                      and strpos($key, 'export_') !== 0) {
-            continue;
-        }
-        if ($value == -1) {
-            $value = null;
-        }
-        grade_set_setting($course->id, $key, $value);
-    }
+	$data = (array)$data;
+	$general = array('displaytype', 'decimalpoints', 'aggregationposition');
+	foreach ($data as $key=>$value) {
+		if (!in_array($key, $general) and strpos($key, 'report_') !== 0
+									  and strpos($key, 'import_') !== 0
+									  and strpos($key, 'export_') !== 0) {
+			continue;
+		}
+		if ($value == -1) {
+			$value = null;
+		}
+		grade_set_setting($course->id, $key, $value);
+	}
 
-    redirect($returnurl);
+	redirect($returnurl);
 }
 
 /// Print header

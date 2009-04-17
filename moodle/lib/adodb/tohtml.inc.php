@@ -114,7 +114,7 @@ GLOBAL $gSQLMaxRows,$gSQLBlockRows,$ADODB_ROUND;
 				@fclose($fd);
 				if (!function_exists ("mime_content_type")) {
 				  function mime_content_type ($file) {
-				    return exec("file -bi ".escapeshellarg($file));
+					return exec("file -bi ".escapeshellarg($file));
 				  }
 				}
 				$t = mime_content_type($tmpname);

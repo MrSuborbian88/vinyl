@@ -1,5 +1,5 @@
 <?PHP // $Id: xmldb.php,v 1.14.2.3 2008/11/13 14:58:09 wildgirl Exp $ 
-      // xmldb.php - created with Moodle 1.7 beta + (2006101003)
+	  // xmldb.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['aftertable'] = 'After Table:';

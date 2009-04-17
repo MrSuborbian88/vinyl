@@ -5,7 +5,7 @@
  * @version $Id: parse_analyze.lib.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -41,19 +41,19 @@ $is_select = isset($analyzed_sql[0]['queryflags']['select_from']);
  * - do not display the sub-pages links)
  */
 if ($is_select) {
-    $prev_db = $db;
-    if (isset($analyzed_sql[0]['table_ref'][0]['table_true_name'])) {
-        $table = $analyzed_sql[0]['table_ref'][0]['table_true_name'];
-    }
-    if (isset($analyzed_sql[0]['table_ref'][0]['db'])
-      && strlen($analyzed_sql[0]['table_ref'][0]['db'])) {
-        $db    = $analyzed_sql[0]['table_ref'][0]['db'];
-    } else {
-        $db = $prev_db;
-    }
-    // Nijel: don't change reload, if we already decided to reload in import
-    if (empty($reload)) {
-        $reload  = ($db == $prev_db) ? 0 : 1;
-    }
+	$prev_db = $db;
+	if (isset($analyzed_sql[0]['table_ref'][0]['table_true_name'])) {
+		$table = $analyzed_sql[0]['table_ref'][0]['table_true_name'];
+	}
+	if (isset($analyzed_sql[0]['table_ref'][0]['db'])
+	  && strlen($analyzed_sql[0]['table_ref'][0]['db'])) {
+		$db	= $analyzed_sql[0]['table_ref'][0]['db'];
+	} else {
+		$db = $prev_db;
+	}
+	// Nijel: don't change reload, if we already decided to reload in import
+	if (empty($reload)) {
+		$reload  = ($db == $prev_db) ? 0 : 1;
+	}
 }
 ?>

@@ -28,29 +28,29 @@ require_once("$CFG->dirroot/mod/lesson/lib.php");
 */
 class LessonPageSearchDocument extends SearchDocument {
 
-    /**
-    * constructor
-    *
-    */
-    public function __construct(&$page, $lessonmodule_id, $course_id, $itemtype, $context_id) {
-        // generic information
-        $doc->docid        = $page['id'];
-        $doc->documenttype = SEARCH_TYPE_LESSON;
-        $doc->itemtype     = $itemtype;
-        $doc->contextid    = $context_id;
+	/**
+	* constructor
+	*
+	*/
+	public function __construct(&$page, $lessonmodule_id, $course_id, $itemtype, $context_id) {
+		// generic information
+		$doc->docid		= $page['id'];
+		$doc->documenttype = SEARCH_TYPE_LESSON;
+		$doc->itemtype	 = $itemtype;
+		$doc->contextid	= $context_id;
 
-        $doc->title        = $page['title'];
-        
-        $doc->author       = '';
-        $doc->contents     = $page['contents'];
-        $doc->date         = $page['timecreated'];
-        $doc->url          = lesson_make_link($lessonmodule_id, $page['id'], $itemtype);
-        
-        // module specific information
-        $data->lesson      = $page['lessonid'];
-        
-        parent::__construct($doc, $data, $course_id, 0, 0, 'mod/'.SEARCH_TYPE_LESSON);
-    } 
+		$doc->title		= $page['title'];
+		
+		$doc->author	   = '';
+		$doc->contents	 = $page['contents'];
+		$doc->date		 = $page['timecreated'];
+		$doc->url		  = lesson_make_link($lessonmodule_id, $page['id'], $itemtype);
+		
+		// module specific information
+		$data->lesson	  = $page['lessonid'];
+		
+		parent::__construct($doc, $data, $course_id, 0, 0, 'mod/'.SEARCH_TYPE_LESSON);
+	} 
 }
 
 /**
@@ -60,12 +60,12 @@ class LessonPageSearchDocument extends SearchDocument {
 * @return a well formed link to lesson page
 */
 function lesson_make_link($lessonmoduleid, $itemid, $itemtype) {
-    global $CFG;
+	global $CFG;
 
-    if ($itemtype == 'page'){
-        return "{$CFG->wwwroot}/mod/lesson/view.php?id={$lessonmoduleid}&amp;pageid={$itemid}";
-    }
-    return $CFG->wwwroot.'/mod/lesson/view.php?id='.$lessonmoduleid;
+	if ($itemtype == 'page'){
+		return "{$CFG->wwwroot}/mod/lesson/view.php?id={$lessonmoduleid}&amp;pageid={$itemid}";
+	}
+	return $CFG->wwwroot.'/mod/lesson/view.php?id='.$lessonmoduleid;
 }
 
 /**
@@ -73,11 +73,11 @@ function lesson_make_link($lessonmoduleid, $itemid, $itemtype) {
 *
 */
 function lesson_iterator() {
-    if ($lessons = get_records('lesson')){
-        return $lessons;
-    } else {
-        return array();
-    }
+	if ($lessons = get_records('lesson')){
+		return $lessons;
+	} else {
+		return array();
+	}
 }
 
 /**
@@ -87,20 +87,20 @@ function lesson_iterator() {
 */
 function lesson_get_content_for_index(&$lesson) {
 
-    $documents = array();
-    if (!$lesson) return $documents;
-    
-    $pages = get_records('lesson_pages', 'lessonid', $lesson->id);
-    if ($pages){
-        $coursemodule = get_field('modules', 'id', 'name', 'lesson');
-        $cm = get_record('course_modules', 'course', $lesson->course, 'module', $coursemodule, 'instance', $lesson->id);
-        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-        foreach($pages as $aPage){
-            $documents[] = new LessonPageSearchDocument(get_object_vars($aPage), $cm->id, $lesson->course, 'page', $context->id);
-        }
-    }
+	$documents = array();
+	if (!$lesson) return $documents;
+	
+	$pages = get_records('lesson_pages', 'lessonid', $lesson->id);
+	if ($pages){
+		$coursemodule = get_field('modules', 'id', 'name', 'lesson');
+		$cm = get_record('course_modules', 'course', $lesson->course, 'module', $coursemodule, 'instance', $lesson->id);
+		$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+		foreach($pages as $aPage){
+			$documents[] = new LessonPageSearchDocument(get_object_vars($aPage), $cm->id, $lesson->course, 'page', $context->id);
+		}
+	}
 
-    return $documents;
+	return $documents;
 }
 
 /**
@@ -110,17 +110,17 @@ function lesson_get_content_for_index(&$lesson) {
 */
 function lesson_single_document($id, $itemtype) {
 
-    // only page is known yet
-    $page = get_record('lesson_pages', 'id', $id);
-    $lesson = get_record('lesson', 'id', $page->lessonid);
-    $coursemodule = get_field('modules', 'id', 'name', 'lesson');
-    $cm = get_record('course_modules', 'course', $lesson->course, 'module', $coursemodule, 'instance', $page->lessonid);
-    if ($cm){
-        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
-        $lesson->groupid = 0;
-        return new LessonPageSearchDocument(get_object_vars($page), $cm->id, $lesson->course, $itemtype, $context->id);
-    }
-    return null;
+	// only page is known yet
+	$page = get_record('lesson_pages', 'id', $id);
+	$lesson = get_record('lesson', 'id', $page->lessonid);
+	$coursemodule = get_field('modules', 'id', 'name', 'lesson');
+	$cm = get_record('course_modules', 'course', $lesson->course, 'module', $coursemodule, 'instance', $page->lessonid);
+	if ($cm){
+		$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+		$lesson->groupid = 0;
+		return new LessonPageSearchDocument(get_object_vars($page), $cm->id, $lesson->course, $itemtype, $context->id);
+	}
+	return null;
 }
 
 /**
@@ -129,9 +129,9 @@ function lesson_single_document($id, $itemtype) {
 *
 */
 function lesson_delete($info, $itemtype) {
-    $object->id = $info;
-    $object->itemtype = $itemtype;
-    return $object;
+	$object->id = $info;
+	$object->itemtype = $itemtype;
+	return $object;
 }
 
 /**
@@ -139,10 +139,10 @@ function lesson_delete($info, $itemtype) {
 *
 */
 function lesson_db_names() {
-    //[primary id], [table name], [time created field name], [time modified field name] [itemtype] [select for getting itemtype]
-    return array(
-        array('id', 'lesson_pages', 'timecreated', 'timemodified', 'page')
-    );
+	//[primary id], [table name], [time created field name], [time modified field name] [itemtype] [select for getting itemtype]
+	return array(
+		array('id', 'lesson_pages', 'timecreated', 'timemodified', 'page')
+	);
 }
 
 /**
@@ -163,49 +163,49 @@ function lesson_db_names() {
 * @return true if access is allowed, false elsewhere
 */
 function lesson_check_text_access($path, $itemtype, $this_id, $user, $group_id, $context_id){
-    global $CFG, $USER;
-    
-    include_once("{$CFG->dirroot}/{$path}/lib.php");
+	global $CFG, $USER;
+	
+	include_once("{$CFG->dirroot}/{$path}/lib.php");
 
-    // get the lesson page
-    $page = get_record('lesson_pages', 'id', $this_id);
-    $lesson = get_record('lesson', 'id', $page->lessonid);
-    $context = get_record('context', 'id', $context_id);
-    $cm = get_record('course_modules', 'id', $context->instanceid);
-    // $lesson = get_record('lesson', 'id', $page->lessonid);
-    // $cm = get_coursemodule_from_instance('lesson', $page->lessonid, $lesson->course);
-    // $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+	// get the lesson page
+	$page = get_record('lesson_pages', 'id', $this_id);
+	$lesson = get_record('lesson', 'id', $page->lessonid);
+	$context = get_record('context', 'id', $context_id);
+	$cm = get_record('course_modules', 'id', $context->instanceid);
+	// $lesson = get_record('lesson', 'id', $page->lessonid);
+	// $cm = get_coursemodule_from_instance('lesson', $page->lessonid, $lesson->course);
+	// $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-    if (!$cm->visible and !has_capability('moodle/course:viewhiddenactivities', $context)){
-        if (!empty($CFG->search_access_debug)) echo "search reject : hidden lesson ";
-        return false;
-    }
-    
-    $lessonsuperuser = has_capability('mod/lesson:edit', $context) or has_capability('mod/lesson:manage', $context);
-    // approval check : entries should be approved for being viewed, or belongs to the user 
-    if (time() < $lesson->available && !$lessonsuperuser ){
-        if (!empty($CFG->search_access_debug)) echo "search reject : lesson is not available ";
-        return false;
-    }
+	if (!$cm->visible and !has_capability('moodle/course:viewhiddenactivities', $context)){
+		if (!empty($CFG->search_access_debug)) echo "search reject : hidden lesson ";
+		return false;
+	}
+	
+	$lessonsuperuser = has_capability('mod/lesson:edit', $context) or has_capability('mod/lesson:manage', $context);
+	// approval check : entries should be approved for being viewed, or belongs to the user 
+	if (time() < $lesson->available && !$lessonsuperuser ){
+		if (!empty($CFG->search_access_debug)) echo "search reject : lesson is not available ";
+		return false;
+	}
 
-    if ($lesson->usepassword && !$lessonsuperuser){
-        if (!empty($CFG->search_access_debug)) echo "search reject : password required, cannot output in searches ";
-        return false;
-    }
-    
-    // the user have it seen yet ? did he tried one time at least
-    $attempt = get_record('lesson_attempts', 'lessonid', $lesson->id, 'pageid', $page->id, 'userid', $USER->id);
-    if (!$attempt && !$lessonsuperuser){
-        if (!empty($CFG->search_access_debug)) echo "search reject : never tried this lesson ";
-        return false;
-    }
+	if ($lesson->usepassword && !$lessonsuperuser){
+		if (!empty($CFG->search_access_debug)) echo "search reject : password required, cannot output in searches ";
+		return false;
+	}
+	
+	// the user have it seen yet ? did he tried one time at least
+	$attempt = get_record('lesson_attempts', 'lessonid', $lesson->id, 'pageid', $page->id, 'userid', $USER->id);
+	if (!$attempt && !$lessonsuperuser){
+		if (!empty($CFG->search_access_debug)) echo "search reject : never tried this lesson ";
+		return false;
+	}
 
-    if ($attempt && !$attempt->correct && !$lessonsuperuser && !$lesson->retake){
-        if (!empty($CFG->search_access_debug)) echo "search reject : one try only, still not good ";
-        return false;
-    }
-    
-    return true;
+	if ($attempt && !$attempt->correct && !$lessonsuperuser && !$lesson->retake){
+		if (!empty($CFG->search_access_debug)) echo "search reject : one try only, still not good ";
+		return false;
+	}
+	
+	return true;
 }
 
 /**
@@ -213,12 +213,12 @@ function lesson_check_text_access($path, $itemtype, $this_id, $user, $group_id, 
 *
 */
 function lesson_link_post_processing($title){
-    global $CFG;
-    
-    if ($CFG->block_search_utf8dir){
-        return mb_convert_encoding($title, 'UTF-8', 'auto');
-    }
-    return mb_convert_encoding($title, 'auto', 'UTF-8');
+	global $CFG;
+	
+	if ($CFG->block_search_utf8dir){
+		return mb_convert_encoding($title, 'UTF-8', 'auto');
+	}
+	return mb_convert_encoding($title, 'auto', 'UTF-8');
 }
 
 ?>

@@ -1,5 +1,5 @@
 <?PHP // $Id: chat.php,v 1.5.8.6 2008/12/16 04:54:27 dongsheng Exp $ 
-      // chat.php - created with Moodle 1.7 beta + (2006101003)
+	  // chat.php - created with Moodle 1.7 beta + (2006101003)
 
 $string['autoscroll'] = 'Auto Scroll';
 $string['beep'] = 'beep';

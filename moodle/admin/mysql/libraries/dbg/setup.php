@@ -4,7 +4,7 @@
  * @version $Id: setup.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -14,17 +14,17 @@ if (! defined('PHPMYADMIN')) {
  * which can also be included from inside a function
  */
 if ($GLOBALS['cfg']['DBG']['enable']) {
-    /**
-     * Loads the DBG extension if needed
-     */
-    if (! @extension_loaded('dbg') && ! PMA_dl('dbg')) {
-        echo '<div class="warning">'
-            .sprintf($GLOBALS['strCantLoad'], 'DBG')
-            .' <a href="./Documentation.html#faqdbg" target="documentation">'
-            .$GLOBALS['strDocu'] . '</a>'
-            .'</div>';
-    } else {
-        $GLOBALS['DBG'] = true;
-    }
+	/**
+	 * Loads the DBG extension if needed
+	 */
+	if (! @extension_loaded('dbg') && ! PMA_dl('dbg')) {
+		echo '<div class="warning">'
+			.sprintf($GLOBALS['strCantLoad'], 'DBG')
+			.' <a href="./Documentation.html#faqdbg" target="documentation">'
+			.$GLOBALS['strDocu'] . '</a>'
+			.'</div>';
+	} else {
+		$GLOBALS['DBG'] = true;
+	}
 }
 ?>

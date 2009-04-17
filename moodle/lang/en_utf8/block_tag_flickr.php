@@ -14,5 +14,5 @@ $string['interestingness-desc'] = 'Interestingness DESC';
 $string['numberofphotos'] = 'Number of photos';
 $string['relevance'] = 'Relevance';
 $string['sortby'] = 'Sort by';
-                                   
+								   
 ?>

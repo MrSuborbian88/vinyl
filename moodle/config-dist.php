@@ -1,62 +1,62 @@
 <?PHP // $Id: config-dist.php,v 1.103.2.4 2008/06/30 15:00:25 thepurpleblob Exp $
 ///////////////////////////////////////////////////////////////////////////
-//                                                                       //
-// Moodle configuration file                                             //
-//                                                                       //
+//																	   //
+// Moodle configuration file											 //
+//																	   //
 // This file should be renamed "config.php" in the top-level directory   //
-//                                                                       //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
-//                                                                       //
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
-// Moodle - Modular Object-Oriented Dynamic Learning Environment         //
-//          http://moodle.org                                            //
-//                                                                       //
-// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com       //
-//                                                                       //
+//																	   //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
+// Moodle - Modular Object-Oriented Dynamic Learning Environment		 //
+//		  http://moodle.org											//
+//																	   //
+// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com	   //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
-//                                                                       //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
 unset($CFG);  // Ignore this line
 
 //=========================================================================
 // 1. DATABASE SETUP
 //=========================================================================
-// First, you need to configure the database where all Moodle data       //
-// will be stored.  This database must already have been created         //
-// and a username/password created to access it.                         //
-//                                                                       //
-//   mysql      - the prefix is optional, but useful when installing     //
-//                into databases that already contain tables.            //
+// First, you need to configure the database where all Moodle data	   //
+// will be stored.  This database must already have been created		 //
+// and a username/password created to access it.						 //
+//																	   //
+//   mysql	  - the prefix is optional, but useful when installing	 //
+//				into databases that already contain tables.			//
 //
-//   postgres7  - the prefix is REQUIRED, regardless of whether the      //
-//                database already contains tables.                      //
-//                                                                       //
-// A special case exists when using PostgreSQL databases via sockets.    //
-// Define dbhost as follows, leaving dbname, dbuser, dbpass BLANK!:      //
-//    $CFG->dbhost = " user='muser' password='mpass' dbname='mdata'";    //
+//   postgres7  - the prefix is REQUIRED, regardless of whether the	  //
+//				database already contains tables.					  //
+//																	   //
+// A special case exists when using PostgreSQL databases via sockets.	//
+// Define dbhost as follows, leaving dbname, dbuser, dbpass BLANK!:	  //
+//	$CFG->dbhost = " user='muser' password='mpass' dbname='mdata'";	//
 //
 
-$CFG->dbtype    = 'mysql';       // mysql or postgres7 (for now)
-$CFG->dbhost    = 'localhost';   // eg localhost or db.isp.com
-$CFG->dbname    = 'moodle';      // database name, eg moodle
-$CFG->dbuser    = 'username';    // your database username
-$CFG->dbpass    = 'password';    // your database password
-$CFG->prefix    = 'mdl_';        // Prefix to use for all table names
+$CFG->dbtype	= 'mysql';	   // mysql or postgres7 (for now)
+$CFG->dbhost	= 'localhost';   // eg localhost or db.isp.com
+$CFG->dbname	= 'moodle';	  // database name, eg moodle
+$CFG->dbuser	= 'username';	// your database username
+$CFG->dbpass	= 'password';	// your database password
+$CFG->prefix	= 'mdl_';		// Prefix to use for all table names
 
-$CFG->dbpersist = false;         // Should database connections be reused?
-                 // "false" is the most stable setting
-                 // "true" can improve performance sometimes
+$CFG->dbpersist = false;		 // Should database connections be reused?
+				 // "false" is the most stable setting
+				 // "true" can improve performance sometimes
 
 
 //=========================================================================
@@ -76,9 +76,9 @@ $CFG->wwwroot   = 'http://example.com/moodle';
 // Next, specify the full OS directory path to this same location
 // Make sure the upper/lower case is correct.  Some examples:
 //
-//    $CFG->dirroot = 'c:\program files\easyphp\www\moodle';    // Windows
-//    $CFG->dirroot = '/var/www/html/moodle';     // Redhat Linux
-//    $CFG->dirroot = '/home/example/public_html/moodle'; // Cpanel host
+//	$CFG->dirroot = 'c:\program files\easyphp\www\moodle';	// Windows
+//	$CFG->dirroot = '/var/www/html/moodle';	 // Redhat Linux
+//	$CFG->dirroot = '/home/example/public_html/moodle'; // Cpanel host
 
 $CFG->dirroot   = '/home/example/public_html/moodle';
 
@@ -137,31 +137,31 @@ $CFG->admin = 'admin';
 // was not getting regenerated for any reason. You would probably want
 // make it much longer. Note that you'll need to delete and manually update
 // any existing key.
-//      $CFG->mnetkeylifetime = 28;
+//	  $CFG->mnetkeylifetime = 28;
 //
 // Prevent scheduled backups from operating (and hide the GUI for them)
 // Useful for webhost operators who have alternate methods of backups
-//      $CFG->disablescheduledbackups = true;
+//	  $CFG->disablescheduledbackups = true;
 //
 // Prevent stats processing and hide the GUI
-//      $CFG->disablestatsprocessing = true;
+//	  $CFG->disablestatsprocessing = true;
 //
 // Setting this to true will enable admins to edit any post at any time
-//      $CFG->admineditalways = true;
+//	  $CFG->admineditalways = true;
 //
 // These variables define DEFAULT block variables for new courses
 // If this one is set it overrides all others and is the only one used.
-//      $CFG->defaultblocks_override = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
+//	  $CFG->defaultblocks_override = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
 //
 // These variables define the specific settings for defined course formats.
 // They override any settings defined in the formats own config file.
-//      $CFG->defaultblocks_site = 'site_main_menu,admin,course_list:course_summary,calendar_month';
-//      $CFG->defaultblocks_social = 'participants,search_forums,calendar_month,calendar_upcoming,social_activities,recent_activity,admin,course_list';
-//      $CFG->defaultblocks_topics = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
-//      $CFG->defaultblocks_weeks = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
+//	  $CFG->defaultblocks_site = 'site_main_menu,admin,course_list:course_summary,calendar_month';
+//	  $CFG->defaultblocks_social = 'participants,search_forums,calendar_month,calendar_upcoming,social_activities,recent_activity,admin,course_list';
+//	  $CFG->defaultblocks_topics = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
+//	  $CFG->defaultblocks_weeks = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
 //
 // These blocks are used when no other default setting is found.
-//      $CFG->defaultblocks = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
+//	  $CFG->defaultblocks = 'participants,activity_modules,search_forums,admin,course_list:news_items,calendar_upcoming,recent_activity';
 //
 //
 // Allow unicode characters in uploaded files, generated reports, etc.
@@ -169,46 +169,46 @@ $CFG->admin = 'admin';
 // with backup/restore that will not be solved, because native infozip
 // binaries are doing some weird conversions - use internal PHP zipping instead.
 // NOT RECOMMENDED FOR PRODUCTION SITES
-//     $CFG->unicodecleanfilename = true;
+//	 $CFG->unicodecleanfilename = true;
 //
 // Seconds for files to remain in caches. Decrease this if you are worried
 // about students being served outdated versions of uploaded files.
-//     $CFG->filelifetime = 86400;
+//	 $CFG->filelifetime = 86400;
 //
 // This setting will prevent the 'My Courses' page being displayed when a student
 // logs in. The site front page will always show the same (logged-out) view.
-//     $CFG->disablemycourses = true;
+//	 $CFG->disablemycourses = true;
 // 
 // If this setting is set to true, then Moodle will track the IP of the 
 // current user to make sure it hasn't changed during a session.  This 
 // will prevent the possibility of sessions being hijacked via XSS, but it 
 // may break things for users coming using proxies that change all the time,
 // like AOL.
-//      $CFG->tracksessionip = true;
+//	  $CFG->tracksessionip = true;
 //
 //
 // The following lines are for handling email bounces.
-//      $CFG->handlebounces = true;
-//      $CFG->minbounces = 10;
-//      $CFG->bounceratio = .20;
+//	  $CFG->handlebounces = true;
+//	  $CFG->minbounces = 10;
+//	  $CFG->bounceratio = .20;
 // The next lines are needed both for bounce handling and any other email to module processing.
 // mailprefix must be EXACTLY four characters.
 // Uncomment and customise this block for Postfix 
-//      $CFG->mailprefix = 'mdl+'; // + is the separator for Exim and Postfix.
-//      $CFG->mailprefix = 'mdl-'; // - is the separator for qmail 
-//      $CFG->maildomain = 'youremaildomain.com';
+//	  $CFG->mailprefix = 'mdl+'; // + is the separator for Exim and Postfix.
+//	  $CFG->mailprefix = 'mdl-'; // - is the separator for qmail 
+//	  $CFG->maildomain = 'youremaildomain.com';
 //
 // The following setting will tell Moodle to respect your PHP session 
 // settings. Use this if you want to control session configuration
 // from php.ini, httpd.conf or .htaccess files. 
-//      $CFG->respectsessionsettings = true;
+//	  $CFG->respectsessionsettings = true;
 //
 // This setting will cause the userdate() function not to fix %d in 
 // date strings, and just let them show with a zero prefix.
-//      $CFG->nofixday = true;
+//	  $CFG->nofixday = true;
 //
 // This setting will make some graphs (eg user logs) use lines instead of bars
-//      $CFG->preferlinegraphs = true;
+//	  $CFG->preferlinegraphs = true;
 //
 // Enabling this will allow custom scripts to replace existing moodle scripts.
 // For example: if $CFG->customscripts/course/view.php exists then
@@ -216,15 +216,15 @@ $CFG->admin = 'admin';
 // At present this will only work for files that include config.php and are called
 // as part of the url (index.php is implied).
 // Some examples are:
-//      http://my.moodle.site/course/view.php
-//      http://my.moodle.site/index.php
-//      http://my.moodle.site/admin            (index.php implied)
+//	  http://my.moodle.site/course/view.php
+//	  http://my.moodle.site/index.php
+//	  http://my.moodle.site/admin			(index.php implied)
 // Custom scripts should not include config.php
 // Warning: Replacing standard moodle scripts may pose security risks and/or may not
 // be compatible with upgrades. Use this option only if you are aware of the risks
 // involved. 
 // Specify the full directory path to the custom scripts
-//      $CFG->customscripts = '/home/example/customscripts';
+//	  $CFG->customscripts = '/home/example/customscripts';
 //
 // Performance profiling 
 // 
@@ -248,29 +248,29 @@ $CFG->admin = 'admin';
 // Force displayed usernames
 //   A little hack to anonymise user names for all students.  If you set these 
 //   then all non-teachers will always see these for every person.
-//       $CFG->forcefirstname = 'Bruce';
-//       $CFG->forcelastname  = 'Simpson';
+//	   $CFG->forcefirstname = 'Bruce';
+//	   $CFG->forcelastname  = 'Simpson';
 //
 // The following setting will turn SQL Error logging on. This will output an
 // entry in apache error log indicating the position of the error and the statement
 // called. This option will action disregarding error_reporting setting.
-//     $CFG->dblogerror = true;
+//	 $CFG->dblogerror = true;
 //
 // The following setting will log every database query to a table called adodb_logsql.
 // Use this setting on a development server only, the table grows quickly!
-//     $CFG->logsql = true;
+//	 $CFG->logsql = true;
 //
 // The following setting will turn on username logging into Apache log. For full details regarding setting
 // up of this function please refer to the install section of the document.
-//     $CFG->apacheloguser = 0; // Turn this feature off. Default value.
-//     $CFG->apacheloguser = 1; // Log user id.
-//     $CFG->apacheloguser = 2; // Log full name in cleaned format. ie, Darth Vader will be displayed as darth_vader.
-//     $CFG->apacheloguser = 3; // Log username. 
+//	 $CFG->apacheloguser = 0; // Turn this feature off. Default value.
+//	 $CFG->apacheloguser = 1; // Log user id.
+//	 $CFG->apacheloguser = 2; // Log full name in cleaned format. ie, Darth Vader will be displayed as darth_vader.
+//	 $CFG->apacheloguser = 3; // Log username. 
 // To get the values logged in Apache's log, add to your httpd.conf
 // the following statements. In the General part put:
-//     LogFormat "%h %l %{MOODLEUSER}n %t \"%r\" %s %b \"%{Referer}i\" \"%{User-Agent}i\"" moodleformat
+//	 LogFormat "%h %l %{MOODLEUSER}n %t \"%r\" %s %b \"%{Referer}i\" \"%{User-Agent}i\"" moodleformat
 // And in the part specific to your Moodle install / virtualhost:
-//     CustomLog "/your/path/to/log" moodleformat
+//	 CustomLog "/your/path/to/log" moodleformat
 // CAUTION: Use of this option will expose usernames in the Apache log,
 // If you are going to publish your log, or the output of your web stats analyzer
 // this will weaken the security of your website.
@@ -278,7 +278,7 @@ $CFG->admin = 'admin';
 // Email database connection errors to someone.  If Moodle cannot connect to the 
 // database, then email this address with a notice.
 //
-//     $CFG->emailconnectionerrorsto = 'your@emailaddress.com';
+//	 $CFG->emailconnectionerrorsto = 'your@emailaddress.com';
 // 
 // NOTE: if you are using custompix in your theme, see /fixpix.php.
 // 
@@ -298,7 +298,7 @@ $CFG->admin = 'admin';
 // example) in sites where the user theme should override all other theme
 // settings for accessibility reasons. You can also disable types of themes
 // by removing them from the array. The default setting is:
-//      $CFG->themeorder = array('page', 'course', 'category', 'session', 'user', 'site');
+//	  $CFG->themeorder = array('page', 'course', 'category', 'session', 'user', 'site');
 // NOTE: course, category, session, user themes still require the
 // respective settings to be enabled
 //
@@ -310,23 +310,23 @@ $CFG->admin = 'admin';
 // ALL DONE!  To continue installation, visit your main page with a browser
 //=========================================================================
 if ($CFG->wwwroot == 'http://example.com/moodle') {
-    echo "<p>Error detected in configuration file</p>";
-    echo "<p>Your server address can not be: \$CFG->wwwroot = 'http://example.com/moodle';</p>";
-    die;
+	echo "<p>Error detected in configuration file</p>";
+	echo "<p>Your server address can not be: \$CFG->wwwroot = 'http://example.com/moodle';</p>";
+	die;
 }
 
-if (file_exists("$CFG->dirroot/lib/setup.php"))  {       // Do not edit
-    include_once("$CFG->dirroot/lib/setup.php");
+if (file_exists("$CFG->dirroot/lib/setup.php"))  {	   // Do not edit
+	include_once("$CFG->dirroot/lib/setup.php");
 } else {
-    if ($CFG->dirroot == dirname(__FILE__)) {
-        echo "<p>Could not find this file: $CFG->dirroot/lib/setup.php</p>";
-        echo "<p>Are you sure all your files have been uploaded?</p>";
-    } else {
-        echo "<p>Error detected in config.php</p>";
-        echo "<p>Error in: \$CFG->dirroot = '$CFG->dirroot';</p>";
-        echo "<p>Try this: \$CFG->dirroot = '".dirname(__FILE__)."';</p>";
-    }
-    die;
+	if ($CFG->dirroot == dirname(__FILE__)) {
+		echo "<p>Could not find this file: $CFG->dirroot/lib/setup.php</p>";
+		echo "<p>Are you sure all your files have been uploaded?</p>";
+	} else {
+		echo "<p>Error detected in config.php</p>";
+		echo "<p>Error in: \$CFG->dirroot = '$CFG->dirroot';</p>";
+		echo "<p>Try this: \$CFG->dirroot = '".dirname(__FILE__)."';</p>";
+	}
+	die;
 }
 // MAKE SURE WHEN YOU EDIT THIS FILE THAT THERE ARE NO SPACES, BLANK LINES,
 // RETURNS, OR ANYTHING ELSE AFTER THE TWO CHARACTERS ON THE NEXT LINE.

@@ -30,29 +30,29 @@ require_once './libraries/db_table_exists.lib.php';
 PMA_DBI_select_db($db);
 $table_def = PMA_DBI_query('SHOW FIELDS FROM ' . PMA_backquote($table), null, PMA_DBI_QUERY_STORE);
 if (isset($primary_key)) {
-    $result      = PMA_DBI_query('SELECT * FROM ' . PMA_backquote($table) . ' WHERE ' . $primary_key . ';', null, PMA_DBI_QUERY_STORE);
-    $row         = PMA_DBI_fetch_assoc($result);
+	$result	  = PMA_DBI_query('SELECT * FROM ' . PMA_backquote($table) . ' WHERE ' . $primary_key . ';', null, PMA_DBI_QUERY_STORE);
+	$row		 = PMA_DBI_fetch_assoc($result);
 } else {
-    $result      = PMA_DBI_query('SELECT * FROM ' . PMA_backquote($table) . ' LIMIT 1;', null, PMA_DBI_QUERY_STORE);
-    $row         = PMA_DBI_fetch_assoc($result);
+	$result	  = PMA_DBI_query('SELECT * FROM ' . PMA_backquote($table) . ' LIMIT 1;', null, PMA_DBI_QUERY_STORE);
+	$row		 = PMA_DBI_fetch_assoc($result);
 }
 
 // No row returned
 if (!$row) {
-    exit;
+	exit;
 } // end if (no record returned)
 
 $default_ct = 'application/octet-stream';
 
 if ($cfgRelation['commwork'] && $cfgRelation['mimework']) {
-    $mime_map = PMA_getMime($db, $table);
-    $mime_options = PMA_transformation_getOptions((isset($mime_map[urldecode($transform_key)]['transformation_options']) ? $mime_map[urldecode($transform_key)]['transformation_options'] : ''));
+	$mime_map = PMA_getMime($db, $table);
+	$mime_options = PMA_transformation_getOptions((isset($mime_map[urldecode($transform_key)]['transformation_options']) ? $mime_map[urldecode($transform_key)]['transformation_options'] : ''));
 
-    foreach ($mime_options AS $key => $option) {
-        if (substr($option, 0, 10) == '; charset=') {
-            $mime_options['charset'] = $option;
-        }
-    }
+	foreach ($mime_options AS $key => $option) {
+		if (substr($option, 0, 10) == '; charset=') {
+			$mime_options['charset'] = $option;
+		}
+	}
 }
 
 // garvin: For re-usability, moved http-headers and stylesheets
@@ -62,66 +62,66 @@ if ($cfgRelation['commwork'] && $cfgRelation['mimework']) {
 require_once './libraries/header_http.inc.php';
 // [MIME]
 if (isset($ct) && !empty($ct)) {
-    $content_type = 'Content-Type: ' . urldecode($ct);
+	$content_type = 'Content-Type: ' . urldecode($ct);
 } else {
-    $content_type = 'Content-Type: ' . (isset($mime_map[urldecode($transform_key)]['mimetype']) ? str_replace('_', '/', $mime_map[urldecode($transform_key)]['mimetype']) : $default_ct) . (isset($mime_options['charset']) ? $mime_options['charset'] : '');
+	$content_type = 'Content-Type: ' . (isset($mime_map[urldecode($transform_key)]['mimetype']) ? str_replace('_', '/', $mime_map[urldecode($transform_key)]['mimetype']) : $default_ct) . (isset($mime_options['charset']) ? $mime_options['charset'] : '');
 }
 header($content_type);
 
 if (isset($cn) && !empty($cn)) {
-    header('Content-Disposition: attachment; filename=' . urldecode($cn));
+	header('Content-Disposition: attachment; filename=' . urldecode($cn));
 }
 
 if (!isset($resize)) {
-    echo $row[urldecode($transform_key)];
+	echo $row[urldecode($transform_key)];
 } else {
-    // if image_*__inline.inc.php finds that we can resize,
-    // it sets $resize to jpeg or png
+	// if image_*__inline.inc.php finds that we can resize,
+	// it sets $resize to jpeg or png
 
-    $srcImage = imagecreatefromstring($row[urldecode($transform_key)]);
-    $srcWidth = ImageSX($srcImage);
-    $srcHeight = ImageSY($srcImage);
+	$srcImage = imagecreatefromstring($row[urldecode($transform_key)]);
+	$srcWidth = ImageSX($srcImage);
+	$srcHeight = ImageSY($srcImage);
 
-    // Check to see if the width > height or if width < height
-    // if so adjust accordingly to make sure the image
-    // stays smaller then the $newWidth and $newHeight
+	// Check to see if the width > height or if width < height
+	// if so adjust accordingly to make sure the image
+	// stays smaller then the $newWidth and $newHeight
 
-    $ratioWidth = $srcWidth/$newWidth;
-    $ratioHeight = $srcHeight/$newHeight;
+	$ratioWidth = $srcWidth/$newWidth;
+	$ratioHeight = $srcHeight/$newHeight;
 
-    if ($ratioWidth < $ratioHeight){
-        $destWidth = $srcWidth/$ratioHeight;
-        $destHeight = $newHeight;
-    } else {
-        $destWidth = $newWidth;
-        $destHeight = $srcHeight/$ratioWidth;
-    }
+	if ($ratioWidth < $ratioHeight){
+		$destWidth = $srcWidth/$ratioHeight;
+		$destHeight = $newHeight;
+	} else {
+		$destWidth = $newWidth;
+		$destHeight = $srcHeight/$ratioWidth;
+	}
 
-    if ($resize) {
-        $destImage = ImageCreateTrueColor($destWidth, $destHeight);
-    }
+	if ($resize) {
+		$destImage = ImageCreateTrueColor($destWidth, $destHeight);
+	}
 
-//    ImageCopyResized($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
+//	ImageCopyResized($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
 // better quality but slower:
-    ImageCopyResampled($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
+	ImageCopyResampled($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
 
-    if ($resize == 'jpeg') {
-        ImageJPEG($destImage, '', 75);
-    }
-    if ($resize == 'png') {
-        ImagePNG($destImage);
-    }
-    ImageDestroy($srcImage);
-    ImageDestroy($destImage);
+	if ($resize == 'jpeg') {
+		ImageJPEG($destImage, '', 75);
+	}
+	if ($resize == 'png') {
+		ImagePNG($destImage);
+	}
+	ImageDestroy($srcImage);
+	ImageDestroy($destImage);
 }
 
 /**
  * Close MySql non-persistent connections
  */
 if (isset($GLOBALS['controllink']) && $GLOBALS['controllink']) {
-    @PMA_DBI_close($GLOBALS['controllink']);
+	@PMA_DBI_close($GLOBALS['controllink']);
 }
 if (isset($GLOBALS['userlink']) && $GLOBALS['userlink']) {
-    @PMA_DBI_close($GLOBALS['userlink']);
+	@PMA_DBI_close($GLOBALS['userlink']);
 }
 ?>

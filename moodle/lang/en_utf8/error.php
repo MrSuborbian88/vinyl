@@ -1,5 +1,5 @@
 <?PHP // $Id: error.php,v 1.26.2.20 2009/01/13 06:03:37 tjhunt Exp $
-      // error.php - created with Moodle 1.7 beta + (2006101003)
+	  // error.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['adminprimarynoedit'] = 'The primary admin cannot be edited by others';

@@ -13,11 +13,11 @@ $string['admindirerror'] = 'Norādītais administratora direktorijs ir nepareizs
 $string['admindirname'] = 'Administratora direktorijs';
 $string['admindirsettinghead'] = 'Administratora direktorija iestatīšana...';
 $string['admindirsettingsub'] = 'Lai piekļūtu vadības panelim vai citai programmai, /admin kā īpašs URL 
-    tiek izmantots tikai dažos tīmekļa resursdatoros.  Diemžēl tas konfliktē ar Moodle 
-    administratoru lapu parastajām atrašanās vietām.  To var labot, 
-    sistēmā pārdēvējot administratora direktoriju un šeit norādot 
-    jauno nosaukumu.  Piemēram: <br /> <br /><b>moodleadmin</b><br /> <br />
-    Šādi sistēmā Moodle tiks izlabotas administratoru saites.';
+	tiek izmantots tikai dažos tīmekļa resursdatoros.  Diemžēl tas konfliktē ar Moodle 
+	administratoru lapu parastajām atrašanās vietām.  To var labot, 
+	sistēmā pārdēvējot administratora direktoriju un šeit norādot 
+	jauno nosaukumu.  Piemēram: <br /> <br /><b>moodleadmin</b><br /> <br />
+	Šādi sistēmā Moodle tiks izlabotas administratoru saites.';
 $string['bypassed'] = 'Apiets';
 $string['cannotcreatelangdir'] = 'Nevar izveidot valodas direktoriju.';
 $string['cannotcreatetempdir'] = 'Nevar izveidot pagaidu direktoriju.';
@@ -44,59 +44,59 @@ $string['curlrecommended'] = 'Lai iespējotu Moodle tīklošanas funkcionalitāt
 $string['customcheck'] = 'Citas pārbaudes';
 $string['database'] = 'Datubāze';
 $string['databasecreationsettingshead'] = 'Tagad ir jāveic tās datubāzes iestatījumu konfigurēšana, kurā tiks
-    saglabāta lielākā daļa Moodle datu.  Instalēšanas programma automātiski izveidos šo datubāzi,
-    izmantojot tālāk norādītos iestatījumus.';
+	saglabāta lielākā daļa Moodle datu.  Instalēšanas programma automātiski izveidos šo datubāzi,
+	izmantojot tālāk norādītos iestatījumus.';
 $string['databasecreationsettingssub'] = '<b>Tips:</b> instalēšanas programmas noteiktais ir “mysql”
-       <b>Resursdators:</b> instalēšanas programmas noteiktais ir “localhost”
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> instalēšanas programmas noteiktais ir “root”
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> brīvi izraudzīts prefikss izmantošanai visu tabulu nosaukumos';
+	   <b>Resursdators:</b> instalēšanas programmas noteiktais ir “localhost”
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> instalēšanas programmas noteiktais ir “root”
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> brīvi izraudzīts prefikss izmantošanai visu tabulu nosaukumos';
 $string['databasesettingshead'] = 'Tagad ir jāveic tās datubāzes konfigurēšana, kurā tiks
-    saglabāta lielākā daļa Moodle datu.  Šai datubāzei ir jābūt jau izveidotai,
-    kā arī jābūt izveidotam datubāzes piekļuves lietotājvārdam un parolei.';
+	saglabāta lielākā daļa Moodle datu.  Šai datubāzei ir jābūt jau izveidotai,
+	kā arī jābūt izveidotam datubāzes piekļuves lietotājvārdam un parolei.';
 $string['databasesettingssub'] = '<b>Tips:</b> mysql vai postgres7<br />
-       <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> brīvi izraudzīts prefikss izmantošanai visu tabulu nosaukumos';
+	   <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> brīvi izraudzīts prefikss izmantošanai visu tabulu nosaukumos';
 $string['databasesettingssub_mssql'] = '<b>Tips:</b> SQL*Server (ne UTF-8) <b><font color=\"red\">eksperimentāls! (Nav paredzēts izmantošanai darbam.)</font></b><br />
-       <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
+	   <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
 $string['databasesettingssub_mssql_n'] = '<b>Tips:</b> SQL*Server (ar iespējotu UTF-8)<br />
-       <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
+	   <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
 $string['databasesettingssub_mysql'] = '<b>Tips:</b> MySQL<br />
-       <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (nav obligāts)';
+	   <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (nav obligāts)';
 $string['databasesettingssub_oci8po'] = '<b>Tips:</b> Oracle<br />
-       <b>Resursdators:</b> nav izmantots, jāatstāj tukšs<br />
-       <b>Nosaukums:</b> savienojumam tnsnames.ora piešķirtais nosaukums<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts, maks. 20 rakstzīmes)';
+	   <b>Resursdators:</b> nav izmantots, jāatstāj tukšs<br />
+	   <b>Nosaukums:</b> savienojumam tnsnames.ora piešķirtais nosaukums<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts, maks. 20 rakstzīmes)';
 $string['databasesettingssub_odbc_mssql'] = '<b>Tips:</b> SQL*Server (over ODBC) <b><font color=\"red\">eksperimentāls! (Nav paredzēts izmantošanai darbam.)</font></b><br />
-       <b>Resursdators:</b> DSN piešķirtais nosaukums ODBC vadības panelī<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
+	   <b>Resursdators:</b> DSN piešķirtais nosaukums ODBC vadības panelī<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
 $string['databasesettingssub_postgres7'] = '<b>Tips:</b> PostgreSQL<br />
-       <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
-       <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
-       <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
-       <b>Parole:</b> datubāzes piekļuves parole<br />
-       <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
+	   <b>Resursdators:</b> piemēram, localhost vai db.isp.com<br />
+	   <b>Nosaukums:</b> datubāzes nosaukums, piemēram, Moodle<br />
+	   <b>Lietotājs:</b> datubāzes izmantotāja lietotājvārds<br />
+	   <b>Parole:</b> datubāzes piekļuves parole<br />
+	   <b>Tabulas prefikss:</b> prefikss izmantošanai visu tabulu nosaukumos (obligāts)';
 $string['dataroot'] = 'Datu direktorijs';
 $string['datarooterror'] = 'Norādīto vienumu “Datu direktorijs” nevar atrast vai izveidot.  Vai nu labojiet ceļa nosaukumu, vai arī šo direktoriju izveidojiet manuāli.';
 $string['dbconnectionerror'] = 'Nevar izveidot savienojumu ar norādīto datubāzi. Lūdzu, pārbaudiet datubāzes iestatījumus.';
@@ -210,15 +210,15 @@ $string['memorylimithelp'] = '<p>Pašlaik iestatītais PHP atmiņas apjoma ierob
    Ir vairāki veidi, kā to var izdarīt, piemēram:</p>
 <ol>
 <li>Ja iespējams, atkārtoti kompilējiet PHP, izmantojot <i>--enable-memory-limit</i>.  
-    Šādā gadījumā sistēma Moodle atmiņas apjoma ierobežojumu varēs iestatīt automātiski.</li>
+	Šādā gadījumā sistēma Moodle atmiņas apjoma ierobežojumu varēs iestatīt automātiski.</li>
 <li>Ja jums ir piekļuve php.ini failam, varat mainīt tajā esošo parametra <b>memory_limit</b> 
-    iestatījumu, piemēram, uz 40 MB.  Ja jums nav piekļuves šim failam, palūdziet 
-    to izdarīt administratoram.</li>
+	iestatījumu, piemēram, uz 40 MB.  Ja jums nav piekļuves šim failam, palūdziet 
+	to izdarīt administratoram.</li>
 <li>Dažos PHP serveros Moodle direktorijā var izveidot failu .htaccess, kurā 
-    ir šāda rinda:
-    <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>Tomēr dažos serveros tas neļaus darboties <b>nevienai</b> PHP lapai 
-    (atverot šīs lapas, tiks parādīti kļūdas ziņojumi), un fails .htaccess būs jānoņem.</p></li>
+	ir šāda rinda:
+	<p><blockquote>php_value memory_limit 40M</blockquote></p>
+	<p>Tomēr dažos serveros tas neļaus darboties <b>nevienai</b> PHP lapai 
+	(atverot šīs lapas, tiks parādīti kļūdas ziņojumi), un fails .htaccess būs jānoņem.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Trūkst kāda nepieciešamā lauka';
 $string['moodledocslink'] = 'Šīs lapas Moodle dokumenti';
@@ -278,17 +278,17 @@ $string['unicoderequired'] = 'Visi jūsu dati ir jāglabā unikoda formātā (UT
 $string['user'] = 'Lietotājs';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'Jūs redzat šo lapu, jo esat veiksmīgi instalējis un 
-    palaidis savā datorā pakotni <strong>$a->packname $a->packversion</strong>. Apsveicam!';
+	palaidis savā datorā pakotni <strong>$a->packname $a->packversion</strong>. Apsveicam!';
 $string['welcomep30'] = 'Šajā <strong>$a->installername</strong> laidienā ir iekļautas lietojumprogrammas, 
-    kas paredzētas, lai izveidotu vidi, kurā darbosies sistēma <strong>Moodle</strong>, proti:';
+	kas paredzētas, lai izveidotu vidi, kurā darbosies sistēma <strong>Moodle</strong>, proti:';
 $string['welcomep40'] = 'Pakotnē ir iekļauta arī sistēma <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'Visu šīs pakotnes lietojumprogrammu izmantošanu regulē attiecīgo 
-    licenču nosacījumi. Visā <strong>$a->installername</strong> pakotnē ir iekļauts 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">atklātais pirmkods</a>, un tā tiek izplatīta 
-    saskaņā ar <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a> licences nosacījumiem.';
+	licenču nosacījumi. Visā <strong>$a->installername</strong> pakotnē ir iekļauts 
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">atklātais pirmkods</a>, un tā tiek izplatīta 
+	saskaņā ar <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a> licences nosacījumiem.';
 $string['welcomep60'] = 'Nākamajās lapās tiks sniegti vienkārši norādījumi par to, kā 
-    datorā konfigurēt un iestatīt sistēmu <strong>Moodle</strong>. Varat akceptēt noklusējuma 
-    iestatījumus vai varat tos mainīt, lai pielāgotu savām vajadzībām.';
+	datorā konfigurēt un iestatīt sistēmu <strong>Moodle</strong>. Varat akceptēt noklusējuma 
+	iestatījumus vai varat tos mainīt, lai pielāgotu savām vajadzībām.';
 $string['welcomep70'] = 'Noklikšķiniet uz pogas Tālāk, lai turpinātu sistēmas <strong>Moodle</strong> instalēšanu.';
 $string['wrongdestpath'] = 'Nepareizs mērķa ceļš.';
 $string['wrongsourcebase'] = 'Nepareiza avota URL bāze.';

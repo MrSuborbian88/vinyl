@@ -5,7 +5,7 @@
  * @version $Id: tbl_common.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -18,9 +18,9 @@ require_once './libraries/bookmark.lib.php';
 PMA_checkParameters(array('db', 'table'));
 
 if (PMA_MYSQL_INT_VERSION >= 50002 && $db === 'information_schema') {
-    $db_is_information_schema = true;
+	$db_is_information_schema = true;
 } else {
-    $db_is_information_schema = false;
+	$db_is_information_schema = false;
 }
 
 /**
@@ -29,7 +29,7 @@ if (PMA_MYSQL_INT_VERSION >= 50002 && $db === 'information_schema') {
  */
 $url_query = PMA_generate_common_url($db, $table);
 
-$url_params['db']    = $db;
+$url_params['db']	= $db;
 $url_params['table'] = $table;
 
 /**

@@ -5,23 +5,23 @@
  * SVN Rev: $Id: Helper.php,v 1.1.2.1 2008/10/03 07:09:51 nicolasconnault Exp $
  *
  * @category   HTML
- * @package    AJAX
- * @author     Joshua Eichorn <josh@bluga.net>
+ * @package	AJAX
+ * @author	 Joshua Eichorn <josh@bluga.net>
  * @copyright  2005 Joshua Eichorn
- * @license    http://www.opensource.org/licenses/lgpl-license.php  LGPL
- * @version    Release: 0.5.6
+ * @license	http://www.opensource.org/licenses/lgpl-license.php  LGPL
+ * @version	Release: 0.5.6
  */
 
 /**
  * HTML/JavaScript Generation Helper
  *
  * @category   HTML
- * @package    AJAX
- * @author     Joshua Eichorn <josh@bluga.net>
+ * @package	AJAX
+ * @author	 Joshua Eichorn <josh@bluga.net>
  * @copyright  2005 Joshua Eichorn
- * @license    http://www.opensource.org/licenses/lgpl-license.php  LGPL
- * @version    Release: 0.5.6
- * @link       http://pear.php.net/package/HTML_AJAX
+ * @license	http://www.opensource.org/licenses/lgpl-license.php  LGPL
+ * @version	Release: 0.5.6
+ * @link	   http://pear.php.net/package/HTML_AJAX
  */
 class HTML_AJAX_Helper 
 {
@@ -42,10 +42,10 @@ class HTML_AJAX_Helper
 	 */
 	var $stubs = array();
 
-    /**
-     *  Combine jsLibraries into a single require and remove duplicates
-     */
-    var $combineJsIncludes = false;
+	/**
+	 *  Combine jsLibraries into a single require and remove duplicates
+	 */
+	var $combineJsIncludes = false;
 
 	/**
 	 * Include all needed libraries, stubs, and set defaultServer
@@ -55,37 +55,37 @@ class HTML_AJAX_Helper
 	function setupAJAX() 
 	{
 		$libs = array(0=>array());
-        $combinedLibs = array();
+		$combinedLibs = array();
 
-        $this->jsLibraries = array_unique($this->jsLibraries);
+		$this->jsLibraries = array_unique($this->jsLibraries);
 		foreach($this->jsLibraries as $library) {
 			if (is_array($library)) {
-                $library = array_unique($library);
-                $combinedLibs = array_merge($combinedLibs,$library);
+				$library = array_unique($library);
+				$combinedLibs = array_merge($combinedLibs,$library);
 				$libs[] = implode(',',$library);
 			}
 			else {
 				$libs[0][] = $library;
-                $combinedLibs[] = $library;
+				$combinedLibs[] = $library;
 			}
 		}
 		$libs[0] = implode(',',$libs[0]);
 
-        $sep = '?';
-        if (strstr($this->serverUrl,'?')) {
-            $sep = '&';
-        }
+		$sep = '?';
+		if (strstr($this->serverUrl,'?')) {
+			$sep = '&';
+		}
 
 		$ret = '';
-        if ($this->combineJsIncludes == true) {
-            $list = implode(',',$combinedLibs);
-            $ret .= "<script type='text/javascript' src='{$this->serverUrl}{$sep}client={$list}'></script>\n";
-        } 
-        else {
-            foreach($libs as $list) {
-                $ret .= "<script type='text/javascript' src='{$this->serverUrl}{$sep}client={$list}'></script>\n";
-            }
-        }
+		if ($this->combineJsIncludes == true) {
+			$list = implode(',',$combinedLibs);
+			$ret .= "<script type='text/javascript' src='{$this->serverUrl}{$sep}client={$list}'></script>\n";
+		} 
+		else {
+			foreach($libs as $list) {
+				$ret .= "<script type='text/javascript' src='{$this->serverUrl}{$sep}client={$list}'></script>\n";
+			}
+		}
 
 		if (count($this->stubs) > 0) {
 			$stubs = implode(',',$this->stubs);
@@ -172,15 +172,15 @@ class HTML_AJAX_Helper
 
 	/**
 	 * Check the request headers to see if this is an AJAX request
-     *
-     * @return boolean
-     */
-    function isAJAX() {
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-            return true;
-        }
-        return false;
-    }
+	 *
+	 * @return boolean
+	 */
+	function isAJAX() {
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+			return true;
+		}
+		return false;
+	}
 }
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 ?>

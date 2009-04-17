@@ -4,10 +4,10 @@
  * dumps a database
  *
  * @version $Id: db_export.php 10541 2007-08-01 16:44:32Z lem9 $
- * @uses    libraries/db_common.inc.php
- * @uses    libraries/db_info.inc.php
- * @uses    libraries/display_export.lib.php
- * @uses    $tables     from libraries/db_info.inc.php
+ * @uses	libraries/db_common.inc.php
+ * @uses	libraries/db_info.inc.php
+ * @uses	libraries/display_export.lib.php
+ * @uses	$tables	 from libraries/db_info.inc.php
  */
 
 /**
@@ -29,40 +29,40 @@ $export_page_title = $strViewDumpDB;
 
 // exit if no tables in db found
 if ($num_tables < 1) {
-    echo '<div class="warning">' . $strNoTablesFound . '</div>';
-    require './libraries/footer.inc.php';
-    exit;
+	echo '<div class="warning">' . $strNoTablesFound . '</div>';
+	require './libraries/footer.inc.php';
+	exit;
 } // end if
 
 $checkall_url = 'db_export.php?'
-              . PMA_generate_common_url($db)
-              . '&amp;goto=db_export.php';
+			  . PMA_generate_common_url($db)
+			  . '&amp;goto=db_export.php';
 
 $multi_values = '<div align="center">';
 $multi_values .= '<a href="' . $checkall_url . '" onclick="setSelectOptions(\'dump\', \'table_select[]\', true); return false;">' . $strSelectAll . '</a>
-        /
-        <a href="' . $checkall_url . '&amp;unselectall=1" onclick="setSelectOptions(\'dump\', \'table_select[]\', false); return false;">' . $strUnselectAll . '</a><br />';
+		/
+		<a href="' . $checkall_url . '&amp;unselectall=1" onclick="setSelectOptions(\'dump\', \'table_select[]\', false); return false;">' . $strUnselectAll . '</a><br />';
 
 $multi_values .= '<select name="table_select[]" size="6" multiple="multiple">';
 $multi_values .= "\n";
 
 foreach ($tables as $each_table) {
-    // ok we show also views
-    //if (PMA_MYSQL_INT_VERSION >= 50000 && is_null($each_table['Engine'])) {
-        // Don't offer to export views yet.
-    //    continue;
-    //}
-    if (! empty($unselectall)
-      || (isset($tmp_select)
-           && false !== strpos($tmp_select, '|' . $each_table['Name'] . '|'))) {
-        $is_selected = '';
-    } else {
-        $is_selected = ' selected="selected"';
-    }
-    $table_html   = htmlspecialchars($each_table['Name']);
-    $multi_values .= '                <option value="' . $table_html . '"'
-        . $is_selected . '>'
-        . str_replace(' ', '&nbsp;', $table_html) . '</option>' . "\n";
+	// ok we show also views
+	//if (PMA_MYSQL_INT_VERSION >= 50000 && is_null($each_table['Engine'])) {
+		// Don't offer to export views yet.
+	//	continue;
+	//}
+	if (! empty($unselectall)
+	  || (isset($tmp_select)
+		   && false !== strpos($tmp_select, '|' . $each_table['Name'] . '|'))) {
+		$is_selected = '';
+	} else {
+		$is_selected = ' selected="selected"';
+	}
+	$table_html   = htmlspecialchars($each_table['Name']);
+	$multi_values .= '				<option value="' . $table_html . '"'
+		. $is_selected . '>'
+		. str_replace(' ', '&nbsp;', $table_html) . '</option>' . "\n";
 } // end for
 $multi_values .= "\n";
 $multi_values .= '</select></div><br />';

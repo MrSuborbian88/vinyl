@@ -1,16 +1,16 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * @uses    PMA_generate_common_url()
- * @uses    PMA_isSuperuser()
- * @uses    PMA_DBI_select_db()
- * @uses    PMA_DBI_fetch_result()
- * @uses    PMA_DBI_QUERY_STORE
- * @uses    $userlink
+ * @uses	PMA_generate_common_url()
+ * @uses	PMA_isSuperuser()
+ * @uses	PMA_DBI_select_db()
+ * @uses	PMA_DBI_fetch_result()
+ * @uses	PMA_DBI_QUERY_STORE
+ * @uses	$userlink
  * @version $Id: server_common.inc.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -21,11 +21,11 @@ require_once './libraries/common.inc.php';
 /**
  * Handles some variables that may have been sent by the calling script
  * Note: this can be called also from the db panel to get the privileges of
- *       a db, in which case we want to keep displaying the tabs of
- *       the Database panel
+ *	   a db, in which case we want to keep displaying the tabs of
+ *	   the Database panel
  */
 if (empty($viewing_mode)) {
-    $db = $table = '';
+	$db = $table = '';
 }
 
 /**
@@ -50,12 +50,12 @@ $is_superuser = PMA_isSuperuser();
 
 // now, select the mysql db
 if ($is_superuser) {
-    PMA_DBI_select_db('mysql', $userlink);
+	PMA_DBI_select_db('mysql', $userlink);
 }
 
 /**
  * @global array binary log files
  */
 $binary_logs = PMA_DBI_fetch_result('SHOW MASTER LOGS', 'Log_name', null, null,
-    PMA_DBI_QUERY_STORE);
+	PMA_DBI_QUERY_STORE);
 ?>

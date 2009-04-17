@@ -218,9 +218,9 @@ class ADODB_Active_Record {
 		case 0:
 			foreach($cols as $name => $fldobj) {
 				$name = strtolower($name);
-                if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
-                    $this->$name = $fldobj->default_value;
-                else
+				if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
+					$this->$name = $fldobj->default_value;
+				else
 					$this->$name = null;
 				$attr[$name] = $fldobj;
 			}
@@ -232,10 +232,10 @@ class ADODB_Active_Record {
 		case 1: 
 			foreach($cols as $name => $fldobj) {
 				$name = strtoupper($name);
-               
-                if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
-                    $this->$name = $fldobj->default_value;
-                else
+			   
+				if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
+					$this->$name = $fldobj->default_value;
+				else
 					$this->$name = null;
 				$attr[$name] = $fldobj;
 			}
@@ -247,10 +247,10 @@ class ADODB_Active_Record {
 		default:
 			foreach($cols as $name => $fldobj) {
 				$name = ($fldobj->name);
-                
-                if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
-                    $this->$name = $fldobj->default_value;
-                else
+				
+				if ($ADODB_ACTIVE_DEFVALS && isset($fldobj->default_value))
+					$this->$name = $fldobj->default_value;
+				else
 					$this->$name = null;
 				$attr[$name] = $fldobj;
 			}
@@ -362,30 +362,30 @@ class ADODB_Active_Record {
 		
 		$table =& $this->TableInfo();
 		if ($ACTIVE_RECORD_SAFETY && sizeof($table->flds) != sizeof($row)) {
-            $bad_size = TRUE;
-            if (sizeof($row) == 2 * sizeof($table->flds)) {
-                // Only keep string keys
-                $keys = array_filter(array_keys($row), 'is_string');
-                if (sizeof($keys) == sizeof($table->flds))
-                    $bad_size = FALSE;
-            }
-            if ($bad_size) {
+			$bad_size = TRUE;
+			if (sizeof($row) == 2 * sizeof($table->flds)) {
+				// Only keep string keys
+				$keys = array_filter(array_keys($row), 'is_string');
+				if (sizeof($keys) == sizeof($table->flds))
+					$bad_size = FALSE;
+			}
+			if ($bad_size) {
 				$this->Error("Table structure of $this->_table has changed","Load");
 				return false;
 			}
 		}
-        else
+		else
 			$keys = array_keys($row);
-      
-        reset($keys);
-        $this->_original = array();
+	  
+		reset($keys);
+		$this->_original = array();
 		foreach($table->flds as $name=>$fld) {
-            $value = $row[current($keys)];
+			$value = $row[current($keys)];
 			$this->$name = $value;
-            $this->_original[] = $value;
-            next($keys);
+			$this->_original[] = $value;
+			next($keys);
 		}
-        # </AP>
+		# </AP>
 		return true;
 	}
 	
@@ -559,8 +559,8 @@ class ADODB_Active_Record {
 				}
 			}*/
 			if (is_null($val) && !empty($fld->auto_increment)) {
-            	continue;
-            }
+				continue;
+			}
 			$t = $db->MetaType($fld->type);
 			$arr[$name] = $this->doquote($db,$val,$t);
 			$valarr[] = $val;

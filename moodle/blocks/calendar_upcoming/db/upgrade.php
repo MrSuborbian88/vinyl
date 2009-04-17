@@ -19,9 +19,9 @@
 
 function xmldb_block_calendar_upcoming_upgrade($oldversion=0) {
 
-    global $CFG, $THEME, $db;
+	global $CFG, $THEME, $db;
 
-    $result = true;
+	$result = true;
 
 /// And upgrade begins here. For each one, you'll need one 
 /// block of code similar to the next one. Please, delete 
@@ -29,10 +29,10 @@ function xmldb_block_calendar_upcoming_upgrade($oldversion=0) {
 /// upgrade code.
 
 /// if ($result && $oldversion < YYYYMMDD00) { //New version in version.php
-///     $result = result of "/lib/ddllib.php" function calls
+///	 $result = result of "/lib/ddllib.php" function calls
 /// }
 
-    return $result;
+	return $result;
 }
 
 ?>

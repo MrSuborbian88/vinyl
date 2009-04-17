@@ -30,7 +30,7 @@
  * @version $Id: sqlvalidator.lib.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -39,7 +39,7 @@ if (! defined('PHPMYADMIN')) {
  * For now we actually use a configuration flag
  */
 if ($cfg['SQLValidator']['use'] == TRUE)  {
-    require_once './libraries/sqlvalidator.class.php';
+	require_once './libraries/sqlvalidator.class.php';
 } // if ($cfg['SQLValidator']['use'] == TRUE)
 
 
@@ -53,46 +53,46 @@ if ($cfg['SQLValidator']['use'] == TRUE)  {
  *
  * @return  string   Validator result string
  *
- * @global  array    The PMA configuration array
+ * @global  array	The PMA configuration array
  */
 function PMA_validateSQL($sql)
 {
-    global $cfg;
+	global $cfg;
 
-    $str = '';
+	$str = '';
 
-    if ($cfg['SQLValidator']['use']) {
-        if (isset($GLOBALS['sqlvalidator_error'])
-            && $GLOBALS['sqlvalidator_error']) {
-            $str = sprintf($GLOBALS['strValidatorError'], '<a href="./Documentation.html#faqsqlvalidator" target="documentation">', '</a>');
-        } else {
-            // create new class instance
-            $srv = new PMA_SQLValidator();
+	if ($cfg['SQLValidator']['use']) {
+		if (isset($GLOBALS['sqlvalidator_error'])
+			&& $GLOBALS['sqlvalidator_error']) {
+			$str = sprintf($GLOBALS['strValidatorError'], '<a href="./Documentation.html#faqsqlvalidator" target="documentation">', '</a>');
+		} else {
+			// create new class instance
+			$srv = new PMA_SQLValidator();
 
-            // Checks for username settings
-            // The class defaults to anonymous with an empty password
-            // automatically
-            if ($cfg['SQLValidator']['username'] != '') {
-                $srv->setCredentials($cfg['SQLValidator']['username'], $cfg['SQLValidator']['password']);
-            }
+			// Checks for username settings
+			// The class defaults to anonymous with an empty password
+			// automatically
+			if ($cfg['SQLValidator']['username'] != '') {
+				$srv->setCredentials($cfg['SQLValidator']['username'], $cfg['SQLValidator']['password']);
+			}
 
-            // Identify ourselves to the server properly...
-            $srv->appendCallingProgram('phpMyAdmin', PMA_VERSION);
+			// Identify ourselves to the server properly...
+			$srv->appendCallingProgram('phpMyAdmin', PMA_VERSION);
 
-            // ... and specify what database system we are using
-            $srv->setTargetDbms('MySQL', PMA_MYSQL_STR_VERSION);
+			// ... and specify what database system we are using
+			$srv->setTargetDbms('MySQL', PMA_MYSQL_STR_VERSION);
 
-            // Log on to service
-            $srv->start();
+			// Log on to service
+			$srv->start();
 
-            // Do service validation
-            $str = $srv->validationString($sql);
-        }
+			// Do service validation
+			$str = $srv->validationString($sql);
+		}
 
-    } // end if
+	} // end if
 
-    // Gives string back to caller
-    return $str;
+	// Gives string back to caller
+	return $str;
 } // end of the "PMA_validateSQL()" function
 
 ?>

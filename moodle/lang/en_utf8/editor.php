@@ -1,5 +1,5 @@
 <?PHP // $Id: editor.php,v 1.4 2006/12/08 04:41:19 vyshane Exp $ 
-      // editor.php - created with Moodle 1.7 beta + (2006101003)
+	  // editor.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['about'] = 'About this editor';

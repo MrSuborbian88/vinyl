@@ -3,7 +3,7 @@
 
 /**
  * Translated by:
- *     Dimce Grozdanoski <dimce.grozdanoski@ridarec.com>
+ *	 Dimce Grozdanoski <dimce.grozdanoski@ridarec.com>
  */
 
 $charset = 'utf-8';
@@ -800,7 +800,7 @@ $strFunctions = 'Functions';  //to translate
 $strHandler = 'Handler';  //to translate
 $strHelp = 'Help';  //to translate
 $strHexForBLOB = 'Use hexadecimal for BLOB';  //to translate
-$strHide         = 'Hide';  //to translate
+$strHide		 = 'Hide';  //to translate
 $strHideShowAll = 'Hide/Show all';  //to translate
 $strHideShowNoRelation = 'Hide/Show Tables with no relation';  //to translate
 $strIEUnsupported = 'Internet Explorer does not support this function.';  //to translate

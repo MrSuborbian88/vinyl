@@ -19,11 +19,11 @@
 // component_name should be the same as the directory name of the mod or block.
 //
 // Core moodle capabilities are defined thus:
-//    moodle/<capabilityclass>:<capabilityname>
+//	moodle/<capabilityclass>:<capabilityname>
 //
 // Examples: mod/forum:viewpost
-//           block/recent_activity:view
-//           moodle/site:deleteuser
+//		   block/recent_activity:view
+//		   moodle/site:deleteuser
 //
 // The variable name for the capability definitions array follows the format
 //   $<componenttype>_<component_name>_capabilities
@@ -33,39 +33,39 @@
 
 $mod_assignment_capabilities = array(
 
-    'mod/assignment:view' => array(
+	'mod/assignment:view' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'guest' => CAP_ALLOW,
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'guest' => CAP_ALLOW,
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/assignment:submit' => array(
+	'mod/assignment:submit' => array(
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW
+		)
+	),
 
-    'mod/assignment:grade' => array(
-        'riskbitmask' => RISK_XSS,
+	'mod/assignment:grade' => array(
+		'riskbitmask' => RISK_XSS,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    )
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	)
 );
 
 ?>

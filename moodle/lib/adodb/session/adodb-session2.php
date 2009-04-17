@@ -3,7 +3,7 @@
 
 /*
 V4.98 13 Feb 2008  (c) 2000-2008 John Lim (jlim#natsoft.com.my). All rights reserved.
-         Contributed by Ross Smith (adodb@netebb.com). 
+		 Contributed by Ross Smith (adodb@netebb.com). 
   Released under both BSD license and Lesser GPL library license.
   Whenever there is any discrepancy between the two licenses,
   the BSD license will take precedence.
@@ -21,11 +21,11 @@ Oracle
 
 CREATE TABLE SESSIONS2
 (
-  SESSKEY    VARCHAR2(48 BYTE)                  NOT NULL,
-  EXPIRY     DATE                               NOT NULL,
+  SESSKEY	VARCHAR2(48 BYTE)				  NOT NULL,
+  EXPIRY	 DATE							   NOT NULL,
   EXPIREREF  VARCHAR2(200 BYTE),
-  CREATED    DATE                               NOT NULL,
-  MODIFIED   DATE                               NOT NULL,
+  CREATED	DATE							   NOT NULL,
+  MODIFIED   DATE							   NOT NULL,
   SESSDATA   CLOB,
   PRIMARY KEY(SESSKEY)
 );
@@ -116,22 +116,22 @@ function adodb_session_regenerate_id()
 }
 
 /*
-    Generate database table for session data
-    @see http://phplens.com/lens/lensforum/msgs.php?id=12280
-    @return 0 if failure, 1 if errors, 2 if successful.
+	Generate database table for session data
+	@see http://phplens.com/lens/lensforum/msgs.php?id=12280
+	@return 0 if failure, 1 if errors, 2 if successful.
 	@author Markus Staab http://www.public-4u.de
 */
 function adodb_session_create_table($schemaFile=null,$conn = null)
 {
-    // set default values
-    if ($schemaFile===null) $schemaFile = ADODB_SESSION . '/session_schema2.xml';
-    if ($conn===null) $conn =& ADODB_Session::_conn();
+	// set default values
+	if ($schemaFile===null) $schemaFile = ADODB_SESSION . '/session_schema2.xml';
+	if ($conn===null) $conn =& ADODB_Session::_conn();
 
 	if (!$conn) return 0;
 
-    $schema = new adoSchema($conn);
-    $schema->ParseSchema($schemaFile);
-    return $schema->ExecuteSchema();
+	$schema = new adoSchema($conn);
+	$schema->ParseSchema($schemaFile);
+	return $schema->ExecuteSchema();
 }
 
 /*!

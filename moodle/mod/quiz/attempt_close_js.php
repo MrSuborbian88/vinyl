@@ -9,8 +9,8 @@ if (!empty($popup)) {
 //<![CDATA[
 
 document.write('<input type="button" value="<?php print_string('closewindow') ?>" '+
-               'onclick="javascript: window.opener.location.href=\'view.php?id=<?php echo $cm->id ?>\'; '+
-               'window.close();" />');
+			   'onclick="javascript: window.opener.location.href=\'view.php?id=<?php echo $cm->id ?>\'; '+
+			   'window.close();" />');
 //]]>
 </script>
 <noscript>
@@ -21,7 +21,7 @@ document.write('<input type="button" value="<?php print_string('closewindow') ?>
 
 <?php
 } else {
-    print_single_button("view.php", array( 'id' => $cm->id ), get_string('finishreview', 'quiz'));
+	print_single_button("view.php", array( 'id' => $cm->id ), get_string('finishreview', 'quiz'));
 }
 ?>
 </div>

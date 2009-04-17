@@ -36,11 +36,11 @@ $string['curlrecommended']='Fakultatiivse Curl teegi installeerimine on väga so
 $string['customcheck']='Muud kontrollid';
 $string['database']='Andmebaas';
 $string['databasecreationsettingssub']='<b>Tüüp:</b> määratud \"mysql\" paigaldaja poolt<br />
-       <b>Host:</b> määratud \"localhost\" paigaldaja poolt<br />
-       <b>Nimi:</b> andmebaasi nimi, nt. moodle<br />
-       <b>User:</b> määratud \"root\" paigaldaja poolt<br />
-       <b>Parool:</b> Sinu andmebaasi parool<br />
-       <b>Tabelite prefiks:</b> fakultatiivne prefiks kasutamaks tabeli nimetes';
+	   <b>Host:</b> määratud \"localhost\" paigaldaja poolt<br />
+	   <b>Nimi:</b> andmebaasi nimi, nt. moodle<br />
+	   <b>User:</b> määratud \"root\" paigaldaja poolt<br />
+	   <b>Parool:</b> Sinu andmebaasi parool<br />
+	   <b>Tabelite prefiks:</b> fakultatiivne prefiks kasutamaks tabeli nimetes';
 $string['databasesettingshead']='Nüüd on vaja seadistada andmebaas, kus enamus Moodle andmeid hakatakse hoidma. See andmebaas peab olema eelnevalt loodud ning ka konto, millel ligipääs antud andmebaasile.';
 $string['databasesettingssub']='<b>Tüüp:</b> mysql või postgres7<br />
 	<b>Host:</b> näiteks localhost või db.isp.com<br />

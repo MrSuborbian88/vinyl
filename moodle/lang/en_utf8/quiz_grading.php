@@ -1,5 +1,5 @@
 <?PHP // $Id: quiz_grading.php,v 1.3.8.4 2008/05/29 14:31:30 jamiesensei Exp $ 
-      // quiz_grading.php - created with Moodle 1.7 beta + (2006101003)
+	  // quiz_grading.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['essayonly'] = 'The following questions need to be graded manually';

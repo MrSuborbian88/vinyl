@@ -1,13 +1,13 @@
 <?PHP // $Id: enrol_manual.php,v 1.3.2.2 2008/12/06 21:21:55 skodak Exp $ 
-      // enrol_manual.php - created with Moodle 1.7 beta + (2006101003)
+	  // enrol_manual.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['description'] = 'This is the default form of enrolment. There are two main ways a student can be enrolled in a particular course.
 <ul>
 <li>A teacher or admin can enrol them manually using the link in the Course Administration menu 
-    within the course.</li>
+	within the course.</li>
 <li>A course can have a password defined, known as an \"enrolment key\".  Anyone who knows this key is 
-    able to add themselves to a course.</li>
+	able to add themselves to a course.</li>
 </ul>';
 $string['enrolmentkeyerror'] = 'That enrolment key was incorrect, please try again.';
 $string['enrolname'] = 'Internal Enrolment';

@@ -1,5 +1,5 @@
 <?PHP // $Id: moodle.php,v 1.141.2.55 2009/01/27 06:35:44 tjhunt Exp $
-      // moodle.php - created with Moodle 1.7 beta + (2006101003)
+	  // moodle.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['abouttobeinstalled'] = 'about to be installed';
@@ -1054,8 +1054,8 @@ and you have been issued with a new temporary password.
 Your current login information is now:
    username: $a->username
    password: $a->newpassword
-             (you will have to change your password
-              when you login for the first time)
+			 (you will have to change your password
+			  when you login for the first time)
 
 To start using \'$a->sitename\', login at
    $a->link

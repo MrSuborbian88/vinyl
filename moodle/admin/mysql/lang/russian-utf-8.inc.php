@@ -3,9 +3,9 @@
 
 /**
  * Translated by Gosha Sakovich <gt2 at users.sourceforge.net>
- *               Artyom Rabzonov <tyomych at gmx.net>
- *               Nicolay Zakharov <info at melody.org.ru> 16-Dec-2002
- *               (nobody) 2004-09-18
+ *			   Artyom Rabzonov <tyomych at gmx.net>
+ *			   Nicolay Zakharov <info at melody.org.ru> 16-Dec-2002
+ *			   (nobody) 2004-09-18
  */
 
 $charset = 'utf-8';

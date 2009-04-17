@@ -57,10 +57,10 @@
  * You should create an array called $local_capabilities, which looks like:
  * 
  * $local_capabilities = array(
- *         'moodle/local:capability' => array(
- *         'captype' => 'read',
- *         'contextlevel' => CONTEXT_SYSTEM,
- *      ),
+ *		 'moodle/local:capability' => array(
+ *		 'captype' => 'read',
+ *		 'contextlevel' => CONTEXT_SYSTEM,
+ *	  ),
  * );
  *
  * Note that for all local capabilities you add, you'll need to add language strings.
@@ -117,55 +117,55 @@
  */
 function upgrade_local_db($continueto) {
 
-    global $CFG, $db;
+	global $CFG, $db;
 
-    // if we don't have code version or a db upgrade file, just return true, we're unneeded
-    if (!file_exists($CFG->dirroot.'/local/version.php') || !file_exists($CFG->dirroot.'/local/db/upgrade.php')) {
-        return true;
-    }
+	// if we don't have code version or a db upgrade file, just return true, we're unneeded
+	if (!file_exists($CFG->dirroot.'/local/version.php') || !file_exists($CFG->dirroot.'/local/db/upgrade.php')) {
+		return true;
+	}
 
-    require_once ($CFG->dirroot .'/local/version.php');  // Get code versions
+	require_once ($CFG->dirroot .'/local/version.php');  // Get code versions
 
-    if (empty($CFG->local_version)) { // normally we'd install, but just replay all the upgrades.
-        $CFG->local_version = 0;
-    }
+	if (empty($CFG->local_version)) { // normally we'd install, but just replay all the upgrades.
+		$CFG->local_version = 0;
+	}
 
-    if ($local_version > $CFG->local_version) { // upgrade!
-        $strdatabaseupgrades = get_string('databaseupgrades');
-        print_header($strdatabaseupgrades, $strdatabaseupgrades,
-            build_navigation(array(array('name' => $strdatabaseupgrades, 'link' => null, 'type' => 'misc'))), '', upgrade_get_javascript());
+	if ($local_version > $CFG->local_version) { // upgrade!
+		$strdatabaseupgrades = get_string('databaseupgrades');
+		print_header($strdatabaseupgrades, $strdatabaseupgrades,
+			build_navigation(array(array('name' => $strdatabaseupgrades, 'link' => null, 'type' => 'misc'))), '', upgrade_get_javascript());
 
-        upgrade_log_start();
-        require_once ($CFG->dirroot .'/local/db/upgrade.php');
+		upgrade_log_start();
+		require_once ($CFG->dirroot .'/local/db/upgrade.php');
 
-        $db->debug=true;
-        if (xmldb_local_upgrade($CFG->local_version)) {
-            $db->debug=false;
-            if (set_config('local_version', $local_version)) {
-                notify(get_string('databasesuccess'), 'notifysuccess');
-                notify(get_string('databaseupgradelocal', '', $local_version), 'notifysuccess');
-                print_continue($continueto);
-                print_footer('none');
-                exit;
-            } else {
-                error('Upgrade of local database customisations failed! (Could not update version in config table)');
-            }
-        } else {
-            $db->debug=false;
-            error('Upgrade failed!  See local/version.php');
-        }
+		$db->debug=true;
+		if (xmldb_local_upgrade($CFG->local_version)) {
+			$db->debug=false;
+			if (set_config('local_version', $local_version)) {
+				notify(get_string('databasesuccess'), 'notifysuccess');
+				notify(get_string('databaseupgradelocal', '', $local_version), 'notifysuccess');
+				print_continue($continueto);
+				print_footer('none');
+				exit;
+			} else {
+				error('Upgrade of local database customisations failed! (Could not update version in config table)');
+			}
+		} else {
+			$db->debug=false;
+			error('Upgrade failed!  See local/version.php');
+		}
 
-    } else if ($local_version < $CFG->local_version) {
-        upgrade_log_start();
-        notify('WARNING!!!  The local version you are using is OLDER than the version that made these databases!');
-    }
+	} else if ($local_version < $CFG->local_version) {
+		upgrade_log_start();
+		notify('WARNING!!!  The local version you are using is OLDER than the version that made these databases!');
+	}
 
-    /// Capabilities
-    if (!update_capabilities('local')) {
-        error('Could not set up the capabilities for local!');
-    }
+	/// Capabilities
+	if (!update_capabilities('local')) {
+		error('Could not set up the capabilities for local!');
+	}
 
-    upgrade_log_finish();
+	upgrade_log_finish();
 }
 
 /**
@@ -176,23 +176,23 @@ function upgrade_local_db($continueto) {
  * @param int $courseid the course that is being deleted.
  * @param bool $showfeedback Whether to display notifications on success.
  * @return false if local_delete_course failed, or true if
- *          there was noting to do or local_delete_course succeeded.
+ *		  there was noting to do or local_delete_course succeeded.
  */
 function notify_local_delete_course($courseid, $showfeedback) {
-    global $CFG;
-    $localfile = $CFG->dirroot .'/local/lib.php';
-    if (file_exists($localfile)) {
-        require_once($localfile);
-        if (function_exists('local_delete_course')) {
-            if (local_delete_course($courseid)) {
-                if ($showfeedback) {
-                    notify(get_string('deleted') . ' local data');
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return true;
+	global $CFG;
+	$localfile = $CFG->dirroot .'/local/lib.php';
+	if (file_exists($localfile)) {
+		require_once($localfile);
+		if (function_exists('local_delete_course')) {
+			if (local_delete_course($courseid)) {
+				if ($showfeedback) {
+					notify(get_string('deleted') . ' local data');
+				}
+			} else {
+				return false;
+			}
+		}
+	}
+	return true;
 }
 ?>

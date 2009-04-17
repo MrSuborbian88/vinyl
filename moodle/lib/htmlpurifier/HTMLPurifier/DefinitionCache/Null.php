@@ -7,30 +7,30 @@ require_once 'HTMLPurifier/DefinitionCache.php';
  */
 class HTMLPurifier_DefinitionCache_Null extends HTMLPurifier_DefinitionCache
 {
-    
-    function add($def, $config) {
-        return false;
-    }
-    
-    function set($def, $config) {
-        return false;
-    }
-    
-    function replace($def, $config) {
-        return false;
-    }
-    
-    function get($config) {
-        return false;
-    }
-    
-    function flush($config) {
-        return false;
-    }
-    
-    function cleanup($config) {
-        return false;
-    }
-    
+	
+	function add($def, $config) {
+		return false;
+	}
+	
+	function set($def, $config) {
+		return false;
+	}
+	
+	function replace($def, $config) {
+		return false;
+	}
+	
+	function get($config) {
+		return false;
+	}
+	
+	function flush($config) {
+		return false;
+	}
+	
+	function cleanup($config) {
+		return false;
+	}
+	
 }
 

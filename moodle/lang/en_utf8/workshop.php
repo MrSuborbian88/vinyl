@@ -1,5 +1,5 @@
 <?PHP // $Id: workshop.php,v 1.3.8.1 2008/10/02 14:39:13 poltawski Exp $ 
-      // workshop.php - created with Moodle 1.7 beta + (2006101003)
+	  // workshop.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['absent'] = 'Absent';
@@ -162,11 +162,11 @@ $string['notallowed'] = 'You are not allowed on this page at this time';
 $string['notavailable'] = 'Not Available';
 $string['notenoughexamplessubmitted'] = 'Not enough Examples submitted.';
 $string['noteonassessmentelements'] = 'Note that grading is broken down into a number of \'Assessment Elements\'.<br />
-    This makes the grading easier and more consistent. As teacher you must add these <br />
-    Elements before making the assignment available to students. This is done by<br />
-    clicking on the assignment in the course, if no elements are present you will be asked<br />
-    to add them. You can change the number of elements using the Edit Assignment screen,<br />
-    the elements themselves can be amended from the &quot;Managing Assessment&quot; screen.';
+	This makes the grading easier and more consistent. As teacher you must add these <br />
+	Elements before making the assignment available to students. This is done by<br />
+	clicking on the assignment in the course, if no elements are present you will be asked<br />
+	to add them. You can change the number of elements using the Edit Assignment screen,<br />
+	the elements themselves can be amended from the &quot;Managing Assessment&quot; screen.';
 $string['noteonstudentassessments'] = '{Grade from Student / Grading Grade for Assessment}';
 $string['notgraded'] = 'Not Graded';
 $string['notitle'] = 'No Title';
