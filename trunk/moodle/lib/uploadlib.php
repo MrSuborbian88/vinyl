@@ -13,9 +13,9 @@
 //   Daniel Ploch - 04/17/2009
 // - Integrated changes for Multiple File Uploading
 // - See also:
-//     constructor
-//     addExtra method
-//     files/index.php
+//	 constructor
+//	 addExtra method
+//	 files/index.php
 
 //error_reporting(E_ALL ^ E_NOTICE);
 /**
@@ -45,13 +45,13 @@ class upload_manager {
 	* @var course $course 
 	*/
 	var $course;
-     /**
+	 /**
 	* If we're only getting one file.
 	* (for logging and virus notifications)
 	* @var string $inputname 
 	*/
 	var $inputname;
-     /**
+	 /**
 	* If we're given silent=true in the constructor, this gets built 
 	* up to hold info about the process.
 	* @var string $notify 
@@ -60,7 +60,7 @@ class upload_manager {
 
 	// VINL Code
 	//   Daniel Ploch - 04/17/2009
-      // - Added the "extrainput" parameter to facilitate Input filtering
+	  // - Added the "extrainput" parameter to facilitate Input filtering
 	// - Also added the "acceptExtra" function
 	var $extrainput;
 

@@ -8,11 +8,11 @@
 // PostgreSQL commands for upgrading this question type
 
 function qtype_numerical_upgrade($oldversion=0) {
-    global $CFG;
+	global $CFG;
 
-    //////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
+	//////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
 
-    return true;
+	return true;
 }
 
 ?>

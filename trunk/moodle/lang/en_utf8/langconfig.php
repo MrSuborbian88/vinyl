@@ -1,5 +1,5 @@
 <?PHP // $Id: langconfig.php,v 1.7.2.2 2008/11/04 16:27:57 stronk7 Exp $ 
-      // langconfig.php - created with Moodle 1.7 beta + (2006101003)
+	  // langconfig.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['alphabet'] = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z';

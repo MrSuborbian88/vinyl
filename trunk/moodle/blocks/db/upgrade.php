@@ -19,9 +19,9 @@
 
 function xmldb_blocks_upgrade($oldversion=0) {
 
-    global $CFG, $THEME, $db;
+	global $CFG, $THEME, $db;
 
-    $result = true;
+	$result = true;
 
 /// And upgrade begins here. For each one, you'll need one 
 /// block of code similar to the next one. Please, delete 
@@ -29,22 +29,22 @@ function xmldb_blocks_upgrade($oldversion=0) {
 /// upgrade code.
 
 /// if ($result && $oldversion < YYYYMMDD00) { //New version in version.php
-///     $result = result of "/lib/ddllib.php" function calls
+///	 $result = result of "/lib/ddllib.php" function calls
 /// }
 
-    if ($result && $oldversion < 2007081300) {
+	if ($result && $oldversion < 2007081300) {
 
-    /// Changing nullability of field configdata on table block_instance to null
-        $table = new XMLDBTable('block_instance');
-        $field = new XMLDBField('configdata');
-        $field->setAttributes(XMLDB_TYPE_TEXT, 'small', null, null, null, null, null, null, 'visible');
+	/// Changing nullability of field configdata on table block_instance to null
+		$table = new XMLDBTable('block_instance');
+		$field = new XMLDBField('configdata');
+		$field->setAttributes(XMLDB_TYPE_TEXT, 'small', null, null, null, null, null, null, 'visible');
 
-    /// Launch change of nullability for field configdata
-        $result = $result && change_field_notnull($table, $field);
-    }
+	/// Launch change of nullability for field configdata
+		$result = $result && change_field_notnull($table, $field);
+	}
 
 
-    return $result;
+	return $result;
 }
 
 

@@ -1,5 +1,5 @@
 <?PHP // $Id: grades.php,v 1.111.2.60 2009/01/08 08:19:42 nicolasconnault Exp $
-      // grades.php - created with Moodle 1.7 beta + (2006101003)
+	  // grades.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['activities'] = 'Activities';

@@ -14,7 +14,7 @@ $PHPMAILER_LANG["instantiate"] = 'Nie mo¿na wywo³aæ funkcji mail(). SprawdŸ konf
 $PHPMAILER_LANG["authenticate"] = 'B³¹d SMTP: Nie mo¿na przeprowadziæ autentykacji.';
 $PHPMAILER_LANG["from_failed"] = 'Nastêpuj¹cy adres Nadawcy jest jest nieprawid³owy: ';
 $PHPMAILER_LANG["recipients_failed"] = 'B³¹d SMTP: Nastêpuj¹cy ' .
-                                       'odbiorcy s¹ nieprawid³owi: ';
+									   'odbiorcy s¹ nieprawid³owi: ';
 $PHPMAILER_LANG["data_not_accepted"] = 'B³¹d SMTP: Dane nie zosta³y przyjête.';
 $PHPMAILER_LANG["connect_host"] = 'B³¹d SMTP: Nie mo¿na po³¹czyæ siê z wybranym hostem.';
 $PHPMAILER_LANG["file_access"] = 'Brak dostêpu do pliku: ';

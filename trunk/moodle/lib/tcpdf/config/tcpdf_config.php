@@ -1,7 +1,7 @@
 <?php
 //============================================================+
 // File name   : tcpdf_config.php
-// Begin       : 2004-06-11
+// Begin	   : 2004-06-11
 // Last Update : 2006-05-18
 //
 // Description : Congiguration file for TCPDF.
@@ -9,20 +9,20 @@
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Tecnick.com S.r.l.
-//               Via Ugo Foscolo n.19
-//               09045 Quartu Sant'Elena (CA)
-//               ITALY
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Tecnick.com S.r.l.
+//			   Via Ugo Foscolo n.19
+//			   09045 Quartu Sant'Elena (CA)
+//			   ITALY
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**
  * Congiguration file for TCPDF.
  * @author Nicola Asuni
  * @copyright Copyright &copy; 2004, Tecnick.com S.r.l. - Via Ugo Foscolo
- *            n.19 - 09045 Quartu Sant'Elena (CA) - ITALY - www.tecnick.com -
- *            info@tecnick.com
+ *			n.19 - 09045 Quartu Sant'Elena (CA) - ITALY - www.tecnick.com -
+ *			info@tecnick.com
  * @package com.tecnick.tcpdf
  * @version 1.53.0.TC017
  * @link http://tcpdf.sourceforge.net
@@ -192,6 +192,6 @@ define("K_TITLE_MAGNIFICATION", 1.3);
 define("K_SMALL_RATIO", 2/3);
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE												 
 //============================================================+
 ?>

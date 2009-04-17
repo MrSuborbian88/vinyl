@@ -9,24 +9,24 @@
  */
 
 HTMLPurifier_ConfigSchema::define(
-    'Core', 'EscapeInvalidTags', false, 'bool',
-    'When true, invalid tags will be written back to the document as plain '.
-    'text.  Otherwise, they are silently dropped.'
+	'Core', 'EscapeInvalidTags', false, 'bool',
+	'When true, invalid tags will be written back to the document as plain '.
+	'text.  Otherwise, they are silently dropped.'
 );
  
 class HTMLPurifier_Strategy
 {
-    
-    /**
-     * Executes the strategy on the tokens.
-     * 
-     * @param $tokens Array of HTMLPurifier_Token objects to be operated on.
-     * @param $config Configuration options
-     * @returns Processed array of token objects.
-     */
-    function execute($tokens, $config, &$context) {
-        trigger_error('Cannot call abstract function', E_USER_ERROR);
-    }
-    
+	
+	/**
+	 * Executes the strategy on the tokens.
+	 * 
+	 * @param $tokens Array of HTMLPurifier_Token objects to be operated on.
+	 * @param $config Configuration options
+	 * @returns Processed array of token objects.
+	 */
+	function execute($tokens, $config, &$context) {
+		trigger_error('Cannot call abstract function', E_USER_ERROR);
+	}
+	
 }
 

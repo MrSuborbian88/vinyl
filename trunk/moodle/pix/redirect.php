@@ -15,17 +15,17 @@ require_once('../config.php');
 
 // obtain the requested path.
 if (!array_key_exists('REDIRECT_STATUS',$_SERVER) || $_SERVER['REDIRECT_STATUS'] != 404) {
-    die();
+	die();
 }
 
 $matches = array();
 
 if (!preg_match('/theme\/[^\/]*\/pix\/(.*)$/',$_SERVER['REDIRECT_URL'],$matches)) {
-    die();
+	die();
 }
 
 if (file_exists($CFG->dirroot.'/pix/'.$matches[1])) {
-    header("Location: ".$CFG->wwwroot.'/pix/'.$matches[1]);
+	header("Location: ".$CFG->wwwroot.'/pix/'.$matches[1]);
 }
 
 ?>

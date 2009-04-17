@@ -5,7 +5,7 @@
  * @version $Id: server_links.inc.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -26,7 +26,7 @@ $server_links_count_tabs = 0;
  * Put something in $sub_part
  */
 if (!isset($sub_part)) {
-    $sub_part = '';
+	$sub_part = '';
 }
 
 
@@ -52,9 +52,9 @@ $tabs['vars']['link'] = 'server_variables.php';
 $tabs['vars']['text'] = $strServerTabVariables;
 
 if (PMA_MYSQL_INT_VERSION >= 40100) {
-    $tabs['charset']['icon'] = 's_asci.png';
-    $tabs['charset']['link'] = 'server_collations.php';
-    $tabs['charset']['text'] = $strCharsets;
+	$tabs['charset']['icon'] = 's_asci.png';
+	$tabs['charset']['link'] = 'server_collations.php';
+	$tabs['charset']['text'] = $strCharsets;
 }
 
 $tabs['engine']['icon'] = 'b_engine.png';
@@ -62,15 +62,15 @@ $tabs['engine']['link'] = 'server_engines.php';
 $tabs['engine']['text'] = $strEngines;
 
 if ($is_superuser) {
-    $tabs['rights']['icon'] = 's_rights.png';
-    $tabs['rights']['link'] = 'server_privileges.php';
-    $tabs['rights']['text'] = $strPrivileges;
+	$tabs['rights']['icon'] = 's_rights.png';
+	$tabs['rights']['link'] = 'server_privileges.php';
+	$tabs['rights']['text'] = $strPrivileges;
 }
 
 if (! empty($binary_logs)) {
-    $tabs['binlog']['icon'] = 's_tbl.png';
-    $tabs['binlog']['link'] = 'server_binlog.php';
-    $tabs['binlog']['text'] = $strBinaryLog;
+	$tabs['binlog']['icon'] = 's_tbl.png';
+	$tabs['binlog']['link'] = 'server_binlog.php';
+	$tabs['binlog']['text'] = $strBinaryLog;
 }
 $tabs['process']['icon'] = 's_process.png';
 $tabs['process']['link'] = 'server_processlist.php';
@@ -92,8 +92,8 @@ unset($tabs);
  * Displays a message
  */
 if (!empty($message)) {
-    PMA_showMessage($message);
-    unset($message);
+	PMA_showMessage($message);
+	unset($message);
 }
 
 ?>

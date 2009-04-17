@@ -1,21 +1,21 @@
 <?php defined('MOODLE_INTERNAL') or die('Direct access to this script is forbidden.'); 
 
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
 // Copyright (C) 2004  Education Promoting Center, Yamaguchi University  //
-//                     http://www.epc.yamaguchi-u.ac.jp                  //
-//                                                                       //
+//					 http://www.epc.yamaguchi-u.ac.jp				  //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
 ?>
 
 <style media="print">body {display:none}</style>
@@ -26,24 +26,24 @@
 var message = "<?php print_string('functiondisabled'); ?>";
 
 function click(e) {
-    if (document.all) {
-        if (event.button==1) {
-           return false;
-        }
-        if (event.button==2) {
-           alert(message);
-           return false;
-        }
-    }
-    if (document.layers) {
-        if (e.which > 1) {
-           alert(message);
-           return false;
-        }
-    }
+	if (document.all) {
+		if (event.button==1) {
+		   return false;
+		}
+		if (event.button==2) {
+		   alert(message);
+		   return false;
+		}
+	}
+	if (document.layers) {
+		if (e.which > 1) {
+		   alert(message);
+		   return false;
+		}
+	}
 }
 if (document.layers) {
-    document.captureEvents(Event.MOUSEDOWN);
+	document.captureEvents(Event.MOUSEDOWN);
 }
 document.onmousedown=click;
 document.oncontextmenu=new Function("alert(message);return false")

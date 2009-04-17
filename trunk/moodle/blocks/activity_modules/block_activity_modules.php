@@ -1,57 +1,57 @@
 <?php //$Id: block_activity_modules.php,v 1.15.2.3 2008/03/03 11:41:01 moodler Exp $
 
 class block_activity_modules extends block_list {
-    function init() {
-        $this->title = get_string('activities');
-        $this->version = 2007101509;
-    }
+	function init() {
+		$this->title = get_string('activities');
+		$this->version = 2007101509;
+	}
 
-    function get_content() {
-        global $CFG, $COURSE;
+	function get_content() {
+		global $CFG, $COURSE;
 
-        if($this->content !== NULL) {
-            return $this->content;
-        }
+		if($this->content !== NULL) {
+			return $this->content;
+		}
 
-        $this->content = new stdClass;
-        $this->content->items = array();
-        $this->content->icons = array();
-        $this->content->footer = '';
+		$this->content = new stdClass;
+		$this->content->items = array();
+		$this->content->icons = array();
+		$this->content->footer = '';
 
-        if ($COURSE->id == $this->instance->pageid) {
-            $course = $COURSE;
-        } else {
-            $course = get_record('course', 'id', $this->instance->pageid);
-        }
+		if ($COURSE->id == $this->instance->pageid) {
+			$course = $COURSE;
+		} else {
+			$course = get_record('course', 'id', $this->instance->pageid);
+		}
 
-        require_once($CFG->dirroot.'/course/lib.php');
+		require_once($CFG->dirroot.'/course/lib.php');
 
-        $modinfo = get_fast_modinfo($course);
-        $modfullnames = array();
+		$modinfo = get_fast_modinfo($course);
+		$modfullnames = array();
 
-        foreach($modinfo->cms as $cm) {
-            if (!$cm->uservisible) {
-                continue;
-            }
-            $modfullnames[$cm->modname] = $cm->modplural;
-        }
+		foreach($modinfo->cms as $cm) {
+			if (!$cm->uservisible) {
+				continue;
+			}
+			$modfullnames[$cm->modname] = $cm->modplural;
+		}
 
-        asort($modfullnames, SORT_LOCALE_STRING);
+		asort($modfullnames, SORT_LOCALE_STRING);
 
-        foreach ($modfullnames as $modname => $modfullname) {
-            if ($modname != 'label') {
-                $this->content->items[] = '<a title="'.get_string('forumdescription').'  "href="'.$CFG->wwwroot.'/mod/'.$modname.'/index.php?id='.$this->instance->pageid.'">'.$modfullname.'</a>';
-                $this->content->icons[] = '<img src="'.$CFG->modpixpath.'/'.$modname.'/icon.gif" class="icon" alt="" />';
-            }
-        }
+		foreach ($modfullnames as $modname => $modfullname) {
+			if ($modname != 'label') {
+				$this->content->items[] = '<a title="'.get_string('forumdescription').'  "href="'.$CFG->wwwroot.'/mod/'.$modname.'/index.php?id='.$this->instance->pageid.'">'.$modfullname.'</a>';
+				$this->content->icons[] = '<img src="'.$CFG->modpixpath.'/'.$modname.'/icon.gif" class="icon" alt="" />';
+			}
+		}
 
-        return $this->content;
-    }
+		return $this->content;
+	}
 
-    function applicable_formats() {
-        return array('all' => true, 'mod' => false, 'my' => false, 'admin' => false,
-                     'tag' => false);
-    }
+	function applicable_formats() {
+		return array('all' => true, 'mod' => false, 'my' => false, 'admin' => false,
+					 'tag' => false);
+	}
 }
 
 ?>

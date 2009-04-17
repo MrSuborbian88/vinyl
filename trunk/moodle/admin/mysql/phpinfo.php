@@ -16,6 +16,6 @@ require_once './libraries/common.inc.php';
  * Displays PHP information
  */
 if ($GLOBALS['cfg']['ShowPhpInfo']) {
-    phpinfo();
+	phpinfo();
 }
 ?>

@@ -24,86 +24,86 @@ require_once 'HTMLPurifier/Lexer.php';
 
 class HTMLPurifier_Lexer_PEARSax3 extends HTMLPurifier_Lexer
 {
-    
-    /**
-     * Internal accumulator array for SAX parsers.
-     * @protected
-     */
-    var $tokens = array();
-    
-    function tokenizeHTML($string, $config, &$context) {
-        
-        $this->tokens = array();
-        
-        $string = $this->normalize($string, $config, $context);
-        
-        $parser = new XML_HTMLSax3();
-        $parser->set_object($this);
-        $parser->set_element_handler('openHandler','closeHandler');
-        $parser->set_data_handler('dataHandler');
-        $parser->set_escape_handler('escapeHandler');
-        
-        // doesn't seem to work correctly for attributes
-        $parser->set_option('XML_OPTION_ENTITIES_PARSED', 1);
-        
-        $parser->parse($string);
-        
-        return $this->tokens;
-        
-    }
-    
-    /**
-     * Open tag event handler, interface is defined by PEAR package.
-     */
-    function openHandler(&$parser, $name, $attrs, $closed) {
-        // entities are not resolved in attrs
-        foreach ($attrs as $key => $attr) {
-            $attrs[$key] = $this->parseData($attr);
-        }
-        if ($closed) {
-            $this->tokens[] = new HTMLPurifier_Token_Empty($name, $attrs);
-        } else {
-            $this->tokens[] = new HTMLPurifier_Token_Start($name, $attrs);
-        }
-        return true;
-    }
-    
-    /**
-     * Close tag event handler, interface is defined by PEAR package.
-     */
-    function closeHandler(&$parser, $name) {
-        // HTMLSax3 seems to always send empty tags an extra close tag
-        // check and ignore if you see it:
-        // [TESTME] to make sure it doesn't overreach
-        if ($this->tokens[count($this->tokens)-1]->type == 'empty') {
-            return true;
-        }
-        $this->tokens[] = new HTMLPurifier_Token_End($name);
-        return true;
-    }
-    
-    /**
-     * Data event handler, interface is defined by PEAR package.
-     */
-    function dataHandler(&$parser, $data) {
-        $this->tokens[] = new HTMLPurifier_Token_Text($data);
-        return true;
-    }
-    
-    /**
-     * Escaped text handler, interface is defined by PEAR package.
-     */
-    function escapeHandler(&$parser, $data) {
-        if (strpos($data, '--') === 0) {
-            $this->tokens[] = new HTMLPurifier_Token_Comment($data);
-        }
-        // CDATA is handled elsewhere, but if it was handled here:
-        //if (strpos($data, '[CDATA[') === 0) {
-        //    $this->tokens[] = new HTMLPurifier_Token_Text(
-        //        substr($data, 7, strlen($data) - 9) );
-        //}
-        return true;
-    }
-    
+	
+	/**
+	 * Internal accumulator array for SAX parsers.
+	 * @protected
+	 */
+	var $tokens = array();
+	
+	function tokenizeHTML($string, $config, &$context) {
+		
+		$this->tokens = array();
+		
+		$string = $this->normalize($string, $config, $context);
+		
+		$parser = new XML_HTMLSax3();
+		$parser->set_object($this);
+		$parser->set_element_handler('openHandler','closeHandler');
+		$parser->set_data_handler('dataHandler');
+		$parser->set_escape_handler('escapeHandler');
+		
+		// doesn't seem to work correctly for attributes
+		$parser->set_option('XML_OPTION_ENTITIES_PARSED', 1);
+		
+		$parser->parse($string);
+		
+		return $this->tokens;
+		
+	}
+	
+	/**
+	 * Open tag event handler, interface is defined by PEAR package.
+	 */
+	function openHandler(&$parser, $name, $attrs, $closed) {
+		// entities are not resolved in attrs
+		foreach ($attrs as $key => $attr) {
+			$attrs[$key] = $this->parseData($attr);
+		}
+		if ($closed) {
+			$this->tokens[] = new HTMLPurifier_Token_Empty($name, $attrs);
+		} else {
+			$this->tokens[] = new HTMLPurifier_Token_Start($name, $attrs);
+		}
+		return true;
+	}
+	
+	/**
+	 * Close tag event handler, interface is defined by PEAR package.
+	 */
+	function closeHandler(&$parser, $name) {
+		// HTMLSax3 seems to always send empty tags an extra close tag
+		// check and ignore if you see it:
+		// [TESTME] to make sure it doesn't overreach
+		if ($this->tokens[count($this->tokens)-1]->type == 'empty') {
+			return true;
+		}
+		$this->tokens[] = new HTMLPurifier_Token_End($name);
+		return true;
+	}
+	
+	/**
+	 * Data event handler, interface is defined by PEAR package.
+	 */
+	function dataHandler(&$parser, $data) {
+		$this->tokens[] = new HTMLPurifier_Token_Text($data);
+		return true;
+	}
+	
+	/**
+	 * Escaped text handler, interface is defined by PEAR package.
+	 */
+	function escapeHandler(&$parser, $data) {
+		if (strpos($data, '--') === 0) {
+			$this->tokens[] = new HTMLPurifier_Token_Comment($data);
+		}
+		// CDATA is handled elsewhere, but if it was handled here:
+		//if (strpos($data, '[CDATA[') === 0) {
+		//	$this->tokens[] = new HTMLPurifier_Token_Text(
+		//		substr($data, 7, strlen($data) - 9) );
+		//}
+		return true;
+	}
+	
 }
 

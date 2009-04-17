@@ -25,55 +25,55 @@ $export_page_title = $strViewDump;
 // generate WHERE clause (if we are asked to export specific rows)
 
 if (! empty($sql_query)) {
-    // Parse query so we can work with tokens
-    $parsed_sql = PMA_SQP_parse($sql_query);
-    $analyzed_sql = PMA_SQP_analyze($parsed_sql);
+	// Parse query so we can work with tokens
+	$parsed_sql = PMA_SQP_parse($sql_query);
+	$analyzed_sql = PMA_SQP_analyze($parsed_sql);
 
-    // Need to generate WHERE clause?
-    if (isset($primary_key)) {
-        // Yes => rebuild query from scracts, this doesn't work with nested
-        // selects :-(
-        $sql_query = 'SELECT ';
+	// Need to generate WHERE clause?
+	if (isset($primary_key)) {
+		// Yes => rebuild query from scracts, this doesn't work with nested
+		// selects :-(
+		$sql_query = 'SELECT ';
 
-        if (isset($analyzed_sql[0]['queryflags']['distinct'])) {
-            $sql_query .= ' DISTINCT ';
-        }
+		if (isset($analyzed_sql[0]['queryflags']['distinct'])) {
+			$sql_query .= ' DISTINCT ';
+		}
 
-        $sql_query .= $analyzed_sql[0]['select_expr_clause'];
+		$sql_query .= $analyzed_sql[0]['select_expr_clause'];
 
-        if (!empty($analyzed_sql[0]['from_clause'])) {
-            $sql_query .= ' FROM ' . $analyzed_sql[0]['from_clause'];
-        }
+		if (!empty($analyzed_sql[0]['from_clause'])) {
+			$sql_query .= ' FROM ' . $analyzed_sql[0]['from_clause'];
+		}
 
-        $wheres = array();
+		$wheres = array();
 
-        if (isset($primary_key) && is_array($primary_key)
-         && count($primary_key) > 0) {
-            $wheres[] = '(' . implode(') OR (',$primary_key) . ')';
-        }
+		if (isset($primary_key) && is_array($primary_key)
+		 && count($primary_key) > 0) {
+			$wheres[] = '(' . implode(') OR (',$primary_key) . ')';
+		}
 
-        if (!empty($analyzed_sql[0]['where_clause']))  {
-            $wheres[] = $analyzed_sql[0]['where_clause'];
-        }
+		if (!empty($analyzed_sql[0]['where_clause']))  {
+			$wheres[] = $analyzed_sql[0]['where_clause'];
+		}
 
-        if (count($wheres) > 0) {
-            $sql_query .= ' WHERE (' . implode(') AND (', $wheres) . ')';
-        }
+		if (count($wheres) > 0) {
+			$sql_query .= ' WHERE (' . implode(') AND (', $wheres) . ')';
+		}
 
-        if (!empty($analyzed_sql[0]['group_by_clause'])) {
-            $sql_query .= ' GROUP BY ' . $analyzed_sql[0]['group_by_clause'];
-        }
-        if (!empty($analyzed_sql[0]['having_clause'])) {
-            $sql_query .= ' HAVING ' . $analyzed_sql[0]['having_clause'];
-        }
-        if (!empty($analyzed_sql[0]['order_by_clause'])) {
-            $sql_query .= ' ORDER BY ' . $analyzed_sql[0]['order_by_clause'];
-        }
-    } else {
-        // Just crop LIMIT clause
-        $sql_query = $analyzed_sql[0]['section_before_limit'] . $analyzed_sql[0]['section_after_limit'];
-    }
-    $message = $GLOBALS['strSuccess'];
+		if (!empty($analyzed_sql[0]['group_by_clause'])) {
+			$sql_query .= ' GROUP BY ' . $analyzed_sql[0]['group_by_clause'];
+		}
+		if (!empty($analyzed_sql[0]['having_clause'])) {
+			$sql_query .= ' HAVING ' . $analyzed_sql[0]['having_clause'];
+		}
+		if (!empty($analyzed_sql[0]['order_by_clause'])) {
+			$sql_query .= ' ORDER BY ' . $analyzed_sql[0]['order_by_clause'];
+		}
+	} else {
+		// Just crop LIMIT clause
+		$sql_query = $analyzed_sql[0]['section_before_limit'] . $analyzed_sql[0]['section_after_limit'];
+	}
+	$message = $GLOBALS['strSuccess'];
 }
 
 /**

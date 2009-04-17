@@ -13,10 +13,10 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2006 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
@@ -29,145 +29,145 @@ require_once $CFG->dirroot.'/search/Zend/Search/Lucene/Exception.php';
 
 /**
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2006 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 class Zend_Search_Lucene_Search_QueryTokenizer implements Iterator
 {
-    /**
-     * inputString tokens.
-     *
-     * @var array
-     */
-    protected $_tokens = array();
+	/**
+	 * inputString tokens.
+	 *
+	 * @var array
+	 */
+	protected $_tokens = array();
 
-    /**
-     * tokens pointer.
-     *
-     * @var integer
-     */
-    protected $_currToken = 0;
-
-
-    /**
-     * QueryTokenize constructor needs query string as a parameter.
-     *
-     * @param string $inputString
-     */
-    public function __construct($inputString)
-    {
-        if (!strlen($inputString)) {
-            throw new Zend_Search_Lucene_Exception('Cannot tokenize empty query string.');
-        }
-
-        $currentToken = '';
-        for ($count = 0; $count < strlen($inputString); $count++) {
-            if (ctype_alnum( $inputString{$count} ) ||
-                $inputString{$count} == '_') {
-                $currentToken .= $inputString{$count};
-            } else if ($inputString{$count} == '\\') { // Escaped character
-                $count++;
-
-                if ($count == strlen($inputString)) {
-                    throw new Zend_Search_Lucene_Exception('Non finished escape sequence.');
-                }
-
-                $currentToken .= $inputString{$count};
-            } else {
-                // Previous token is finished
-                if (strlen($currentToken)) {
-                    $this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD,
-                                                                $currentToken);
-                    $currentToken = '';
-                }
-
-                if ($inputString{$count} == '+' || $inputString{$count} == '-') {
-                    $this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_SIGN,
-                                                                $inputString{$count});
-                } elseif ($inputString{$count} == '(' || $inputString{$count} == ')') {
-                    $this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_BRACKET,
-                                                                $inputString{$count});
-                } elseif ($inputString{$count} == ':' && $this->count()) {
-                    if ($this->_tokens[count($this->_tokens)-1]->type == Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD) {
-                        $this->_tokens[count($this->_tokens)-1]->type = Zend_Search_Lucene_Search_QueryToken::TOKTYPE_FIELD;
-                    }
-                }
-            }
-        }
-
-        if (strlen($currentToken)) {
-            $this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD, $currentToken);
-        }
-    }
+	/**
+	 * tokens pointer.
+	 *
+	 * @var integer
+	 */
+	protected $_currToken = 0;
 
 
-    /**
-     * Returns number of tokens
-     *
-     * @return integer
-     */
-    public function count()
-    {
-        return count($this->_tokens);
-    }
+	/**
+	 * QueryTokenize constructor needs query string as a parameter.
+	 *
+	 * @param string $inputString
+	 */
+	public function __construct($inputString)
+	{
+		if (!strlen($inputString)) {
+			throw new Zend_Search_Lucene_Exception('Cannot tokenize empty query string.');
+		}
+
+		$currentToken = '';
+		for ($count = 0; $count < strlen($inputString); $count++) {
+			if (ctype_alnum( $inputString{$count} ) ||
+				$inputString{$count} == '_') {
+				$currentToken .= $inputString{$count};
+			} else if ($inputString{$count} == '\\') { // Escaped character
+				$count++;
+
+				if ($count == strlen($inputString)) {
+					throw new Zend_Search_Lucene_Exception('Non finished escape sequence.');
+				}
+
+				$currentToken .= $inputString{$count};
+			} else {
+				// Previous token is finished
+				if (strlen($currentToken)) {
+					$this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD,
+																$currentToken);
+					$currentToken = '';
+				}
+
+				if ($inputString{$count} == '+' || $inputString{$count} == '-') {
+					$this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_SIGN,
+																$inputString{$count});
+				} elseif ($inputString{$count} == '(' || $inputString{$count} == ')') {
+					$this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_BRACKET,
+																$inputString{$count});
+				} elseif ($inputString{$count} == ':' && $this->count()) {
+					if ($this->_tokens[count($this->_tokens)-1]->type == Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD) {
+						$this->_tokens[count($this->_tokens)-1]->type = Zend_Search_Lucene_Search_QueryToken::TOKTYPE_FIELD;
+					}
+				}
+			}
+		}
+
+		if (strlen($currentToken)) {
+			$this->_tokens[] = new Zend_Search_Lucene_Search_QueryToken(Zend_Search_Lucene_Search_QueryToken::TOKTYPE_WORD, $currentToken);
+		}
+	}
 
 
-    /**
-     * Returns TRUE if a token exists at the current position.
-     *
-     * @return boolean
-     */
-    public function valid()
-    {
-        return $this->_currToken < $this->count();
-    }
+	/**
+	 * Returns number of tokens
+	 *
+	 * @return integer
+	 */
+	public function count()
+	{
+		return count($this->_tokens);
+	}
 
 
-    /**
-     * Resets token stream.
-     *
-     * @return integer
-     */
-    public function rewind()
-    {
-        $this->_currToken = 0;
-    }
+	/**
+	 * Returns TRUE if a token exists at the current position.
+	 *
+	 * @return boolean
+	 */
+	public function valid()
+	{
+		return $this->_currToken < $this->count();
+	}
 
 
-    /**
-     * Returns the token at the current position or FALSE if
-     * the position does not contain a valid token.
-     *
-     * @return mixed
-     */
-    public function current()
-    {
-        return $this->valid() ? $this->_tokens[$this->_currToken] : false;
-    }
+	/**
+	 * Resets token stream.
+	 *
+	 * @return integer
+	 */
+	public function rewind()
+	{
+		$this->_currToken = 0;
+	}
 
 
-    /**
-     * Returns next token
-     *
-     * @return Zend_Search_Lucene_Search_QueryToken
-     */
-    public function next()
-    {
-        return ++$this->_currToken;
-    }
+	/**
+	 * Returns the token at the current position or FALSE if
+	 * the position does not contain a valid token.
+	 *
+	 * @return mixed
+	 */
+	public function current()
+	{
+		return $this->valid() ? $this->_tokens[$this->_currToken] : false;
+	}
 
 
-    /**
-     * Return the position of the current token.
-     *
-     * @return integer
-     */
-    public function key()
-    {
-        return $this->_currToken;
-    }
+	/**
+	 * Returns next token
+	 *
+	 * @return Zend_Search_Lucene_Search_QueryToken
+	 */
+	public function next()
+	{
+		return ++$this->_currToken;
+	}
+
+
+	/**
+	 * Return the position of the current token.
+	 *
+	 * @return integer
+	 */
+	public function key()
+	{
+		return $this->_currToken;
+	}
 
 }
 

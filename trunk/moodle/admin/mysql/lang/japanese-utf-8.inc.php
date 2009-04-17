@@ -3,8 +3,8 @@
 
 /**
  * Translated by Yukihiro Kawada <kawada at den.fujifilm.co.jp>
- *               Tadashi Jokagi <elf2000 at users.sourceforge.net>
- *               Kenichi Ishigaki <ishigaki at tcool.org>
+ *			   Tadashi Jokagi <elf2000 at users.sourceforge.net>
+ *			   Kenichi Ishigaki <ishigaki at tcool.org>
  */
 
 $charset = 'utf-8';
@@ -339,7 +339,7 @@ $strHaveToShow = '最低ひとつは表示するカラムを選択してくだ�
 $strHebrew = 'ヘブライ語';
 $strHelp = 'ヘルプ';
 $strHexForBLOB = 'BLOBに16進数表記を利用する';
-$strHide         = '隠す';
+$strHide		 = '隠す';
 $strHideShowAll = 'すべて隠す/表示';
 $strHideShowNoRelation = 'リレーションのないテーブルを隠す/表示';
 $strHome = 'メインページへ';

@@ -3,10 +3,10 @@
  * German locale file for UTF-8
  *
  * For suggestions concerning this file please contact
- *     https://sourceforge.net/tracker/?group_id=23067&atid=387645
+ *	 https://sourceforge.net/tracker/?group_id=23067&atid=387645
  *
  * Bei Verbesserungsvorschlägen diese Datei betreffend wenden Sie sich bitte an
- *     https://sourceforge.net/tracker/?group_id=23067&atid=387645
+ *	 https://sourceforge.net/tracker/?group_id=23067&atid=387645
  *
  * $Id: german-utf-8.inc.php 11113 2008-02-09 16:09:54Z lem9 $
  */

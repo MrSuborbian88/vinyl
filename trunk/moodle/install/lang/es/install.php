@@ -1,5 +1,5 @@
 <?PHP // $Id: install.php,v 1.4 2006/09/20 20:31:43 skodak Exp $ 
-      // install.php - created with Moodle 1.5 Beta (2005052300)
+	  // install.php - created with Moodle 1.5 Beta (2005052300)
 
 
 $string['admindirerror'] = 'El directorio especificado para admin es incorrecto';
@@ -14,15 +14,15 @@ $string['configfilewritten'] = 'config.php se ha creado con �xito';
 $string['configurationcomplete'] = 'Configuraci�n completa';
 $string['database'] = 'Base de datos';
 $string['databasecreationsettings'] = '<p>Ahora necesita configurar los ajustes de la base de datos 
-    donde se almacenar�n la mayor�a de los datos de Moodle. La base de datos ser� creada autom�ticamente
-    por el instalador con los valores por defecto o los que especifique en los campos editables m�s abajo. Si
-    la seguridad de su ordenador es importante deber�a definir una contrase�a en el campo \"Contrase�a\".</p>
-      <p><b>Tipo:</b> el valor por defecto es \"mysql\"<br />
-      <b>Servidor:</b> el valor por defecto es \"localhost\"<br />
-      <b>Nombre:</b> nombre de la base de datos, e.g., moodle<br />
-      <b>Usuario:</b> el valor por defecto es  \"root\"<br />
-      <b>Contrase�a:</b> contrase�a de la base de datos<br />
-      <b>Prefijo de tablas:</b> prefijo opcional para todas las tablas</p>';
+	donde se almacenar�n la mayor�a de los datos de Moodle. La base de datos ser� creada autom�ticamente
+	por el instalador con los valores por defecto o los que especifique en los campos editables m�s abajo. Si
+	la seguridad de su ordenador es importante deber�a definir una contrase�a en el campo \"Contrase�a\".</p>
+	  <p><b>Tipo:</b> el valor por defecto es \"mysql\"<br />
+	  <b>Servidor:</b> el valor por defecto es \"localhost\"<br />
+	  <b>Nombre:</b> nombre de la base de datos, e.g., moodle<br />
+	  <b>Usuario:</b> el valor por defecto es  \"root\"<br />
+	  <b>Contrase�a:</b> contrase�a de la base de datos<br />
+	  <b>Prefijo de tablas:</b> prefijo opcional para todas las tablas</p>';
 $string['databasesettings'] = 'Ahora necesita configurar la base de datos en la que se almacenar� la mayor parte de datos de Moodle. Esta base de datos debe haber sido ya creada, y disponer de un nombre de usuario y de una contrase�a de acceso.<br />
 <br /> <br />
 <b>Tipo:</b> mysql o postgres7<br />
@@ -117,18 +117,18 @@ $string['wwwroot'] = 'WWW';
 $string['wwwrooterror'] = 'El ajuste \'WWW\' es incorrecto';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'Si est� viendo esta p�gina es porque ha podido ejecutar el paquete 
-    <strong>$a->packname $a->packversion</strong> en su ordenador. !Enhorabuena!';
+	<strong>$a->packname $a->packversion</strong> en su ordenador. !Enhorabuena!';
 $string['welcomep30'] = 'Esta versi�n de <strong>$a->installername</strong> incluye las 
-    aplicaciones necesarias para que <strong>Moodle</strong> funcione en su ordenador,
-    principalmente:';
+	aplicaciones necesarias para que <strong>Moodle</strong> funcione en su ordenador,
+	principalmente:';
 $string['welcomep40'] = 'El paquete tambi�n incluye <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'El uso de todas las aplicaciones del paquete est� gobernado por sus respectivas 
-    licencias. El programa <strong>$a->installername</strong> es 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">c�digo abierto</a> y se distribuye 
-    bajo licencia <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
+	licencias. El programa <strong>$a->installername</strong> es 
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">c�digo abierto</a> y se distribuye 
+	bajo licencia <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
 $string['welcomep60'] = 'Las siguientes p�ginas le guiar�n a traves de algunos sencillos pasos para configurar
-    y ajustar <strong>Moodle</strong> en su ordenador. Puede utilizar los valores por defecto sugeridos o,
-    de forma opcional, modificarlos para que se ajusten a sus necesidades.';
+	y ajustar <strong>Moodle</strong> en su ordenador. Puede utilizar los valores por defecto sugeridos o,
+	de forma opcional, modificarlos para que se ajusten a sus necesidades.';
 $string['welcomep70'] = 'Pulse en el bot�n \"Siguiente\" para continuar con la configuraci�n de <strong>Moodle</strong>.';
 
 ?>

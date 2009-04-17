@@ -189,55 +189,55 @@ class ADODB_ibase extends ADOConnection {
 	
 	function &MetaIndexes ($table, $primary = FALSE, $owner=false)
 	{
-        // save old fetch mode
-        global $ADODB_FETCH_MODE;
-        $false = false;
-        $save = $ADODB_FETCH_MODE;
-        $ADODB_FETCH_MODE = ADODB_FETCH_NUM;
-        if ($this->fetchMode !== FALSE) {
-               $savem = $this->SetFetchMode(FALSE);
-        }
-        $table = strtoupper($table);
-        $sql = "SELECT * FROM RDB\$INDICES WHERE RDB\$RELATION_NAME = '".$table."'";
-        if (!$primary) {
-        	$sql .= " AND RDB\$INDEX_NAME NOT LIKE 'RDB\$%'";
-        } else {
-        	$sql .= " AND RDB\$INDEX_NAME NOT LIKE 'RDB\$FOREIGN%'";
-        }
-        // get index details
-        $rs = $this->Execute($sql);
-        if (!is_object($rs)) {
-	        // restore fetchmode
-	        if (isset($savem)) {
-	            $this->SetFetchMode($savem);
-	        }
-	        $ADODB_FETCH_MODE = $save;
-            return $false;
-        }
-        
-        $indexes = array();
+		// save old fetch mode
+		global $ADODB_FETCH_MODE;
+		$false = false;
+		$save = $ADODB_FETCH_MODE;
+		$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
+		if ($this->fetchMode !== FALSE) {
+			   $savem = $this->SetFetchMode(FALSE);
+		}
+		$table = strtoupper($table);
+		$sql = "SELECT * FROM RDB\$INDICES WHERE RDB\$RELATION_NAME = '".$table."'";
+		if (!$primary) {
+			$sql .= " AND RDB\$INDEX_NAME NOT LIKE 'RDB\$%'";
+		} else {
+			$sql .= " AND RDB\$INDEX_NAME NOT LIKE 'RDB\$FOREIGN%'";
+		}
+		// get index details
+		$rs = $this->Execute($sql);
+		if (!is_object($rs)) {
+			// restore fetchmode
+			if (isset($savem)) {
+				$this->SetFetchMode($savem);
+			}
+			$ADODB_FETCH_MODE = $save;
+			return $false;
+		}
+		
+		$indexes = array();
 		while ($row = $rs->FetchRow()) {
 			$index = $row[0];
-             if (!isset($indexes[$index])) {
-             		if (is_null($row[3])) {$row[3] = 0;}
-                     $indexes[$index] = array(
-                             'unique' => ($row[3] == 1),
-                             'columns' => array()
-                     );
-             }
+			 if (!isset($indexes[$index])) {
+			 		if (is_null($row[3])) {$row[3] = 0;}
+					 $indexes[$index] = array(
+							 'unique' => ($row[3] == 1),
+							 'columns' => array()
+					 );
+			 }
 			$sql = "SELECT * FROM RDB\$INDEX_SEGMENTS WHERE RDB\$INDEX_NAME = '".$index."' ORDER BY RDB\$FIELD_POSITION ASC";
 			$rs1 = $this->Execute($sql);
-            while ($row1 = $rs1->FetchRow()) {
-             	$indexes[$index]['columns'][$row1[2]] = $row1[1];
-        	}
+			while ($row1 = $rs1->FetchRow()) {
+			 	$indexes[$index]['columns'][$row1[2]] = $row1[1];
+			}
 		}
-        // restore fetchmode
-        if (isset($savem)) {
-            $this->SetFetchMode($savem);
-        }
-        $ADODB_FETCH_MODE = $save;
-        
-        return $indexes;
+		// restore fetchmode
+		if (isset($savem)) {
+			$this->SetFetchMode($savem);
+		}
+		$ADODB_FETCH_MODE = $save;
+		
+		return $indexes;
 	}
 
 	
@@ -388,24 +388,24 @@ class ADODB_ibase extends ADOConnection {
 			case 7: 
 			case 8:
 				if ($dialect3) {
-				    switch($fsubtype){
-				    	case 0: 
-				    		$fld->type = ($ftype == 7 ? 'smallint' : 'integer');
-				    		break;
-				    	case 1: 
-				    		$fld->type = 'numeric';
+					switch($fsubtype){
+						case 0: 
+							$fld->type = ($ftype == 7 ? 'smallint' : 'integer');
+							break;
+						case 1: 
+							$fld->type = 'numeric';
 							$fld->max_length = $fprecision;
 							$fld->scale = $fscale;
-				    		break;
-				    	case 2:
-				    		$fld->type = 'decimal';
+							break;
+						case 2:
+							$fld->type = 'decimal';
 							$fld->max_length = $fprecision;
 							$fld->scale = $fscale;
-				    		break;
-				    } // switch
+							break;
+					} // switch
 				} else {
 					if ($fscale !=0) {
-					    $fld->type = 'decimal';
+						$fld->type = 'decimal';
 						$fld->scale = $fscale;
 						$fld->max_length = ($ftype == 7 ? 4 : 9);
 					} else {
@@ -415,23 +415,23 @@ class ADODB_ibase extends ADOConnection {
 				break;
 			case 16: 
 				if ($dialect3) {
-				    switch($fsubtype){
-				    	case 0: 
-				    		$fld->type = 'decimal';
+					switch($fsubtype){
+						case 0: 
+							$fld->type = 'decimal';
 							$fld->max_length = 18;
 							$fld->scale = 0;
-				    		break;
-				    	case 1: 
-				    		$fld->type = 'numeric';
+							break;
+						case 1: 
+							$fld->type = 'numeric';
 							$fld->max_length = $fprecision;
 							$fld->scale = $fscale;
-				    		break;
-				    	case 2:
-				    		$fld->type = 'decimal';
+							break;
+						case 2:
+							$fld->type = 'decimal';
 							$fld->max_length = $fprecision;
 							$fld->scale = $fscale;
-				    		break;
-				    } // switch
+							break;
+					} // switch
 				}
 				break;
 			case 10:
@@ -442,7 +442,7 @@ class ADODB_ibase extends ADOConnection {
 				break;
 			case 27:
 				if ($fscale !=0) {
-				    $fld->type = 'decimal';
+					$fld->type = 'decimal';
 					$fld->max_length = 15;
 					$fld->scale = 5;
 				} else {
@@ -451,7 +451,7 @@ class ADODB_ibase extends ADOConnection {
 				break;
 			case 35:
 				if ($dialect3) {
-				    $fld->type = 'timestamp';
+					$fld->type = 'timestamp';
 				} else {
 					$fld->type = 'date';
 				}
@@ -569,29 +569,29 @@ class ADODB_ibase extends ADOConnection {
 	} 
 	
 	function _BlobDecode( $blob ) 
-    {
-        if  (ADODB_PHPVER >= 0x5000) {
-            $blob_data = ibase_blob_info($this->_connectionID, $blob );
-            $blobid = ibase_blob_open($this->_connectionID, $blob );
-        } else {
+	{
+		if  (ADODB_PHPVER >= 0x5000) {
+			$blob_data = ibase_blob_info($this->_connectionID, $blob );
+			$blobid = ibase_blob_open($this->_connectionID, $blob );
+		} else {
 
-            $blob_data = ibase_blob_info( $blob );
-            $blobid = ibase_blob_open( $blob );
-        }
+			$blob_data = ibase_blob_info( $blob );
+			$blobid = ibase_blob_open( $blob );
+		}
 
-        if( $blob_data[0] > $this->maxblobsize ) {
+		if( $blob_data[0] > $this->maxblobsize ) {
 
-            $realblob = ibase_blob_get($blobid, $this->maxblobsize);
+			$realblob = ibase_blob_get($blobid, $this->maxblobsize);
 
-            while($string = ibase_blob_get($blobid, 8192)){
-                $realblob .= $string; 
-            }
-        } else {
-            $realblob = ibase_blob_get($blobid, $blob_data[0]);
-        }
+			while($string = ibase_blob_get($blobid, 8192)){
+				$realblob .= $string; 
+			}
+		} else {
+			$realblob = ibase_blob_get($blobid, $blob_data[0]);
+		}
 
-        ibase_blob_close( $blobid );
-        return( $realblob );
+		ibase_blob_close( $blobid );
+		return( $realblob );
 	}
 	
 	function UpdateBlobFile($table,$column,$path,$where,$blobtype='BLOB') 
@@ -696,15 +696,15 @@ class ADODB_ibase extends ADOConnection {
 			case 'H':
 			case 'h':
 			  $s .= "(extract(hour from $col))";
-			  break;                        
+			  break;						
 			case 'I':
 			case 'i':
 			  $s .= "(extract(minute from $col))";
-			  break;                
+			  break;				
 			case 'S':
 			case 's':
 			  $s .= "CAST((extract(second from $col)) AS INTEGER)";
-			  break;        
+			  break;		
 
 			default:
 				if ($ch == '\\') {
@@ -765,7 +765,7 @@ class ADORecordset_ibase extends ADORecordSet
 			 $fld->type = $ibf['type'];
 			 $fld->max_length = $ibf['length'];
 			 
-			 /*       This needs to be populated from the metadata */ 
+			 /*	   This needs to be populated from the metadata */ 
 			 $fld->not_null = false;
 			 $fld->has_default = false;
 			 $fld->default_value = 'null';

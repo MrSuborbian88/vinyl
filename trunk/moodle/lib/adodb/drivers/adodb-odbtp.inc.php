@@ -40,7 +40,7 @@ class ADODB_odbtp extends ADOConnection{
 	function ServerInfo()
 	{
 		return array('description' => @odbtp_get_attr( ODB_ATTR_DBMSNAME, $this->_connectionID),
-		             'version' => @odbtp_get_attr( ODB_ATTR_DBMSVER, $this->_connectionID));
+					 'version' => @odbtp_get_attr( ODB_ATTR_DBMSVER, $this->_connectionID));
 	}
 
 	function ErrorMsg()
@@ -82,9 +82,9 @@ class ADODB_odbtp extends ADOConnection{
 			$path = @odbtp_get_attr( ODB_ATTR_DATABASENAME, $this->_connectionID );
 			//if using vfp dbc file
 			if( !strcasecmp(strrchr($path, '.'), '.dbc') )
-                $path = substr($path,0,strrpos($path,'\/'));
-           	$seqtab = $path . '/' . $seqtab;
-        }
+				$path = substr($path,0,strrpos($path,'\/'));
+		   	$seqtab = $path . '/' . $seqtab;
+		}
 		if($num == false) {
 			if (empty($this->_genSeqSQL)) return false;
 			$ok = $this->Execute(sprintf($this->_genSeqSQL ,$seqtab));
@@ -110,9 +110,9 @@ class ADODB_odbtp extends ADOConnection{
 			$path = @odbtp_get_attr( ODB_ATTR_DATABASENAME, $this->_connectionID );
 			//if using vfp dbc file
 			if( !strcasecmp(strrchr($path, '.'), '.dbc') )
-                $path = substr($path,0,strrpos($path,'\/'));
-           	$seqtab = $path . '/' . $seqtab;
-        }
+				$path = substr($path,0,strrpos($path,'\/'));
+		   	$seqtab = $path . '/' . $seqtab;
+		}
 		$MAXLOOPS = 100;
 		while (--$MAXLOOPS>=0) {
 			$num = $this->GetOne("select seq_value from adodb_seq where seq_name='$seq'");
@@ -147,7 +147,7 @@ class ADODB_odbtp extends ADOConnection{
 	//for access : DRIVER={Microsoft Access Driver (*.mdb)};DBQ=c:\path_to_access_db\base_test.mdb;UID=root;PWD=;
 	//for mssql : DRIVER={SQL Server};SERVER=myserver;UID=myuid;PWD=mypwd;DATABASE=OdbtpTest;
 	//if uid & pwd can be separate
-    function _connect($HostOrInterface, $UserOrDSN='', $argPassword='', $argDatabase='')
+	function _connect($HostOrInterface, $UserOrDSN='', $argPassword='', $argDatabase='')
 	{
 		$this->_connectionID = odbtp_connect($HostOrInterface,$UserOrDSN,$argPassword,$argDatabase);
 		if ($this->_connectionID === false) {
@@ -185,7 +185,7 @@ class ADODB_odbtp extends ADOConnection{
 				$this->ansiOuter = true;
 				$this->leftOuter = '*=';
 				$this->rightOuter = '=*';
-                $this->hasTop = 'top';
+				$this->hasTop = 'top';
 				$this->hasInsertID = true;
 				$this->hasTransactions = true;
 				$this->_bindInputArray = true;
@@ -202,7 +202,7 @@ class ADODB_odbtp extends ADOConnection{
 				$this->fmtTimeStamp = "#Y-m-d h:i:sA#";
 				$this->sysDate = "FORMAT(NOW,'yyyy-mm-dd')";
 				$this->sysTimeStamp = 'NOW';
-                $this->hasTop = 'top';
+				$this->hasTop = 'top';
 				$this->hasTransactions = false;
 				$this->_canPrepareSP = true;  // For MS Access only.
 				break;
@@ -213,7 +213,7 @@ class ADODB_odbtp extends ADOConnection{
 				$this->sysDate = 'date()';
 				$this->sysTimeStamp = 'datetime()';
 				$this->ansiOuter = true;
-                $this->hasTop = 'top';
+				$this->hasTop = 'top';
 				$this->hasTransactions = false;
 				$this->replaceQuote = "'+chr(39)+'";
 				$this->true = '.T.';
@@ -249,12 +249,12 @@ class ADODB_odbtp extends ADOConnection{
 				else
 					$this->hasTransactions = false;
 		}
-        @odbtp_set_attr(ODB_ATTR_FULLCOLINFO, TRUE, $this->_connectionID );
+		@odbtp_set_attr(ODB_ATTR_FULLCOLINFO, TRUE, $this->_connectionID );
 
 		if ($this->_useUnicodeSQL )
 			@odbtp_set_attr(ODB_ATTR_UNICODESQL, TRUE, $this->_connectionID);
 
-        return true;
+		return true;
 	}
 
 	function _pconnect($HostOrInterface, $UserOrDSN='', $argPassword='', $argDatabase='')
@@ -324,7 +324,7 @@ class ADODB_odbtp extends ADOConnection{
 				$fld->name = $rs->fields[3];
 				$fld->type = $rs->fields[5];
 				$fld->max_length = $rs->fields[6];
-    			$fld->not_null = !empty($rs->fields[9]);
+				$fld->not_null = !empty($rs->fields[9]);
  				$fld->scale = $rs->fields[7];
 				if (isset($rs->fields[12])) // vfp does not have field 12
 	 				if (!is_null($rs->fields[12])) {
@@ -556,7 +556,7 @@ class ADODB_odbtp extends ADOConnection{
 		if ($stmtid) {
 				$this->_lastAffectedRows = @odbtp_affected_rows($stmtid);
 		}
-        return $stmtid;
+		return $stmtid;
 	}
 
 	function _close()
@@ -592,7 +592,7 @@ class ADORecordSet_odbtp extends ADORecordSet {
 
 		if ($this->connection->odbc_driver == ODB_DRIVER_JET) {
 			if (!@odbtp_get_attr(ODB_ATTR_MAPCHARTOWCHAR,
-			                     $this->connection->_connectionID))
+								 $this->connection->_connectionID))
 			{
 				for ($f = 0; $f < $this->_numOfFields; $f++) {
 					if (@odbtp_field_bindtype($this->_queryID, $f) == ODB_CHAR)
@@ -608,7 +608,7 @@ class ADORecordSet_odbtp extends ADORecordSet {
 		$o= new ADOFieldObject();
 		$o->name = @odbtp_field_name($this->_queryID,$off);
 		$o->type = @odbtp_field_type($this->_queryID,$off);
-        $o->max_length = @odbtp_field_length($this->_queryID,$off);
+		$o->max_length = @odbtp_field_length($this->_queryID,$off);
 		if (ADODB_ASSOC_CASE == 0) $o->name = strtolower($o->name);
 		else if (ADODB_ASSOC_CASE == 1) $o->name = strtoupper($o->name);
 		return $o;
@@ -642,7 +642,7 @@ class ADORecordSet_odbtp extends ADORecordSet {
 			case ADODB_FETCH_ASSOC:
 				$this->fields = @odbtp_fetch_assoc($this->_queryID, $type);
 				break;
-            default:
+			default:
 				$this->fields = @odbtp_fetch_array($this->_queryID, $type);
 		}
 		if ($this->databaseType = 'odbtp_vfp') {
@@ -665,7 +665,7 @@ class ADORecordSet_odbtp extends ADORecordSet {
 		$this->EOF = false;
 		$this->_currentRow = 0;
 		return true;
-    }
+	}
 
 	function MoveLast()
 	{

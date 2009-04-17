@@ -24,15 +24,15 @@ define( 'MARKDOWNEXTRA_VERSION',  "1.1.6" ); # Tue 4 Sep 2007
 @define( 'MARKDOWN_EMPTY_ELEMENT_SUFFIX',  " />");
 
 # Define the width of a tab for code blocks.
-@define( 'MARKDOWN_TAB_WIDTH',     4 );
+@define( 'MARKDOWN_TAB_WIDTH',	 4 );
 
 # Optional title attribute for footnote links and backlinks.
-@define( 'MARKDOWN_FN_LINK_TITLE',         "" );
-@define( 'MARKDOWN_FN_BACKLINK_TITLE',     "" );
+@define( 'MARKDOWN_FN_LINK_TITLE',		 "" );
+@define( 'MARKDOWN_FN_BACKLINK_TITLE',	 "" );
 
 # Optional class attribute for footnote links and backlinks.
-@define( 'MARKDOWN_FN_LINK_CLASS',         "" );
-@define( 'MARKDOWN_FN_BACKLINK_CLASS',     "" );
+@define( 'MARKDOWN_FN_LINK_CLASS',		 "" );
+@define( 'MARKDOWN_FN_BACKLINK_CLASS',	 "" );
 
 
 #
@@ -40,7 +40,7 @@ define( 'MARKDOWNEXTRA_VERSION',  "1.1.6" ); # Tue 4 Sep 2007
 #
 
 # Change to false to remove Markdown from posts and/or comments.
-@define( 'MARKDOWN_WP_POSTS',      true );
+@define( 'MARKDOWN_WP_POSTS',	  true );
 @define( 'MARKDOWN_WP_COMMENTS',   true );
 
 
@@ -85,14 +85,14 @@ if (isset($wp_version)) {
 	# - Run Markdown on excerpt, then remove all tags.
 	# - Add paragraph tag around the excerpt, but remove it for the excerpt rss.
 	if (MARKDOWN_WP_POSTS) {
-		remove_filter('the_content',     'wpautop');
-        remove_filter('the_content_rss', 'wpautop');
-		remove_filter('the_excerpt',     'wpautop');
-		add_filter('the_content',     'Markdown', 6);
-        add_filter('the_content_rss', 'Markdown', 6);
+		remove_filter('the_content',	 'wpautop');
+		remove_filter('the_content_rss', 'wpautop');
+		remove_filter('the_excerpt',	 'wpautop');
+		add_filter('the_content',	 'Markdown', 6);
+		add_filter('the_content_rss', 'Markdown', 6);
 		add_filter('get_the_excerpt', 'Markdown', 6);
 		add_filter('get_the_excerpt', 'trim', 7);
-		add_filter('the_excerpt',     'mdwp_add_p');
+		add_filter('the_excerpt',	 'mdwp_add_p');
 		add_filter('the_excerpt_rss', 'mdwp_strip_p');
 		
 		remove_filter('content_save_pre',  'balanceTags', 50);
@@ -112,7 +112,7 @@ if (isset($wp_version)) {
 		add_filter('pre_comment_content', 'Markdown', 6);
 		add_filter('pre_comment_content', 'mdwp_hide_tags', 8);
 		add_filter('pre_comment_content', 'mdwp_show_tags', 12);
-		add_filter('get_comment_text',    'Markdown', 6);
+		add_filter('get_comment_text',	'Markdown', 6);
 		add_filter('get_comment_excerpt', 'Markdown', 6);
 		add_filter('get_comment_excerpt', 'mdwp_strip_p', 7);
 	
@@ -178,7 +178,7 @@ if (strcasecmp(substr(__FILE__, -16), "classTextile.php") == 0) {
 	# Fake Textile class. It calls Markdown instead.
 	class Textile {
 		function TextileThis($text, $lite='', $encode='') {
-			if ($lite == '' && $encode == '')    $text = Markdown($text);
+			if ($lite == '' && $encode == '')	$text = Markdown($text);
 			if (function_exists('SmartyPants'))  $text = SmartyPants($text);
 			return $text;
 		}
@@ -351,9 +351,9 @@ class Markdown_Parser {
 		# hard-coded:
 		#
 		# *  List "a" is made of tags which can be both inline or block-level.
-		#    These will be treated block-level when the start tag is alone on 
-		#    its line, otherwise they're not matched here and will be taken as 
-		#    inline later.
+		#	These will be treated block-level when the start tag is alone on 
+		#	its line, otherwise they're not matched here and will be taken as 
+		#	inline later.
 		# *  List "b" is made of tags which are always block-level;
 		#
 		$block_tags_a = 'ins|del';
@@ -519,12 +519,12 @@ class Markdown_Parser {
 	# These are all the transformations that form block-level
 	# tags like paragraphs, headers, and list items.
 	#
-		"doHeaders"         => 10,
+		"doHeaders"		 => 10,
 		"doHorizontalRules" => 20,
 		
-		"doLists"           => 40,
-		"doCodeBlocks"      => 50,
-		"doBlockQuotes"     => 60,
+		"doLists"		   => 40,
+		"doCodeBlocks"	  => 50,
+		"doBlockQuotes"	 => 60,
 		);
 
 	function runBlockGamut($text) {
@@ -583,21 +583,21 @@ class Markdown_Parser {
 	#
 		# Process character escapes, code spans, and inline HTML
 		# in one shot.
-		"parseSpan"           => -30,
+		"parseSpan"		   => -30,
 
 		# Process anchor and image tags. Images must come first,
 		# because ![foo][f] looks like an anchor.
-		"doImages"            =>  10,
-		"doAnchors"           =>  20,
+		"doImages"			=>  10,
+		"doAnchors"		   =>  20,
 		
 		# Make links out of things like `<http://example.com/>`
 		# Must come after doAnchors, because you can use < and >
 		# delimiters in inline links like [this](<url>).
-		"doAutoLinks"         =>  30,
+		"doAutoLinks"		 =>  30,
 		"encodeAmpsAndAngles" =>  40,
 
-		"doItalicsAndBold"    =>  50,
-		"doHardBreaks"        =>  60,
+		"doItalicsAndBold"	=>  50,
+		"doHardBreaks"		=>  60,
 		);
 
 	function runSpanGamut($text) {
@@ -695,7 +695,7 @@ class Markdown_Parser {
 	function _doAnchors_reference_callback($matches) {
 		$whole_match =  $matches[1];
 		$link_text   =  $matches[2];
-		$link_id     =& $matches[3];
+		$link_id	 =& $matches[3];
 
 		if ($link_id == "") {
 			# for shortcut links like [this][] or [this].
@@ -805,8 +805,8 @@ class Markdown_Parser {
 	}
 	function _doImages_reference_callback($matches) {
 		$whole_match = $matches[1];
-		$alt_text    = $matches[2];
-		$link_id     = strtolower($matches[3]);
+		$alt_text	= $matches[2];
+		$link_id	 = strtolower($matches[3]);
 
 		if ($link_id == "") {
 			$link_id = strtolower($alt_text); # for shortcut links like ![this][].
@@ -1039,7 +1039,7 @@ class Markdown_Parser {
 	#
 		$text = preg_replace_callback('{
 				(?:\n\n|\A)
-				(	            # $1 = the code block -- one or more lines, starting with a space/tab
+				(				# $1 = the code block -- one or more lines, starting with a space/tab
 				  (?>
 					[ ]{'.$this->tab_width.'}  # Lines must start with a tab or a tab-width of spaces
 					.*\n+
@@ -1078,8 +1078,8 @@ class Markdown_Parser {
 		# <strong> must go first:
 		$text = preg_replace_callback('{
 				(						# $1: Marker
-					(?<!\*\*) \* |		#     (not preceded by two chars of
-					(?<!__)   _			#      the same marker)
+					(?<!\*\*) \* |		#	 (not preceded by two chars of
+					(?<!__)   _			#	  the same marker)
 				)
 				\1
 				(?=\S) 					# Not followed by whitespace 
@@ -1282,9 +1282,9 @@ class Markdown_Parser {
 	#		the hopes of foiling most address harvesting spam bots. E.g.:
 	#
 	#	  <p><a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x66;o&#111;
-	#        &#x40;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#111;
-	#        &#x6d;">&#x66;o&#111;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;
-	#        &#101;&#46;&#x63;&#111;&#x6d;</a></p>
+	#		&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#111;
+	#		&#x6d;">&#x66;o&#111;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;
+	#		&#101;&#46;&#x63;&#111;&#x6d;</a></p>
 	#
 	#	Based by a filter by Matthew Wickline, posted to BBEdit-Talk.
 	#   With some optimizations by Milian Wolff.
@@ -1302,7 +1302,7 @@ class Markdown_Parser {
 				# '@' *must* be encoded. I insist.
 				if ($r > 90 && $char != '@') /* do nothing */;
 				else if ($r < 45) $chars[$key] = '&#x'.dechex($ord).';';
-				else              $chars[$key] = '&#'.$ord.';';
+				else			  $chars[$key] = '&#'.$ord.';';
 			}
 		}
 		
@@ -1329,7 +1329,7 @@ class Markdown_Parser {
 					`+						# code span marker
 			'.( $this->no_markup ? '' : '
 				|
-					<!--    .*?     -->		# comment
+					<!--	.*?	 -->		# comment
 				|
 					<\?.*?\?> | <%.*?%>		# processing instruction
 				|
@@ -1493,17 +1493,17 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 		# Insert extra document, block, and span transformations. 
 		# Parent constructor will do the sorting.
 		$this->document_gamut += array(
-			"stripFootnotes"     => 15,
+			"stripFootnotes"	 => 15,
 			"stripAbbreviations" => 25,
-			"appendFootnotes"    => 50,
+			"appendFootnotes"	=> 50,
 			);
 		$this->block_gamut += array(
-			"doTables"           => 15,
-			"doDefLists"         => 45,
+			"doTables"		   => 15,
+			"doDefLists"		 => 45,
 			);
 		$this->span_gamut += array(
-			"doFootnotes"        => 5,
-			"doAbbreviations"    => 70,
+			"doFootnotes"		=> 5,
+			"doAbbreviations"	=> 70,
 			);
 		
 		parent::Markdown_Parser();
@@ -1587,24 +1587,24 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 	# Parse markdown text, calling _HashHTMLBlocks_InHTML for block tags.
 	#
 	# *   $indent is the number of space to be ignored when checking for code 
-	#     blocks. This is important because if we don't take the indent into 
-	#     account, something like this (which looks right) won't work as expected:
+	#	 blocks. This is important because if we don't take the indent into 
+	#	 account, something like this (which looks right) won't work as expected:
 	#
-	#     <div>
-	#         <div markdown="1">
-	#         Hello World.  <-- Is this a Markdown code block or text?
-	#         </div>  <-- Is this a Markdown code block or a real tag?
-	#     <div>
+	#	 <div>
+	#		 <div markdown="1">
+	#		 Hello World.  <-- Is this a Markdown code block or text?
+	#		 </div>  <-- Is this a Markdown code block or a real tag?
+	#	 <div>
 	#
-	#     If you don't like this, just don't indent the tag on which
-	#     you apply the markdown="1" attribute.
+	#	 If you don't like this, just don't indent the tag on which
+	#	 you apply the markdown="1" attribute.
 	#
 	# *   If $enclosing_tag is not empty, stops at the first unmatched closing 
-	#     tag with that name. Nested tags supported.
+	#	 tag with that name. Nested tags supported.
 	#
 	# *   If $span is true, text inside must treated as span. So any double 
-	#     newline will be replaced by a single newline so that it does not create 
-	#     paragraphs.
+	#	 newline will be replaced by a single newline so that it does not create 
+	#	 paragraphs.
 	#
 	# Returns an array of that form: ( processed text , remaining text )
 	#
@@ -1627,7 +1627,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 						(?:				# Tag name.
 							'.$this->block_tags.'			|
 							'.$this->context_block_tags.'	|
-							'.$this->clean_tags.'        	|
+							'.$this->clean_tags.'			|
 							(?!\s)'.$enclosing_tag.'
 						)
 						\s*				# Whitespace.
@@ -1638,7 +1638,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 						)*?
 					>					# End of tag.
 				|
-					<!--    .*?     -->	# HTML Comment
+					<!--	.*?	 -->	# HTML Comment
 				|
 					<\?.*?\?> | <%.*?%>	# Processing instruction
 				|
@@ -1704,8 +1704,8 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			}
 			#
 			# Check for: Opening Block level tag or
-			#            Opening Content Block tag (like ins and del) 
-			#               used as a block tag (tag is alone on it's line).
+			#			Opening Content Block tag (like ins and del) 
+			#			   used as a block tag (tag is alone on it's line).
 			#
 			else if (preg_match("{^<(?:$this->block_tags)\b}", $tag) ||
 				(	preg_match("{^<(?:$this->context_block_tags)\b}", $tag) &&
@@ -1722,7 +1722,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			}
 			#
 			# Check for: Clean tag (like script, math)
-			#            HTML Comments, processing instructions.
+			#			HTML Comments, processing instructions.
 			#
 			else if (preg_match("{^<(?:$this->clean_tags)\b}", $tag) ||
 				$tag{1} == '!' || $tag{1} == '?')
@@ -1772,7 +1772,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 	# *   Calls $hash_method to convert any blocks.
 	# *   Stops when the first opening tag closes.
 	# *   $md_attr indicate if the use of the `markdown="1"` attribute is allowed.
-	#     (it is not inside clean tags)
+	#	 (it is not inside clean tags)
 	#
 	# Returns an array of that form: ( processed text , remaining text )
 	#
@@ -1807,7 +1807,7 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 						)*?
 					>					# End of tag.
 				|
-					<!--    .*?     -->	# HTML Comment
+					<!--	.*?	 -->	# HTML Comment
 				|
 					<\?.*?\?> | <%.*?%>	# Processing instruction
 				|
@@ -1850,8 +1850,8 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			}
 			
 			$block_text .= $parts[0]; # Text before current tag.
-			$tag         = $parts[1]; # Tag to handle.
-			$text        = $parts[2]; # Remaining text after current tag.
+			$tag		 = $parts[1]; # Tag to handle.
+			$text		= $parts[2]; # Remaining text after current tag.
 			
 			#
 			# Check for: Auto-close tag (like <hr/>)
@@ -1962,8 +1962,8 @@ class MarkdownExtra_Parser extends Markdown_Parser {
 			array(&$this, '_doHeaders_callback_setext'), $text);
 
 		# atx-style headers:
-		#	# Header 1        {#header1}
-		#	## Header 2       {#header2}
+		#	# Header 1		{#header1}
+		#	## Header 2	   {#header2}
 		#	## Header 2 with closing hashes ##  {#header3}
 		#	...
 		#	###### Header 6   {#header2}

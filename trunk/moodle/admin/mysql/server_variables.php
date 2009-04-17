@@ -9,7 +9,7 @@
  *
  */
 if (! defined('PMA_NO_VARIABLES_IMPORT')) {
-    define('PMA_NO_VARIABLES_IMPORT', true);
+	define('PMA_NO_VARIABLES_IMPORT', true);
 }
 require_once './libraries/common.inc.php';
 
@@ -38,10 +38,10 @@ echo '<h2>' . "\n"
  * Sends the queries and buffers the results
  */
 if (PMA_MYSQL_INT_VERSION >= 40003) {
-    $serverVars = PMA_DBI_fetch_result('SHOW SESSION VARIABLES;', 0, 1);
-    $serverVarsGlobal = PMA_DBI_fetch_result('SHOW GLOBAL VARIABLES;', 0, 1);
+	$serverVars = PMA_DBI_fetch_result('SHOW SESSION VARIABLES;', 0, 1);
+	$serverVarsGlobal = PMA_DBI_fetch_result('SHOW GLOBAL VARIABLES;', 0, 1);
 } else {
-    $serverVars = PMA_DBI_fetch_result('SHOW VARIABLES;', 0, 1);
+	$serverVars = PMA_DBI_fetch_result('SHOW VARIABLES;', 0, 1);
 }
 
 
@@ -52,60 +52,60 @@ if (PMA_MYSQL_INT_VERSION >= 40003) {
 <table class="data">
 <thead>
 <tr><th><?php echo $strVar; ?></th>
-    <th>
+	<th>
 <?php
 if (PMA_MYSQL_INT_VERSION >= 40003) {
-    echo $strSessionValue . ' / ' . $strGlobalValue;
+	echo $strSessionValue . ' / ' . $strGlobalValue;
 } else {
-    echo $strValue;
+	echo $strValue;
 }
 ?>
-    </th>
+	</th>
 </tr>
 </thead>
 <tbody>
 <?php
 $odd_row = true;
 foreach ($serverVars as $name => $value) {
-    ?>
+	?>
 <tr class="<?php
-    echo $odd_row ? 'odd' : 'even';
-    if (PMA_MYSQL_INT_VERSION >= 40003
-     && $serverVarsGlobal[$name] !== $value) {
-        echo ' marked';
-    }
-    ?>">
-    <th nowrap="nowrap">
-        <?php echo htmlspecialchars(str_replace('_', ' ', $name)); ?></th>
-    <td class="value"><?php
-    if (strlen($value) < 16 && is_numeric($value)) {
-        echo PMA_formatNumber($value, 0);
-        $is_numeric = true;
-    } else {
-        echo htmlspecialchars($value);
-        $is_numeric = false;
-    }
-    ?></td>
-    <?php
-    if (PMA_MYSQL_INT_VERSION >= 40003
-     && $serverVarsGlobal[$name] !== $value) {
-        ?>
+	echo $odd_row ? 'odd' : 'even';
+	if (PMA_MYSQL_INT_VERSION >= 40003
+	 && $serverVarsGlobal[$name] !== $value) {
+		echo ' marked';
+	}
+	?>">
+	<th nowrap="nowrap">
+		<?php echo htmlspecialchars(str_replace('_', ' ', $name)); ?></th>
+	<td class="value"><?php
+	if (strlen($value) < 16 && is_numeric($value)) {
+		echo PMA_formatNumber($value, 0);
+		$is_numeric = true;
+	} else {
+		echo htmlspecialchars($value);
+		$is_numeric = false;
+	}
+	?></td>
+	<?php
+	if (PMA_MYSQL_INT_VERSION >= 40003
+	 && $serverVarsGlobal[$name] !== $value) {
+		?>
 </tr>
 <tr class="<?php
-    echo $odd_row ? 'odd' : 'even';
-    ?> marked">
-    <td>(<?php echo $strGlobalValue; ?>)</td>
-    <td class="value"><?php
-    if ($is_numeric) {
-        echo PMA_formatNumber($serverVarsGlobal[$name], 0);
-    } else {
-        echo htmlspecialchars($serverVarsGlobal[$name]);
-    }
-    ?></td>
-    <?php } ?>
+	echo $odd_row ? 'odd' : 'even';
+	?> marked">
+	<td>(<?php echo $strGlobalValue; ?>)</td>
+	<td class="value"><?php
+	if ($is_numeric) {
+		echo PMA_formatNumber($serverVarsGlobal[$name], 0);
+	} else {
+		echo htmlspecialchars($serverVarsGlobal[$name]);
+	}
+	?></td>
+	<?php } ?>
 </tr>
-    <?php
-    $odd_row = !$odd_row;
+	<?php
+	$odd_row = !$odd_row;
 }
 ?>
 </tbody>

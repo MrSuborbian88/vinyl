@@ -5,14 +5,14 @@
  * language)
  *
  * PHP4 configure requirements:
- *     --enable-mbstring --enable-mbstr-enc-trans --enable-mbregex
+ *	 --enable-mbstring --enable-mbstr-enc-trans --enable-mbregex
  *
  * 2002/2/22 - by Yukihiro Kawada <kawada@den.fujifilm.co.jp>
  *
  * @version $Id: kanji-encoding.lib.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -26,16 +26,16 @@ if (! defined('PHPMYADMIN')) {
  * @return  boolean  always true
  */
 function PMA_internal_enc_check() {
-    global $internal_enc, $enc_list;
+	global $internal_enc, $enc_list;
 
-    $internal_enc = mb_internal_encoding();
-    if ($internal_enc == 'EUC-JP') {
-        $enc_list = 'ASCII,EUC-JP,SJIS,JIS';
-    } else {
-        $enc_list = 'ASCII,SJIS,EUC-JP,JIS';
-    }
+	$internal_enc = mb_internal_encoding();
+	if ($internal_enc == 'EUC-JP') {
+		$enc_list = 'ASCII,EUC-JP,SJIS,JIS';
+	} else {
+		$enc_list = 'ASCII,SJIS,EUC-JP,JIS';
+	}
 
-    return TRUE;
+	return TRUE;
 } // end of the 'PMA_internal_enc_check' function
 
 
@@ -48,16 +48,16 @@ function PMA_internal_enc_check() {
  * @return  boolean  always true
  */
 function PMA_change_enc_order() {
-    global $enc_list;
+	global $enc_list;
 
-    $p            = explode(',', $enc_list);
-    if ($p[1] == 'EUC-JP') {
-        $enc_list = 'ASCII,SJIS,EUC-JP,JIS';
-    } else {
-        $enc_list = 'ASCII,EUC-JP,SJIS,JIS';
-    }
+	$p			= explode(',', $enc_list);
+	if ($p[1] == 'EUC-JP') {
+		$enc_list = 'ASCII,SJIS,EUC-JP,JIS';
+	} else {
+		$enc_list = 'ASCII,EUC-JP,SJIS,JIS';
+	}
 
-    return TRUE;
+	return TRUE;
 } // end of the 'PMA_change_enc_order' function
 
 
@@ -74,23 +74,23 @@ function PMA_change_enc_order() {
  * @return  string   the converted string
  */
 function PMA_kanji_str_conv($str, $enc, $kana) {
-    global $enc_list;
+	global $enc_list;
 
-    if ($enc == '' && $kana == '') {
-        return $str;
-    }
-    $nw       = mb_detect_encoding($str, $enc_list);
+	if ($enc == '' && $kana == '') {
+		return $str;
+	}
+	$nw	   = mb_detect_encoding($str, $enc_list);
 
-    if ($kana == 'kana') {
-        $dist = mb_convert_kana($str, 'KV', $nw);
-        $str  = $dist;
-    }
-    if ($nw != $enc && $enc != '') {
-        $dist = mb_convert_encoding($str, $enc, $nw);
-    } else {
-        $dist = $str;
-    }
-    return $dist;
+	if ($kana == 'kana') {
+		$dist = mb_convert_kana($str, 'KV', $nw);
+		$str  = $dist;
+	}
+	if ($nw != $enc && $enc != '') {
+		$dist = mb_convert_encoding($str, $enc, $nw);
+	} else {
+		$dist = $str;
+	}
+	return $dist;
 } // end of the 'PMA_kanji_str_conv' function
 
 
@@ -105,25 +105,25 @@ function PMA_kanji_str_conv($str, $enc, $kana) {
  * @return  string   the name of the converted file
  */
 function PMA_kanji_file_conv($file, $enc, $kana) {
-    if ($enc == '' && $kana == '') {
-        return $file;
-    }
+	if ($enc == '' && $kana == '') {
+		return $file;
+	}
 
-    $tmpfname = tempnam('', $enc);
-    $fpd      = fopen($tmpfname, 'wb');
-    $fps      = fopen($file, 'r');
-    PMA_change_enc_order();
-    while (!feof($fps)) {
-        $line = fgets($fps, 4096);
-        $dist = PMA_kanji_str_conv($line, $enc, $kana);
-        fputs($fpd, $dist);
-    } // end while
-    PMA_change_enc_order();
-    fclose($fps);
-    fclose($fpd);
-    unlink($file);
+	$tmpfname = tempnam('', $enc);
+	$fpd	  = fopen($tmpfname, 'wb');
+	$fps	  = fopen($file, 'r');
+	PMA_change_enc_order();
+	while (!feof($fps)) {
+		$line = fgets($fps, 4096);
+		$dist = PMA_kanji_str_conv($line, $enc, $kana);
+		fputs($fpd, $dist);
+	} // end while
+	PMA_change_enc_order();
+	fclose($fps);
+	fclose($fpd);
+	unlink($file);
 
-    return $tmpfname;
+	return $tmpfname;
 } // end of the 'PMA_kanji_file_conv' function
 
 
@@ -136,13 +136,13 @@ function PMA_kanji_file_conv($file, $enc, $kana) {
  * @return  string   xhtml code for the radio controls
  */
 function PMA_set_enc_form($spaces) {
-    return "\n"
-           . $spaces . '<input type="radio" name="knjenc" value="" checked="checked" />non' . "\n"
-           . $spaces . '<input type="radio" name="knjenc" value="EUC-JP" />EUC' . "\n"
-           . $spaces . '<input type="radio" name="knjenc" value="SJIS" />SJIS' . "\n"
-           . $spaces . '&nbsp;' . $GLOBALS['strEncto'] . '<br />' . "\n"
-           . $spaces . '<input type="checkbox" name="xkana" value="kana" />' . "\n"
-           . $spaces . '&nbsp;' . $GLOBALS['strXkana'] . '<br />' . "\n";
+	return "\n"
+		   . $spaces . '<input type="radio" name="knjenc" value="" checked="checked" />non' . "\n"
+		   . $spaces . '<input type="radio" name="knjenc" value="EUC-JP" />EUC' . "\n"
+		   . $spaces . '<input type="radio" name="knjenc" value="SJIS" />SJIS' . "\n"
+		   . $spaces . '&nbsp;' . $GLOBALS['strEncto'] . '<br />' . "\n"
+		   . $spaces . '<input type="checkbox" name="xkana" value="kana" />' . "\n"
+		   . $spaces . '&nbsp;' . $GLOBALS['strXkana'] . '<br />' . "\n";
 } // end of the 'PMA_set_enc_form' function
 
 

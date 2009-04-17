@@ -46,11 +46,11 @@ $string['database'] = 'Cronfa ddata';
 $string['databasecreationsettingshead'] = 'Nawr mae angen i chi ffurfweddu gosodiadau\'r gronfa ddata lle caiff y rhan fwyaf o ddata Moodle
 ei storio. Caiff y gronfa ddata hon ei chreu\'n awtomatig gan y rhaglen osod â\'r gosodiadau a bennir isod.';
 $string['databasecreationsettingssub'] = '<b>Math:</b> wedi\'i osod i \"mysql\" gan y rhaglen osod<br />
-       <b>Gwesteiwr:</b> wedi\'i osod i \"localhost\" gan y rhaglen osod<br />
-       <b>Enw:</b> enw\'r gronfa ddata, ee moodle<br />
-       <b>Defnyddiwr:</b> wedi\'i osod i\'r \"gwraidd\" gan y rhaglen osod<br />
-       <b>Cyfrinair:</b> cyfrinair eich cronfa ddata<br />
-       <b>Llythrennau Blaen Tablau:</b> dewis i roi llythrennau o flaen pob enw tabl';
+	   <b>Gwesteiwr:</b> wedi\'i osod i \"localhost\" gan y rhaglen osod<br />
+	   <b>Enw:</b> enw\'r gronfa ddata, ee moodle<br />
+	   <b>Defnyddiwr:</b> wedi\'i osod i\'r \"gwraidd\" gan y rhaglen osod<br />
+	   <b>Cyfrinair:</b> cyfrinair eich cronfa ddata<br />
+	   <b>Llythrennau Blaen Tablau:</b> dewis i roi llythrennau o flaen pob enw tabl';
 $string['databasesettingshead'] = 'Nawr mae angen i chi ffurfweddu\'r gronfa ddata lle caiff y rhan fwyaf o ddata Moodle 
 ei storio. Mae\'n rhaid bod y gronfa ddata hon wedi cael ei chreu a bod enw defnyddiwr a chyfrinair wedi\'u gosod i fynd i mewn iddi.';
 $string['databasesettingssub'] = '<b>Math:</b> mysql neu postgres7<br />
@@ -202,15 +202,15 @@ $string['memorylimithelp'] = '<p>Mae maint y cof PHP yn eich gweinydd ar hyn o b
    Mae sawl ffordd o wneud hyn:</p>
 <ol>
 <li>Os ydych yn gallu, ceisiwch ail-grynhoi PHP gyda <i>--enable-memory-limit</i>.  
-    Bydd hyn yn gadael i Moodle osod maint y cof ei hun.</li>
+	Bydd hyn yn gadael i Moodle osod maint y cof ei hun.</li>
 <li>Os ydych yn gallu mynd i mewn i\'ch ffeil php.ini, gallwch newid y gosodiad <b>memory_limit</b> 
-    yn y fan honno i tua 40M. Os nad ydych chi\'n gallu gwneud hyn eich hun, efallai  
-    y gallech ofyn i\'ch gweinyddwr wneud hyn i chi.</li>
+	yn y fan honno i tua 40M. Os nad ydych chi\'n gallu gwneud hyn eich hun, efallai  
+	y gallech ofyn i\'ch gweinyddwr wneud hyn i chi.</li>
 <li>Ar rai gweinyddion PHP, gallwch greu ffeil .htaccess yng nghyfeiriadur Moodle  
-    sy\'n cynnwys y llinell hon:
-    <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>Fodd bynnag, ar rai gweinyddion bydd hyn yn atal <b>pob</b> tudalen PHP rhag gweithio 
-    (bydd gwallau\'n ymddangos pan fyddwch yn edrych ar dudalennau) felly bydd rhaid i chi dynnu\'r ffeil .htaccess file.</p></li>
+	sy\'n cynnwys y llinell hon:
+	<p><blockquote>php_value memory_limit 40M</blockquote></p>
+	<p>Fodd bynnag, ar rai gweinyddion bydd hyn yn atal <b>pob</b> tudalen PHP rhag gweithio 
+	(bydd gwallau\'n ymddangos pan fyddwch yn edrych ar dudalennau) felly bydd rhaid i chi dynnu\'r ffeil .htaccess file.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Mae maes gofynnol ar goll';
 $string['moodledocslink'] = 'Dogfennau Moodle ar gyfer y dudalen hon';
@@ -269,15 +269,15 @@ $string['unicoderequired'] = 'Mae\'n ofynnol eich bod yn storio eich holl ddata 
 $string['user'] = 'Defnyddiwr';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'Rydych chi\'n gweld y dudalen hon gan eich bod wedi gosod a  
-    lansio\'r pecyn <strong>$a->packname $a->packversion</strong> yn llwyddiannus ar eich cyfrifiadur. Llongyfarchiadau!';
+	lansio\'r pecyn <strong>$a->packname $a->packversion</strong> yn llwyddiannus ar eich cyfrifiadur. Llongyfarchiadau!';
 $string['welcomep30'] = 'Mae\'r fersiwn <strong>$a->installername</strong> yn cynnwys rhaglenni 
-    i greu amgylchedd y gall  <strong>Moodle</strong> weithio ynddo, sef:';
+	i greu amgylchedd y gall  <strong>Moodle</strong> weithio ynddo, sef:';
 $string['welcomep40'] = 'Mae\'r pecyn hefyd yn cynnwys <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'Y trwyddedau perthnasol sy\'n llywodraethu dros yr holl raglenni yn y pecyn hwn. Y pecyn cyflawn yw <strong>$a->installername</strong> 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">open source</a> a chaiff ei ddosbarthu dan y drwydded <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">open source</a> a chaiff ei ddosbarthu dan y drwydded <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
 $string['welcomep60'] = 'Bydd y tudalennau canlynol yn eich arwain drwy\'r camau syml i  
-    ffurfweddu a gosod <strong>Moodle</strong> ar eich cyfrifiadur. Gallwch ddewis derbyn y gosodiadau 
-    diofyn, neu gallwch eu newid eich hun ar gyfer eich dibenion chi.';
+	ffurfweddu a gosod <strong>Moodle</strong> ar eich cyfrifiadur. Gallwch ddewis derbyn y gosodiadau 
+	diofyn, neu gallwch eu newid eich hun ar gyfer eich dibenion chi.';
 $string['welcomep70'] = 'Cliciwch y botwm \"Nesaf\" i fwrw ymlaen i osod <strong>Moodle</strong>.';
 $string['wrongdestpath'] = 'Llwybr cyrchfan anghywir.';
 $string['wrongsourcebase'] = 'Bôn URL ffynhonnell anghywir.';

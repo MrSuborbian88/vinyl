@@ -1,5 +1,5 @@
 <?PHP // $Id: lams.php,v 1.5.4.1 2007/12/22 20:04:12 poltawski Exp $ 
-      // lams.php - created with Moodle 1.7 beta + (2006101003)
+	  // lams.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['createSequence'] = 'Create new sequence';

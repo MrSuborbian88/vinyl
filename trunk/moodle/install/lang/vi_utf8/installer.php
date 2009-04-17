@@ -77,15 +77,15 @@ $string['memorylimithelp'] = '<p> PHP thiết lập giới hạn bộ nhớ cho 
    Có một số cách để làm điều này mà bạn có thể thử:
 <ol>
 <li>Nếu bạn có khả năng, biên tập lại PHP với <i>--giới hạn bộ nhớ cho phép</i>.  
-    Điều này sẽ cho phép Moodle tự thiết lập giới hạn bộ nhớ.
+	Điều này sẽ cho phép Moodle tự thiết lập giới hạn bộ nhớ.
 <li>Nếu bạn truy cập file php.ini của bạn, bạn có thể thay đổi <b>giới hạn bộ nhớ</b> 
-    thiết lập trong đó thành một giá trị nào đó chẳng hạn như 40M. Nếu bạn không được phép truy cập 
-    bạn có thể yêu cầu quản trị viên của bạn để làm điều đó cho bạn.</li>
+	thiết lập trong đó thành một giá trị nào đó chẳng hạn như 40M. Nếu bạn không được phép truy cập 
+	bạn có thể yêu cầu quản trị viên của bạn để làm điều đó cho bạn.</li>
 <li> Trên một số máy chủ chạy PHP bạn có thể tạo một file .htaccess trong thư mục Moodle  
-    chứa dòng này:
-    <p><blockquote> giá trị giới hạn bộ nhớ 40M</blockquote></p>
-    <p>Tuy nhiên, trên một số máy chủ điều này có thể ngăn cản <b>tất cả</b> các trang PHP làm việc 
-    (bạn sẽ nhìn thấy các lỗi khi bạn xem xét những trang này )vì thế bạn sẽ pahỉ di chuyền file .htaccess.</p></li>
+	chứa dòng này:
+	<p><blockquote> giá trị giới hạn bộ nhớ 40M</blockquote></p>
+	<p>Tuy nhiên, trên một số máy chủ điều này có thể ngăn cản <b>tất cả</b> các trang PHP làm việc 
+	(bạn sẽ nhìn thấy các lỗi khi bạn xem xét những trang này )vì thế bạn sẽ pahỉ di chuyền file .htaccess.</p></li>
 </ol>';
 $string['moodledocslink'] = 'Tài liệu cho trang này';
 $string['mysqlextensionisnotpresentinphp'] = 'PHP chưa được cấu hình thuộc tính với đuôi mở rộng MySQL với mục đích là để nó có thể làm việc tốt với MySQL. Vui lòng kiểm tra file php.ini hoặc biên dịch lại PHP.';

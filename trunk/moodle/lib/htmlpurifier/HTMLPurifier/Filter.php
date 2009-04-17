@@ -18,21 +18,21 @@
 
 class HTMLPurifier_Filter
 {
-    
-    /**
-     * Name of the filter for identification purposes
-     */
-    var $name;
-    
-    /**
-     * Pre-processor function, handles HTML before HTML Purifier 
-     */
-    function preFilter($html, $config, &$context) {}
-    
-    /**
-     * Post-processor function, handles HTML after HTML Purifier
-     */
-    function postFilter($html, $config, &$context) {}
-    
+	
+	/**
+	 * Name of the filter for identification purposes
+	 */
+	var $name;
+	
+	/**
+	 * Pre-processor function, handles HTML before HTML Purifier 
+	 */
+	function preFilter($html, $config, &$context) {}
+	
+	/**
+	 * Post-processor function, handles HTML after HTML Purifier
+	 */
+	function postFilter($html, $config, &$context) {}
+	
 }
 

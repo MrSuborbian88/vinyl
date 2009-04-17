@@ -17,16 +17,16 @@ admin_externalpage_setup('search'); // now hidden page
 
 // now we'll deal with the case that the admin has submitted the form with changed settings
 if ($data = data_submitted() and confirm_sesskey()) {
-    if (admin_write_settings($data)) {
-        $statusmsg = get_string('changessaved');
-    }
-    $adminroot =& admin_get_root(true); //reload tree
+	if (admin_write_settings($data)) {
+		$statusmsg = get_string('changessaved');
+	}
+	$adminroot =& admin_get_root(true); //reload tree
 
-    if (!empty($adminroot->errors)) {
-        $errormsg = get_string('errorwithsettings', 'admin');
-        $firsterror = reset($adminroot->errors);
-        $focus = $firsterror->id;
-    }
+	if (!empty($adminroot->errors)) {
+		$errormsg = get_string('errorwithsettings', 'admin');
+		$firsterror = reset($adminroot->errors);
+		$focus = $firsterror->id;
+	}
 }
 
 // and finally, if we get here, then there are matching settings and we have to print a form
@@ -34,10 +34,10 @@ if ($data = data_submitted() and confirm_sesskey()) {
 admin_externalpage_print_header($focus);
 
 if ($errormsg !== '') {
-    notify ($errormsg);
+	notify ($errormsg);
 
 } else if ($statusmsg !== '') {
-    notify ($statusmsg, 'notifysuccess');
+	notify ($statusmsg, 'notifysuccess');
 }
 
 $resultshtml = admin_search_settings_html($query); // case insensitive search only
@@ -50,9 +50,9 @@ echo '</div>';
 echo '<fieldset>';
 echo '<div class="clearer"><!-- --></div>';
 if ($resultshtml != '') {
-    echo $resultshtml;
+	echo $resultshtml;
 } else {
-    echo get_string('noresults','admin');
+	echo get_string('noresults','admin');
 }
 echo '</fieldset>';
 echo '</form>';

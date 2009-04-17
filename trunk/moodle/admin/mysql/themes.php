@@ -23,14 +23,14 @@ require './libraries/header_meta_style.inc.php';
 <script type="text/javascript" language="javascript">
 // <![CDATA[
 function takeThis(what){
-    if (window.opener && window.opener.document.forms['setTheme'].elements['set_theme']) {
-        window.opener.document.forms['setTheme'].elements['set_theme'].value = what;
-        window.opener.document.forms['setTheme'].submit();
-        self.close();
-    } else {
-        alert('<?php echo sprintf($strNoThemeSupport, $cfg['ThemePath']); ?>');
-        self.close();
-    }
+	if (window.opener && window.opener.document.forms['setTheme'].elements['set_theme']) {
+		window.opener.document.forms['setTheme'].elements['set_theme'].value = what;
+		window.opener.document.forms['setTheme'].submit();
+		self.close();
+	} else {
+		alert('<?php echo sprintf($strNoThemeSupport, $cfg['ThemePath']); ?>');
+		self.close();
+	}
 }
 // ]]>
 </script>

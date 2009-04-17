@@ -8,18 +8,18 @@
 // PostgreSQL commands for upgrading this question type
 
 function qtype_multichoice_upgrade($oldversion=0) {
-    global $CFG;
-    $success = true;
-    
-    if ($success && $oldversion < 2006081900) {
-        $success = $success && table_column('question_multichoice', '', 'correctfeedback', 'text', '', '', '');
-        $success = $success && table_column('question_multichoice', '', 'partiallycorrectfeedback', 'text', '', '', '');
-        $success = $success && table_column('question_multichoice', '', 'incorrectfeedback', 'text', '', '', '');
-    }
+	global $CFG;
+	$success = true;
+	
+	if ($success && $oldversion < 2006081900) {
+		$success = $success && table_column('question_multichoice', '', 'correctfeedback', 'text', '', '', '');
+		$success = $success && table_column('question_multichoice', '', 'partiallycorrectfeedback', 'text', '', '', '');
+		$success = $success && table_column('question_multichoice', '', 'incorrectfeedback', 'text', '', '', '');
+	}
 
-    //////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
+	//////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
 
-    return $success;
+	return $success;
 }
 
 ?>

@@ -12,16 +12,16 @@
 *   adds documents created since the last index run
 */
 
-    if (!defined('MOODLE_INTERNAL')) {
-        die('Direct access to this script is forbidden.');    ///  It must be included from a Moodle page
-    }
+	if (!defined('MOODLE_INTERNAL')) {
+		die('Direct access to this script is forbidden.');	///  It must be included from a Moodle page
+	}
 
-    require_once("$CFG->dirroot/search/lib.php");
+	require_once("$CFG->dirroot/search/lib.php");
 
-    if (empty($CFG->enableglobalsearch)) {
-        mtrace('Global searching is not enabled. Nothing performed by search.');
-    }
-    else{
-       include("{$CFG->dirroot}/search/cron_php5.php");
-    }
+	if (empty($CFG->enableglobalsearch)) {
+		mtrace('Global searching is not enabled. Nothing performed by search.');
+	}
+	else{
+	   include("{$CFG->dirroot}/search/cron_php5.php");
+	}
 ?>

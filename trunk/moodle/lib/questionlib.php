@@ -18,6 +18,10 @@
  * @package question
  */
 
+// VINL Code
+//  - Daniel Ploch and Jamie McAtamney - 04/17/2009
+//  - Changed Grade List, and removed useless Model definitions
+
 /// CONSTANTS ///////////////////////////////////
 
 /**#@+
@@ -301,25 +305,9 @@ function get_grade_options() {
     // define basic array of grades
     $grades = array(
         1.00,
-        0.90,
-        0.83333,
-        0.80,
         0.75,
-        0.70,
-        0.66666,
-        0.60,
         0.50,
-        0.40,
-        0.33333,
-        0.30,
         0.25,
-        0.20,
-        0.16666,
-        0.142857,
-        0.125,
-        0.11111,
-        0.10,
-        0.05,
         0);
 
     // iterate through grades generating full range of options

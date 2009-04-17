@@ -1,25 +1,25 @@
 <?php // $Id: index.php,v 1.2.2.3 2007/12/18 11:59:52 skodak Exp $
 
 ///////////////////////////////////////////////////////////////////////////
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
-// Moodle - Modular Object-Oriented Dynamic Learning Environment         //
-//          http://moodle.org                                            //
-//                                                                       //
-// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com       //
-//                                                                       //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
+// Moodle - Modular Object-Oriented Dynamic Learning Environment		 //
+//		  http://moodle.org											//
+//																	   //
+// Copyright (C) 1999 onwards  Martin Dougiamas  http://moodle.com	   //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
-//                                                                       //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
 
 require_once '../../../config.php';
@@ -32,30 +32,30 @@ $userid   = optional_param('userid', $USER->id, PARAM_INT);
 
 /// basic access checks
 if (!$course = get_record('course', 'id', $courseid)) {
-    print_error('nocourseid');
+	print_error('nocourseid');
 }
 require_login($course);
 
 if (!$user = get_complete_user_data('id', $userid)) {
-    error("Incorrect userid");
+	error("Incorrect userid");
 }
 
-$context     = get_context_instance(CONTEXT_COURSE, $course->id);
+$context	 = get_context_instance(CONTEXT_COURSE, $course->id);
 $usercontext = get_context_instance(CONTEXT_USER, $user->id);
 require_capability('gradereport/overview:view', $context);
 
 $access = true;
 if (has_capability('moodle/grade:viewall', $context)) {
-    //ok - can view all course grades
+	//ok - can view all course grades
 
 } else if ($user->id == $USER->id and has_capability('moodle/grade:view', $context) and $course->showgrades) {
-    //ok - can view own grades
+	//ok - can view own grades
 
 } else if (has_capability('moodle/grade:viewall', $usercontext) and $course->showgrades) {
-    // ok - can view grades of this user- parent most probably
+	// ok - can view grades of this user- parent most probably
 
 } else {
-    $access = false;
+	$access = false;
 }
 
 /// return tracking object
@@ -63,7 +63,7 @@ $gpr = new grade_plugin_return(array('type'=>'report', 'plugin'=>'overview', 'co
 
 /// last selected report session tracking
 if (!isset($USER->grade_last_report)) {
-    $USER->grade_last_report = array();
+	$USER->grade_last_report = array();
 }
 $USER->grade_last_report[$course->id] = 'overview';
 
@@ -75,29 +75,29 @@ $navigation = grade_build_nav(__FILE__, $reportname, $course->id);
 
 /// Print header
 print_header_simple($strgrades.': '.$reportname, ': '.$strgrades, $navigation,
-                    '', '', true, '', navmenu($course));
+					'', '', true, '', navmenu($course));
 
 /// Print the plugin selector at the top
 print_grade_plugin_selector($course->id, 'report', 'overview');
 
 if ($access) {
 
-    //first make sure we have proper final grades - this must be done before constructing of the grade tree
-    grade_regrade_final_grades($course->id);
+	//first make sure we have proper final grades - this must be done before constructing of the grade tree
+	grade_regrade_final_grades($course->id);
 
-    // Create a report instance
-    $report = new grade_report_overview($userid, $gpr, $context);
+	// Create a report instance
+	$report = new grade_report_overview($userid, $gpr, $context);
 
-    // print the page
-    print_heading(get_string('modulename', 'gradereport_overview'). ' - '.fullname($report->user));
+	// print the page
+	print_heading(get_string('modulename', 'gradereport_overview'). ' - '.fullname($report->user));
 
-    if ($report->fill_table()) {
-        echo $report->print_table(true);
-    }
+	if ($report->fill_table()) {
+		echo $report->print_table(true);
+	}
 
 } else {
-    // no access to grades!
-    echo "Can not view grades."; //TODO: localize
+	// no access to grades!
+	echo "Can not view grades."; //TODO: localize
 }
 print_footer($course);
 

@@ -1,279 +1,279 @@
 <?php // $Id: texdebug.php,v 1.20.2.3 2009/02/02 21:08:11 stronk7 Exp $
-      // This function fetches math. images from the data directory
-      // If not, it obtains the corresponding TeX expression from the cache_tex db table
-      // and uses mimeTeX to create the image file
+	  // This function fetches math. images from the data directory
+	  // If not, it obtains the corresponding TeX expression from the cache_tex db table
+	  // and uses mimeTeX to create the image file
 
-    $nomoodlecookie = true;     // Because it interferes with caching
+	$nomoodlecookie = true;	 // Because it interferes with caching
 
-    require_once("../../config.php");
+	require_once("../../config.php");
 
-    if (empty($CFG->textfilters)) {
-        error ('Filter not enabled!');
-    } else {
-        $filters = explode(',', $CFG->textfilters);
-        if (array_search('filter/tex', $filters) === FALSE) {
-            error ('Filter not enabled!');
-        }
-    }
+	if (empty($CFG->textfilters)) {
+		error ('Filter not enabled!');
+	} else {
+		$filters = explode(',', $CFG->textfilters);
+		if (array_search('filter/tex', $filters) === FALSE) {
+			error ('Filter not enabled!');
+		}
+	}
 
-    require_once($CFG->libdir.'/filelib.php');
-    require_once($CFG->dirroot.'/filter/tex/lib.php');
-    require_once($CFG->dirroot.'/filter/tex/latex.php');
+	require_once($CFG->libdir.'/filelib.php');
+	require_once($CFG->dirroot.'/filter/tex/lib.php');
+	require_once($CFG->dirroot.'/filter/tex/latex.php');
 
-    $action = optional_param('action', '', PARAM_ALPHA);
-    $texexp = optional_param('tex', '', PARAM_RAW);
+	$action = optional_param('action', '', PARAM_ALPHA);
+	$texexp = optional_param('tex', '', PARAM_RAW);
 
-    $query = urldecode($_SERVER['QUERY_STRING']);
-    error_reporting(E_ALL);
-    $output = '';
+	$query = urldecode($_SERVER['QUERY_STRING']);
+	error_reporting(E_ALL);
+	$output = '';
 
-    // look up in cache if required
-    if ($action=='ShowDB' or $action=='DeleteDB') {
-        $md5 = md5($texexp);
-        $texcache = get_record("cache_filters","filter","tex", "md5key", $md5);
-    }
+	// look up in cache if required
+	if ($action=='ShowDB' or $action=='DeleteDB') {
+		$md5 = md5($texexp);
+		$texcache = get_record("cache_filters","filter","tex", "md5key", $md5);
+	}
 
-    // Action: Show DB Entry
-    if ($action=='ShowDB') {
-        if ($texcache) {
-            $output = "DB cache_filters entry for $texexp\n";
-            $output .= "id = $texcache->id\n";
-            $output .= "filter = $texcache->filter\n";
-            $output .= "version = $texcache->version\n";
-            $output .= "md5key = $texcache->md5key\n";
-            $output .= "rawtext = $texcache->rawtext\n";
-            $output .= "timemodified = $texcache->timemodified\n";
-        } else {
-            $output = "DB cache_filters entry for $texexp not found\n";
-        }
-    }
+	// Action: Show DB Entry
+	if ($action=='ShowDB') {
+		if ($texcache) {
+			$output = "DB cache_filters entry for $texexp\n";
+			$output .= "id = $texcache->id\n";
+			$output .= "filter = $texcache->filter\n";
+			$output .= "version = $texcache->version\n";
+			$output .= "md5key = $texcache->md5key\n";
+			$output .= "rawtext = $texcache->rawtext\n";
+			$output .= "timemodified = $texcache->timemodified\n";
+		} else {
+			$output = "DB cache_filters entry for $texexp not found\n";
+		}
+	}
 
-    // Action: Delete DB Entry
-    if ($action=='DeleteDB') {
-        if ($texcache) {
-            $output = "Deleting DB cache_filters entry for $texexp\n";
-            $result =  delete_records("cache_filters","id",$texcache->id);
-            if ($result) {
-                $result = 1;
-            } else {
-                $result = 0;
-            }
-            $output .= "Number of records deleted = $result\n";
-        } else {
-            $output = "Could not delete DB cache_filters entry for $texexp\nbecause it could not be found.\n";
-        }
-    }
+	// Action: Delete DB Entry
+	if ($action=='DeleteDB') {
+		if ($texcache) {
+			$output = "Deleting DB cache_filters entry for $texexp\n";
+			$result =  delete_records("cache_filters","id",$texcache->id);
+			if ($result) {
+				$result = 1;
+			} else {
+				$result = 0;
+			}
+			$output .= "Number of records deleted = $result\n";
+		} else {
+			$output = "Could not delete DB cache_filters entry for $texexp\nbecause it could not be found.\n";
+		}
+	}
 
-    // Action: Show Image
-    if ($action=='ShowImageMimetex') {
-        tex2image($texexp);
-    }
+	// Action: Show Image
+	if ($action=='ShowImageMimetex') {
+		tex2image($texexp);
+	}
 
-    // Action: Check Slasharguments
-    if ($action=='SlashArguments') {
-        slasharguments($texexp);
-    }
+	// Action: Check Slasharguments
+	if ($action=='SlashArguments') {
+		slasharguments($texexp);
+	}
 
-    // Action: Show Tex command line output
-    if ($action=='ShowImageTex') {
-        TexOutput($texexp, true);
-        exit;
-    }
+	// Action: Show Tex command line output
+	if ($action=='ShowImageTex') {
+		TexOutput($texexp, true);
+		exit;
+	}
 
-    // Action: Show Tex command line output
-    if ($action=='ShowOutputTex') {
-        if (debugging()) {
-            TexOutput($texexp);
-        } else {
-            echo "Can not output detailed information due to security concerns, please turn on debug mode first.";
-        }
-        exit;
-    }
+	// Action: Show Tex command line output
+	if ($action=='ShowOutputTex') {
+		if (debugging()) {
+			TexOutput($texexp);
+		} else {
+			echo "Can not output detailed information due to security concerns, please turn on debug mode first.";
+		}
+		exit;
+	}
 
-    if (!empty($action)) {
-        outputText($output);
-    }
+	if (!empty($action)) {
+		outputText($output);
+	}
 
-    // nothing more to do if there was any action
-    if (!empty($action)) {
-        exit;
-    }
-
-
-    function outputText($texexp) {
-        header("Content-type: text/html");
-        echo "<html><body><pre>\n";
-        if ($texexp) {
-            $texexp = str_replace('<', '&lt;', $texexp);
-            $texexp = str_replace('>', '&gt;', $texexp);
-            $texexp = str_replace('"', '&quot;', $texexp);
-            echo "$texexp\n\n";
-        } else {
-            echo "No text output available\n\n";
-        }
-        echo "</pre></body></html>\n";
-    }
-
-    function tex2image($texexp, $return=false) {
-        global $CFG;
-
-        if (!$texexp) {
-            echo 'No tex expresion specified';
-            return;
-        }
-
-        $image  = md5($texexp) . ".gif";
-        $filetype = 'image/gif';
-        if (!file_exists("$CFG->dataroot/filter/tex")) {
-            make_upload_directory("filter/tex");
-        }
-        $pathname = "$CFG->dataroot/filter/tex/$image";
-        if (file_exists($pathname)) {
-            unlink($pathname);
-        }
-
-        $texexp = '\Large '.$texexp;
-        $commandpath = tex_filter_get_executable(true);
-        $cmd = tex_filter_get_cmd($pathname, $texexp);
-        system($cmd, $status);
-
-        if ($return) {
-          return $image;
-        }
-
-        if (file_exists($pathname)) {
-            send_file($pathname, $image);
-
-        } else if (debugging()) {
-            $ecmd = "$cmd 2>&1";
-            echo `$ecmd` . "<br />\n";
-            echo "The shell command<br />$cmd<br />returned status = $status<br />\n";
-            if ($status == 4) {
-                echo "Status corresponds to illegal instruction<br />\n";
-            } else if ($status == 11) {
-                echo "Status corresponds to bus error<br />\n";
-            } else if ($status == 22) {
-                echo "Status corresponds to abnormal termination<br />\n";
-            }
-            if (file_exists($commandpath)) {
-                echo "File size of mimetex executable  $commandpath is " . filesize($commandpath) . "<br />";
-                echo "The file permissions are: " . decoct(fileperms($commandpath)) . "<br />";
-                if (function_exists("md5_file")) {
-                    echo "The md5 checksum of the file is " . md5_file($commandpath) . "<br />";
-                } else {
-                    $handle = fopen($commandpath,"rb");
-                    $contents = fread($handle,16384);
-                    fclose($handle);
-                    echo "The md5 checksum of the first 16384 bytes is " . md5($contents) . "<br />";
-                }
-            } else {
-                echo "mimetex executable $commandpath not found!<br />";
-            }
-            echo "Image not found!";
-        } else {
-            echo "Can not output detailed information due to security concerns, please turn on debug mode first.";
-        }
-    }
+	// nothing more to do if there was any action
+	if (!empty($action)) {
+		exit;
+	}
 
 
-    // test Tex/Ghostscript output - command execution only
-    function TexOutput($expression, $graphic=false) {
-        global $CFG;
-        $output = '';
+	function outputText($texexp) {
+		header("Content-type: text/html");
+		echo "<html><body><pre>\n";
+		if ($texexp) {
+			$texexp = str_replace('<', '&lt;', $texexp);
+			$texexp = str_replace('>', '&gt;', $texexp);
+			$texexp = str_replace('"', '&quot;', $texexp);
+			echo "$texexp\n\n";
+		} else {
+			echo "No text output available\n\n";
+		}
+		echo "</pre></body></html>\n";
+	}
 
-        $latex = new latex();
+	function tex2image($texexp, $return=false) {
+		global $CFG;
 
-        // first check if it is likely to work at all
-        $output .= "<h3>Checking executables</h3>\n";
-        $executables_exist = true;
-        if (is_file($CFG->filter_tex_pathlatex)) {
-            $output .= "latex executable ($CFG->filter_tex_pathlatex) is readable<br />\n";
-        }
-        else {
-            $executables_exist = false;
-            $output .= "<b>Error:</b> latex executable ($CFG->filter_tex_pathlatex) is not readable<br />\n";
-        }
-        if (is_file($CFG->filter_tex_pathdvips)) {
-            $output .= "dvips executable ($CFG->filter_tex_pathdvips) is readable<br />\n";
-        }
-        else {
-            $executables_exist = false;
-            $output .= "<b>Error:</b> dvips executable ($CFG->filter_tex_pathdvips) is not readable<br />\n";
-        }
-        if (is_file($CFG->filter_tex_pathconvert)) {
-            $output .= "convert executable ($CFG->filter_tex_pathconvert) is readable<br />\n";
-        }
-        else {
-            $executables_exist = false;
-            $output .= "<b>Error:</b> convert executable ($CFG->filter_tex_pathconvert) is not readable<br />\n";
-        }
+		if (!$texexp) {
+			echo 'No tex expresion specified';
+			return;
+		}
 
-        // knowing that it might work..
-        $md5 = md5($expression);
-        $output .= "<p>base filename for expression is '$md5'</p>\n";
+		$image  = md5($texexp) . ".gif";
+		$filetype = 'image/gif';
+		if (!file_exists("$CFG->dataroot/filter/tex")) {
+			make_upload_directory("filter/tex");
+		}
+		$pathname = "$CFG->dataroot/filter/tex/$image";
+		if (file_exists($pathname)) {
+			unlink($pathname);
+		}
 
-        // temporary paths
-        $tex = "$latex->temp_dir/$md5.tex";
-        $dvi = "$latex->temp_dir/$md5.dvi";
-        $ps = "$latex->temp_dir/$md5.ps";
-        $gif = "$latex->temp_dir/$md5.gif";
+		$texexp = '\Large '.$texexp;
+		$commandpath = tex_filter_get_executable(true);
+		$cmd = tex_filter_get_cmd($pathname, $texexp);
+		system($cmd, $status);
 
-        // put the expression as a file into the temp area
-        $expression = stripslashes($expression);
-        $expression = html_entity_decode($expression);
-        $output .= "<p>Processing TeX expression:</p><pre>$expression</pre>\n";
-        $doc = $latex->construct_latex_document($expression);
-        $fh = fopen($tex, 'w');
-        fputs($fh, $doc);
-        fclose($fh);
+		if ($return) {
+		  return $image;
+		}
 
-        // cd to temp dir
-        chdir($latex->temp_dir);
+		if (file_exists($pathname)) {
+			send_file($pathname, $image);
 
-        // step 1: latex command
-        $cmd = "$CFG->filter_tex_pathlatex --interaction=nonstopmode $tex";
-        $output .= execute($cmd);
+		} else if (debugging()) {
+			$ecmd = "$cmd 2>&1";
+			echo `$ecmd` . "<br />\n";
+			echo "The shell command<br />$cmd<br />returned status = $status<br />\n";
+			if ($status == 4) {
+				echo "Status corresponds to illegal instruction<br />\n";
+			} else if ($status == 11) {
+				echo "Status corresponds to bus error<br />\n";
+			} else if ($status == 22) {
+				echo "Status corresponds to abnormal termination<br />\n";
+			}
+			if (file_exists($commandpath)) {
+				echo "File size of mimetex executable  $commandpath is " . filesize($commandpath) . "<br />";
+				echo "The file permissions are: " . decoct(fileperms($commandpath)) . "<br />";
+				if (function_exists("md5_file")) {
+					echo "The md5 checksum of the file is " . md5_file($commandpath) . "<br />";
+				} else {
+					$handle = fopen($commandpath,"rb");
+					$contents = fread($handle,16384);
+					fclose($handle);
+					echo "The md5 checksum of the first 16384 bytes is " . md5($contents) . "<br />";
+				}
+			} else {
+				echo "mimetex executable $commandpath not found!<br />";
+			}
+			echo "Image not found!";
+		} else {
+			echo "Can not output detailed information due to security concerns, please turn on debug mode first.";
+		}
+	}
 
-        // step 2: dvips command
-        $cmd = "$CFG->filter_tex_pathdvips -E $dvi -o $ps";
-        $output .= execute($cmd);
 
-        // step 3: convert command
-        $cmd = "$CFG->filter_tex_pathconvert -density 240 -trim $ps $gif ";
-        $output .= execute($cmd);
+	// test Tex/Ghostscript output - command execution only
+	function TexOutput($expression, $graphic=false) {
+		global $CFG;
+		$output = '';
 
-        if (!$graphic) {
-            echo($output);
-        } else {
-            send_file($gif, "$md5.gif");
-         }
-    }
+		$latex = new latex();
 
-    function execute($cmd) {
-        exec($cmd, $result, $code);
-        $output = "<pre>$ $cmd\n";
-        $lines = implode("\n", $result);
-        $output .= "OUTPUT: $lines\n";
-        $output .= "RETURN CODE: $code\n</pre>\n";
-        return $output;
-    }
+		// first check if it is likely to work at all
+		$output .= "<h3>Checking executables</h3>\n";
+		$executables_exist = true;
+		if (is_file($CFG->filter_tex_pathlatex)) {
+			$output .= "latex executable ($CFG->filter_tex_pathlatex) is readable<br />\n";
+		}
+		else {
+			$executables_exist = false;
+			$output .= "<b>Error:</b> latex executable ($CFG->filter_tex_pathlatex) is not readable<br />\n";
+		}
+		if (is_file($CFG->filter_tex_pathdvips)) {
+			$output .= "dvips executable ($CFG->filter_tex_pathdvips) is readable<br />\n";
+		}
+		else {
+			$executables_exist = false;
+			$output .= "<b>Error:</b> dvips executable ($CFG->filter_tex_pathdvips) is not readable<br />\n";
+		}
+		if (is_file($CFG->filter_tex_pathconvert)) {
+			$output .= "convert executable ($CFG->filter_tex_pathconvert) is readable<br />\n";
+		}
+		else {
+			$executables_exist = false;
+			$output .= "<b>Error:</b> convert executable ($CFG->filter_tex_pathconvert) is not readable<br />\n";
+		}
 
-    function slasharguments($texexp) {
-        global $CFG;
-        $admin = $CFG->wwwroot.'/'.$CFG->admin.'/settings.php?section=http';
-        $image = tex2image($texexp,true);
-        echo "<p>If the following image displays correctly, set your ";
-        echo "<a href=\"$admin\" target=\"_blank\">Administration->Server->HTTP</a> ";
-        echo "setting for slasharguments to file.php/1/pic.jpg: ";
-        echo "<img src=\"$CFG->wwwroot/filter/tex/pix.php/$image\" align=\"absmiddle\"></p>\n";
-        echo "<p>Otherwise set it to file.php?file=/1/pic.jpg ";
-        echo "It should display correctly as ";
-        echo "<img src=\"$CFG->wwwroot/filter/tex/pix.php?file=$image\" align=\"absmiddle\"></p>\n";
-        echo "<p>If neither equation image displays correctly, please seek ";
-        echo "further help at moodle.org at the ";
-        echo "<a href=\"http://moodle.org/mod/forum/view.php?id=752&loginguest=true\" target=\"_blank\">";
-        echo "Mathematics Tools Forum</a></p>";
-    }
+		// knowing that it might work..
+		$md5 = md5($expression);
+		$output .= "<p>base filename for expression is '$md5'</p>\n";
+
+		// temporary paths
+		$tex = "$latex->temp_dir/$md5.tex";
+		$dvi = "$latex->temp_dir/$md5.dvi";
+		$ps = "$latex->temp_dir/$md5.ps";
+		$gif = "$latex->temp_dir/$md5.gif";
+
+		// put the expression as a file into the temp area
+		$expression = stripslashes($expression);
+		$expression = html_entity_decode($expression);
+		$output .= "<p>Processing TeX expression:</p><pre>$expression</pre>\n";
+		$doc = $latex->construct_latex_document($expression);
+		$fh = fopen($tex, 'w');
+		fputs($fh, $doc);
+		fclose($fh);
+
+		// cd to temp dir
+		chdir($latex->temp_dir);
+
+		// step 1: latex command
+		$cmd = "$CFG->filter_tex_pathlatex --interaction=nonstopmode $tex";
+		$output .= execute($cmd);
+
+		// step 2: dvips command
+		$cmd = "$CFG->filter_tex_pathdvips -E $dvi -o $ps";
+		$output .= execute($cmd);
+
+		// step 3: convert command
+		$cmd = "$CFG->filter_tex_pathconvert -density 240 -trim $ps $gif ";
+		$output .= execute($cmd);
+
+		if (!$graphic) {
+			echo($output);
+		} else {
+			send_file($gif, "$md5.gif");
+		 }
+	}
+
+	function execute($cmd) {
+		exec($cmd, $result, $code);
+		$output = "<pre>$ $cmd\n";
+		$lines = implode("\n", $result);
+		$output .= "OUTPUT: $lines\n";
+		$output .= "RETURN CODE: $code\n</pre>\n";
+		return $output;
+	}
+
+	function slasharguments($texexp) {
+		global $CFG;
+		$admin = $CFG->wwwroot.'/'.$CFG->admin.'/settings.php?section=http';
+		$image = tex2image($texexp,true);
+		echo "<p>If the following image displays correctly, set your ";
+		echo "<a href=\"$admin\" target=\"_blank\">Administration->Server->HTTP</a> ";
+		echo "setting for slasharguments to file.php/1/pic.jpg: ";
+		echo "<img src=\"$CFG->wwwroot/filter/tex/pix.php/$image\" align=\"absmiddle\"></p>\n";
+		echo "<p>Otherwise set it to file.php?file=/1/pic.jpg ";
+		echo "It should display correctly as ";
+		echo "<img src=\"$CFG->wwwroot/filter/tex/pix.php?file=$image\" align=\"absmiddle\"></p>\n";
+		echo "<p>If neither equation image displays correctly, please seek ";
+		echo "further help at moodle.org at the ";
+		echo "<a href=\"http://moodle.org/mod/forum/view.php?id=752&loginguest=true\" target=\"_blank\">";
+		echo "Mathematics Tools Forum</a></p>";
+	}
 
 ?>
 
@@ -281,35 +281,35 @@
 <head><title>TeX Filter Debugger</title></head>
 <body>
   <p>Please enter an algebraic expression <b>without</b> any surrounding $$ into
-       the text box below. (Click <a href="#help">here for help.</a>)
-          <form action="texdebug.php" method="get"
-           target="inlineframe">
-            <center>
-             <input type="text" name="tex" size="50"
-                    value="f(x)=\Bigint_{-\infty}^x~e^{-t^2}dt" />
-            </center>
-           <p>The following tests are available:</p>
-           <ol>
-           <li><input type="radio" name="action" value="ShowDB" id="ShowDB" />
-               <label for="ShowDB">See the cache_filters database entry for this expression (if any).</label></li>
-           <li><input type="radio" name="DeleteDB" value="DeleteDB" id="DeleteDB" />
-               <label for="DeleteDB">Delete the cache_filters database entry for this expression (if any).</label></li>
-           <li><input type="radio" name="action" value="ShowImageMimetex" id="ShowImageMimetex"  checked="checked" />
-               <label for="ShowImageMimetex">Show a graphic image of the algebraic expression rendered with mimetex.</label></li>
-           <li><input type="radio" name="action" value="ShowImageTex" id="ShowImageTex" />
-               <label for="ShowImageTex">Show a graphic image of the algebraic expression rendered with Tex/Ghostscript.</label></li>
-           <li><input type="radio" name="action" value="ShowOutputTex" id="ShowOutputTex" />
-               <label for="ShowOutputTex">Show command execution output from the algebraic expression rendered with Tex/Ghostscript.</label></li>
-           <li><input type="radio" name="action" value="SlashArguments" id="SlashArguments" />
-               <label for="SlashArguments">Check slasharguments setting.</label></li>
-           </ol>
-           <input type="submit" value="Do it!" />
-          </form> <br /> <br />
-       <center>
-          <iframe name="inlineframe" align="middle" width="80%" height="200">
-          &lt;p&gt;Something is wrong...&lt;/p&gt; 
-          </iframe>
-       </center> <br />
+	   the text box below. (Click <a href="#help">here for help.</a>)
+		  <form action="texdebug.php" method="get"
+		   target="inlineframe">
+			<center>
+			 <input type="text" name="tex" size="50"
+					value="f(x)=\Bigint_{-\infty}^x~e^{-t^2}dt" />
+			</center>
+		   <p>The following tests are available:</p>
+		   <ol>
+		   <li><input type="radio" name="action" value="ShowDB" id="ShowDB" />
+			   <label for="ShowDB">See the cache_filters database entry for this expression (if any).</label></li>
+		   <li><input type="radio" name="DeleteDB" value="DeleteDB" id="DeleteDB" />
+			   <label for="DeleteDB">Delete the cache_filters database entry for this expression (if any).</label></li>
+		   <li><input type="radio" name="action" value="ShowImageMimetex" id="ShowImageMimetex"  checked="checked" />
+			   <label for="ShowImageMimetex">Show a graphic image of the algebraic expression rendered with mimetex.</label></li>
+		   <li><input type="radio" name="action" value="ShowImageTex" id="ShowImageTex" />
+			   <label for="ShowImageTex">Show a graphic image of the algebraic expression rendered with Tex/Ghostscript.</label></li>
+		   <li><input type="radio" name="action" value="ShowOutputTex" id="ShowOutputTex" />
+			   <label for="ShowOutputTex">Show command execution output from the algebraic expression rendered with Tex/Ghostscript.</label></li>
+		   <li><input type="radio" name="action" value="SlashArguments" id="SlashArguments" />
+			   <label for="SlashArguments">Check slasharguments setting.</label></li>
+		   </ol>
+		   <input type="submit" value="Do it!" />
+		  </form> <br /> <br />
+	   <center>
+		  <iframe name="inlineframe" align="middle" width="80%" height="200">
+		  &lt;p&gt;Something is wrong...&lt;/p&gt; 
+		  </iframe>
+	   </center> <br />
 <hr />
 <a name="help">
 <h2>Debugging Help</h2>

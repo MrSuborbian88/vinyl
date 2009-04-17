@@ -14,7 +14,7 @@ $string['admindirname'] = 'Directorio de administración';
 $string['admindirsettinghead'] = 'Configurando o directorio de administración ...';
 $string['admindirsettingsub'] = 'Algúns servidores utilizan /admin como un URL especial para acceder a 
 un panel de control ou algo semellante. Desafortunadamente isto crea conflitos co enderezo estándar das páxinas de administración de Moodle. Pode resolver este problema renomeando o directorio admin da súa instalación e introducindo aquí o nome novo que utilizou. Por exemplo: <br /> <br /><b>moodleadmin</b><br /> <br />
-    Isto resolverá o acceso ás páxinas de administración do Moodle.';
+	Isto resolverá o acceso ás páxinas de administración do Moodle.';
 $string['bypassed'] = 'Pasados';
 $string['cannotcreatelangdir'] = 'Non pode crear directorio de idioma';
 $string['cannotcreatetempdir'] = 'Non pode crear directorio de tempo';
@@ -42,53 +42,53 @@ $string['customcheck'] = 'Outras comprobacións';
 $string['database'] = 'Base de datos';
 $string['databasecreationsettingshead'] = 'Agora precisa configurar as definicións da base de datos en que a maior parte dos datos do Moodle irán  gardados. Esta base de datos será creada automaticamente polo instalador coas definicións especificadas a seguir.';
 $string['databasecreationsettingssub'] = '<b>Tipo:</b> seleccionado polo instalador como \"mysql\"<br /><b>Servidor:</b> seleccionado polo instalador como\"localhost\" <br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> seleccionado polo instalador como \"root\"<br />
-       <b>Contrasinal:</b> contrasinal da súa base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo opcional para todos os nomes das táboas';
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> seleccionado polo instalador como \"root\"<br />
+	   <b>Contrasinal:</b> contrasinal da súa base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo opcional para todos os nomes das táboas';
 $string['databasesettingshead'] = 'Agora precisa configurar as definicións da base de datos en que a maior parte dos datos do Moodle irán gardados. Esta base de datos foi creada, así como un nome de usuario e un contrasinal para acceder a ela.';
 $string['databasesettingssub'] = '<b>Tipo:</b> mysql ou postgres7<br />
-       <b>Servidor:</b> Por exemplo localhost ou db.isp.com<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base datos <br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo opcional para utilizar para todos os nomes das táboas';
+	   <b>Servidor:</b> Por exemplo localhost ou db.isp.com<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base datos <br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo opcional para utilizar para todos os nomes das táboas';
 $string['databasesettingssub_mssql'] = '<b>Tipo:</b> SQL*Server (non UTF-8) <b><font color=\"red\">Experimental! (non utilizar en produción)</font></b><br />
-       <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
+	   <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
 $string['databasesettingssub_mssql_n'] = '<b>Tipo:</b> SQL*Server (UTF-8 activado)<br />
-       <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
+	   <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
 $string['databasesettingssub_mysql'] = '<b>Tipo:</b> MySQL<br />
-        <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (opcional)';
+		<b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (opcional)';
 $string['databasesettingssub_oci8po'] = '<b>Tipo:</b> Oracle<br />
-       <b>Servidor:</b> non utilizado, debe ficar en branco<br />
-       <b>Nome:</b> nome da conexión tnsnames.ora<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio, máx de 2cc.)';
+	   <b>Servidor:</b> non utilizado, debe ficar en branco<br />
+	   <b>Nome:</b> nome da conexión tnsnames.ora<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio, máx de 2cc.)';
 $string['databasesettingssub_odbc_mssql'] = '<b>Tipo:</b> SQL*Server (sobre ODBC) <b><font color=\"red\">Experimental! (non utilizar en produción)</font></b><br />
-       <b>Servidor:</b> nome dado da DSN no panel de control de ODBC<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
+	   <b>Servidor:</b> nome dado da DSN no panel de control de ODBC<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
 $string['databasesettingssub_postgres7'] = '<b>Tipo:</b> PostgreSQL<br />
-       <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
-       <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
-       <b>Usuario:</b> nome de usuario da base de datos<br />
-       <b>Contrasinal:</b> contrasinal da base de datos<br />
-       <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
+	   <b>Servidor:</b> por exemplo localhost ou db.isp.com<br />
+	   <b>Nome:</b> nome da base de datos, por exemplo moodle<br />
+	   <b>Usuario:</b> nome de usuario da base de datos<br />
+	   <b>Contrasinal:</b> contrasinal da base de datos<br />
+	   <b>Prefixo das táboas:</b> prefixo para utilizar para todos os nomes da base de datos (obrigatorio)';
 $string['dataroot'] = 'Directorio de datos';
 $string['datarooterror'] = 'O Directorio de datos que especificou non se conseguiu localizar ou crear.  Corrixa o camiño ou cree o directorio manualmente.';
 $string['dbconnectionerror'] = 'Non se conseguiu realizar a conexión coa base de datos especificada. Verifique as súas definicións de base de datos.';
@@ -187,11 +187,11 @@ $string['memorylimithelp'] = '<p>O límite de memoria para PHP do seu servidor e
    Existen varias formas que pode tentar para facer esta modificación:</p>
 <ol>
 <li>Se pode, recompile PHP con <i>--enable-memory-limit</i>.  
-    Iso permitirá que o propio Moodle modifique o límite de memoria.</li>
+	Iso permitirá que o propio Moodle modifique o límite de memoria.</li>
 <li>Se ten acceso ao seu ficheiro php.ini pode modificar o valor de <b>memory_limit</b> para algo semellante a 16M.  Se non ten acceso a ese ficheiro tal vez poida pedir ao administrador do sistema que o faga.</li>
 <li>Nalgúns servidores PHP servers pode crear un ficheiro .htaccess no directorio Moodle coa liña seguinte:
-    <p><blockquote>php_value memory_limit 16M</blockquote></p>
-    <p>Porén, nalgúns servidores provocará que <b>non funcione ningunha</b>páxina en PHP (verá erros cando tente visualizar as páxinas) polo que terá que eliminar o ficheiro .htaccess.</p></li>
+	<p><blockquote>php_value memory_limit 16M</blockquote></p>
+	<p>Porén, nalgúns servidores provocará que <b>non funcione ningunha</b>páxina en PHP (verá erros cando tente visualizar as páxinas) polo que terá que eliminar o ficheiro .htaccess.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Falta algún campo obrigatorio';
 $string['moodledocslink'] = 'Documentos de Moodle para esta páxina';
@@ -251,9 +251,9 @@ $string['user'] = 'Usuario';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'Está a ver esta páxina porque conseguiu instalar e iniciar o  paquete <strong>$a->packname $a->packversion</strong> no seu computador. Parabéns!';
 $string['welcomep30'] = 'Esta versión do <strong>$a->installername</strong> inclúe as aplicacións 
-    para crear o ámbito en que <strong>Moodle</strong> pode funcionar, nomeadamente:';
+	para crear o ámbito en que <strong>Moodle</strong> pode funcionar, nomeadamente:';
 $string['welcomep40'] = 'O paquete tamén inclúe <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
-$string['welcomep50'] = 'A utilización de todas as aplicacións deste paquete réxese polas respectivas licenzas. O paquete <strong>$a->installername</strong> completo é     <a href=\"http://www.opensource.org/docs/definition_plain.html\"> código aberto</a>  distribuído nos termos da licenza <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
+$string['welcomep50'] = 'A utilización de todas as aplicacións deste paquete réxese polas respectivas licenzas. O paquete <strong>$a->installername</strong> completo é	 <a href=\"http://www.opensource.org/docs/definition_plain.html\"> código aberto</a>  distribuído nos termos da licenza <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
 $string['welcomep60'] = 'As páxinas seguintes irán conducilo por algúns pasos fáciles   de seguir para configurar o <strong>Moodle</strong> no computador. Pode aceptar a configuración por defecto ou, opcionalmente, utilizar outras máis adecuadas ás súas necesidades.';
 $string['welcomep70'] = 'Prema o botón \"Seguinte\" debaixo para continuar coa configuración de <strong>Moodle</strong>.';
 $string['wrongdestpath'] = 'Camiño de destino errado.';

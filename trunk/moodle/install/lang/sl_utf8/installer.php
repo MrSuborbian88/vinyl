@@ -13,11 +13,11 @@ $string['admindirerror'] = 'Izbrana skrbniška mapa ni pravilna';
 $string['admindirname'] = 'Skrbniška mapa';
 $string['admindirsettinghead'] = 'Nastavitev skrbniške mape ...';
 $string['admindirsettingsub'] = 'Le redka spletna mesta uporabljajo /admin kot poseben URL za dostop
-    do nadzorne plošče ali česa drugega.  Žal je to v sporu s
-    standardno lokacijo Moodle skrbniških strani.  To lahko popravite s
-    preimenovanjem skrbniške mape v vaši namestitvi in vstavljanjem tega
-    novega imena tu.  Na primer: <br /> <br /><b>moodleadmin</b><br /> <br />
-    To bo popravilo skrbniške povezave za Moodle.';
+	do nadzorne plošče ali česa drugega.  Žal je to v sporu s
+	standardno lokacijo Moodle skrbniških strani.  To lahko popravite s
+	preimenovanjem skrbniške mape v vaši namestitvi in vstavljanjem tega
+	novega imena tu.  Na primer: <br /> <br /><b>moodleadmin</b><br /> <br />
+	To bo popravilo skrbniške povezave za Moodle.';
 $string['bypassed'] = 'Preskočeno';
 $string['cannotcreatelangdir'] = 'Mape jezika ni možno ustvariti.';
 $string['cannotcreatetempdir'] = 'Začasne mape ni možno ustvariti.';
@@ -46,23 +46,23 @@ $string['curlrecommended'] = 'Namestitev dodatne cURL knjižnice je priporočlji
 $string['customcheck'] = 'Ostala preverjanja';
 $string['database'] = 'Podatkovna zbirka';
 $string['databasecreationsettingshead'] = 'Zdaj morate konfigurirati nastavitve podatkovne zbirke, kjer bo večina Moodle podatkov
-    shranjenih.  Ta podatkovno zbirko bo samodejno ustvaril namestitveni program
-    s spodaj določenimi nastavitvami.';
+	shranjenih.  Ta podatkovno zbirko bo samodejno ustvaril namestitveni program
+	s spodaj določenimi nastavitvami.';
 $string['databasecreationsettingssub'] = '<b>Vrsta:</b> določeno \"mysql\" s strani namestitvenega programa<br />
-       <b>Gostitelj:</b> določeno \"localhost\" s strani namestitvenega programa<br />
-       <b>Ime:</b> ime podatkovne zbirke, npr. moodle<br />
-       <b>Uporabnik:</b> določeno \"root\" s strani namestitvenega programa<br />
-       <b>Geslo:</b> vaše geslo podatkovne zbirke<br />
-       <b>Predpona tabel:</b> dodatna predpona za vsa imena tabel';
+	   <b>Gostitelj:</b> določeno \"localhost\" s strani namestitvenega programa<br />
+	   <b>Ime:</b> ime podatkovne zbirke, npr. moodle<br />
+	   <b>Uporabnik:</b> določeno \"root\" s strani namestitvenega programa<br />
+	   <b>Geslo:</b> vaše geslo podatkovne zbirke<br />
+	   <b>Predpona tabel:</b> dodatna predpona za vsa imena tabel';
 $string['databasesettingshead'] = 'Zdaj morate konfigurirati podatkovno zbirko, kjer bo večina Moodle podatkov
-    shranjenih.  Ta podatkovna zbirka mora biti že ustvarjena
-    in tudi uporabniško ime in geslo za dostop do nje.';
+	shranjenih.  Ta podatkovna zbirka mora biti že ustvarjena
+	in tudi uporabniško ime in geslo za dostop do nje.';
 $string['databasesettingssub'] = '<b>Vrsta:</b> mysql ali postgres7<br />
-       <b>Gostitelj:</b> npr. localhost ali db.isp.com<br />
-       <b>Ime:</b> ime podatkovne zbirke, npr. moodle<br />
-       <b>Uporabnik:</b> vaše uporabniško ime podatkovne zbirke<br />
-       <b>Geslo:</b> vaše geslo podatkovne zbirke<br />
-       <b>Predpona tabel:</b> dodatna predpona za vsa imena tabel';
+	   <b>Gostitelj:</b> npr. localhost ali db.isp.com<br />
+	   <b>Ime:</b> ime podatkovne zbirke, npr. moodle<br />
+	   <b>Uporabnik:</b> vaše uporabniško ime podatkovne zbirke<br />
+	   <b>Geslo:</b> vaše geslo podatkovne zbirke<br />
+	   <b>Predpona tabel:</b> dodatna predpona za vsa imena tabel';
 $string['databasesettingssub_mssql'] = '<b>Tip:</b> SQL*Server (ne UTF-8) <b><font color=\"red\">Testno! (ni za uporabo na produkcijskem strežniku)</font></b><br />
 <b>Strežnik:</b> denimo localhost ali db.isp.com<br />
 <b>Ime:</b> Ime podatkovne zbirke, denimo moodle<br />
@@ -219,15 +219,15 @@ $string['memorylimithelp'] = '<p>Omejitev pomnilnika PHP je trenutno na vašem s
    To lahko poskusite storiti na več načinov:</p>
 <ol>
 <li>Če lahko, ponovno prevedite PHP z <i>--enable-memory-limit</i>.  
-    To bo omogočilo, da bo Moodle sam nastavil omejitev pomnilnik zase.</li>
+	To bo omogočilo, da bo Moodle sam nastavil omejitev pomnilnik zase.</li>
 <li>Če imate dostop do vaše datoteke php.ini, lahko spremenite vrednost <b>memory_limit</b> 
-    v tej datoteki na, recimo, 40M.  Če nimate dostopa, boste morda 
-    lahko prosili vašega skrbnika, da to naredi za vas.</li>
+	v tej datoteki na, recimo, 40M.  Če nimate dostopa, boste morda 
+	lahko prosili vašega skrbnika, da to naredi za vas.</li>
 <li>Na nekaterih strežnikih PHP lahko ustvarite datoteko .htaccess v mapi Moodle, 
-    ki naj vsebuje to vrstico:
-    <p><blockquote>php_value memory_limit 40M</blockquote></p>
-    <p>Vendar lahko to prepreči delovanje <b>vseh</b> PHP strani 
-    (ob prikazu strani boste videli napake) in boste morali odstraniti datoteko .htaccess.</p></li>
+	ki naj vsebuje to vrstico:
+	<p><blockquote>php_value memory_limit 40M</blockquote></p>
+	<p>Vendar lahko to prepreči delovanje <b>vseh</b> PHP strani 
+	(ob prikazu strani boste videli napake) in boste morali odstraniti datoteko .htaccess.</p></li>
 </ol>';
 $string['missingrequiredfield'] = 'Eno izmed zahtevanih polj manjka';
 $string['moodledocslink'] = 'Moodle dokumentacija za to stran';
@@ -295,17 +295,17 @@ $string['unicoderequired'] = 'Podatke je potrebno shranjevati v Unicode obliki (
 $string['user'] = 'Uporabnik';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'To stran vidite, ker ste uspešno namestili in 
-    zagnali paket <strong>$a->packname $a->packversion</strong> na vašem računalniku. Čestitamo!';
+	zagnali paket <strong>$a->packname $a->packversion</strong> na vašem računalniku. Čestitamo!';
 $string['welcomep30'] = 'Ta različica <strong>$a->installername</strong> vključuje aplikacije 
-    za ustvarjanje okolja v katerem bo deloval <strong>Moodle</strong> in sicer:';
+	za ustvarjanje okolja v katerem bo deloval <strong>Moodle</strong> in sicer:';
 $string['welcomep40'] = 'Ta paket vključuje tudi <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'Uporabo vseh aplikacij v tem paketu določajo njihove ustrezne 
-    licence. Celoten paket <strong>$a->installername</strong> je 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">odprta koda</a> in se razširja 
-    pod licenco <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
+	licence. Celoten paket <strong>$a->installername</strong> je 
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">odprta koda</a> in se razširja 
+	pod licenco <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
 $string['welcomep60'] = 'Naslednje strani vas bodo popeljale skozi nekaj enostavno sledljivih korakov za 
-    konfiguracijo in nastavitev <strong>Moodle</strong>  na vašem računalniku. Sprejmete lahko privzete 
-    nastavitve ali jih, če tako želite, spremenite, da bodo ustrezale vašim potrebam.';
+	konfiguracijo in nastavitev <strong>Moodle</strong>  na vašem računalniku. Sprejmete lahko privzete 
+	nastavitve ali jih, če tako želite, spremenite, da bodo ustrezale vašim potrebam.';
 $string['welcomep70'] = 'Kliknite spodnji gumb \"Naprej\" za nadaljevanje nastavitve <strong>Moodle</strong>.';
 $string['wrongdestpath'] = 'Napačna ciljna pot.';
 $string['wrongsourcebase'] = 'Napačna osnova vira URL.';

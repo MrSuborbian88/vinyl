@@ -1,5 +1,5 @@
 <?PHP // $Id: enrol_paypal.php,v 1.4 2006/11/25 18:09:33 skodak Exp $ 
-      // enrol_paypal.php - created with Moodle 1.7 beta + (2006101003)
+	  // enrol_paypal.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['business'] = 'The email address of your business PayPal account';

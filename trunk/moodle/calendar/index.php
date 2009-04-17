@@ -1,7 +1,7 @@
 <?php // %Id%
 
-    require('../config.php');
+	require('../config.php');
 
-    redirect($CFG->wwwroot.'/calendar/view.php');
+	redirect($CFG->wwwroot.'/calendar/view.php');
 
 ?>

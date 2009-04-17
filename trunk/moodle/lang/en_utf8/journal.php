@@ -1,5 +1,5 @@
 <?PHP // $Id: journal.php,v 1.2 2006/11/01 09:44:05 moodler Exp $ 
-      // journal.php - created with Moodle 1.7 beta + (2006101003)
+	  // journal.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['alwaysopen'] = 'Always open';
@@ -14,7 +14,7 @@ journal entry for \'$a->journal\'
 
 You can see it appended to your journal entry:
 
-    $a->url';
+	$a->url';
 $string['journalmailhtml'] = '$a->teacher has posted some feedback on your
 journal entry for \'<i>$a->journal</i>\'<br /><br />
 You can see it appended to your <a href=\"$a->url\">journal entry</a>.';

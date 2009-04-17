@@ -1,37 +1,37 @@
 <?php // $Id: tokeniserlib.php,v 1.4 2007/10/10 05:25:15 nicolasconnault Exp $
 
 ///////////////////////////////////////////////////////////////////////////
-//                                                                       //
-// NOTICE OF COPYRIGHT                                                   //
-//                                                                       //
-// Original code:                                                        //
-//                                                                       //
-// Drupal - The copyright of both the Drupal software and the            //
-//          "Druplicon" logo belongs to all the original authors,        //
-//          though both are licensed under the GPL.                      //
-//          http://drupal.org                                            //
-//                                                                       //
-// Modifications:                                                        //
-//                                                                       //
-// Moodle - Modular Object-Oriented Dynamic Learning Environment         //
-//          http://moodle.com                                            //
-//                                                                       //
-// Copyright (C) 1999 onwards Martin Dougiamas        http://dougiamas.com  //
-//           (C) 2001-3001 Eloy Lafuente (stronk7) http://contiento.com  //
-//           (C) 2001-3001 Antonio Vicent          http://ludens.es      //
-//                                                                       //
+//																	   //
+// NOTICE OF COPYRIGHT												   //
+//																	   //
+// Original code:														//
+//																	   //
+// Drupal - The copyright of both the Drupal software and the			//
+//		  "Druplicon" logo belongs to all the original authors,		//
+//		  though both are licensed under the GPL.					  //
+//		  http://drupal.org											//
+//																	   //
+// Modifications:														//
+//																	   //
+// Moodle - Modular Object-Oriented Dynamic Learning Environment		 //
+//		  http://moodle.com											//
+//																	   //
+// Copyright (C) 1999 onwards Martin Dougiamas		http://dougiamas.com  //
+//		   (C) 2001-3001 Eloy Lafuente (stronk7) http://contiento.com  //
+//		   (C) 2001-3001 Antonio Vicent		  http://ludens.es	  //
+//																	   //
 // This program is free software; you can redistribute it and/or modify  //
 // it under the terms of the GNU General Public License as published by  //
-// the Free Software Foundation; either version 2 of the License, or     //
-// (at your option) any later version.                                   //
-//                                                                       //
-// This program is distributed in the hope that it will be useful,       //
-// but WITHOUT ANY WARRANTY; without even the implied warranty of        //
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         //
-// GNU General Public License for more details:                          //
-//                                                                       //
-//          http://www.gnu.org/copyleft/gpl.html                         //
-//                                                                       //
+// the Free Software Foundation; either version 2 of the License, or	 //
+// (at your option) any later version.								   //
+//																	   //
+// This program is distributed in the hope that it will be useful,	   //
+// but WITHOUT ANY WARRANTY; without even the implied warranty of		//
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the		 //
+// GNU General Public License for more details:						  //
+//																	   //
+//		  http://www.gnu.org/copyleft/gpl.html						 //
+//																	   //
 ///////////////////////////////////////////////////////////////////////////
 
 /// Based on Drupal's search.module version 1.224
@@ -48,7 +48,7 @@ define ('MAXIMUM_WORD_SIZE', 50); /// Maximum word size to index and search
 
 define ('START_DELIM',  "\xce\xa9\xc3\x91\xc3\x91"); // Use these (omega) and (ntilde) utf-8 combinations
 define ('CENTER_DELIM', "\xc3\x91\xce\xa9\xc3\x91"); // as safe delimiters (not puncuation nor usual) while
-define ('END_DELIM',    "\xc3\x91\xc3\x91\xce\xa9"); // processing numbers ($join_numbers = false)
+define ('END_DELIM',	"\xc3\x91\xc3\x91\xce\xa9"); // processing numbers ($join_numbers = false)
 
 /**
  * Matches Unicode character classes to exclude from the search index.
@@ -56,12 +56,12 @@ define ('END_DELIM',    "\xc3\x91\xc3\x91\xce\xa9"); // processing numbers ($joi
  * See: http://www.unicode.org/Public/UNIDATA/UCD.html#General_Category_Values
  *
  * The index only contains the following character classes:
- * Lu         Letter, Uppercase
- * Ll         Letter, Lowercase
- * Lt         Letter, Titlecase
- * Lo         Letter, Other
- * Nd         Number, Decimal Digit
- * No         Number, Other
+ * Lu		 Letter, Uppercase
+ * Ll		 Letter, Lowercase
+ * Lt		 Letter, Titlecase
+ * Lo		 Letter, Other
+ * Nd		 Number, Decimal Digit
+ * No		 Number, Other
  */
 define('PREG_CLASS_SEARCH_EXCLUDE',
 '\x{0}-\x{2f}\x{3a}-\x{40}\x{5b}-\x{60}\x{7b}-\x{bf}\x{d7}\x{f7}\x{2b0}-'.
@@ -142,132 +142,132 @@ define('PREG_CLASS_CJK', '\x{3041}-\x{30ff}\x{31f0}-\x{31ff}\x{3400}-\x{4db5}'.
  * 
  * @param string  $text the text to be tokenised.
  * @param array   $stop_words array of utf-8 words than can be ignored in 
- *                the text being processed. There are some cool lists of
- *                stop words at http://snowball.tartarus.org/
+ *				the text being processed. There are some cool lists of
+ *				stop words at http://snowball.tartarus.org/
  * @param boolean $overlap_cjk option to split CJK text into some overlapping
- *                tokens is order to allow them to be searched. Useful to build
- *                indexes and search systems.
+ *				tokens is order to allow them to be searched. Useful to build
+ *				indexes and search systems.
  * @param boolean $join_numbers option to join in one unique token sequences of numbers
- *                separated by puntuaction chars. Useful to build indexes and
- *                search systems.
+ *				separated by puntuaction chars. Useful to build indexes and
+ *				search systems.
  * @return array one sorted array of tokens, with tokens being the keys and scores in the values.
  */
 function tokenise_text($text, $stop_words = array(), $overlap_cjk = false, $join_numbers = false) {
 
-    $textlib = textlib_get_instance();
+	$textlib = textlib_get_instance();
 
-    // Multipliers for scores of words inside certain HTML tags.
-    // Note: 'a' must be included for link ranking to work.
-    $tags = array('h1' => 25,
-                  'h2' => 18,
-                  'h3' => 15,
-                  'h4' => 12,
-                  'h5' => 9,
-                  'h6' => 6,
-                  'u' => 3,
-                  'b' => 3,
-                  'i' => 3,
-                  'strong' => 3,
-                  'em' => 3,
-                  'a' => 10);
+	// Multipliers for scores of words inside certain HTML tags.
+	// Note: 'a' must be included for link ranking to work.
+	$tags = array('h1' => 25,
+				  'h2' => 18,
+				  'h3' => 15,
+				  'h4' => 12,
+				  'h5' => 9,
+				  'h6' => 6,
+				  'u' => 3,
+				  'b' => 3,
+				  'i' => 3,
+				  'strong' => 3,
+				  'em' => 3,
+				  'a' => 10);
 
-    // Strip off all ignored tags to speed up processing, but insert space before/after
-    // them to keep word boundaries.
-    $text = str_replace(array('<', '>'), array(' <', '> '), $text);
-    $text = strip_tags($text, '<'. implode('><', array_keys($tags)) .'>');
+	// Strip off all ignored tags to speed up processing, but insert space before/after
+	// them to keep word boundaries.
+	$text = str_replace(array('<', '>'), array(' <', '> '), $text);
+	$text = strip_tags($text, '<'. implode('><', array_keys($tags)) .'>');
 
-    // Split HTML tags from plain text.
-    $split = preg_split('/\s*<([^>]+?)>\s*/', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
-    // Note: PHP ensures the array consists of alternating delimiters and literals
-    // and begins and ends with a literal (inserting $null as required).
+	// Split HTML tags from plain text.
+	$split = preg_split('/\s*<([^>]+?)>\s*/', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
+	// Note: PHP ensures the array consists of alternating delimiters and literals
+	// and begins and ends with a literal (inserting $null as required).
 
-    $tag = FALSE; // Odd/even counter. Tag or no tag.
-    $score = 1; // Starting score per word
-    $accum = ' '; // Accumulator for cleaned up data
-    $tagstack = array(); // Stack with open tags
-    $tagwords = 0; // Counter for consecutive words
-    $focus = 1; // Focus state
+	$tag = FALSE; // Odd/even counter. Tag or no tag.
+	$score = 1; // Starting score per word
+	$accum = ' '; // Accumulator for cleaned up data
+	$tagstack = array(); // Stack with open tags
+	$tagwords = 0; // Counter for consecutive words
+	$focus = 1; // Focus state
 
-    $results = array(0 => array()); // Accumulator for words for index
+	$results = array(0 => array()); // Accumulator for words for index
 
-    foreach ($split as $value) {
-        if ($tag) {
-            // Increase or decrease score per word based on tag
-            list($tagname) = explode(' ', $value, 2);
-            $tagname = $textlib->strtolower($tagname);
-            // Closing or opening tag?
-            if ($tagname[0] == '/') {
-                $tagname = substr($tagname, 1);
-                // If we encounter unexpected tags, reset score to avoid incorrect boosting.
-                if (!count($tagstack) || $tagstack[0] != $tagname) {
-                    $tagstack = array();
-                    $score = 1;
-                }
-                else {
-                    // Remove from tag stack and decrement score
-                    $score = max(1, $score - $tags[array_shift($tagstack)]);
-                }
-            }
-            else {
-                if (isset($tagstack[0]) && $tagstack[0] == $tagname) {
-                    // None of the tags we look for make sense when nested identically.
-                    // If they are, it's probably broken HTML.
-                    $tagstack = array();
-                    $score = 1;
-                }
-                else {
-                    // Add to open tag stack and increment score
-                    array_unshift($tagstack, $tagname);
-                    $score += $tags[$tagname];
-                }
-            }
-            // A tag change occurred, reset counter.
-            $tagwords = 0;
-        }
-        else {
-            // Note: use of PREG_SPLIT_DELIM_CAPTURE above will introduce empty values
-            if ($value != '') {
-                $words = tokenise_split($value, $stop_words, $overlap_cjk, $join_numbers);
-                foreach ($words as $word) {
-                    // Add word to accumulator
-                    $accum .= $word .' ';
-                    $num = is_numeric($word);
-                    // Check word length
-                    if ($num || $textlib->strlen($word) >= MINIMUM_WORD_SIZE) {
-                        // Normalize numbers
-                        if ($num && $join_numbers) {
-                            $word = (int)ltrim($word, '-0');
-                        }
+	foreach ($split as $value) {
+		if ($tag) {
+			// Increase or decrease score per word based on tag
+			list($tagname) = explode(' ', $value, 2);
+			$tagname = $textlib->strtolower($tagname);
+			// Closing or opening tag?
+			if ($tagname[0] == '/') {
+				$tagname = substr($tagname, 1);
+				// If we encounter unexpected tags, reset score to avoid incorrect boosting.
+				if (!count($tagstack) || $tagstack[0] != $tagname) {
+					$tagstack = array();
+					$score = 1;
+				}
+				else {
+					// Remove from tag stack and decrement score
+					$score = max(1, $score - $tags[array_shift($tagstack)]);
+				}
+			}
+			else {
+				if (isset($tagstack[0]) && $tagstack[0] == $tagname) {
+					// None of the tags we look for make sense when nested identically.
+					// If they are, it's probably broken HTML.
+					$tagstack = array();
+					$score = 1;
+				}
+				else {
+					// Add to open tag stack and increment score
+					array_unshift($tagstack, $tagname);
+					$score += $tags[$tagname];
+				}
+			}
+			// A tag change occurred, reset counter.
+			$tagwords = 0;
+		}
+		else {
+			// Note: use of PREG_SPLIT_DELIM_CAPTURE above will introduce empty values
+			if ($value != '') {
+				$words = tokenise_split($value, $stop_words, $overlap_cjk, $join_numbers);
+				foreach ($words as $word) {
+					// Add word to accumulator
+					$accum .= $word .' ';
+					$num = is_numeric($word);
+					// Check word length
+					if ($num || $textlib->strlen($word) >= MINIMUM_WORD_SIZE) {
+						// Normalize numbers
+						if ($num && $join_numbers) {
+							$word = (int)ltrim($word, '-0');
+						}
 
-                        if (!isset($results[0][$word])) {
-                            $results[0][$word] = 0;
-                        }
+						if (!isset($results[0][$word])) {
+							$results[0][$word] = 0;
+						}
 
-                        $results[0][$word] += $score * $focus;
-                        // Focus is a decaying value in terms of the amount of unique words up to this point.
-                        // From 100 words and more, it decays, to e.g. 0.5 at 500 words and 0.3 at 1000 words.
-                        $focus = min(1, .01 + 3.5 / (2 + count($results[0]) * .015));
-                    }
-                    $tagwords++;
-                    // Too many words inside a single tag probably mean a tag was accidentally left open.
-                    if (count($tagstack) && $tagwords >= 15) {
-                        $tagstack = array();
-                        $score = 1;
-                    }
-                }
-            }
-        }
-        $tag = !$tag;
-    }
+						$results[0][$word] += $score * $focus;
+						// Focus is a decaying value in terms of the amount of unique words up to this point.
+						// From 100 words and more, it decays, to e.g. 0.5 at 500 words and 0.3 at 1000 words.
+						$focus = min(1, .01 + 3.5 / (2 + count($results[0]) * .015));
+					}
+					$tagwords++;
+					// Too many words inside a single tag probably mean a tag was accidentally left open.
+					if (count($tagstack) && $tagwords >= 15) {
+						$tagstack = array();
+						$score = 1;
+					}
+				}
+			}
+		}
+		$tag = !$tag;
+	}
 
-    $res = array();
+	$res = array();
 
-    if (isset($results[0]) && count($results[0]) > 0) {
-        $res = $results[0];
-        arsort($res, SORT_NUMERIC);
-    }
+	if (isset($results[0]) && count($results[0]) > 0) {
+		$res = $results[0];
+		arsort($res, SORT_NUMERIC);
+	}
 
-    return $res;
+	return $res;
 }
 
 ///
@@ -278,30 +278,30 @@ function tokenise_text($text, $stop_words = array(), $overlap_cjk = false, $join
  * Splits a string into tokens
  */
 function tokenise_split($text, $stop_words, $overlap_cjk, $join_numbers) {
-    static $last = NULL;
-    static $lastsplit = NULL;
+	static $last = NULL;
+	static $lastsplit = NULL;
 
-    if ($last == $text) {
-        return $lastsplit;
-    }
-    // Process words
-    $text = tokenise_simplify($text, $overlap_cjk, $join_numbers);
-    $words = explode(' ', $text);
-    // Limit word length to 50
-    array_walk($words, 'tokenise_truncate_word');
+	if ($last == $text) {
+		return $lastsplit;
+	}
+	// Process words
+	$text = tokenise_simplify($text, $overlap_cjk, $join_numbers);
+	$words = explode(' ', $text);
+	// Limit word length to 50
+	array_walk($words, 'tokenise_truncate_word');
 
-    // We have stop words, apply them
-    if (is_array($stop_words) && !empty($stop_words)) {
-        // Normalise them
-        $simp_stop_words = explode(' ', tokenise_simplify(implode(' ', $stop_words), $overlap_cjk, $join_numbers));
-        // Extract from the list
-        $words = array_diff($words, $simp_stop_words);
-    }
-    // Save last keyword result
-    $last = $text;
-    $lastsplit = $words;
+	// We have stop words, apply them
+	if (is_array($stop_words) && !empty($stop_words)) {
+		// Normalise them
+		$simp_stop_words = explode(' ', tokenise_simplify(implode(' ', $stop_words), $overlap_cjk, $join_numbers));
+		// Extract from the list
+		$words = array_diff($words, $simp_stop_words);
+	}
+	// Save last keyword result
+	$last = $text;
+	$lastsplit = $words;
 
-    return $words;
+	return $words;
 }
 
 /**
@@ -309,56 +309,56 @@ function tokenise_split($text, $stop_words, $overlap_cjk, $join_numbers) {
  */
 function tokenise_simplify($text, $overlap_cjk, $join_numbers) {
 
-    $textlib = textlib_get_instance();
+	$textlib = textlib_get_instance();
 
-    // Decode entities to UTF-8
-    $text = $textlib->entities_to_utf8($text, true);
+	// Decode entities to UTF-8
+	$text = $textlib->entities_to_utf8($text, true);
 
-    // Lowercase
-    $text = $textlib->strtolower($text);
+	// Lowercase
+	$text = $textlib->strtolower($text);
 
-    // Simple CJK handling
-    if ($overlap_cjk) {
-        $text = preg_replace_callback('/['. PREG_CLASS_CJK .']+/u', 'tokenise_expand_cjk', $text);
-    }
+	// Simple CJK handling
+	if ($overlap_cjk) {
+		$text = preg_replace_callback('/['. PREG_CLASS_CJK .']+/u', 'tokenise_expand_cjk', $text);
+	}
 
-    // To improve searching for numerical data such as dates, IP addresses
-    // or version numbers, we consider a group of numerical characters
-    // separated only by punctuation characters to be one piece.
-    // This also means that searching for e.g. '20/03/1984' also returns
-    // results with '20-03-1984' in them.
-    // Readable regexp: ([number]+)[punctuation]+(?=[number])
-    if ($join_numbers) {
-        $text = preg_replace('/(['. PREG_CLASS_NUMBERS .']+)['. PREG_CLASS_PUNCTUATION .']+(?=['. PREG_CLASS_NUMBERS .'])/u', '\1', $text);
-    } else {
-    // Keep all the detected numbers+punctuation in a safe place in order to restore them later
-        preg_match_all('/['. PREG_CLASS_NUMBERS .']+['. PREG_CLASS_PUNCTUATION . PREG_CLASS_NUMBERS .']+/u', $text, $foundseqs);
-        $storedseqs = array();
-        foreach (array_unique($foundseqs[0]) as $ntkey => $value) {
-            $prefix = (string)(count($storedseqs) + 1);
-            $storedseqs[START_DELIM.$prefix.CENTER_DELIM.$ntkey.END_DELIM] = $value;
-        }
-        if (!empty($storedseqs)) {
-            $text = str_replace($storedseqs, array_keys($storedseqs), $text);
-        }
-    }
+	// To improve searching for numerical data such as dates, IP addresses
+	// or version numbers, we consider a group of numerical characters
+	// separated only by punctuation characters to be one piece.
+	// This also means that searching for e.g. '20/03/1984' also returns
+	// results with '20-03-1984' in them.
+	// Readable regexp: ([number]+)[punctuation]+(?=[number])
+	if ($join_numbers) {
+		$text = preg_replace('/(['. PREG_CLASS_NUMBERS .']+)['. PREG_CLASS_PUNCTUATION .']+(?=['. PREG_CLASS_NUMBERS .'])/u', '\1', $text);
+	} else {
+	// Keep all the detected numbers+punctuation in a safe place in order to restore them later
+		preg_match_all('/['. PREG_CLASS_NUMBERS .']+['. PREG_CLASS_PUNCTUATION . PREG_CLASS_NUMBERS .']+/u', $text, $foundseqs);
+		$storedseqs = array();
+		foreach (array_unique($foundseqs[0]) as $ntkey => $value) {
+			$prefix = (string)(count($storedseqs) + 1);
+			$storedseqs[START_DELIM.$prefix.CENTER_DELIM.$ntkey.END_DELIM] = $value;
+		}
+		if (!empty($storedseqs)) {
+			$text = str_replace($storedseqs, array_keys($storedseqs), $text);
+		}
+	}
 
-    // The dot, underscore and dash are simply removed. This allows meaningful
-    // search behaviour with acronyms and URLs.
-    $text = preg_replace('/[._-]+/', '', $text);
+	// The dot, underscore and dash are simply removed. This allows meaningful
+	// search behaviour with acronyms and URLs.
+	$text = preg_replace('/[._-]+/', '', $text);
 
-    // With the exception of the rules above, we consider all punctuation,
-    // marks, spacers, etc, to be a word boundary.
-    $text = preg_replace('/['. PREG_CLASS_SEARCH_EXCLUDE .']+/u', ' ', $text);
+	// With the exception of the rules above, we consider all punctuation,
+	// marks, spacers, etc, to be a word boundary.
+	$text = preg_replace('/['. PREG_CLASS_SEARCH_EXCLUDE .']+/u', ' ', $text);
 
-    // Restore, if not joining numbers, recover the original strings
-    if (!$join_numbers) {
-        if (!empty($storedseqs)) {
-            $text = str_replace(array_keys($storedseqs), $storedseqs, $text);
-        }
-    }
+	// Restore, if not joining numbers, recover the original strings
+	if (!$join_numbers) {
+		if (!empty($storedseqs)) {
+			$text = str_replace(array_keys($storedseqs), $storedseqs, $text);
+		}
+	}
 
-    return $text;
+	return $text;
 }
 
 /**
@@ -367,29 +367,29 @@ function tokenise_simplify($text, $overlap_cjk, $join_numbers) {
  */
 function tokenise_expand_cjk($matches) {
 
-    $textlib = textlib_get_instance();
+	$textlib = textlib_get_instance();
 
-    $str = $matches[0];
-    $l = $textlib->strlen($str);
-    // Passthrough short words
-    if ($l <= MINIMUM_WORD_SIZE) {
-        return ' '. $str .' ';
-    }
-    $tokens = ' ';
-    // FIFO queue of characters
-    $chars = array();
-    // Begin loop
-    for ($i = 0; $i < $l; ++$i) {
-        // Grab next character
-        $current = $textlib->substr($str, 0, 1);
-        $str = substr($str, strlen($current));
-        $chars[] = $current;
-        if ($i >= MINIMUM_WORD_SIZE - 1) {
-            $tokens .= implode('', $chars) .' ';
-            array_shift($chars);
-        }
-    }
-    return $tokens;
+	$str = $matches[0];
+	$l = $textlib->strlen($str);
+	// Passthrough short words
+	if ($l <= MINIMUM_WORD_SIZE) {
+		return ' '. $str .' ';
+	}
+	$tokens = ' ';
+	// FIFO queue of characters
+	$chars = array();
+	// Begin loop
+	for ($i = 0; $i < $l; ++$i) {
+		// Grab next character
+		$current = $textlib->substr($str, 0, 1);
+		$str = substr($str, strlen($current));
+		$chars[] = $current;
+		if ($i >= MINIMUM_WORD_SIZE - 1) {
+			$tokens .= implode('', $chars) .' ';
+			array_shift($chars);
+		}
+	}
+	return $tokens;
 }
 
 /**
@@ -398,8 +398,8 @@ function tokenise_expand_cjk($matches) {
  */
 function tokenise_truncate_word(&$text) {
 
-    $textlib = textlib_get_instance();
-    $text = $textlib->substr($text, 0, MAXIMUM_WORD_SIZE);
+	$textlib = textlib_get_instance();
+	$text = $textlib->substr($text, 0, MAXIMUM_WORD_SIZE);
 }
 
 ?>

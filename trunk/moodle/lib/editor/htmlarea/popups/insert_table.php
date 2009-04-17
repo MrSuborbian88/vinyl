@@ -1,13 +1,13 @@
 <?php // $Id: insert_table.php,v 1.4 2007/01/27 23:23:44 skodak Exp $
-    require("../../../../config.php");
+	require("../../../../config.php");
 
-    $id = optional_param('id', SITEID, PARAM_INT);
+	$id = optional_param('id', SITEID, PARAM_INT);
 
-    require_course_login($id);
-    @header('Content-Type: text/html; charset=utf-8');
+	require_course_login($id);
+	@header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -23,24 +23,24 @@ function Init() {
 
 function onOK() {
   var required = {
-    "f_rows": "You must enter a number of rows",
-    "f_cols": "You must enter a number of columns"
+	"f_rows": "You must enter a number of rows",
+	"f_cols": "You must enter a number of columns"
   };
   for (var i in required) {
-    var el = document.getElementById(i);
-    if (!el.value) {
-      alert(required[i]);
-      el.focus();
-      return false;
-    }
+	var el = document.getElementById(i);
+	if (!el.value) {
+	  alert(required[i]);
+	  el.focus();
+	  return false;
+	}
   }
   var fields = ["f_rows", "f_cols", "f_width", "f_unit",
-                "f_align", "f_border", "f_spacing", "f_padding"];
+				"f_align", "f_border", "f_spacing", "f_padding"];
   var param = new Object();
   for (var i in fields) {
-    var id = fields[i];
-    var el = document.getElementById(id);
-    param[id] = el.value;
+	var id = fields[i];
+	var el = document.getElementById(id);
+	param[id] = el.value;
   }
   __dlg_close(param);
   return false;
@@ -91,22 +91,22 @@ form { padding: 0px; margin: 0px; }
   <tbody>
 
   <tr>
-    <td style="width: 4em; text-align: right"><?php print_string("rows","editor") ?>:</td>
-    <td><input type="text" name="f_rows" id="f_rows" size="5" title="Number of rows" value="2" /></td>
-    <td></td>
-    <td></td>
-    <td></td>
+	<td style="width: 4em; text-align: right"><?php print_string("rows","editor") ?>:</td>
+	<td><input type="text" name="f_rows" id="f_rows" size="5" title="Number of rows" value="2" /></td>
+	<td></td>
+	<td></td>
+	<td></td>
   </tr>
   <tr>
-    <td style="width: 4em; text-align: right"><?php print_string("cols","editor") ?>:</td>
-    <td><input type="text" name="f_cols" id="f_cols" size="5" title="Number of columns" value="4" /></td>
-    <td style="width: 4em; text-align: right"><?php print_string("width","editor") ?>:</td>
-    <td><input type="text" name="f_width" id="f_width" size="5" title="Width of the table" value="100" /></td>
-    <td><select size="1" name="f_unit" id="f_unit" title="Width unit">
-      <option value="%" selected="selected"  ><?php print_string("percent","editor") ?></option>
-      <option value="px"              ><?php print_string("pixels","editor") ?></option>
-      <option value="em"              >Em</option>
-    </select></td>
+	<td style="width: 4em; text-align: right"><?php print_string("cols","editor") ?>:</td>
+	<td><input type="text" name="f_cols" id="f_cols" size="5" title="Number of columns" value="4" /></td>
+	<td style="width: 4em; text-align: right"><?php print_string("width","editor") ?>:</td>
+	<td><input type="text" name="f_width" id="f_width" size="5" title="Width of the table" value="100" /></td>
+	<td><select size="1" name="f_unit" id="f_unit" title="Width unit">
+	  <option value="%" selected="selected"  ><?php print_string("percent","editor") ?></option>
+	  <option value="px"			  ><?php print_string("pixels","editor") ?></option>
+	  <option value="em"			  >Em</option>
+	</select></td>
   </tr>
 
   </tbody>
@@ -122,16 +122,16 @@ form { padding: 0px; margin: 0px; }
 <div class="fl"><?php print_string("alignment","editor") ?>:</div>
 <select size="1" name="f_align" id="f_align"
   title="Positioning of this image">
-  <option value="" selected="selected"                ><?php print_string("notset","editor") ?></option>
-  <option value="left"                         ><?php print_string("left","editor") ?></option>
-  <option value="right"                        ><?php print_string("right","editor") ?></option>
-  <option value="texttop"                      ><?php print_string("texttop","editor") ?></option>
-  <option value="middle"                    ><?php print_string("middle","editor") ?></option>
-  <option value="baseline"                     ><?php print_string("baseline","editor") ?></option>
-  <option value="absbottom"                    ><?php print_string("absbottom","editor") ?></option>
-  <option value="bottom"                       ><?php print_string("bottom","editor") ?></option>
-  <option value="middle"                       ><?php print_string("middle","editor") ?></option>
-  <option value="top"                          ><?php print_string("top","editor") ?></option>
+  <option value="" selected="selected"				><?php print_string("notset","editor") ?></option>
+  <option value="left"						 ><?php print_string("left","editor") ?></option>
+  <option value="right"						><?php print_string("right","editor") ?></option>
+  <option value="texttop"					  ><?php print_string("texttop","editor") ?></option>
+  <option value="middle"					><?php print_string("middle","editor") ?></option>
+  <option value="baseline"					 ><?php print_string("baseline","editor") ?></option>
+  <option value="absbottom"					><?php print_string("absbottom","editor") ?></option>
+  <option value="bottom"					   ><?php print_string("bottom","editor") ?></option>
+  <option value="middle"					   ><?php print_string("middle","editor") ?></option>
+  <option value="top"						  ><?php print_string("top","editor") ?></option>
 </select>
 
 <p />

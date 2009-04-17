@@ -8,7 +8,7 @@
 $PHPMAILER_LANG = array(); 
 
 $PHPMAILER_LANG["provide_address"] = 'Aseta v&auml;hint&auml;&auml;n yksi vastaanottajan ' . 
-                                     's&auml;hk&ouml;postiosoite.'; 
+									 's&auml;hk&ouml;postiosoite.'; 
 $PHPMAILER_LANG["mailer_not_supported"] = 'postiv&auml;litintyyppi&auml; ei tueta.'; 
 $PHPMAILER_LANG["execute"] = 'Suoritus ep&auml;onnistui: '; 
 $PHPMAILER_LANG["instantiate"] = 'mail-funktion luonti ep&auml;onnistui.'; 

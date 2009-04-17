@@ -9,7 +9,7 @@
 
 $fd = fopen('php://stdin','r');
 if (!$fd) {
-    exit();
+	exit();
 }
 
 $FULLME='cron';
@@ -19,99 +19,99 @@ require_once($CFG->dirroot.'/lib/uploadlib.php'); // contains virus handling stu
 $site = get_site();
 
 while(!feof($fd)) {
-    $entry = fgets($fd);
-    if (strlen(trim($entry)) == 0) {
-        continue;
-    }
-    if (!$file = validate_line($entry)) {
-        continue;
-    }
-    $bits = explode('/',$file);
-    $a->filename = $bits[count($bits)-1];
+	$entry = fgets($fd);
+	if (strlen(trim($entry)) == 0) {
+		continue;
+	}
+	if (!$file = validate_line($entry)) {
+		continue;
+	}
+	$bits = explode('/',$file);
+	$a->filename = $bits[count($bits)-1];
 
-    if (!$log = get_record("log","module","upload","info",$file,"action","upload")) {
-        $a->action = clam_handle_infected_file($file,0,false);
-        clam_replace_infected_file($file);
-        notify_admins_unknown($file,$a);
-        continue;
-    }
-    $action = clam_handle_infected_file($file,$log->userid,true);
-    clam_replace_infected_file($file);
-    
-    $user = get_record("user","id",$log->userid);
-    $course = get_record("course","id",$log->course);
-    $subject = get_string('virusfoundsubject','moodle',format_string($site->fullname));
-    $a->date = userdate($log->time);
+	if (!$log = get_record("log","module","upload","info",$file,"action","upload")) {
+		$a->action = clam_handle_infected_file($file,0,false);
+		clam_replace_infected_file($file);
+		notify_admins_unknown($file,$a);
+		continue;
+	}
+	$action = clam_handle_infected_file($file,$log->userid,true);
+	clam_replace_infected_file($file);
+	
+	$user = get_record("user","id",$log->userid);
+	$course = get_record("course","id",$log->course);
+	$subject = get_string('virusfoundsubject','moodle',format_string($site->fullname));
+	$a->date = userdate($log->time);
 
-    $a->action = $action;
-    $a->course = $course->fullname;
-    $a->user = fullname($user);
+	$a->action = $action;
+	$a->course = $course->fullname;
+	$a->user = fullname($user);
 
-    notify_user($user,$subject,$a);
-    notify_admins($user,$subject,$a);
+	notify_user($user,$subject,$a);
+	notify_admins($user,$subject,$a);
 }
 fclose($fd);
 
 
 function notify_user($user,$subject,$a) {
 
-    if (!$user) {
-        return false;
-    }
-    $body = get_string('virusfoundlater','moodle',$a);
-    email_to_user($user,get_admin(),$subject,$body);
+	if (!$user) {
+		return false;
+	}
+	$body = get_string('virusfoundlater','moodle',$a);
+	email_to_user($user,get_admin(),$subject,$body);
 }
 
 
 function notify_admins($user,$subject,$a) {
 
-    $admins = get_admins();
+	$admins = get_admins();
 
-    $body = get_string('virusfoundlateradmin','moodle',$a);
-    foreach ($admins as $admin) {
-        email_to_user($admin,$admin,$subject,$body);
-    }
+	$body = get_string('virusfoundlateradmin','moodle',$a);
+	foreach ($admins as $admin) {
+		email_to_user($admin,$admin,$subject,$body);
+	}
 }
 
 function notify_admins_unknown($file,$a) {
-    
-    global $site;
+	
+	global $site;
 
-    $admins = get_admins();
-    $subject = get_string('virusfoundsubject','moodle',format_string($site->fullname));
-    $body = get_string('virusfoundlateradminnolog','moodle',$a);
-    foreach ($admins as $admin) {
-        email_to_user($admin,$admin,$subject,$body);
-    }
+	$admins = get_admins();
+	$subject = get_string('virusfoundsubject','moodle',format_string($site->fullname));
+	$body = get_string('virusfoundlateradminnolog','moodle',$a);
+	foreach ($admins as $admin) {
+		email_to_user($admin,$admin,$subject,$body);
+	}
 }
 
 function validate_line($line) {
-    global $CFG;
-    if (strpos($line,"FOUND") === false) {
-        return false;
-    }
-    $index = strpos($line,":");
-    $file = substr($line,0,$index);
-    if (!(strpos($file,$CFG->dataroot) === false)) {
-        if (!file_exists($file)) {
-            return false;
-        }
-    }
-    else {
-        if ($file{0} == "/") {
-            $file = $CFG->dataroot.$file;
-        }
-        else {
-            $file = $CFG->dataroot."/".$file;
-        }
-        if (!file_exists($file)) {
-            return false;
-        }
-    }
-    // clean up
-    $file = preg_replace('/\.\//','/',$file);
-    $file = preg_replace('/\/\//','/',$file);
-    return $file;
+	global $CFG;
+	if (strpos($line,"FOUND") === false) {
+		return false;
+	}
+	$index = strpos($line,":");
+	$file = substr($line,0,$index);
+	if (!(strpos($file,$CFG->dataroot) === false)) {
+		if (!file_exists($file)) {
+			return false;
+		}
+	}
+	else {
+		if ($file{0} == "/") {
+			$file = $CFG->dataroot.$file;
+		}
+		else {
+			$file = $CFG->dataroot."/".$file;
+		}
+		if (!file_exists($file)) {
+			return false;
+		}
+	}
+	// clean up
+	$file = preg_replace('/\.\//','/',$file);
+	$file = preg_replace('/\/\//','/',$file);
+	return $file;
 }
 
 ?>

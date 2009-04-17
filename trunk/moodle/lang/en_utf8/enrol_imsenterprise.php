@@ -1,5 +1,5 @@
 <?PHP // $Id: enrol_imsenterprise.php,v 1.6 2007/02/09 07:47:16 toyomoyo Exp $ 
-      // enrol_imsenterprise.php - created with Moodle 1.7 beta + (2006101003)
+	  // enrol_imsenterprise.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['aftersaving...'] = 'Once you have saved your settings, you may wish to';

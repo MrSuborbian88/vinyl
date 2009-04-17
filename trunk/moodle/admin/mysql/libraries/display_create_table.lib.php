@@ -6,7 +6,7 @@
  * @version $Id: display_create_table.lib.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -37,98 +37,98 @@ $is_create_table_priv = true;
 
 /*
 if (PMA_MYSQL_INT_VERSION >= 40100) {
-    $is_create_table_priv = false;
+	$is_create_table_priv = false;
 } else {
-    $is_create_table_priv = true;
+	$is_create_table_priv = true;
 }
 
 foreach ($dbs_where_create_table_allowed as $allowed_db) {
 
-    // if we find the exact db name, we stop here
-    if ($allowed_db == $db) {
-        $is_create_table_priv = TRUE;
-        break;
-    }
+	// if we find the exact db name, we stop here
+	if ($allowed_db == $db) {
+		$is_create_table_priv = TRUE;
+		break;
+	}
 
-    // '*' indicates a global CREATE priv
-    if ($allowed_db == '*') {
-        $is_create_table_priv = TRUE;
-        break;
-    }
+	// '*' indicates a global CREATE priv
+	if ($allowed_db == '*') {
+		$is_create_table_priv = TRUE;
+		break;
+	}
 
-    if (ereg('%|_', $allowed_db)) {
-        // take care of wildcards and escaped wildcards,
-        // transforming them into regexp patterns
-        $max_position = strlen($allowed_db) - 1;
-        $i = 0;
-        $pattern = '';
-        while ($i <= $max_position) {
-            if ($allowed_db[$i] == '\\'){
-                if ($i < $max_position - 1 && $allowed_db[$i+1] == '_'){
-                    $chunk = '_';
-                    $i++;
-                } elseif ($i < $max_position - 1 && $allowed_db[$i+1] == '%'){
-                    $chunk = '%';
-                    $i++;
-                } else {
-                    $chunk = $allowed_db[$i];
-                }
-            } elseif ($allowed_db[$i] == '_'){
-                $chunk = '.';
-            } elseif ($allowed_db[$i] == '%'){
-                $chunk = '(.)*';
-            } else {
-                $chunk = $allowed_db[$i];
-            }
-            $pattern .= $chunk;
-            $i++;
-        } // end while
-        unset($i, $max_position, $chunk);
+	if (ereg('%|_', $allowed_db)) {
+		// take care of wildcards and escaped wildcards,
+		// transforming them into regexp patterns
+		$max_position = strlen($allowed_db) - 1;
+		$i = 0;
+		$pattern = '';
+		while ($i <= $max_position) {
+			if ($allowed_db[$i] == '\\'){
+				if ($i < $max_position - 1 && $allowed_db[$i+1] == '_'){
+					$chunk = '_';
+					$i++;
+				} elseif ($i < $max_position - 1 && $allowed_db[$i+1] == '%'){
+					$chunk = '%';
+					$i++;
+				} else {
+					$chunk = $allowed_db[$i];
+				}
+			} elseif ($allowed_db[$i] == '_'){
+				$chunk = '.';
+			} elseif ($allowed_db[$i] == '%'){
+				$chunk = '(.)*';
+			} else {
+				$chunk = $allowed_db[$i];
+			}
+			$pattern .= $chunk;
+			$i++;
+		} // end while
+		unset($i, $max_position, $chunk);
 
-        $matches = '';
-        if (preg_match('@' .$pattern . '@i', $db, $matches)) {
-            if ($matches[0] == $db) {
-                $is_create_table_priv = TRUE;
-                break;
-                //TODO: maybe receive in $allowed_db also the db names
-                // on which we cannot CREATE, and check them
-                // in this foreach, because if a user is allowed to CREATE
-                // on db foo% but forbidden on db foobar, he should not
-                // see the Create table dialog
-            }
-        }
-    }
+		$matches = '';
+		if (preg_match('@' .$pattern . '@i', $db, $matches)) {
+			if ($matches[0] == $db) {
+				$is_create_table_priv = TRUE;
+				break;
+				//TODO: maybe receive in $allowed_db also the db names
+				// on which we cannot CREATE, and check them
+				// in this foreach, because if a user is allowed to CREATE
+				// on db foo% but forbidden on db foobar, he should not
+				// see the Create table dialog
+			}
+		}
+	}
 } // end foreach
 unset($i, $max_position, $chunk, $pattern);
 */
 ?>
 <form method="post" action="tbl_create.php"
-    onsubmit="return (emptyFormElements(this, 'table') &amp;&amp; checkFormElementInRange(this, 'num_fields', '<?php echo str_replace('\'', '\\\'', $GLOBALS['strInvalidFieldCount']); ?>', 1))">
+	onsubmit="return (emptyFormElements(this, 'table') &amp;&amp; checkFormElementInRange(this, 'num_fields', '<?php echo str_replace('\'', '\\\'', $GLOBALS['strInvalidFieldCount']); ?>', 1))">
 <fieldset>
-    <legend>
+	<legend>
 <?php
 if ($GLOBALS['cfg']['PropertiesIconic']) {
-    echo '<img class="icon" src="' . $pmaThemeImage . 'b_newtbl.png" width="16" height="16" alt="" />';
+	echo '<img class="icon" src="' . $pmaThemeImage . 'b_newtbl.png" width="16" height="16" alt="" />';
 }
 echo sprintf($strCreateNewTable, PMA_getDbLink());
 ?>
-    </legend>
+	</legend>
 <?php if ($is_create_table_priv) { ?>
-    <?php echo PMA_generate_common_hidden_inputs($db); ?>
-    <div class="formelement">
-        <?php echo $strName; ?>:
-        <input type="text" name="table" maxlength="64" size="30" />
-    </div>
-    <div class="formelement">
-        <?php echo $strNumberOfFields; ?>:
-        <input type="text" name="num_fields" size="2" />
-    </div>
-    <div class="clearfloat"></div>
+	<?php echo PMA_generate_common_hidden_inputs($db); ?>
+	<div class="formelement">
+		<?php echo $strName; ?>:
+		<input type="text" name="table" maxlength="64" size="30" />
+	</div>
+	<div class="formelement">
+		<?php echo $strNumberOfFields; ?>:
+		<input type="text" name="num_fields" size="2" />
+	</div>
+	<div class="clearfloat"></div>
 </fieldset>
 <fieldset class="tblFooters">
-    <input type="submit" value="<?php echo $strGo; ?>" />
+	<input type="submit" value="<?php echo $strGo; ?>" />
 <?php } else { ?>
-    <div class="error"><?php echo $strNoPrivileges; ?></div>
+	<div class="error"><?php echo $strNoPrivileges; ?></div>
 <?php } // end if else ?>
 </fieldset>
 </form>

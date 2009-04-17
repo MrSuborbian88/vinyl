@@ -18,86 +18,86 @@
 /**
  * Checks if a character is an alphanumeric one
  *
- * @uses    ctype_alnum()
+ * @uses	ctype_alnum()
  * @param   string   character to check for
  * @return  boolean  whether the character is an alphanumeric one or not
  */
 function PMA_STR_isAlnum($c)
 {
-    return ctype_alnum($c);
+	return ctype_alnum($c);
 } // end of the "PMA_STR_isAlnum()" function
 
 /**
  * Checks if a character is an alphabetic one
  *
- * @uses    ctype_alpha()
+ * @uses	ctype_alpha()
  * @param   string   character to check for
  * @return  boolean  whether the character is an alphabetic one or not
  */
 function PMA_STR_isAlpha($c)
 {
-    return ctype_alpha($c);
+	return ctype_alpha($c);
 } // end of the "PMA_STR_isAlpha()" function
 
 /**
  * Checks if a character is a digit
  *
- * @uses    ctype_digit()
+ * @uses	ctype_digit()
  * @param   string   character to check for
  * @return  boolean  whether the character is a digit or not
  */
 function PMA_STR_isDigit($c)
 {
-    return ctype_digit($c);
+	return ctype_digit($c);
 } // end of the "PMA_STR_isDigit()" function
 
 /**
  * Checks if a character is an upper alphabetic one
  *
- * @uses    ctype_upper()
+ * @uses	ctype_upper()
  * @param   string   character to check for
  * @return  boolean  whether the character is an upper alphabetic one or not
  */
 function PMA_STR_isUpper($c)
 {
-    return ctype_upper($c);
+	return ctype_upper($c);
 } // end of the "PMA_STR_isUpper()" function
 
 
 /**
  * Checks if a character is a lower alphabetic one
  *
- * @uses    ctype_lower()
+ * @uses	ctype_lower()
  * @param   string   character to check for
  * @return  boolean  whether the character is a lower alphabetic one or not
  */
 function PMA_STR_isLower($c)
 {
-    return ctype_lower($c);
+	return ctype_lower($c);
 } // end of the "PMA_STR_isLower()" function
 
 /**
  * Checks if a character is a space one
  *
- * @uses    ctype_space()
+ * @uses	ctype_space()
  * @param   string   character to check for
  * @return  boolean  whether the character is a space one or not
  */
 function PMA_STR_isSpace($c)
 {
-    return ctype_space($c);
+	return ctype_space($c);
 } // end of the "PMA_STR_isSpace()" function
 
 /**
  * Checks if a character is an hexadecimal digit
  *
- * @uses    ctype_xdigit()
+ * @uses	ctype_xdigit()
  * @param   string   character to check for
  * @return  boolean  whether the character is an hexadecimal digit or not
  */
 function PMA_STR_isHexDigit($c)
 {
-    return ctype_xdigit($c);
+	return ctype_xdigit($c);
 } // end of the "PMA_STR_isHexDigit()" function
 
 ?>

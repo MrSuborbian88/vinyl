@@ -139,13 +139,13 @@ class PGTStorageDB extends PGTStorage
   function getURL()
 
 
-    {
+	{
 
 
-      return $this->_url;
+	  return $this->_url;
 
 
-    }
+	}
 
 
 
@@ -205,13 +205,13 @@ class PGTStorageDB extends PGTStorage
   function getLink()
 
 
-    {
+	{
 
 
-      return $this->_link;
+	  return $this->_link;
 
 
-    }
+	}
 
 
 
@@ -268,13 +268,13 @@ class PGTStorageDB extends PGTStorage
   function getTable()
 
 
-    {
+	{
 
 
-      return $this->_table;
+	  return $this->_table;
 
 
-    }
+	}
 
 
 
@@ -316,13 +316,13 @@ class PGTStorageDB extends PGTStorage
   function getStorageType()
 
 
-    {
+	{
 
 
-      return "database";
+	  return "database";
 
 
-    }
+	}
 
 
 
@@ -349,13 +349,13 @@ class PGTStorageDB extends PGTStorage
   function getStorageInfo()
 
 
-    {
+	{
 
 
-      return 'url=`'.$this->getURL().'\', table=`'.$this->getTable().'\'';
+	  return 'url=`'.$this->getURL().'\', table=`'.$this->getTable().'\'';
 
 
-    }
+	}
 
 
 
@@ -418,58 +418,58 @@ class PGTStorageDB extends PGTStorage
   function PGTStorageDB($cas_parent,$user,$password,$database_type,$hostname,$port,$database,$table)
 
 
-    {
+	{
 
 
-      phpCAS::traceBegin();
-
-
-
-
-
-      // call the ancestor's constructor
-
-
-      $this->PGTStorage($cas_parent);
+	  phpCAS::traceBegin();
 
 
 
 
 
-      if ( empty($database_type) ) $database_type = CAS_PGT_STORAGE_DB_DEFAULT_DATABASE_TYPE;
+	  // call the ancestor's constructor
 
 
-      if ( empty($hostname) ) $hostname = CAS_PGT_STORAGE_DB_DEFAULT_HOSTNAME;
-
-
-      if ( $port==0 ) $port = CAS_PGT_STORAGE_DB_DEFAULT_PORT;
-
-
-      if ( empty($database) ) $database = CAS_PGT_STORAGE_DB_DEFAULT_DATABASE;
-
-
-      if ( empty($table) ) $table = CAS_PGT_STORAGE_DB_DEFAULT_TABLE;
+	  $this->PGTStorage($cas_parent);
 
 
 
 
 
-      // build and store the PEAR DB URL
+	  if ( empty($database_type) ) $database_type = CAS_PGT_STORAGE_DB_DEFAULT_DATABASE_TYPE;
 
 
-      $this->_url = $database_type.':'.'//'.$user.':'.$password.'@'.$hostname.':'.$port.'/'.$database;
+	  if ( empty($hostname) ) $hostname = CAS_PGT_STORAGE_DB_DEFAULT_HOSTNAME;
+
+
+	  if ( $port==0 ) $port = CAS_PGT_STORAGE_DB_DEFAULT_PORT;
+
+
+	  if ( empty($database) ) $database = CAS_PGT_STORAGE_DB_DEFAULT_DATABASE;
+
+
+	  if ( empty($table) ) $table = CAS_PGT_STORAGE_DB_DEFAULT_TABLE;
 
 
 
 
 
-      // XXX should use setURL and setTable
+	  // build and store the PEAR DB URL
 
 
-      phpCAS::traceEnd();
+	  $this->_url = $database_type.':'.'//'.$user.':'.$password.'@'.$hostname.':'.$port.'/'.$database;
 
 
-    }
+
+
+
+	  // XXX should use setURL and setTable
+
+
+	  phpCAS::traceEnd();
+
+
+	}
 
 
   
@@ -505,52 +505,52 @@ class PGTStorageDB extends PGTStorage
   function init()
 
 
-    {
+	{
 
 
-      phpCAS::traceBegin();
+	  phpCAS::traceBegin();
 
 
-      // if the storage has already been initialized, return immediatly
+	  // if the storage has already been initialized, return immediatly
 
 
-      if ( $this->isInitialized() )
+	  if ( $this->isInitialized() )
 
 
 	return;
 
 
-      // call the ancestor's method (mark as initialized)
+	  // call the ancestor's method (mark as initialized)
 
 
-      parent::init();
+	  parent::init();
 
 
-      
+	  
 
 
-      // try to connect to the database
+	  // try to connect to the database
 
 
-      $this->_link = DB::connect($this->getURL());
+	  $this->_link = DB::connect($this->getURL());
 
 
-      if ( DB::isError($this->_link) ) {
+	  if ( DB::isError($this->_link) ) {
 
 
 	phpCAS::error('could not connect to database ('.DB::errorMessage($this->_link).')');
 
 
-      }
+	  }
 
 
-      var_dump($this->_link);
+	  var_dump($this->_link);
 
 
-      phpCAS::traceBEnd();
+	  phpCAS::traceBEnd();
 
 
-    }
+	}
 
 
 

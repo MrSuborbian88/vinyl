@@ -1,5 +1,5 @@
 <?PHP // $Id: assignment.php,v 1.14.2.11 2008/02/27 05:05:01 moodler Exp $ 
-      // assignment.php - created with Moodle 1.7 beta + (2006101003)
+	  // assignment.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['allowdeleting'] = 'Allow deleting';
@@ -16,7 +16,7 @@ assignment submission for \'$a->assignment\'
 
 You can see it appended to your assignment submission:
 
-    $a->url';
+	$a->url';
 $string['assignmentmailhtml'] = '$a->teacher has posted some feedback on your
 assignment submission for \'<i>$a->assignment</i>\'<br /><br />
 You can see it appended to your <a href=\"$a->url\">assignment submission</a>.';
@@ -44,7 +44,7 @@ for \'$a->assignment\'
 
 It is available here:
 
-    $a->url';
+	$a->url';
 $string['emailteachermailhtml'] = '$a->username has updated their assignment submission
 for <i>\'$a->assignment\'</i><br /><br />
 It is <a href=\"$a->url\">available on the web site</a>.';

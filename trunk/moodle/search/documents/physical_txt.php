@@ -18,21 +18,21 @@
 * @uses $CFG
 */
 function get_text_for_indexing_txt(&$resource, $directfile = ''){
-    global $CFG;
-    
-    // SECURITY : do not allow non admin execute anything on system !!
-    if (!has_capability('moodle/site:doanything', get_context_instance(CONTEXT_SYSTEM))) return;
+	global $CFG;
+	
+	// SECURITY : do not allow non admin execute anything on system !!
+	if (!has_capability('moodle/site:doanything', get_context_instance(CONTEXT_SYSTEM))) return;
 
-    // just try to get text empirically from ppt binary flow
-    if ($directfile == ''){
-        $text = implode('', file("{$CFG->dataroot}/{$resource->course}/{$resource->reference}"));
-    } else {
-        $text = implode('', file("{$CFG->dataroot}/{$directfile}"));
-    }
-    
-    if (!empty($CFG->block_search_limit_index_body)){
-        $text = shorten($text, $CFG->block_search_limit_index_body);
-    }
-    return $text;
+	// just try to get text empirically from ppt binary flow
+	if ($directfile == ''){
+		$text = implode('', file("{$CFG->dataroot}/{$resource->course}/{$resource->reference}"));
+	} else {
+		$text = implode('', file("{$CFG->dataroot}/{$directfile}"));
+	}
+	
+	if (!empty($CFG->block_search_limit_index_body)){
+		$text = shorten($text, $CFG->block_search_limit_index_body);
+	}
+	return $text;
 }
 ?>

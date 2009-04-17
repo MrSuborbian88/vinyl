@@ -1,5 +1,5 @@
 <?PHP // $Id: block_glossary_random.php,v 1.2.8.1 2008/06/25 03:01:50 jerome Exp $ 
-      // block_glossary_random.php - created with Moodle 1.7 beta + (2006101003)
+	  // block_glossary_random.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['addentry'] = 'Add your own favorite quotes!';

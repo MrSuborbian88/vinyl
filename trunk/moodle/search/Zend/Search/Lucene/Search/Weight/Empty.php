@@ -13,10 +13,10 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
@@ -26,31 +26,31 @@ require_once 'Zend/Search/Lucene/Search/Weight.php';
 
 /**
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Search
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 class Zend_Search_Lucene_Search_Weight_Empty extends Zend_Search_Lucene_Search_Weight
 {
-    /**
-     * The sum of squared weights of contained query clauses.
-     *
-     * @return float
-     */
-    public function sumOfSquaredWeights()
-    {
-        return 1;
-    }
+	/**
+	 * The sum of squared weights of contained query clauses.
+	 *
+	 * @return float
+	 */
+	public function sumOfSquaredWeights()
+	{
+		return 1;
+	}
 
 
-    /**
-     * Assigns the query normalization factor to this.
-     *
-     * @param float $queryNorm
-     */
-    public function normalize($queryNorm)
-    {
-    }
+	/**
+	 * Assigns the query normalization factor to this.
+	 *
+	 * @param float $queryNorm
+	 */
+	public function normalize($queryNorm)
+	{
+	}
 }
 

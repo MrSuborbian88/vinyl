@@ -45,33 +45,33 @@
  */
 function xmlize($data, $WHITE=1, $encoding='UTF-8') {
 
-    $data = trim($data);
-    $vals = $index = $array = array();
-    $parser = xml_parser_create($encoding);
-    xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
-    xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, $WHITE);
-    xml_parse_into_struct($parser, $data, $vals, $index);
-    xml_parser_free($parser);
+	$data = trim($data);
+	$vals = $index = $array = array();
+	$parser = xml_parser_create($encoding);
+	xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
+	xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, $WHITE);
+	xml_parse_into_struct($parser, $data, $vals, $index);
+	xml_parser_free($parser);
 
-    $i = 0;
-    
-    if (empty($vals)) {
-        // XML file is invalid or empty, return false
-        return false;
-    }
+	$i = 0;
+	
+	if (empty($vals)) {
+		// XML file is invalid or empty, return false
+		return false;
+	}
 
-    $tagname = $vals[$i]['tag'];
-    if ( isset ($vals[$i]['attributes'] ) )
-    {
-        $array[$tagname]['@'] = $vals[$i]['attributes'];
-    } else {
-        $array[$tagname]['@'] = array();
-    }
+	$tagname = $vals[$i]['tag'];
+	if ( isset ($vals[$i]['attributes'] ) )
+	{
+		$array[$tagname]['@'] = $vals[$i]['attributes'];
+	} else {
+		$array[$tagname]['@'] = array();
+	}
 
-    $array[$tagname]["#"] = xml_depth($vals, $i);
+	$array[$tagname]["#"] = xml_depth($vals, $i);
 
 
-    return $array;
+	return $array;
 }
 
 /**
@@ -81,79 +81,79 @@ function xmlize($data, $WHITE=1, $encoding='UTF-8') {
  * @access private
  */
 function xml_depth($vals, &$i) {
-    $children = array();
+	$children = array();
 
-    if ( isset($vals[$i]['value']) )
-    {
-        array_push($children, $vals[$i]['value']);
-    }
+	if ( isset($vals[$i]['value']) )
+	{
+		array_push($children, $vals[$i]['value']);
+	}
 
-    while (++$i < count($vals)) {
+	while (++$i < count($vals)) {
 
-        switch ($vals[$i]['type']) {
+		switch ($vals[$i]['type']) {
 
-           case 'open':
+		   case 'open':
 
-                if ( isset ( $vals[$i]['tag'] ) )
-                {
-                    $tagname = $vals[$i]['tag'];
-                } else {
-                    $tagname = '';
-                }
+				if ( isset ( $vals[$i]['tag'] ) )
+				{
+					$tagname = $vals[$i]['tag'];
+				} else {
+					$tagname = '';
+				}
 
-                if ( isset ( $children[$tagname] ) )
-                {
-                    $size = sizeof($children[$tagname]);
-                } else {
-                    $size = 0;
-                }
+				if ( isset ( $children[$tagname] ) )
+				{
+					$size = sizeof($children[$tagname]);
+				} else {
+					$size = 0;
+				}
 
-                if ( isset ( $vals[$i]['attributes'] ) ) {
-                    $children[$tagname][$size]['@'] = $vals[$i]["attributes"];
+				if ( isset ( $vals[$i]['attributes'] ) ) {
+					$children[$tagname][$size]['@'] = $vals[$i]["attributes"];
 
-                }
+				}
 
-                $children[$tagname][$size]['#'] = xml_depth($vals, $i);
+				$children[$tagname][$size]['#'] = xml_depth($vals, $i);
 
-            break;
+			break;
 
 
-            case 'cdata':
-                array_push($children, $vals[$i]['value']);
-            break;
+			case 'cdata':
+				array_push($children, $vals[$i]['value']);
+			break;
 
-            case 'complete':
-                $tagname = $vals[$i]['tag'];
+			case 'complete':
+				$tagname = $vals[$i]['tag'];
 
-                if( isset ($children[$tagname]) )
-                {
-                    $size = sizeof($children[$tagname]);
-                } else {
-                    $size = 0;
-                }
+				if( isset ($children[$tagname]) )
+				{
+					$size = sizeof($children[$tagname]);
+				} else {
+					$size = 0;
+				}
 
-                if( isset ( $vals[$i]['value'] ) )
-                {
-                    $children[$tagname][$size]["#"] = $vals[$i]['value'];
-                } else {
-                    $children[$tagname][$size]["#"] = '';
-                }
+				if( isset ( $vals[$i]['value'] ) )
+				{
+					$children[$tagname][$size]["#"] = $vals[$i]['value'];
+				} else {
+					$children[$tagname][$size]["#"] = '';
+				}
 
-                if ( isset ($vals[$i]['attributes']) ) {
-                    $children[$tagname][$size]['@']
-                                             = $vals[$i]['attributes'];
-                }
+				if ( isset ($vals[$i]['attributes']) ) {
+					$children[$tagname][$size]['@']
+											 = $vals[$i]['attributes'];
+				}
 
-            break;
+			break;
 
-            case 'close':
-                return $children;
-            break;
-        }
+			case 'close':
+				return $children;
+			break;
+		}
 
-    }
+	}
 
-        return $children;
+		return $children;
 
 
 }
@@ -177,17 +177,17 @@ function xml_depth($vals, &$i) {
  */
 function traverse_xmlize($array, $arrName = 'array', $level = 0) {
 
-    foreach($array as $key=>$val)
-    {
-        if ( is_array($val) )
-        {
-            traverse_xmlize($val, $arrName . '[' . $key . ']', $level + 1);
-        } else {
-            $GLOBALS['traverse_array'][] = '$' . $arrName . '[' . $key . '] = "' . $val . "\"\n";
-        }
-    }
+	foreach($array as $key=>$val)
+	{
+		if ( is_array($val) )
+		{
+			traverse_xmlize($val, $arrName . '[' . $key . ']', $level + 1);
+		} else {
+			$GLOBALS['traverse_array'][] = '$' . $arrName . '[' . $key . '] = "' . $val . "\"\n";
+		}
+	}
 
-    return 1;
+	return 1;
 
 }
 

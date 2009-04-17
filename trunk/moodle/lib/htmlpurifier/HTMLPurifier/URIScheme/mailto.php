@@ -12,17 +12,17 @@ require_once 'HTMLPurifier/URIScheme.php';
  */
 
 class HTMLPurifier_URIScheme_mailto extends HTMLPurifier_URIScheme {
-    
-    var $browsable = false;
-    
-    function validate(&$uri, $config, &$context) {
-        parent::validate($uri, $config, $context);
-        $uri->userinfo = null;
-        $uri->host     = null;
-        $uri->port     = null;
-        // we need to validate path against RFC 2368's addr-spec
-        return true;
-    }
-    
+	
+	var $browsable = false;
+	
+	function validate(&$uri, $config, &$context) {
+		parent::validate($uri, $config, $context);
+		$uri->userinfo = null;
+		$uri->host	 = null;
+		$uri->port	 = null;
+		// we need to validate path against RFC 2368's addr-spec
+		return true;
+	}
+	
 }
 

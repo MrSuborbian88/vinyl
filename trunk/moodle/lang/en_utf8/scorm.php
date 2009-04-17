@@ -1,5 +1,5 @@
 <?PHP // $Id: scorm.php,v 1.18.4.13 2009/01/21 16:21:37 wildgirl Exp $ 
-      // scorm.php - created with Moodle 1.7 beta + (2006101003)
+	  // scorm.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['activation'] = 'Activation';

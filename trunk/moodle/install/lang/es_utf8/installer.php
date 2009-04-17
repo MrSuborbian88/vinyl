@@ -13,10 +13,10 @@ $string['admindirerror'] = 'El directorio especificado para admin es incorrecto'
 $string['admindirname'] = 'Directorio Admin';
 $string['admindirsettinghead'] = 'Seleccionar el directorio admin...';
 $string['admindirsettingsub'] = 'Muy pocos servidores web usan /admin como URL especial para permitirle acceder
-    a un panel de control o similar. Desgraciadamente, esto entra en conflicto con la ubicación estándar
-    de las páginas de administración de Moodle. Usted puede corregir esto renombrando el directorio admin 
-    en su instalación, y poniendo aquí ese nuevo nombre. Por ejemplo: <br /> <br /><b>moodleadmin</b><br /> <br />
-    Así se corregirán los enlaces admin en Moodle.';
+	a un panel de control o similar. Desgraciadamente, esto entra en conflicto con la ubicación estándar
+	de las páginas de administración de Moodle. Usted puede corregir esto renombrando el directorio admin 
+	en su instalación, y poniendo aquí ese nuevo nombre. Por ejemplo: <br /> <br /><b>moodleadmin</b><br /> <br />
+	Así se corregirán los enlaces admin en Moodle.';
 $string['bypassed'] = 'Evitado';
 $string['cannotcreatelangdir'] = 'No se puede crear el directorio lang.';
 $string['cannotcreatetempdir'] = 'No se puede crear el directorio temp.';
@@ -267,18 +267,18 @@ $string['unicoderequired'] = 'Es necesario que almacene todos sus datos en forma
 $string['user'] = 'Usuario';
 $string['welcomep10'] = '$a->installername ($a->installerversion)';
 $string['welcomep20'] = 'Si está viendo esta página es porque ha podido ejecutar el paquete
-    <strong>$a->packname $a->packversion</strong> en su ordenador. !Enhorabuena!';
+	<strong>$a->packname $a->packversion</strong> en su ordenador. !Enhorabuena!';
 $string['welcomep30'] = 'Esta versión de <strong>$a->installername</strong> incluye las 
-    aplicaciones necesarias para que <strong>Moodle</strong> funcione en su ordenador,
-    principalmente:';
+	aplicaciones necesarias para que <strong>Moodle</strong> funcione en su ordenador,
+	principalmente:';
 $string['welcomep40'] = 'El paquete también incluye <strong>Moodle $a->moodlerelease ($a->moodleversion)</strong>.';
 $string['welcomep50'] = 'El uso de todas las aplicaciones del paquete está gobernado por sus respectivas 
-    licencias. El programa <strong>$a->installername</strong> es 
-    <a href=\"http://www.opensource.org/docs/definition_plain.html\">código abierto</a> y se distribuye 
-    bajo licencia <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
+	licencias. El programa <strong>$a->installername</strong> es 
+	<a href=\"http://www.opensource.org/docs/definition_plain.html\">código abierto</a> y se distribuye 
+	bajo licencia <a href=\"http://www.gnu.org/copyleft/gpl.html\">GPL</a>.';
 $string['welcomep60'] = 'Las siguientes páginas le guiarán a través de algunos sencillos pasos para configurar
-    y ajustar <strong>Moodle</strong> en su ordenador. Puede utilizar los valores por defecto sugeridos o,
-    de forma opcional, modificarlos para que se ajusten a sus necesidades.';
+	y ajustar <strong>Moodle</strong> en su ordenador. Puede utilizar los valores por defecto sugeridos o,
+	de forma opcional, modificarlos para que se ajusten a sus necesidades.';
 $string['welcomep70'] = 'Pulse en el botón \"Siguiente\" para continuar con la configuración de <strong>Moodle</strong>.';
 $string['wrongdestpath'] = 'Ruta de destino errónea.';
 $string['wrongsourcebase'] = 'Base de fuente de URL errónea.';

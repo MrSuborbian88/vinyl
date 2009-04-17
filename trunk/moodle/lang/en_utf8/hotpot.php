@@ -1,5 +1,5 @@
 <?PHP // $Id: hotpot.php,v 1.10.4.2 2009/01/27 05:34:31 gbateson Exp $ 
-      // hotpot.php - created with Moodle 1.7 beta + (2006101003)
+	  // hotpot.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['abandoned'] = 'Abandoned';

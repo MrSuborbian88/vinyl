@@ -14,42 +14,42 @@ require_capability('moodle/user:update', get_context_instance(CONTEXT_SYSTEM));
 $return = $CFG->wwwroot.'/'.$CFG->admin.'/user/user_bulk.php';
 
 if (empty($SESSION->bulk_users)) {
-    redirect($return);
+	redirect($return);
 }
 
 if ($format) {
-    $fields = array('id'        => 'id',
-                    'username'  => 'username',
-                    'email'     => 'email',
-                    'firstname' => 'firstname',
-                    'lastname'  => 'lastname',
-                    'idnumber'  => 'idnumber',
-                    'institution' => 'institution',
-                    'department' => 'department',
-                    'phone1'    => 'phone1',
-                    'phone2'    => 'phone2',
-                    'city'      => 'city',
-                    'url'       => 'url',
-                    'icq'       => 'icq',
-                    'skype'     => 'skype',
-                    'aim'       => 'aim',
-                    'yahoo'     => 'yahoo',
-                    'msn'       => 'msn',
-                    'country'   => 'country');
+	$fields = array('id'		=> 'id',
+					'username'  => 'username',
+					'email'	 => 'email',
+					'firstname' => 'firstname',
+					'lastname'  => 'lastname',
+					'idnumber'  => 'idnumber',
+					'institution' => 'institution',
+					'department' => 'department',
+					'phone1'	=> 'phone1',
+					'phone2'	=> 'phone2',
+					'city'	  => 'city',
+					'url'	   => 'url',
+					'icq'	   => 'icq',
+					'skype'	 => 'skype',
+					'aim'	   => 'aim',
+					'yahoo'	 => 'yahoo',
+					'msn'	   => 'msn',
+					'country'   => 'country');
 
-    if ($extrafields = get_records_select('user_info_field')) {
-        foreach ($extrafields as $n=>$v){
-            $fields['profile_field_'.$v->shortname] = 'profile_field_'.$v->shortname;
-        }
-    }
+	if ($extrafields = get_records_select('user_info_field')) {
+		foreach ($extrafields as $n=>$v){
+			$fields['profile_field_'.$v->shortname] = 'profile_field_'.$v->shortname;
+		}
+	}
 
-    switch ($format) {
-        case 'csv' : user_download_csv($fields);
-        case 'ods' : user_download_ods($fields);
-        case 'xls' : user_download_xls($fields);
-        
-    }
-    die;
+	switch ($format) {
+		case 'csv' : user_download_csv($fields);
+		case 'ods' : user_download_ods($fields);
+		case 'xls' : user_download_xls($fields);
+		
+	}
+	die;
 }
 
 admin_externalpage_print_header();
@@ -68,115 +68,115 @@ print_continue($return);
 print_footer();
 
 function user_download_ods($fields) {
-    global $CFG, $SESSION;
+	global $CFG, $SESSION;
 
-    require_once("$CFG->libdir/odslib.class.php");
-    require_once($CFG->dirroot.'/user/profile/lib.php');
+	require_once("$CFG->libdir/odslib.class.php");
+	require_once($CFG->dirroot.'/user/profile/lib.php');
 
-    $filename = clean_filename(get_string('users').'.ods');
+	$filename = clean_filename(get_string('users').'.ods');
 
-    $workbook = new MoodleODSWorkbook('-');
-    $workbook->send($filename);
+	$workbook = new MoodleODSWorkbook('-');
+	$workbook->send($filename);
 
-    $worksheet = array();
+	$worksheet = array();
 
-    $worksheet[0] =& $workbook->add_worksheet('');
-    $col = 0;
-    foreach ($fields as $fieldname) {
-        $worksheet[0]->write(0, $col, $fieldname);
-        $col++;
-    }
+	$worksheet[0] =& $workbook->add_worksheet('');
+	$col = 0;
+	foreach ($fields as $fieldname) {
+		$worksheet[0]->write(0, $col, $fieldname);
+		$col++;
+	}
 
-    $row = 1;
-    foreach ($SESSION->bulk_users as $userid) {
-        if (!$user = get_record('user', 'id', $userid)) {
-            continue;
-        }
-        $col = 0;
-        profile_load_data($user);
-        foreach ($fields as $field=>$unused) {
-            $worksheet[0]->write($row, $col, $user->$field);
-            $col++;
-        }
-        $row++;
-    }
+	$row = 1;
+	foreach ($SESSION->bulk_users as $userid) {
+		if (!$user = get_record('user', 'id', $userid)) {
+			continue;
+		}
+		$col = 0;
+		profile_load_data($user);
+		foreach ($fields as $field=>$unused) {
+			$worksheet[0]->write($row, $col, $user->$field);
+			$col++;
+		}
+		$row++;
+	}
 
-    $workbook->close();
-    die;
+	$workbook->close();
+	die;
 }
 
 function user_download_xls($fields) {
-    global $CFG, $SESSION;
+	global $CFG, $SESSION;
 
-    require_once("$CFG->libdir/excellib.class.php");
-    require_once($CFG->dirroot.'/user/profile/lib.php');
+	require_once("$CFG->libdir/excellib.class.php");
+	require_once($CFG->dirroot.'/user/profile/lib.php');
 
-    $filename = clean_filename(get_string('users').'.xls');
+	$filename = clean_filename(get_string('users').'.xls');
 
-    $workbook = new MoodleExcelWorkbook('-');
-    $workbook->send($filename);
+	$workbook = new MoodleExcelWorkbook('-');
+	$workbook->send($filename);
 
-    $worksheet = array();
+	$worksheet = array();
 
-    $worksheet[0] =& $workbook->add_worksheet('');
-    $col = 0;
-    foreach ($fields as $fieldname) {
-        $worksheet[0]->write(0, $col, $fieldname);
-        $col++;
-    }
+	$worksheet[0] =& $workbook->add_worksheet('');
+	$col = 0;
+	foreach ($fields as $fieldname) {
+		$worksheet[0]->write(0, $col, $fieldname);
+		$col++;
+	}
 
-    $row = 1;
-    foreach ($SESSION->bulk_users as $userid) {
-        if (!$user = get_record('user', 'id', $userid)) {
-            continue;
-        }
-        $col = 0;
-        profile_load_data($user);
-        foreach ($fields as $field=>$unused) {
-            $worksheet[0]->write($row, $col, $user->$field);
-            $col++;
-        }
-        $row++;
-    }
+	$row = 1;
+	foreach ($SESSION->bulk_users as $userid) {
+		if (!$user = get_record('user', 'id', $userid)) {
+			continue;
+		}
+		$col = 0;
+		profile_load_data($user);
+		foreach ($fields as $field=>$unused) {
+			$worksheet[0]->write($row, $col, $user->$field);
+			$col++;
+		}
+		$row++;
+	}
 
-    $workbook->close();
-    die;
+	$workbook->close();
+	die;
 }
 
 function user_download_csv($fields) {
-    global $CFG, $SESSION;
-    
-    require_once($CFG->dirroot.'/user/profile/lib.php');
+	global $CFG, $SESSION;
+	
+	require_once($CFG->dirroot.'/user/profile/lib.php');
 
-    $filename = clean_filename(get_string('users').'.csv');
+	$filename = clean_filename(get_string('users').'.csv');
 
-    header("Content-Type: application/download\n");
-    header("Content-Disposition: attachment; filename=$filename");
-    header("Expires: 0");
-    header("Cache-Control: must-revalidate,post-check=0,pre-check=0");
-    header("Pragma: public");
+	header("Content-Type: application/download\n");
+	header("Content-Disposition: attachment; filename=$filename");
+	header("Expires: 0");
+	header("Cache-Control: must-revalidate,post-check=0,pre-check=0");
+	header("Pragma: public");
 
-    $delimiter = get_string('listsep');
-    $encdelim  = '&#'.ord($delimiter);
+	$delimiter = get_string('listsep');
+	$encdelim  = '&#'.ord($delimiter);
 
-    $row = array(); 
-    foreach ($fields as $fieldname) {
-        $row[] = str_replace($delimiter, $encdelim, $fieldname);
-    }
-    echo implode($delimiter, $row)."\n";
+	$row = array(); 
+	foreach ($fields as $fieldname) {
+		$row[] = str_replace($delimiter, $encdelim, $fieldname);
+	}
+	echo implode($delimiter, $row)."\n";
 
-    foreach ($SESSION->bulk_users as $userid) {
-        $row = array();
-        if (!$user = get_record('user', 'id', $userid)) {
-            continue;
-        }
-        profile_load_data($user);
-        foreach ($fields as $field=>$unused) {
-            $row[] = str_replace($delimiter, $encdelim, $user->$field);
-        }
-        echo implode($delimiter, $row)."\n";
-    }
-    die;
+	foreach ($SESSION->bulk_users as $userid) {
+		$row = array();
+		if (!$user = get_record('user', 'id', $userid)) {
+			continue;
+		}
+		profile_load_data($user);
+		foreach ($fields as $field=>$unused) {
+			$row[] = str_replace($delimiter, $encdelim, $user->$field);
+		}
+		echo implode($delimiter, $row)."\n";
+	}
+	die;
 }
 
 ?>

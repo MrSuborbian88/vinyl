@@ -1,21 +1,21 @@
 <?php // $Id: preview.php,v 1.4 2007/01/27 23:23:44 skodak Exp $ preview for insert image dialog
 
-    require("../../../../config.php");
+	require("../../../../config.php");
 
-    $id = optional_param('id', SITEID, PARAM_INT);
-    $imageurl = required_param('imageurl', PARAM_RAW);
+	$id = optional_param('id', SITEID, PARAM_INT);
+	$imageurl = required_param('imageurl', PARAM_RAW);
 
-    require_login($id);
-    require_capability('moodle/course:managefiles', get_context_instance(CONTEXT_COURSE, $id));
+	require_login($id);
+	require_capability('moodle/course:managefiles', get_context_instance(CONTEXT_COURSE, $id));
 
-    @header('Content-Type: text/html; charset=utf-8');
+	@header('Content-Type: text/html; charset=utf-8');
 
 
-    $imagetag = clean_text('<img src="'.htmlSpecialChars(stripslashes_safe($imageurl)).'" alt="" />');
+	$imagetag = clean_text('<img src="'.htmlSpecialChars(stripslashes_safe($imageurl)).'" alt="" />');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <title><?php echo get_string('preview') ?></title>

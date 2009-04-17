@@ -27,7 +27,7 @@ class ADODB_informix72 extends ADOConnection {
 	var $fmtTimeStamp = "'Y-m-d H:i:s'";
 	var $hasInsertID = true;
 	var $hasAffectedRows = true;
-    var $substr = 'substr';
+	var $substr = 'substr';
 	var $metaTablesSQL="select tabname,tabtype from systables where tabtype in ('T','V') and owner!='informix'"; //Don't get informix tables and pseudo-tables
 
 
@@ -64,19 +64,19 @@ class ADODB_informix72 extends ADOConnection {
 		
 		if (function_exists('ifx_byteasvarchar')) {
 			ifx_byteasvarchar(1); // Mode "0" will return a blob id, and mode "1" will return a varchar with text content. 
-        	ifx_textasvarchar(1); // Mode "0" will return a blob id, and mode "1" will return a varchar with text content. 
-        	ifx_blobinfile_mode(0); // Mode "0" means save Byte-Blobs in memory, and mode "1" means save Byte-Blobs in a file.
+			ifx_textasvarchar(1); // Mode "0" will return a blob id, and mode "1" will return a varchar with text content. 
+			ifx_blobinfile_mode(0); // Mode "0" means save Byte-Blobs in memory, and mode "1" means save Byte-Blobs in a file.
 		}
 	}
 	
 	function ServerInfo()
 	{
-	    if (isset($this->version)) return $this->version;
+		if (isset($this->version)) return $this->version;
 	
-	    $arr['description'] = $this->GetOne("select DBINFO('version','full') from systables where tabid = 1");
-	    $arr['version'] = $this->GetOne("select DBINFO('version','major') || DBINFO('version','minor') from systables where tabid = 1");
-	    $this->version = $arr;
-	    return $arr;
+		$arr['description'] = $this->GetOne("select DBINFO('version','full') from systables where tabid = 1");
+		$arr['version'] = $this->GetOne("select DBINFO('version','major') || DBINFO('version','minor') from systables where tabid = 1");
+		$this->version = $arr;
+		return $arr;
 	}
 
 
@@ -147,7 +147,7 @@ class ADODB_informix72 extends ADOConnection {
 	}
 
    
-    function &MetaColumns($table)
+	function &MetaColumns($table)
 	{
 	global $ADODB_FETCH_MODE;
 	
@@ -156,7 +156,7 @@ class ADODB_informix72 extends ADOConnection {
 			$save = $ADODB_FETCH_MODE;
 			$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
 			if ($this->fetchMode !== false) $savem = $this->SetFetchMode(false);
-          		$rs = $this->Execute(sprintf($this->metaColumnsSQL,$table));
+		  		$rs = $this->Execute(sprintf($this->metaColumnsSQL,$table));
 			if (isset($savem)) $this->SetFetchMode($savem);
 			$ADODB_FETCH_MODE = $save;
 			if ($rs === false) return $false;
@@ -181,13 +181,13 @@ class ADODB_informix72 extends ADOConnection {
 				$fld->not_null = $pr[3]=="N"; //!eos
 
 				if (trim($rs->fields[3]) != "AAAAAA 0") {
-	                    		$fld->has_default = 1;
-	                    		$fld->default_value = $rs->fields[3];
+								$fld->has_default = 1;
+								$fld->default_value = $rs->fields[3];
 				} else {
 					$fld->has_default = 0;
 				}
 
-                $retarr[strtolower($fld->name)] = $fld;	
+				$retarr[strtolower($fld->name)] = $fld;	
 				$rs->MoveNext();
 			}
 
@@ -454,7 +454,7 @@ class ADORecordset_informix72 extends ADORecordSet {
 function ifx_props($coltype,$collength){
 	$itype=fmod($coltype+1,256);
 	$nullable=floor(($coltype+1) /256) ?"N":"Y";
-	$mtype=substr(" CIIFFNNDN TBXCC     ",$itype,1);
+	$mtype=substr(" CIIFFNNDN TBXCC	 ",$itype,1);
 	switch ($itype){
 		case 2:
 			$length=4;

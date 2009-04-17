@@ -17,27 +17,27 @@
  */
 function PMA_getIp()
 {
-    /* Get the address of user */
-    if (!empty($_SERVER['REMOTE_ADDR'])) {
-        $direct_ip = $_SERVER['REMOTE_ADDR'];
-    } else {
-        /* We do not know remote IP */
-        return false;
-    }
+	/* Get the address of user */
+	if (!empty($_SERVER['REMOTE_ADDR'])) {
+		$direct_ip = $_SERVER['REMOTE_ADDR'];
+	} else {
+		/* We do not know remote IP */
+		return false;
+	}
 
-    /* Do we trust this IP as a proxy? If yes we will use it's header. */
-    if (isset($GLOBALS['cfg']['TrustedProxies'][$direct_ip])) {
-        $proxy_ip = PMA_getenv($GLOBALS['cfg']['TrustedProxies'][$direct_ip]);
-        // the $ checks that the header contains only one IP address
-        $is_ip = preg_match('|^([0-9]{1,3}\.){3,3}[0-9]{1,3}$|', $proxy_ip, $regs);
-        if ($is_ip && (count($regs) > 0)) {
-            // True IP behind a proxy
-            return $regs[0];
-        }
-    }
+	/* Do we trust this IP as a proxy? If yes we will use it's header. */
+	if (isset($GLOBALS['cfg']['TrustedProxies'][$direct_ip])) {
+		$proxy_ip = PMA_getenv($GLOBALS['cfg']['TrustedProxies'][$direct_ip]);
+		// the $ checks that the header contains only one IP address
+		$is_ip = preg_match('|^([0-9]{1,3}\.){3,3}[0-9]{1,3}$|', $proxy_ip, $regs);
+		if ($is_ip && (count($regs) > 0)) {
+			// True IP behind a proxy
+			return $regs[0];
+		}
+	}
 
-    /* Return true IP */
-    return $direct_ip;
+	/* Return true IP */
+	return $direct_ip;
 } // end of the 'PMA_getIp()' function
 
 
@@ -48,9 +48,9 @@ function PMA_getIp()
  * Modified by Robbat2 <robbat2@users.sourceforge.net>
  *
  * Matches:
- * xxx.xxx.xxx.xxx        (exact)
+ * xxx.xxx.xxx.xxx		(exact)
  * xxx.xxx.xxx.[yyy-zzz]  (range)
- * xxx.xxx.xxx.xxx/nn     (CIDR)
+ * xxx.xxx.xxx.xxx/nn	 (CIDR)
  *
  * Does not match:
  * xxx.xxx.xxx.xx[yyy-zzz]  (range, partial octets not supported)
@@ -58,7 +58,7 @@ function PMA_getIp()
  * @param   string   string of IP range to match
  * @param   string   string of IP to test against range
  *
- * @return  boolean    always true
+ * @return  boolean	always true
  *
  * @access  public
  */
@@ -67,41 +67,41 @@ function PMA_ipMaskTest($testRange, $ipToTest)
    $result = true;
 
    if (preg_match('|([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/([0-9]+)|', $testRange, $regs)) {
-       // performs a mask match
-       $ipl    = ip2long($ipToTest);
-       $rangel = ip2long($regs[1] . '.' . $regs[2] . '.' . $regs[3] . '.' . $regs[4]);
+	   // performs a mask match
+	   $ipl	= ip2long($ipToTest);
+	   $rangel = ip2long($regs[1] . '.' . $regs[2] . '.' . $regs[3] . '.' . $regs[4]);
 
-       $maskl  = 0;
+	   $maskl  = 0;
 
-       for ($i = 0; $i < 31; $i++) {
-           if ($i < $regs[5] - 1) {
-               $maskl = $maskl + PMA_pow(2, (30 - $i));
-           } // end if
-       } // end for
+	   for ($i = 0; $i < 31; $i++) {
+		   if ($i < $regs[5] - 1) {
+			   $maskl = $maskl + PMA_pow(2, (30 - $i));
+		   } // end if
+	   } // end for
 
-       if (($maskl & $rangel) == ($maskl & $ipl)) {
-           return true;
-       } else {
-           return false;
-       }
+	   if (($maskl & $rangel) == ($maskl & $ipl)) {
+		   return true;
+	   } else {
+		   return false;
+	   }
    } else {
-       // range based
-       $maskocts = explode('.', $testRange);
-       $ipocts   = explode('.', $ipToTest);
+	   // range based
+	   $maskocts = explode('.', $testRange);
+	   $ipocts   = explode('.', $ipToTest);
 
-       // perform a range match
-       for ($i = 0; $i < 4; $i++) {
-            if (preg_match('|\[([0-9]+)\-([0-9]+)\]|', $maskocts[$i], $regs)) {
-                if (($ipocts[$i] > $regs[2])
-                    || ($ipocts[$i] < $regs[1])) {
-                    $result = false;
-                } // end if
-            } else {
-                if ($maskocts[$i] <> $ipocts[$i]) {
-                    $result = false;
-                } // end if
-            } // end if/else
-       } //end for
+	   // perform a range match
+	   for ($i = 0; $i < 4; $i++) {
+			if (preg_match('|\[([0-9]+)\-([0-9]+)\]|', $maskocts[$i], $regs)) {
+				if (($ipocts[$i] > $regs[2])
+					|| ($ipocts[$i] < $regs[1])) {
+					$result = false;
+				} // end if
+			} else {
+				if ($maskocts[$i] <> $ipocts[$i]) {
+					$result = false;
+				} // end if
+			} // end if/else
+	   } //end for
    } //end if/else
 
    return $result;
@@ -117,74 +117,74 @@ function PMA_ipMaskTest($testRange, $ipToTest)
  *
  * @access  public
  *
- * @see     PMA_getIp()
+ * @see	 PMA_getIp()
  */
 function PMA_allowDeny($type)
 {
-    global $cfg;
+	global $cfg;
 
-    // Grabs true IP of the user and returns if it can't be found
-    $remote_ip = PMA_getIp();
-    if (empty($remote_ip)) {
-        return false;
-    }
+	// Grabs true IP of the user and returns if it can't be found
+	$remote_ip = PMA_getIp();
+	if (empty($remote_ip)) {
+		return false;
+	}
 
-    // copy username
-    $username  = $cfg['Server']['user'];
+	// copy username
+	$username  = $cfg['Server']['user'];
 
-    // copy rule database
-    $rules     = $cfg['Server']['AllowDeny']['rules'];
+	// copy rule database
+	$rules	 = $cfg['Server']['AllowDeny']['rules'];
 
-    // lookup table for some name shortcuts
-    $shortcuts = array(
-        'all'       => '0.0.0.0/0',
-        'localhost' => '127.0.0.1/8'
-    );
+	// lookup table for some name shortcuts
+	$shortcuts = array(
+		'all'	   => '0.0.0.0/0',
+		'localhost' => '127.0.0.1/8'
+	);
 
-    // Provide some useful shortcuts if server gives us address:
-    if (PMA_getenv('SERVER_ADDR')) {
-        $shortcuts['localnetA'] = PMA_getenv('SERVER_ADDR') . '/8';
-        $shortcuts['localnetB'] = PMA_getenv('SERVER_ADDR') . '/16';
-        $shortcuts['localnetC'] = PMA_getenv('SERVER_ADDR') . '/24';
-    }
+	// Provide some useful shortcuts if server gives us address:
+	if (PMA_getenv('SERVER_ADDR')) {
+		$shortcuts['localnetA'] = PMA_getenv('SERVER_ADDR') . '/8';
+		$shortcuts['localnetB'] = PMA_getenv('SERVER_ADDR') . '/16';
+		$shortcuts['localnetC'] = PMA_getenv('SERVER_ADDR') . '/24';
+	}
 
-    foreach ($rules as $rule) {
-        // extract rule data
-        $rule_data = explode(' ', $rule);
+	foreach ($rules as $rule) {
+		// extract rule data
+		$rule_data = explode(' ', $rule);
 
-        // check for rule type
-        if ($rule_data[0] != $type) {
-            continue;
-        }
+		// check for rule type
+		if ($rule_data[0] != $type) {
+			continue;
+		}
 
-        // check for username
-        if (($rule_data[1] != '%') //wildcarded first
-            && ($rule_data[1] != $username)) {
-            continue;
-        }
+		// check for username
+		if (($rule_data[1] != '%') //wildcarded first
+			&& ($rule_data[1] != $username)) {
+			continue;
+		}
 
-        // check if the config file has the full string with an extra
-        // 'from' in it and if it does, just discard it
-        if ($rule_data[2] == 'from') {
-            $rule_data[2] = $rule_data[3];
-        }
+		// check if the config file has the full string with an extra
+		// 'from' in it and if it does, just discard it
+		if ($rule_data[2] == 'from') {
+			$rule_data[2] = $rule_data[3];
+		}
 
-        // Handle shortcuts with above array
-        // DON'T use "array_key_exists" as it's only PHP 4.1 and newer.
-        if (isset($shortcuts[$rule_data[2]])) {
-            $rule_data[2] = $shortcuts[$rule_data[2]];
-        }
+		// Handle shortcuts with above array
+		// DON'T use "array_key_exists" as it's only PHP 4.1 and newer.
+		if (isset($shortcuts[$rule_data[2]])) {
+			$rule_data[2] = $shortcuts[$rule_data[2]];
+		}
 
-        // Add code for host lookups here
-        // Excluded for the moment
+		// Add code for host lookups here
+		// Excluded for the moment
 
-        // Do the actual matching now
-        if (PMA_ipMaskTest($rule_data[2], $remote_ip)) {
-            return true;
-        }
-    } // end while
+		// Do the actual matching now
+		if (PMA_ipMaskTest($rule_data[2], $remote_ip)) {
+			return true;
+		}
+	} // end while
 
-    return false;
+	return false;
 } // end of the "PMA_AllowDeny()" function
 
 ?>

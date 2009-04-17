@@ -1,5 +1,5 @@
 <?PHP // $Id: glossary.php,v 1.8.2.2 2008/11/09 22:55:39 stronk7 Exp $
-      // glossary.php - created with Moodle 1.7 beta + (2006101003)
+	  // glossary.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['addcomment'] = 'Add comment';

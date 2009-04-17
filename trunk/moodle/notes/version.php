@@ -6,4 +6,4 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 $note_version  = 2007070700;  // The current version of note module (Date: YYYYMMDDXX)
-$module->cron     = 1800;           // Period for cron to check this module (secs)
+$module->cron	 = 1800;		   // Period for cron to check this module (secs)

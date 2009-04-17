@@ -205,7 +205,7 @@ class ADORecordSet_assoc_postgres7 extends ADORecordSet_postgres64{
 	function _fetch()
 	{
 		if ($this->_currentRow >= $this->_numOfRows && $this->_numOfRows >= 0)
-        	return false;
+			return false;
 
 		$this->fields = @pg_fetch_array($this->_queryID,$this->_currentRow,$this->fetchMode);
 		

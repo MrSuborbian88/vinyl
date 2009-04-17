@@ -1,5 +1,5 @@
 <?PHP // $Id$
-      // qtype_multichoice.php - created with Moodle 1.7 beta + (2006101003)
+	  // qtype_multichoice.php - created with Moodle 1.7 beta + (2006101003)
 
 $string['addingmultichoice'] = 'Adding a Multiple Choice question';
 $string['addmorechoiceblanks'] = 'Blanks for {no} More Choices';

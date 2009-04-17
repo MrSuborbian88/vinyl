@@ -1,14 +1,14 @@
 .flexible th {
-    white-space:normal;
+	white-space:normal;
 }
 
 .gradestable th.user img {
-    width: 20px;
-    height: 20px;
+	width: 20px;
+	height: 20px;
 }
 
 .gradestable th.user, .gradestable th.range {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 .grade-report-grader table#user-grades .catlevel1 {
@@ -26,11 +26,11 @@
 }
 
 .grade-report-grader table#user-grades tr.avg td.cell {
-    background-color: #efefff;
+	background-color: #efefff;
 }
 
 .grade-report-grader table#user-grades tr.odd td.cell {
-    background-color: #efefef;
+	background-color: #efefef;
 }
 
 .grade-report-grader table#user-grades tr.even td.overridden {
@@ -50,24 +50,24 @@
 }
 
 .grade-report-grader table#user-grades tr.odd th.header { 
-    background-color: #efefef;
-    background-image: none;
+	background-color: #efefef;
+	background-image: none;
 }
 
 .grade-report-grader table#user-grades td.vmarked, .grade-report-grader table#user-grades tr.odd td.vmarked {
-    background-color: #ffcc33;
+	background-color: #ffcc33;
 }
 
 .grade-report-grader table#user-grades td.hmarked, .grade-report-grader table#user-grades tr.odd td.hmarked {
-    background-color: #ffff99;
+	background-color: #ffff99;
 }
 
 .grade-report-grader table#user-grades td.hmarked.vmarked, .grade-report-grader table#user-grades tr.odd td.hmarked.vmarked{
-    background-color: #ffcc99;
+	background-color: #ffcc99;
 } 
 
 .grade-report-grader table#user-grades tr.groupavg td.cell {
-    background-color: #efffef;
+	background-color: #efffef;
 }
 
 .grade-report-grader table#user-grades tr.groupavg td.cell {
@@ -86,7 +86,7 @@
 }
 
 .grade-report-grader table#user-grades {
-    font-size: 80%;
+	font-size: 80%;
 }
 
 .grade-report-grader table#user-grades {

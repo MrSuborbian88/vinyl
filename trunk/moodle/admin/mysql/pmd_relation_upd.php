@@ -24,25 +24,25 @@ $tables = PMA_DBI_get_tables_full($db, $T2);
 $type_T2 = strtoupper($tables[$T2]['ENGINE']);
 
 if ($type_T1 == 'INNODB' && $type_T2 == 'INNODB') {
-    // InnoDB
-    $existrel_innodb = PMA_getForeigners($DB2, $T2, '', 'innodb');
+	// InnoDB
+	$existrel_innodb = PMA_getForeigners($DB2, $T2, '', 'innodb');
 
-    if (PMA_MYSQL_INT_VERSION >= 40013 && isset($existrel_innodb[$F2]['constraint'])) {
-        $upd_query  = 'ALTER TABLE ' . PMA_backquote($T2)
-                  . ' DROP FOREIGN KEY '
-                  . PMA_backquote($existrel_innodb[$F2]['constraint']);
-        $upd_rs     = PMA_DBI_query($upd_query);
-    }
+	if (PMA_MYSQL_INT_VERSION >= 40013 && isset($existrel_innodb[$F2]['constraint'])) {
+		$upd_query  = 'ALTER TABLE ' . PMA_backquote($T2)
+				  . ' DROP FOREIGN KEY '
+				  . PMA_backquote($existrel_innodb[$F2]['constraint']);
+		$upd_rs	 = PMA_DBI_query($upd_query);
+	}
 } else {
-    // internal relations
-    PMA_query_as_cu('DELETE FROM '.$cfg['Server']['relation'].' WHERE '
-              . 'master_db = \'' . PMA_sqlAddslashes($DB2) . '\''
-              . 'AND master_table = \'' . PMA_sqlAddslashes($T2) . '\''
-              . 'AND master_field = \'' . PMA_sqlAddslashes($F2) . '\''
-              . 'AND foreign_db = \'' . PMA_sqlAddslashes($DB1) . '\''
-              . 'AND foreign_table = \'' . PMA_sqlAddslashes($T1) . '\''
-              . 'AND foreign_field = \'' . PMA_sqlAddslashes($F1) . '\''
-              , FALSE, PMA_DBI_QUERY_STORE);
+	// internal relations
+	PMA_query_as_cu('DELETE FROM '.$cfg['Server']['relation'].' WHERE '
+			  . 'master_db = \'' . PMA_sqlAddslashes($DB2) . '\''
+			  . 'AND master_table = \'' . PMA_sqlAddslashes($T2) . '\''
+			  . 'AND master_field = \'' . PMA_sqlAddslashes($F2) . '\''
+			  . 'AND foreign_db = \'' . PMA_sqlAddslashes($DB1) . '\''
+			  . 'AND foreign_table = \'' . PMA_sqlAddslashes($T1) . '\''
+			  . 'AND foreign_field = \'' . PMA_sqlAddslashes($F1) . '\''
+			  , FALSE, PMA_DBI_QUERY_STORE);
 }
 PMD_return(1, 'strRelationDeleted');
 

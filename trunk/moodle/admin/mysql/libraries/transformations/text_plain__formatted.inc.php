@@ -9,7 +9,7 @@
  *
  */
 function PMA_transformation_text_plain__formatted($buffer, $options = array(), $meta = '') {
-    return $buffer;
+	return $buffer;
 }
 
 ?>

@@ -2,9 +2,9 @@
 /* $Id: bosnian-utf-8.inc.php 11113 2008-02-09 16:09:54Z lem9 $ */
 
 /**
- *     Translated by:
- *     Samir Kobiljak <kobiljak@aon.at>
- *     http://www.kobiljak.com
+ *	 Translated by:
+ *	 Samir Kobiljak <kobiljak@aon.at>
+ *	 http://www.kobiljak.com
  */
 
 $charset = 'utf-8';
@@ -996,7 +996,7 @@ $strCreateTable  = 'Create table';  //to translate
 $strCreateRelation = 'Create relation';  //to translate
 $strSavePosition = 'Save position';  //to translate
 $strSelectForeignKey = 'Select Foreign Key';  //to translate
-$strHide         = 'Hide';  //to translate
+$strHide		 = 'Hide';  //to translate
 $strShowHideLeftMenu = 'Show/Hide left menu';  //to translate
 $strReload = 'Reload';  //to translate
 $strSmallBigAll = 'Small/Big All';  //to translate

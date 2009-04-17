@@ -10,9 +10,9 @@
  *
  * Notes:
  *   - If you have a large number of users, you may want to raise the memory limits
- *     by passing -d momory_limit=256M
+ *	 by passing -d momory_limit=256M
  *   - For debugging & better logging, you are encouraged to use in the command line:
- *     -d log_errors=1 -d error_reporting=E_ALL -d display_errors=0 -d html_errors=0
+ *	 -d log_errors=1 -d error_reporting=E_ALL -d display_errors=0 -d html_errors=0
  *
  * Performance notes:
  * We have optimized it as best as we could for Postgres and mySQL, with 27K students
@@ -22,8 +22,8 @@
 
 
 if (isset($_SERVER['REMOTE_ADDR'])) {
-    error_log("should not be called from web server!");
-    exit;
+	error_log("should not be called from web server!");
+	exit;
 }
 
 $nomoodlecookie = true; // cookie not needed
@@ -36,8 +36,8 @@ require_once($CFG->dirroot.'/mod/resource/lib.php');
 require_once($CFG->dirroot.'/mod/forum/lib.php');
 
 if (!is_enabled_auth('ldap')) {
-    echo "Plugin not enabled!";
-    die;
+	echo "Plugin not enabled!";
+	die;
 }
 
 $ldapauth = get_auth_plugin('ldap');

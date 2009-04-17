@@ -9,15 +9,15 @@
 
 function section_links_upgrade($oldversion=0) {
 
-    global $CFG;
-    
-    $result = true;
+	global $CFG;
+	
+	$result = true;
 
-    if ($oldversion < 2004050500 and $result) {
-        $result = true; //Nothing to do
-    }
-    //////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
+	if ($oldversion < 2004050500 and $result) {
+		$result = true; //Nothing to do
+	}
+	//////  DO NOT ADD NEW THINGS HERE!!  USE upgrade.php and the lib/ddllib.php functions.
 
-    //Finally, return result
-    return $result;
+	//Finally, return result
+	return $result;
 }

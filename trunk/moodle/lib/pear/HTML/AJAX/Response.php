@@ -5,11 +5,11 @@
  * SVN Rev: $Id: Response.php,v 1.1.2.1 2008/10/03 07:09:50 nicolasconnault Exp $ 
  *
  * @category   HTML
- * @package    AJAX
- * @author     Elizabeth Smith <auroraeosrose@gmail.com>
+ * @package	AJAX
+ * @author	 Elizabeth Smith <auroraeosrose@gmail.com>
  * @copyright  2005-2006 Elizabeth Smith
- * @license    http://www.opensource.org/licenses/lgpl-license.php  LGPL
- * @version    Release: 0.5.6
+ * @license	http://www.opensource.org/licenses/lgpl-license.php  LGPL
+ * @version	Release: 0.5.6
  */
 
 /**
@@ -30,49 +30,49 @@ require_once 'HTML/AJAX.php';
 class HTML_AJAX_Response
 {
 
-    /**
-     * The base response class uses plain text so use that content type
-     *
-     * @var string
-     * @access public
-     */
-    var $contentType = 'text/plain';
+	/**
+	 * The base response class uses plain text so use that content type
+	 *
+	 * @var string
+	 * @access public
+	 */
+	var $contentType = 'text/plain';
 
-    /**
-     * Assign a string to this variable to use the bare response class
-     *
-     * @var string
-     * @access public
-     */
-    var $payload = '';
+	/**
+	 * Assign a string to this variable to use the bare response class
+	 *
+	 * @var string
+	 * @access public
+	 */
+	var $payload = '';
 
-    /**
-     * Returns the appropriate content type
-     *
-     * This normally simply returns the contentType property but can be overridden
-     * by an extending class if the content-type is variable
-     *
-     * @return  string   appropriate content type
-     * @access public
-     */
-    function getContentType()
-    {
-        return $this->contentType;
-    }
+	/**
+	 * Returns the appropriate content type
+	 *
+	 * This normally simply returns the contentType property but can be overridden
+	 * by an extending class if the content-type is variable
+	 *
+	 * @return  string   appropriate content type
+	 * @access public
+	 */
+	function getContentType()
+	{
+		return $this->contentType;
+	}
 
-    /**
-     * Returns the serialized content of the response class
-     *
-     * You can either fill the payload elsewhere in an extending class and leave
-     * this method alone, or you can override it if you have a different type
-     * of payload that needs special treatment
-     *
-     * @return  string   serialized response content
-     * @access public
-     */
-    function getPayload()
-    {
-        return $this->payload;
-    }
+	/**
+	 * Returns the serialized content of the response class
+	 *
+	 * You can either fill the payload elsewhere in an extending class and leave
+	 * this method alone, or you can override it if you have a different type
+	 * of payload that needs special treatment
+	 *
+	 * @return  string   serialized response content
+	 * @access public
+	 */
+	function getPayload()
+	{
+		return $this->payload;
+	}
 }
 ?>

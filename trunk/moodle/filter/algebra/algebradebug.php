@@ -1,82 +1,82 @@
 <?PHP // $Id: algebradebug.php,v 1.19.2.1 2007/12/19 17:38:47 skodak Exp $
-      // This function fetches math. images from the data directory
-      // If not, it obtains the corresponding TeX expression from the cache_tex db table
-      // and uses mimeTeX to create the image file
+	  // This function fetches math. images from the data directory
+	  // If not, it obtains the corresponding TeX expression from the cache_tex db table
+	  // and uses mimeTeX to create the image file
 
-    $nomoodlecookie = true;     // Because it interferes with caching
+	$nomoodlecookie = true;	 // Because it interferes with caching
 
-    require_once("../../config.php");
+	require_once("../../config.php");
 
-    if (empty($CFG->textfilters)) {
-        error ('Filter not enabled!');
-    } else {
-        $filters = explode(',', $CFG->textfilters);
-        if (array_search('filter/algebra', $filters) === FALSE) {
-            error ('Filter not enabled!');
-        }
-    }
+	if (empty($CFG->textfilters)) {
+		error ('Filter not enabled!');
+	} else {
+		$filters = explode(',', $CFG->textfilters);
+		if (array_search('filter/algebra', $filters) === FALSE) {
+			error ('Filter not enabled!');
+		}
+	}
 
-    require_once($CFG->libdir.'/filelib.php');
-    require_once($CFG->dirroot.'/filter/tex/lib.php');
+	require_once($CFG->libdir.'/filelib.php');
+	require_once($CFG->dirroot.'/filter/tex/lib.php');
 
-    $query = urldecode($_SERVER['QUERY_STRING']);
-    error_reporting(E_ALL);
+	$query = urldecode($_SERVER['QUERY_STRING']);
+	error_reporting(E_ALL);
 
-    if ($query) {
-      $output = $query;
-      $splitpos = strpos($query,'&')-8;
-      $algebra = substr($query,8,$splitpos);
-      $md5 = md5($algebra);
-      if (strpos($query,'ShowDB') || strpos($query,'DeleteDB')) {
-        $texcache = get_record("cache_filters","filter","algebra", "md5key", $md5);
-      }
-      if (strpos($query,'ShowDB')) {
-        if ($texcache) {
-          $output = "DB cache_filters entry for $algebra\n";
-          $output .= "id = $texcache->id\n";
-          $output .= "filter = $texcache->filter\n";
-          $output .= "version = $texcache->version\n";
-          $output .= "md5key = $texcache->md5key\n";
-          $output .= "rawtext = $texcache->rawtext\n";
-          $output .= "timemodified = $texcache->timemodified\n";
-        } else {
-          $output = "DB cache_filters entry for $algebra not found\n";
-        }
-      }
-      if (strpos($query,'DeleteDB')) {
-        if ($texcache) {
-          $output = "Deleting DB cache_filters entry for $algebra\n";
-          $result =  delete_records("cache_filters","id",$texcache->id);
-          if ($result) {
-            $result = 1;
-          } else {
-            $result = 0;
-          }
-          $output .= "Number of records deleted = $result\n";
-        } else {
-          $output = "Could not delete DB cache_filters entry for $algebra\nbecause it could not be found.\n";
-        }
-      }
-      if (strpos($query,'TeXStage1')) {
-        $output = algebra2tex($algebra);
-      }
-      if (strpos($query,'TeXStage2')) {
-        $output = algebra2tex($algebra);
-        $output = refineTeX($output);
-      }
-      if (strpos($query,'ShowImage')||strpos($query,'SlashArguments')) {
-        $output = algebra2tex($algebra);
-        $output = refineTeX($output);
-        if (strpos($query,'ShowImage')) {
-          tex2image($output, $md5);
-        } else {
-          slasharguments($output, $md5);
-        }
-      } else {
-        outputText($output);
-      }
-      exit;
-    }
+	if ($query) {
+	  $output = $query;
+	  $splitpos = strpos($query,'&')-8;
+	  $algebra = substr($query,8,$splitpos);
+	  $md5 = md5($algebra);
+	  if (strpos($query,'ShowDB') || strpos($query,'DeleteDB')) {
+		$texcache = get_record("cache_filters","filter","algebra", "md5key", $md5);
+	  }
+	  if (strpos($query,'ShowDB')) {
+		if ($texcache) {
+		  $output = "DB cache_filters entry for $algebra\n";
+		  $output .= "id = $texcache->id\n";
+		  $output .= "filter = $texcache->filter\n";
+		  $output .= "version = $texcache->version\n";
+		  $output .= "md5key = $texcache->md5key\n";
+		  $output .= "rawtext = $texcache->rawtext\n";
+		  $output .= "timemodified = $texcache->timemodified\n";
+		} else {
+		  $output = "DB cache_filters entry for $algebra not found\n";
+		}
+	  }
+	  if (strpos($query,'DeleteDB')) {
+		if ($texcache) {
+		  $output = "Deleting DB cache_filters entry for $algebra\n";
+		  $result =  delete_records("cache_filters","id",$texcache->id);
+		  if ($result) {
+			$result = 1;
+		  } else {
+			$result = 0;
+		  }
+		  $output .= "Number of records deleted = $result\n";
+		} else {
+		  $output = "Could not delete DB cache_filters entry for $algebra\nbecause it could not be found.\n";
+		}
+	  }
+	  if (strpos($query,'TeXStage1')) {
+		$output = algebra2tex($algebra);
+	  }
+	  if (strpos($query,'TeXStage2')) {
+		$output = algebra2tex($algebra);
+		$output = refineTeX($output);
+	  }
+	  if (strpos($query,'ShowImage')||strpos($query,'SlashArguments')) {
+		$output = algebra2tex($algebra);
+		$output = refineTeX($output);
+		if (strpos($query,'ShowImage')) {
+		  tex2image($output, $md5);
+		} else {
+		  slasharguments($output, $md5);
+		}
+	  } else {
+		outputText($output);
+	  }
+	  exit;
+	}
 
 function algebra2tex($algebra) {
   global $CFG;
@@ -97,35 +97,35 @@ function algebra2tex($algebra) {
   $algebra = escapeshellarg($algebra);
 
   if ( (PHP_OS == "WINNT") || (PHP_OS == "WIN32") || (PHP_OS == "Windows") ) {
-    $cmd  = "cd $CFG->dirroot\\filter\\algebra & algebra2tex.pl x/2";
-    $test = `$cmd`;
-    if ($test != '\frac{x}{2}') {
-      echo "There is a problem with either Perl or the script algebra2tex.pl<br/>";
-      $ecmd = $cmd . " 2>&1";
-      echo `$ecmd` . "<br/>\n";
-      echo "The shell command<br/>$cmd<br/>returned status = $status<br/>\n";
-      $commandpath = "$CFG->dirroot\\filter\\algebra\\algebra2tex.pl";
-      if (file_exists($commandpath)) {
-        echo "The file permissions of algebra2tex.pl are: " . decoct(fileperms($commandpath)) . "<br/>";
-      }
-      die;
-    }
-    $cmd  = "cd $CFG->dirroot\\filter\\algebra & algebra2tex.pl $algebra";
+	$cmd  = "cd $CFG->dirroot\\filter\\algebra & algebra2tex.pl x/2";
+	$test = `$cmd`;
+	if ($test != '\frac{x}{2}') {
+	  echo "There is a problem with either Perl or the script algebra2tex.pl<br/>";
+	  $ecmd = $cmd . " 2>&1";
+	  echo `$ecmd` . "<br/>\n";
+	  echo "The shell command<br/>$cmd<br/>returned status = $status<br/>\n";
+	  $commandpath = "$CFG->dirroot\\filter\\algebra\\algebra2tex.pl";
+	  if (file_exists($commandpath)) {
+		echo "The file permissions of algebra2tex.pl are: " . decoct(fileperms($commandpath)) . "<br/>";
+	  }
+	  die;
+	}
+	$cmd  = "cd $CFG->dirroot\\filter\\algebra & algebra2tex.pl $algebra";
   } else {
-    $cmd  = "cd $CFG->dirroot/filter/algebra; ./algebra2tex.pl x/2";
-    $test = `$cmd`;
-    if ($test != '\frac{x}{2}') {
-      echo "There is a problem with either Perl or the script algebra2tex.pl<br/>";
-      $ecmd = $cmd . " 2>&1";
-      echo `$ecmd` . "<br/>\n";
-      echo "The shell command<br/>$cmd<br/>returned status = $status<br/>\n";
-      $commandpath = "$CFG->dirroot/filter/algebra/algebra2tex.pl";
-      if (file_exists($commandpath)) {
-        echo "The file permissions of algebra2tex.pl are: " . decoct(fileperms($commandpath)) . "<br/>";
-      }
-      die;
-    }
-    $cmd  = "cd $CFG->dirroot/filter/algebra; ./algebra2tex.pl $algebra";
+	$cmd  = "cd $CFG->dirroot/filter/algebra; ./algebra2tex.pl x/2";
+	$test = `$cmd`;
+	if ($test != '\frac{x}{2}') {
+	  echo "There is a problem with either Perl or the script algebra2tex.pl<br/>";
+	  $ecmd = $cmd . " 2>&1";
+	  echo `$ecmd` . "<br/>\n";
+	  echo "The shell command<br/>$cmd<br/>returned status = $status<br/>\n";
+	  $commandpath = "$CFG->dirroot/filter/algebra/algebra2tex.pl";
+	  if (file_exists($commandpath)) {
+		echo "The file permissions of algebra2tex.pl are: " . decoct(fileperms($commandpath)) . "<br/>";
+	  }
+	  die;
+	}
+	$cmd  = "cd $CFG->dirroot/filter/algebra; ./algebra2tex.pl $algebra";
   }
   $texexp = `$cmd`;
   return $texexp;
@@ -189,71 +189,71 @@ function outputText($texexp) {
   header("Content-type: text/html");
   echo "<html><body><pre>\n";
   if ($texexp) {
-    $texexp = str_replace('<','&lt;',$texexp);
-    $texexp = str_replace('>','&gt;',$texexp);
-    $texexp = str_replace('"','&quot;',$texexp);
-    echo "$texexp\n\n";
+	$texexp = str_replace('<','&lt;',$texexp);
+	$texexp = str_replace('>','&gt;',$texexp);
+	$texexp = str_replace('"','&quot;',$texexp);
+	echo "$texexp\n\n";
   } else {
-    echo "No text output available\n\n";
+	echo "No text output available\n\n";
   }
   echo "</pre></body></html>\n";
 }
 
 function tex2image($texexp, $md5, $return=false) {
-    global $CFG;
+	global $CFG;
 
-    if (!$texexp) {
-        echo 'No tex expresion specified';
-        return;
-    }
+	if (!$texexp) {
+		echo 'No tex expresion specified';
+		return;
+	}
 
-    $texexp = '\Large ' . $texexp;
-    $image  = $md5 . ".gif";
-    $filetype = 'image/gif';
-    if (!file_exists("$CFG->dataroot/filter/algebra")) {
-        make_upload_directory("filter/algebra");
-    }
-    $pathname = "$CFG->dataroot/filter/algebra/$image";
-    if (file_exists($pathname)) {
-        unlink($pathname);
-    }
-    $commandpath = tex_filter_get_executable(true);
-    $cmd = tex_filter_get_cmd($pathname, $texexp);
-    system($cmd, $status);
+	$texexp = '\Large ' . $texexp;
+	$image  = $md5 . ".gif";
+	$filetype = 'image/gif';
+	if (!file_exists("$CFG->dataroot/filter/algebra")) {
+		make_upload_directory("filter/algebra");
+	}
+	$pathname = "$CFG->dataroot/filter/algebra/$image";
+	if (file_exists($pathname)) {
+		unlink($pathname);
+	}
+	$commandpath = tex_filter_get_executable(true);
+	$cmd = tex_filter_get_cmd($pathname, $texexp);
+	system($cmd, $status);
 
-    if ($return) {
-        return $image;
-    }
-    if (file_exists($pathname)) {
-        send_file($pathname, $image);
+	if ($return) {
+		return $image;
+	}
+	if (file_exists($pathname)) {
+		send_file($pathname, $image);
 
-    } else {
-        $ecmd = "$cmd 2>&1";
-        echo `$ecmd` . "<br />\n";
-        echo "The shell command<br />$cmd<br />returned status = $status<br />\n";
-        if ($status == 4) {
-            echo "Status corresponds to illegal instruction<br />\n";
-        } else if ($status == 11) {
-            echo "Status corresponds to bus error<br />\n";
-        } else if ($status == 22) {
-            echo "Status corresponds to abnormal termination<br />\n";
-        }
-        if (file_exists($commandpath)) {
-            echo "File size of mimetex executable  $commandpath is " . filesize($commandpath) . "<br />";
-            echo "The file permissions are: " . decoct(fileperms($commandpath)) . "<br />";
-            if (function_exists("md5_file")) {
-                echo "The md5 checksum of the file is " . md5_file($commandpath) . "<br />";
-            } else {
-                $handle = fopen($commandpath,"rb");
-                $contents = fread($handle,16384);
-                fclose($handle);
-                echo "The md5 checksum of the first 16384 bytes is " . md5($contents) . "<br />";
-            }
-        } else {
-            echo "mimetex executable $commandpath not found!<br />";
-        }
-        echo "Image not found!";
-    }
+	} else {
+		$ecmd = "$cmd 2>&1";
+		echo `$ecmd` . "<br />\n";
+		echo "The shell command<br />$cmd<br />returned status = $status<br />\n";
+		if ($status == 4) {
+			echo "Status corresponds to illegal instruction<br />\n";
+		} else if ($status == 11) {
+			echo "Status corresponds to bus error<br />\n";
+		} else if ($status == 22) {
+			echo "Status corresponds to abnormal termination<br />\n";
+		}
+		if (file_exists($commandpath)) {
+			echo "File size of mimetex executable  $commandpath is " . filesize($commandpath) . "<br />";
+			echo "The file permissions are: " . decoct(fileperms($commandpath)) . "<br />";
+			if (function_exists("md5_file")) {
+				echo "The md5 checksum of the file is " . md5_file($commandpath) . "<br />";
+			} else {
+				$handle = fopen($commandpath,"rb");
+				$contents = fread($handle,16384);
+				fclose($handle);
+				echo "The md5 checksum of the first 16384 bytes is " . md5($contents) . "<br />";
+			}
+		} else {
+			echo "mimetex executable $commandpath not found!<br />";
+		}
+		echo "Image not found!";
+	}
 }
 
 function slasharguments($texexp, $md5) {
@@ -278,34 +278,34 @@ function slasharguments($texexp, $md5) {
 <html>
 <head><title>Algebra Filter Debugger</title></head>
 <body>
-    <p>Please enter an algebraic expression <b>without</b> any surrounding @@ into
-       the text box below. (Click <a href="#help">here for help.</a>)
-          <form action="algebradebug.php" method="get"
-           target="inlineframe">
-            <center>
-             <input type="text" name="algebra" size="50"
-                    value="sin(z)/(x^2+y^2)" />
-            </center>
-           <ol>
-           <li>First click on this button <input type="submit" name="ShowDB" value="Show DB Entry" />
-               to see the cache_filters database entry for this expression.</li>
-           <li>If the database entry looks corrupt, click on this button to delete it:
-               <input type="submit" name="DeleteDB" value="Delete DB Entry" /></li>
-           <li>Now click on this button <input type="submit" name="TeXStage1" value="First Stage Tex Translation" />.
-               A preliminary translation into TeX will appear in the box below.</li>
-           <li>Next click on this button <input type="submit" name="TeXStage2" value="Second Stage Tex Translation" />.
-               A more refined translation into TeX will appear in the box below.</li>
-           <li>Then click on this button <input type="submit" name="ShowImage" value="Show Image" />
-               to show a graphic image of the algebraic expression.</li>
-           <li>Finally check your slash arguments setting
-               <input type="submit" name="SlashArguments" value="Check Slash Arguments" /></li>
-           </ol>
-          </form> <br /> <br />
-       <center>
-          <iframe name="inlineframe" align="middle" width="80%" height="200">
-          &lt;p&gt;Something is wrong...&lt;/p&gt; 
-          </iframe>
-       </center> <br />
+	<p>Please enter an algebraic expression <b>without</b> any surrounding @@ into
+	   the text box below. (Click <a href="#help">here for help.</a>)
+		  <form action="algebradebug.php" method="get"
+		   target="inlineframe">
+			<center>
+			 <input type="text" name="algebra" size="50"
+					value="sin(z)/(x^2+y^2)" />
+			</center>
+		   <ol>
+		   <li>First click on this button <input type="submit" name="ShowDB" value="Show DB Entry" />
+			   to see the cache_filters database entry for this expression.</li>
+		   <li>If the database entry looks corrupt, click on this button to delete it:
+			   <input type="submit" name="DeleteDB" value="Delete DB Entry" /></li>
+		   <li>Now click on this button <input type="submit" name="TeXStage1" value="First Stage Tex Translation" />.
+			   A preliminary translation into TeX will appear in the box below.</li>
+		   <li>Next click on this button <input type="submit" name="TeXStage2" value="Second Stage Tex Translation" />.
+			   A more refined translation into TeX will appear in the box below.</li>
+		   <li>Then click on this button <input type="submit" name="ShowImage" value="Show Image" />
+			   to show a graphic image of the algebraic expression.</li>
+		   <li>Finally check your slash arguments setting
+			   <input type="submit" name="SlashArguments" value="Check Slash Arguments" /></li>
+		   </ol>
+		  </form> <br /> <br />
+	   <center>
+		  <iframe name="inlineframe" align="middle" width="80%" height="200">
+		  &lt;p&gt;Something is wrong...&lt;/p&gt; 
+		  </iframe>
+	   </center> <br />
 <hr />
 <a name="help">
 <h2>Debugging Help</h2>

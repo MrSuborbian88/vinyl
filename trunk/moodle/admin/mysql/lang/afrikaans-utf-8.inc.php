@@ -2,7 +2,7 @@
 /* $Id: afrikaans-utf-8.inc.php 11113 2008-02-09 16:09:54Z lem9 $ */
 
 /*
-     translated by Andreas Pauley <pauley@buitegroep.org.za>
+	 translated by Andreas Pauley <pauley@buitegroep.org.za>
 
 Dit lyk nogal snaaks in Afrikaans ;-).
 Laat weet my asb. as jy aan beter taalgebruik kan dink.
@@ -997,7 +997,7 @@ $strCreateTable  = 'Create table';  //to translate
 $strCreateRelation = 'Create relation';  //to translate
 $strSavePosition = 'Save position';  //to translate
 $strSelectForeignKey = 'Select Foreign Key';  //to translate
-$strHide         = 'Hide';  //to translate
+$strHide		 = 'Hide';  //to translate
 $strShowHideLeftMenu = 'Show/Hide left menu';  //to translate
 $strReload = 'Reload';  //to translate
 $strSmallBigAll = 'Small/Big All';  //to translate

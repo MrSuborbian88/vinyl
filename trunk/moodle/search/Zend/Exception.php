@@ -13,17 +13,17 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend
+ * @package	Zend
  * @copyright  Copyright (c) 2006 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
 /**
  * @category   Zend
- * @package    Zend
+ * @package	Zend
  * @copyright  Copyright (c) 2006 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 class Zend_Exception extends Exception
 {}

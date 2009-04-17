@@ -13,10 +13,10 @@
  * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Analysis
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
@@ -29,20 +29,20 @@ require_once 'Zend/Search/Lucene/Analysis/TokenFilter/LowerCaseUtf8.php';
 
 /**
  * @category   Zend
- * @package    Zend_Search_Lucene
+ * @package	Zend_Search_Lucene
  * @subpackage Analysis
  * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @license	http://framework.zend.com/license/new-bsd	 New BSD License
  */
 
 
 class Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive extends Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8 
 {
-    public function __construct()
-    {
-        parent::__construct();
+	public function __construct()
+	{
+		parent::__construct();
 
-        $this->addFilter(new Zend_Search_Lucene_Analysis_TokenFilter_LowerCaseUtf8());
-    }
+		$this->addFilter(new Zend_Search_Lucene_Analysis_TokenFilter_LowerCaseUtf8());
+	}
 }
 

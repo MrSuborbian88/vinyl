@@ -19,11 +19,11 @@
 // component_name should be the same as the directory name of the mod or block.
 //
 // Core moodle capabilities are defined thus:
-//    moodle/<capabilityclass>:<capabilityname>
+//	moodle/<capabilityclass>:<capabilityname>
 //
 // Examples: mod/forum:viewpost
-//           block/recent_activity:view
-//           moodle/site:deleteuser
+//		   block/recent_activity:view
+//		   moodle/site:deleteuser
 //
 // The variable name for the capability definitions array follows the format
 //   $<componenttype>_<component_name>_capabilities
@@ -33,245 +33,245 @@
 
 $mod_forum_capabilities = array(
 
-    'mod/forum:viewdiscussion' => array(
+	'mod/forum:viewdiscussion' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'guest' => CAP_ALLOW,
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'guest' => CAP_ALLOW,
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:viewhiddentimedposts' => array(
+	'mod/forum:viewhiddentimedposts' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:startdiscussion' => array(
+	'mod/forum:startdiscussion' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:replypost' => array(
+	'mod/forum:replypost' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:addnews' => array(
+	'mod/forum:addnews' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:replynews' => array(
+	'mod/forum:replynews' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:viewrating' => array(
+	'mod/forum:viewrating' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:viewanyrating' => array(
+	'mod/forum:viewanyrating' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:rate' => array(
+	'mod/forum:rate' => array(
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:createattachment' => array(
+	'mod/forum:createattachment' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:deleteownpost' => array(
+	'mod/forum:deleteownpost' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'student' => CAP_ALLOW,
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:deleteanypost' => array(
+	'mod/forum:deleteanypost' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:splitdiscussions' => array(
+	'mod/forum:splitdiscussions' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:movediscussions' => array(
+	'mod/forum:movediscussions' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:editanypost' => array(
+	'mod/forum:editanypost' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:viewqandawithoutposting' => array(
+	'mod/forum:viewqandawithoutposting' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:viewsubscribers' => array(
+	'mod/forum:viewsubscribers' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:managesubscriptions' => array(
+	'mod/forum:managesubscriptions' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'admin' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:initialsubscriptions' => array(
+	'mod/forum:initialsubscriptions' => array(
 
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'student' => CAP_ALLOW
-        )
-    ),
+		'captype' => 'read',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+			'teacher' => CAP_ALLOW,
+			'editingteacher' => CAP_ALLOW,
+			'student' => CAP_ALLOW
+		)
+	),
 
-    'mod/forum:throttlingapplies' => array(
+	'mod/forum:throttlingapplies' => array(
 
-        'riskbitmask' => RISK_SPAM,
+		'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-        )
-    )
+		'captype' => 'write',
+		'contextlevel' => CONTEXT_MODULE,
+		'legacy' => array(
+		)
+	)
 );
 
 ?>

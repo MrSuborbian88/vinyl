@@ -1,17 +1,17 @@
 <?php // $Id: fullscreen.php,v 1.6.6.2 2008/12/05 00:57:21 dongsheng Exp $
-    require("../../../../config.php");
+	require("../../../../config.php");
 
-    $id = optional_param('id', SITEID, PARAM_INT);
+	$id = optional_param('id', SITEID, PARAM_INT);
 
-    require_course_login($id);
-    @header('Content-Type: text/html; charset=utf-8');
+	require_course_login($id);
+	@header('Content-Type: text/html; charset=utf-8');
 ?>
 <html>
 <head><title><?php print_string("fullscreen","editor");?></title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
 @import url(../htmlarea.css);
-html, body {    margin: 0px; border: 0px; background-color: buttonface; } </style>
+html, body {	margin: 0px; border: 0px; background-color: buttonface; } </style>
 
 
 <script type="text/javascript" src="../htmlarea.php?id=<?php p($id); ?>"></script>
@@ -26,17 +26,17 @@ var head = document.getElementsByTagName("head")[0];
 for (var i = 0; i < scripts.length; ++i) {
   var script = scripts[i];
   if (typeof script.src != "undefined" && /\S/.test(script.src)) {
-    // document.write("<scr" + "ipt type=" + "\"script/javascript\"");
-    // document.write(" src=\"../" + script.src + "\"></scr" + "ipt>");
-    var new_script = document.createElement("script");
-    if (/^https?:/i.test(script.src)) {
-      new_script.src = script.src;
-    } else {
-      new_script.src = "../" + script.src;
-    }
-    if (navigator.appVersion.indexOf("MSIE") == -1  || script.src.indexOf("yui/event/event") == -1) {
-      head.appendChild(new_script);
-    }
+	// document.write("<scr" + "ipt type=" + "\"script/javascript\"");
+	// document.write(" src=\"../" + script.src + "\"></scr" + "ipt>");
+	var new_script = document.createElement("script");
+	if (/^https?:/i.test(script.src)) {
+	  new_script.src = script.src;
+	} else {
+	  new_script.src = "../" + script.src;
+	}
+	if (navigator.appVersion.indexOf("MSIE") == -1  || script.src.indexOf("yui/event/event") == -1) {
+	  head.appendChild(new_script);
+	}
   }
 }
 </script>
@@ -44,89 +44,89 @@ for (var i = 0; i < scripts.length; ++i) {
 <script type="text/javascript">
 
 var parent_object  = null;
-var editor         = null;      // to be initialized later [ function init() ]
+var editor		 = null;	  // to be initialized later [ function init() ]
 
 /* ---------------------------------------------------------------------- *\
-  Function    :
+  Function	:
   Description :
 \* ---------------------------------------------------------------------- */
 
 function _CloseOnEsc(ev) {
-    try {
-        if (document.all) {
-            // IE
-            ev || (ev = editor._iframe.contentWindow.event);
-        }
-        if (ev.keyCode == 27) {
-            // update_parent();
-            window.close();
-            return;
-        }
-    } catch(e) {}
+	try {
+		if (document.all) {
+			// IE
+			ev || (ev = editor._iframe.contentWindow.event);
+		}
+		if (ev.keyCode == 27) {
+			// update_parent();
+			window.close();
+			return;
+		}
+	} catch(e) {}
 }
 
 /* ---------------------------------------------------------------------- *\
-  Function    : cloneObject
+  Function	: cloneObject
   Description : copy an object by value instead of by reference
-  Usage       : var newObj = cloneObject(oldObj);
+  Usage	   : var newObj = cloneObject(oldObj);
 \* ---------------------------------------------------------------------- */
 
 function cloneObject(obj) {
-  var newObj          = new Object;
+  var newObj		  = new Object;
 
   // check for array objects
   if (obj.constructor.toString().indexOf("function Array(") >= 0) {
-    newObj = obj.constructor();
+	newObj = obj.constructor();
   }
 
   // check for function objects (as usual, IE is phucked up)
   if (obj.constructor.toString().indexOf("function Function(") >= 0) {
-    newObj = obj; // just copy reference to it
+	newObj = obj; // just copy reference to it
   } else for (var n in obj) {
-    var node = obj[n];
-    if (typeof node == 'object') { newObj[n] = cloneObject(node); }
-    else                         { newObj[n] = node; }
+	var node = obj[n];
+	if (typeof node == 'object') { newObj[n] = cloneObject(node); }
+	else						 { newObj[n] = node; }
   }
 
   return newObj;
 }
 
 /* ---------------------------------------------------------------------- *\
-  Function    : resize_editor
+  Function	: resize_editor
   Description : resize the editor when the user resizes the popup
 \* ---------------------------------------------------------------------- */
 
 function resize_editor() {  // resize editor to fix window
   var newHeight;
   if (document.all) {
-    // IE
-    newHeight = document.body.offsetHeight - editor._toolbar.offsetHeight;
-    if (newHeight < 0) { newHeight = 0; }
+	// IE
+	newHeight = document.body.offsetHeight - editor._toolbar.offsetHeight;
+	if (newHeight < 0) { newHeight = 0; }
   } else {
-    // Gecko
-    newHeight = window.innerHeight - editor._toolbar.offsetHeight;
+	// Gecko
+	newHeight = window.innerHeight - editor._toolbar.offsetHeight;
   }
   if (editor.config.statusBar) {
-    newHeight -= editor._statusBar.offsetHeight;
+	newHeight -= editor._statusBar.offsetHeight;
   }
   editor._textArea.style.height = editor._iframe.style.height = newHeight + "px";
 }
 
 /* ---------------------------------------------------------------------- *\
-  Function    : init
+  Function	: init
   Description : run this code on page load
 \* ---------------------------------------------------------------------- */
 
 function init() {
-  parent_object      = opener.HTMLArea._object;
-  var config         = cloneObject( parent_object.config );
+  parent_object	  = opener.HTMLArea._object;
+  var config		 = cloneObject( parent_object.config );
   config.editorURL   = "../";
-  config.width       = "100%";
-  config.height      = "auto";
+  config.width	   = "100%";
+  config.height	  = "auto";
 
   // change maximize button to minimize button
   config.btnList["popupeditor"] = [ "<?php print_string("minimize","editor");?>", "<?php echo $CFG->wwwroot ?>/lib/editor/htmlarea/images/fullscreen_minimize.gif", true,
-                                    function() { window.close(); } ];
+									function() { window.close(); } ];
 
   // generate editor and resize it
   editor = new HTMLArea("editor", config);
@@ -138,24 +138,24 @@ function init() {
 
   // set child window contents and event handlers, after a small delay
   setTimeout(function() {
-    editor.setHTML(parent_object.getInnerHTML());
+	editor.setHTML(parent_object.getInnerHTML());
 
-    // switch mode if needed
-    if (parent_object._mode == "textmode") { editor.setMode("textmode"); }
+	// switch mode if needed
+	if (parent_object._mode == "textmode") { editor.setMode("textmode"); }
 
-    // continuously update parent editor window
-    setInterval(update_parent, 500);
+	// continuously update parent editor window
+	setInterval(update_parent, 500);
 
-    // setup event handlers FAST FIX IS UNCOMMENT THESE, NOT WORKING!
-    //document.body.onkeypress = _CloseOnEsc;
-    //editor._doc.body.onkeypress = _CloseOnEsc;
-    //editor._textArea.onkeypress = _CloseOnEsc;
-    window.onresize = resize_editor;
-  }, 333);                      // give it some time to meet the new frame
+	// setup event handlers FAST FIX IS UNCOMMENT THESE, NOT WORKING!
+	//document.body.onkeypress = _CloseOnEsc;
+	//editor._doc.body.onkeypress = _CloseOnEsc;
+	//editor._textArea.onkeypress = _CloseOnEsc;
+	window.onresize = resize_editor;
+  }, 333);					  // give it some time to meet the new frame
 }
 
 /* ---------------------------------------------------------------------- *\
-  Function    : update_parent
+  Function	: update_parent
   Description : update parent window editor field with contents from child window
 \* ---------------------------------------------------------------------- */
 

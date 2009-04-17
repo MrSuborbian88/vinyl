@@ -1,5 +1,5 @@
 <?PHP // $Id: currencies.php,v 1.8 2007/08/05 13:25:44 koenr Exp $ 
-      // currencies.php - created with Moodle 1.7 beta + (2006101003)
+	  // currencies.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['AED'] = 'United Arab Emirates Dirham';

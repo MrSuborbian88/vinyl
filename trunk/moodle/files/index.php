@@ -3,7 +3,7 @@
 //  Manage all uploaded files in a course file area
 
 //  VINL Code
-//    Daniel Ploch - 04/17/2009
+//	Daniel Ploch - 04/17/2009
 //  - Incorporated M
 
 //  All the VINL-specific stuff is in this top section
@@ -31,7 +31,7 @@
 //  Adding Button feature for multiple File Uploads
 //  See Also:
 //	case "submit:" in this document
-//    lib/uploadlib.php
+//	lib/uploadlib.php
 
 	$numfiles = optional_param('numfiles', 1, PARAM_INT);
 	$addfiles = optional_param('addfiles', 0, PARAM_BOOL);

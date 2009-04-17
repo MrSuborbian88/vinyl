@@ -36,8 +36,8 @@ class perf_oci8 extends ADODB_perf{
 			"select round((1-(phy.value / (cur.value + con.value)))*100,2) 
 			from v\$sysstat cur, v\$sysstat con, v\$sysstat phy
 			where cur.name = 'db block gets' and
-			      con.name = 'consistent gets' and
-			      phy.name = 'physical reads'",
+				  con.name = 'consistent gets' and
+				  phy.name = 'physical reads'",
 			'=WarnCacheRatio'),
 		
 		'sql cache hit ratio' => array( 'RATIOH',
@@ -45,19 +45,19 @@ class perf_oci8 extends ADODB_perf{
 			'increase <i>shared_pool_size</i> if too ratio low'),
 			
 		'datadict cache hit ratio' => array('RATIOH',
-		"select      
-           round((1 - (sum(getmisses) / (sum(gets) +          
+		"select	  
+		   round((1 - (sum(getmisses) / (sum(gets) +		  
    		 sum(getmisses))))*100,2)
 		from  v\$rowcache",
 		'increase <i>shared_pool_size</i> if too ratio low'),
 		
 		'memory sort ratio' => array('RATIOH',
 		"SELECT ROUND((100 * b.VALUE) /DECODE ((a.VALUE + b.VALUE), 
-       0,1,(a.VALUE + b.VALUE)),2)
+	   0,1,(a.VALUE + b.VALUE)),2)
 FROM   v\$sysstat a, 
-       v\$sysstat b
+	   v\$sysstat b
 WHERE  a.name = 'sorts (disk)'
-AND    b.name = 'sorts (memory)'",
+AND	b.name = 'sorts (memory)'",
 	"% of memory sorts compared to disk sorts - should be over 95%"),
 
 	'IO',
@@ -134,8 +134,8 @@ AND    b.name = 'sorts (memory)'",
 	
 		'peak transactions' => array('ROLLBACK',
 			"select max_utilization  tx_hwm
-    		from sys.v_\$resource_limit
-    		where resource_name = 'transactions'",
+			from sys.v_\$resource_limit
+			where resource_name = 'transactions'",
 			'Taken from high-water-mark'),
 		'max transactions' => array('ROLLBACK',
 			"select value from v\$parameter where name = 'transactions'",
@@ -160,13 +160,13 @@ having count(*) > 100)",'These are sql statements that should be using bind vari
 	'Backup',
 		'Achivelog Mode' => array('BACKUP', 'select log_mode from v$database', 'To turn on archivelog:<br>
 	<pre>
-        SQLPLUS> connect sys as sysdba;
-        SQLPLUS> shutdown immediate;
+		SQLPLUS> connect sys as sysdba;
+		SQLPLUS> shutdown immediate;
 
-        SQLPLUS> startup mount exclusive;
-        SQLPLUS> alter database archivelog;
-        SQLPLUS> archive log start;
-        SQLPLUS> alter database open;
+		SQLPLUS> startup mount exclusive;
+		SQLPLUS> alter database archivelog;
+		SQLPLUS> archive log start;
+		SQLPLUS> alter database open;
 </pre>'),
 	
 		'DBID' => array('BACKUP','select dbid from v$database','Primary key of database, used for recovery with an RMAN Recovery Catalog'),
@@ -234,30 +234,30 @@ FROM v\$parameter v1, v\$parameter v2 WHERE v1.name='log_archive_dest' AND v2.na
 			echo "<p><b>Missing PLAN_TABLE</b></p>
 <pre>
 CREATE TABLE PLAN_TABLE (
-  STATEMENT_ID                    VARCHAR2(30),
-  TIMESTAMP                       DATE,
-  REMARKS                         VARCHAR2(80),
-  OPERATION                       VARCHAR2(30),
-  OPTIONS                         VARCHAR2(30),
-  OBJECT_NODE                     VARCHAR2(128),
-  OBJECT_OWNER                    VARCHAR2(30),
-  OBJECT_NAME                     VARCHAR2(30),
-  OBJECT_INSTANCE                 NUMBER(38),
-  OBJECT_TYPE                     VARCHAR2(30),
-  OPTIMIZER                       VARCHAR2(255),
-  SEARCH_COLUMNS                  NUMBER,
-  ID                              NUMBER(38),
-  PARENT_ID                       NUMBER(38),
-  POSITION                        NUMBER(38),
-  COST                            NUMBER(38),
-  CARDINALITY                     NUMBER(38),
-  BYTES                           NUMBER(38),
-  OTHER_TAG                       VARCHAR2(255),
-  PARTITION_START                 VARCHAR2(255),
-  PARTITION_STOP                  VARCHAR2(255),
-  PARTITION_ID                    NUMBER(38),
-  OTHER                           LONG,
-  DISTRIBUTION                    VARCHAR2(30)
+  STATEMENT_ID					VARCHAR2(30),
+  TIMESTAMP					   DATE,
+  REMARKS						 VARCHAR2(80),
+  OPERATION					   VARCHAR2(30),
+  OPTIONS						 VARCHAR2(30),
+  OBJECT_NODE					 VARCHAR2(128),
+  OBJECT_OWNER					VARCHAR2(30),
+  OBJECT_NAME					 VARCHAR2(30),
+  OBJECT_INSTANCE				 NUMBER(38),
+  OBJECT_TYPE					 VARCHAR2(30),
+  OPTIMIZER					   VARCHAR2(255),
+  SEARCH_COLUMNS				  NUMBER,
+  ID							  NUMBER(38),
+  PARENT_ID					   NUMBER(38),
+  POSITION						NUMBER(38),
+  COST							NUMBER(38),
+  CARDINALITY					 NUMBER(38),
+  BYTES						   NUMBER(38),
+  OTHER_TAG					   VARCHAR2(255),
+  PARTITION_START				 VARCHAR2(255),
+  PARTITION_STOP				  VARCHAR2(255),
+  PARTITION_ID					NUMBER(38),
+  OTHER						   LONG,
+  DISTRIBUTION					VARCHAR2(30)
 );
 </pre>";
 			return false;
@@ -393,14 +393,14 @@ select
   p.sql_text
 from
   ( 
-    select
-      address,
-      buffer_gets,
-      executions,
-      pct,
-      rank() over (order by buffer_gets desc)  ranking
-    from
-      ( 
+	select
+	  address,
+	  buffer_gets,
+	  executions,
+	  pct,
+	  rank() over (order by buffer_gets desc)  ranking
+	from
+	  ( 
 	select
 	  address,
 	  buffer_gets,
@@ -410,9 +410,9 @@ from
 	  sys.v_\$sql
 	where
 	  command_type != 47 and module != 'T.O.A.D.'
-      )
-    where
-      buffer_gets > 50 * executions
+	  )
+	where
+	  buffer_gets > 50 * executions
   )  s,
   sys.v_\$sqltext  p
 where
@@ -463,14 +463,14 @@ select
   p.sql_text
 from
   ( 
-    select
-      address,
-      disk_reads,
-      executions,
-      pct,
-      rank() over (order by disk_reads desc)  ranking
-    from
-      (
+	select
+	  address,
+	  disk_reads,
+	  executions,
+	  pct,
+	  rank() over (order by disk_reads desc)  ranking
+	from
+	  (
 	select
 	  address,
 	  disk_reads,
@@ -480,9 +480,9 @@ from
 	  sys.v_\$sql
 	where
 	  command_type != 47 and module != 'T.O.A.D.'
-      )
-    where
-      disk_reads > 50 * executions
+	  )
+	where
+	  disk_reads > 50 * executions
   )  s,
   sys.v_\$sqltext  p
 where

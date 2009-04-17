@@ -43,7 +43,7 @@ so:
   );
   
   2. Then define the following parameters. You can either modify
-     this file, or define them before this file is included:
+	 this file, or define them before this file is included:
 	 
   	$ADODB_SESSION_DRIVER='database driver, eg. mysql or ibase';
 	$ADODB_SESSION_CONNECT='server to connect to';
@@ -188,8 +188,8 @@ $Crypt = new MD5Crypt;
 		$arr['expireref'] = $$var;
 	}
 	$rs = $ADODB_SESS_CONN->Replace($ADODB_SESSION_TBL,
-	    $arr,
-    	'sesskey',$autoQuote = true);
+		$arr,
+		'sesskey',$autoQuote = true);
 
 	if (!$rs) {
 		ADOConnection::outp( '

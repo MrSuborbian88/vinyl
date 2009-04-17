@@ -5,7 +5,7 @@
  * @version $Id: mcrypt.lib.php 11335 2008-06-21 14:01:54Z lem9 $
  */
 if (! defined('PHPMYADMIN')) {
-    exit;
+	exit;
 }
 
 /**
@@ -16,9 +16,9 @@ if (! defined('PHPMYADMIN')) {
  */
 if (empty($_COOKIE['pma_mcrypt_iv'])
  || false === ($iv = base64_decode($_COOKIE['pma_mcrypt_iv']))) {
-    srand((double) microtime() * 1000000);
-    $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_CBC), MCRYPT_RAND);
-    PMA_setCookie('pma_mcrypt_iv', base64_encode($iv));
+	srand((double) microtime() * 1000000);
+	$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_CBC), MCRYPT_RAND);
+	PMA_setCookie('pma_mcrypt_iv', base64_encode($iv));
 }
 
 /**
@@ -34,22 +34,22 @@ if (empty($_COOKIE['pma_mcrypt_iv'])
  * @access  public
  */
 function full_str_pad($input, $pad_length, $pad_string = '', $pad_type = 0) {
-    $str = '';
-    $length = $pad_length - strlen($input);
-    if ($length > 0) { // str_repeat doesn't like negatives
-        if ($pad_type == STR_PAD_RIGHT) { // STR_PAD_RIGHT == 1
-            $str = $input.str_repeat($pad_string, $length);
-        } elseif ($pad_type == STR_PAD_BOTH) { // STR_PAD_BOTH == 2
-            $str = str_repeat($pad_string, floor($length/2));
-            $str .= $input;
-            $str .= str_repeat($pad_string, ceil($length/2));
-        } else { // defaults to STR_PAD_LEFT == 0
-            $str = str_repeat($pad_string, $length).$input;
-        }
-    } else { // if $length is negative or zero we don't need to do anything
-        $str = $input;
-    }
-    return $str;
+	$str = '';
+	$length = $pad_length - strlen($input);
+	if ($length > 0) { // str_repeat doesn't like negatives
+		if ($pad_type == STR_PAD_RIGHT) { // STR_PAD_RIGHT == 1
+			$str = $input.str_repeat($pad_string, $length);
+		} elseif ($pad_type == STR_PAD_BOTH) { // STR_PAD_BOTH == 2
+			$str = str_repeat($pad_string, floor($length/2));
+			$str .= $input;
+			$str .= str_repeat($pad_string, ceil($length/2));
+		} else { // defaults to STR_PAD_LEFT == 0
+			$str = str_repeat($pad_string, $length).$input;
+		}
+	} else { // if $length is negative or zero we don't need to do anything
+		$str = $input;
+	}
+	return $str;
 }
 /**
  * Encryption using blowfish algorithm (mcrypt)
@@ -64,11 +64,11 @@ function full_str_pad($input, $pad_length, $pad_string = '', $pad_type = 0) {
  * @author  lem9
  */
 function PMA_blowfish_encrypt($data, $secret) {
-    global $iv;
-    // Seems we don't need the padding. Anyway if we need it,
-    // we would have to replace 8 by the next 8-byte boundary.
-    //$data = full_str_pad($data, 8, "\0", STR_PAD_RIGHT);
-    return base64_encode(mcrypt_encrypt(MCRYPT_BLOWFISH, $secret, $data, MCRYPT_MODE_CBC, $iv));
+	global $iv;
+	// Seems we don't need the padding. Anyway if we need it,
+	// we would have to replace 8 by the next 8-byte boundary.
+	//$data = full_str_pad($data, 8, "\0", STR_PAD_RIGHT);
+	return base64_encode(mcrypt_encrypt(MCRYPT_BLOWFISH, $secret, $data, MCRYPT_MODE_CBC, $iv));
 }
 
 /**
@@ -84,8 +84,8 @@ function PMA_blowfish_encrypt($data, $secret) {
  * @author  lem9
  */
 function PMA_blowfish_decrypt($encdata, $secret) {
-    global $iv;
-    return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, $secret, base64_decode($encdata), MCRYPT_MODE_CBC, $iv));
+	global $iv;
+	return trim(mcrypt_decrypt(MCRYPT_BLOWFISH, $secret, base64_decode($encdata), MCRYPT_MODE_CBC, $iv));
 }
 
 ?>

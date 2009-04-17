@@ -1,5 +1,5 @@
 <?php // $Id: export.php,v 1.1.2.2 2008/02/26 07:28:01 scyrma Exp $
-      // Exports selected outcomes in CSV format. 
+	  // Exports selected outcomes in CSV format. 
 
 require_once '../../../config.php';
 require_once $CFG->dirroot.'/grade/lib.php';
@@ -10,24 +10,24 @@ $action   = optional_param('action', '', PARAM_ALPHA);
 
 /// Make sure they can even access this course
 if ($courseid) {
-    if (!$course = get_record('course', 'id', $courseid)) {
-        print_error('nocourseid');
-    }
-    require_login($course);
-    $context = get_context_instance(CONTEXT_COURSE, $course->id);
-    require_capability('moodle/grade:manage', $context);
+	if (!$course = get_record('course', 'id', $courseid)) {
+		print_error('nocourseid');
+	}
+	require_login($course);
+	$context = get_context_instance(CONTEXT_COURSE, $course->id);
+	require_capability('moodle/grade:manage', $context);
 
-    if (empty($CFG->enableoutcomes)) {
-        redirect('../../index.php?id='.$courseid);
-    }
+	if (empty($CFG->enableoutcomes)) {
+		redirect('../../index.php?id='.$courseid);
+	}
 
 } else {
-    require_once $CFG->libdir.'/adminlib.php';
-    admin_externalpage_setup('outcomes');
+	require_once $CFG->libdir.'/adminlib.php';
+	admin_externalpage_setup('outcomes');
 }
 
 if (!confirm_sesskey()) {
-    break;
+	break;
 }
 // $outcome = grade_outcome::fetch(array('id'=>$outcomeid));
 
@@ -43,25 +43,25 @@ echo format_csv($header, ';', '"');
 
 $outcomes = array();
 if ( $courseid ) {
-    $outcomes = array_merge(grade_outcome::fetch_all_global(), grade_outcome::fetch_all_local($courseid));
+	$outcomes = array_merge(grade_outcome::fetch_all_global(), grade_outcome::fetch_all_local($courseid));
 } else { 
-    $outcomes = grade_outcome::fetch_all_global();
+	$outcomes = grade_outcome::fetch_all_global();
 }
 
 foreach($outcomes as $outcome) {
 
-    $line = array();
+	$line = array();
 
-    $line[] = $outcome->get_name();
-    $line[] = $outcome->get_shortname();
-    $line[] = $outcome->description;
-    
-    $scale = $outcome->load_scale();
-    $line[] = $scale->get_name();
-    $line[] = $scale->compact_items();
-    $line[] = $scale->description;
-    
-    echo format_csv($line, ';', '"');
+	$line[] = $outcome->get_name();
+	$line[] = $outcome->get_shortname();
+	$line[] = $outcome->description;
+	
+	$scale = $outcome->load_scale();
+	$line[] = $scale->get_name();
+	$line[] = $scale->compact_items();
+	$line[] = $scale->description;
+	
+	echo format_csv($line, ';', '"');
 }
 
 /**
@@ -74,37 +74,37 @@ foreach($outcomes as $outcome) {
  * @returns string one line of csv data
  */
 function format_csv($fields = array(), $delimiter = ';', $enclosure = '"') {
-    $str = '';
-    $escape_char = '\\';
-    foreach ($fields as $value) {
-        if (strpos($value, $delimiter) !== false ||
-                strpos($value, $enclosure) !== false ||
-                strpos($value, "\n") !== false ||
-                strpos($value, "\r") !== false ||
-                strpos($value, "\t") !== false ||
-                strpos($value, ' ') !== false) {
-            $str2 = $enclosure;
-            $escaped = 0;
-            $len = strlen($value);
-            for ($i=0;$i<$len;$i++) {
-                if ($value[$i] == $escape_char) {
-                    $escaped = 1;
-                } else if (!$escaped && $value[$i] == $enclosure) {
-                    $str2 .= $enclosure;
-                } else {
-                    $escaped = 0;
-                }
-                $str2 .= $value[$i];
-            }
-            $str2 .= $enclosure;
-            $str .= $str2.$delimiter;
-        } else {
-            $str .= $value.$delimiter;
-        }
-    }
-    $str = substr($str,0,-1);
-    $str .= "\n";
+	$str = '';
+	$escape_char = '\\';
+	foreach ($fields as $value) {
+		if (strpos($value, $delimiter) !== false ||
+				strpos($value, $enclosure) !== false ||
+				strpos($value, "\n") !== false ||
+				strpos($value, "\r") !== false ||
+				strpos($value, "\t") !== false ||
+				strpos($value, ' ') !== false) {
+			$str2 = $enclosure;
+			$escaped = 0;
+			$len = strlen($value);
+			for ($i=0;$i<$len;$i++) {
+				if ($value[$i] == $escape_char) {
+					$escaped = 1;
+				} else if (!$escaped && $value[$i] == $enclosure) {
+					$str2 .= $enclosure;
+				} else {
+					$escaped = 0;
+				}
+				$str2 .= $value[$i];
+			}
+			$str2 .= $enclosure;
+			$str .= $str2.$delimiter;
+		} else {
+			$str .= $value.$delimiter;
+		}
+	}
+	$str = substr($str,0,-1);
+	$str .= "\n";
 
-    return $str;
+	return $str;
 }
 

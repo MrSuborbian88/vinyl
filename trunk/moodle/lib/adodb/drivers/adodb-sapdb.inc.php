@@ -63,43 +63,43 @@ class ADODB_SAPDB extends ADODB_odbc {
 
 		global $ADODB_FETCH_MODE;
 		$save = $ADODB_FETCH_MODE;
-        $ADODB_FETCH_MODE = ADODB_FETCH_NUM;
-        if ($this->fetchMode !== FALSE) {
-        	$savem = $this->SetFetchMode(FALSE);
-        }
-        
-        $rs = $this->Execute($sql);
-        if (isset($savem)) {
-        	$this->SetFetchMode($savem);
-        }
-        $ADODB_FETCH_MODE = $save;
+		$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
+		if ($this->fetchMode !== FALSE) {
+			$savem = $this->SetFetchMode(FALSE);
+		}
+		
+		$rs = $this->Execute($sql);
+		if (isset($savem)) {
+			$this->SetFetchMode($savem);
+		}
+		$ADODB_FETCH_MODE = $save;
 
-        if (!is_object($rs)) {
-        	return FALSE;
-        }
+		if (!is_object($rs)) {
+			return FALSE;
+		}
 
 		$indexes = array();
 		while ($row = $rs->FetchRow()) {
-            $indexes[$row[0]]['unique'] = $row[1] == 'UNIQUE';
-            $indexes[$row[0]]['columns'][] = $row[2];
-    	}
+			$indexes[$row[0]]['unique'] = $row[1] == 'UNIQUE';
+			$indexes[$row[0]]['columns'][] = $row[2];
+		}
 		if ($primary) {
 			$indexes['SYSPRIMARYKEYINDEX'] = array(
 					'unique' => True,	// by definition
 					'columns' => $this->GetCol("SELECT columnname FROM COLUMNS WHERE tablename=$table AND mode='KEY' ORDER BY pos"),
 				);
 		}
-        return $indexes;
+		return $indexes;
 	}
 	
  	function &MetaColumns ($table)
 	{
 		global $ADODB_FETCH_MODE;
 		$save = $ADODB_FETCH_MODE;
-        $ADODB_FETCH_MODE = ADODB_FETCH_NUM;
-        if ($this->fetchMode !== FALSE) {
-        	$savem = $this->SetFetchMode(FALSE);
-        }
+		$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
+		if ($this->fetchMode !== FALSE) {
+			$savem = $this->SetFetchMode(FALSE);
+		}
 		$table = $this->Quote(strtoupper($table));
 		
 		$retarr = array();
@@ -132,10 +132,10 @@ class ADODB_SAPDB extends ADODB_odbc {
 			}
 			$retarr[$fld->name] = $fld;	
 		}
-        if (isset($savem)) {
-        	$this->SetFetchMode($savem);
-        }
-        $ADODB_FETCH_MODE = $save;
+		if (isset($savem)) {
+			$this->SetFetchMode($savem);
+		}
+		$ADODB_FETCH_MODE = $save;
 
 		return $retarr;
 	}

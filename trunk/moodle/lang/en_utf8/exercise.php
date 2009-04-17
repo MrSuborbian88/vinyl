@@ -1,5 +1,5 @@
 <?PHP // $Id: exercise.php,v 1.4.8.1 2008/10/02 14:39:13 poltawski Exp $ 
-      // exercise.php - created with Moodle 1.7 beta + (2006101003)
+	  // exercise.php - created with Moodle 1.7 beta + (2006101003)
 
 
 $string['absent'] = 'Absent';
@@ -31,7 +31,7 @@ $string['deadline'] = 'Deadline';
 $string['deadlineis'] = 'The Deadline is $a';
 $string['delete'] = 'Delete';
 $string['deletesubmissionwarning'] = 'Warning: there $a assessments associated with this submission.<br />
-    It is strongly suggested that this submission is NOT deleted.';
+	It is strongly suggested that this submission is NOT deleted.';
 $string['deleting'] = 'Deleting';
 $string['description'] = 'Description';
 $string['descriptionofexercise'] = 'In an Exercise Assignment the description of the exercise or task to be done by the $a is put into a Word document or HTML file. This file is uploaded into the exercise before the assignment is opened up to the $a. It is also possible to create a set of variants on the same exercise or task, again as Word documents or HTML files, and upload these into the exercise before it is opened up to the $a.';
@@ -88,13 +88,13 @@ $string['nosubmissions'] = 'No Submissions';
 $string['notassessedyet'] = 'Not Assessed Yet';
 $string['notavailable'] = 'Not Available';
 $string['noteonassessmentelements'] = 'Note that grading is broken down into a number of \'Assessment Elements\'.<br />
-    This makes the grading easier and more consistent. As teacher you must add these <br />
-    Elements before making the assignment available to students. This is done by<br />
-    clicking on the assignment in the course, if no elements are present you will be asked<br />
-    to add them. You can change the number of elements using the Edit Assignment screen,<br />
-    the elements themselves can be amended from the \"Managing Assignment\" screen.';
+	This makes the grading easier and more consistent. As teacher you must add these <br />
+	Elements before making the assignment available to students. This is done by<br />
+	clicking on the assignment in the course, if no elements are present you will be asked<br />
+	to add them. You can change the number of elements using the Edit Assignment screen,<br />
+	the elements themselves can be amended from the \"Managing Assignment\" screen.';
 $string['noteongradinggrade'] = 'This grade is a measure of how well your assessment agrees with the assessment of <br />
-    your work by the $a. The higher the grade the closer the agreement.';
+	your work by the $a. The higher the grade the closer the agreement.';
 $string['noteonstudentassessments'] = '{Grade from student / Grading Grade for assessment}';
 $string['notgraded'] = 'Not Graded';
 $string['notitlegiven'] = 'No Title Given';

@@ -24,21 +24,21 @@ var ec_quiz_finish = ec_page_start + <?php echo ($timerstartvalue * 1000); ?>;
 <!--EDIT BELOW CODE TO YOUR OWN MENU-->
 <table class="generalbox" border="0" cellpadding="0" cellspacing="0" style="width:150px;">
 <tr>
-    <td class="generalboxcontent" bgcolor="#ffffff" width="100%">
-    <table class="generaltable" border="0" width="150" cellspacing="0" cellpadding="0">
-    <tr>
-        <th class="generaltableheader" width="100%" scope="col"><?php print_string("timeleft","quiz");?></th>
-    </tr>
-    <tr>
-        <td id="QuizTimer" class="generaltablecell" align="center" width="100%">
-        <form id="clock"><div><input onfocus="blur()" type="text" id="time"
-        style="background-color: transparent; border: none; width: 70%; font-family: sans-serif; font-size: 14pt; font-weight: bold; text-align: center;" />
-        </div>
-        </form>
-        </td>
-    </tr>
-    </table>
-    </td>
+	<td class="generalboxcontent" bgcolor="#ffffff" width="100%">
+	<table class="generaltable" border="0" width="150" cellspacing="0" cellpadding="0">
+	<tr>
+		<th class="generaltableheader" width="100%" scope="col"><?php print_string("timeleft","quiz");?></th>
+	</tr>
+	<tr>
+		<td id="QuizTimer" class="generaltablecell" align="center" width="100%">
+		<form id="clock"><div><input onfocus="blur()" type="text" id="time"
+		style="background-color: transparent; border: none; width: 70%; font-family: sans-serif; font-size: 14pt; font-weight: bold; text-align: center;" />
+		</div>
+		</form>
+		</td>
+	</tr>
+	</table>
+	</td>
 </tr>
 </table>
 <!--END OF EDIT-->
