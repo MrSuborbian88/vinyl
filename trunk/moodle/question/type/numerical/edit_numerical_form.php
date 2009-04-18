@@ -9,6 +9,10 @@
  * @subpackage questiontypes
  */
 
+ // VINL Code
+ //   Daniel Ploch - 04/18/2009
+ //   Modified form for simplicity
+ 
 /**
  * numerical editing form definition.
  */
@@ -36,9 +40,9 @@ class question_edit_numerical_form extends question_edit_form {
 		$repeated[] =& $mform->createElement('select', 'fraction', get_string('grade'), $gradeoptions);
 		$repeatedoptions['fraction']['default'] = 0;
 
-		$repeated[] =& $mform->createElement('htmleditor', 'feedback', get_string('feedback', 'quiz'),
-								array('course' => $this->coursefilesid));
-		$mform->setType('feedback', PARAM_RAW);
+		//$repeated[] =& $mform->createElement('htmleditor', 'feedback', get_string('feedback', 'quiz'),
+		//						array('course' => $this->coursefilesid));
+		//$mform->setType('feedback', PARAM_RAW);
 
 
 		if (isset($this->question->options)){
@@ -96,7 +100,7 @@ class question_edit_numerical_form extends question_edit_form {
 					$default_values['answer['.$key.']'] = $answer->answer;
 					$default_values['fraction['.$key.']'] = $answer->fraction;
 					$default_values['tolerance['.$key.']'] = $answer->tolerance;
-					$default_values['feedback['.$key.']'] = $answer->feedback;
+					//$default_values['feedback['.$key.']'] = $answer->feedback;
 					$key++;
 				}
 			}
