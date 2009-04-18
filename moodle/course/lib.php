@@ -1,5 +1,6 @@
 <?php  // $Id: lib.php,v 1.538.2.69 2009/01/14 04:47:21 dongsheng Exp $
    // Library of useful functions
+	//VINL change: line 2781: added a maximum value for displaying the right move arrow
 
 
 define('COURSE_MAX_LOG_DISPLAY', 150);		  // days
@@ -2772,19 +2773,19 @@ function make_editing_buttons($mod, $absolute=false, $moveselect=true, $indent=-
 			$leftarrow  = 'left.gif';
 		}
 
-		if ($indent > 0) {
-			$leftright .= '<a class="editing_moveleft" title="'.$str->moveleft.'" href="'.$path.'/mod.php?id='.$mod->id.
-						'&amp;indent=-1&amp;sesskey='.$sesskey.$section.'"><img'.
-						' src="'.$CFG->pixpath.'/t/'.$leftarrow.'" class="iconsmall" '.
-						' alt="'.$str->moveleft.'" /></a>'."\n";
-		}
-		if ($indent >= 0) {
-			$leftright .= '<a class="editing_moveright" title="'.$str->moveright.'" href="'.$path.'/mod.php?id='.$mod->id.
-						'&amp;indent=1&amp;sesskey='.$sesskey.$section.'"><img'.
-						' src="'.$CFG->pixpath.'/t/'.$rightarrow.'" class="iconsmall" '.
-						' alt="'.$str->moveright.'" /></a>'."\n";
-		}
-	}
+        if ($indent > 0) {
+            $leftright .= '<a class="editing_moveleft" title="'.$str->moveleft.'" href="'.$path.'/mod.php?id='.$mod->id.
+                        '&amp;indent=-1&amp;sesskey='.$sesskey.$section.'"><img'.
+                        ' src="'.$CFG->pixpath.'/t/'.$leftarrow.'" class="iconsmall" '.
+                        ' alt="'.$str->moveleft.'" /></a>'."\n";
+        }
+        if (($indent >= 0) && ($indent < 40)) { //VINL change:  Added a maximum to displaying the right arrow
+            $leftright .= '<a class="editing_moveright" title="'.$str->moveright.'" href="'.$path.'/mod.php?id='.$mod->id.
+                        '&amp;indent=1&amp;sesskey='.$sesskey.$section.'"><img'.
+                        ' src="'.$CFG->pixpath.'/t/'.$rightarrow.'" class="iconsmall" '.
+                        ' alt="'.$str->moveright.'" /></a>'."\n";
+        }
+    }
 
 	return '<span class="commands">'."\n".$leftright.$move.
 		   '<a class="editing_update" title="'.$str->update.'" href="'.$path.'/mod.php?update='.$mod->id.
