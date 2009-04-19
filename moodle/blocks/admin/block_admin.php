@@ -1,5 +1,9 @@
 <?php //$Id: block_admin.php,v 1.100.2.13 2008/12/19 09:49:10 mjollnir_ Exp $
 
+// VINL Code
+//   Daniel Ploch - 04/18/2009
+// - Began integration of Kwik Kqiz Kreator
+
 class block_admin extends block_list {
 	function init() {
 		$this->title = get_string('administration');
@@ -192,6 +196,13 @@ class block_admin extends block_list {
 			}
 		}
 
+	/// VINL Code - Kwik Kwiz Kreator
+		if ($course->id != SITEID and has_capability('moodle/question:add', $context) and has_capability('moodle/question:managecategory', $context))
+		{
+			$this->content->items[]='<a title='.get_string('quizcreatordescription').'  "href="'.$CFG->wwwroot.'/question/quizcreator.php?courseid='.$this->instance->pageid.
+					'">'.get_string('quizcreator').'</a>';
+			$this->content->icons[]='<img src="'.$CFG->pixpath.'/i/quizcreator.gif" class="icon" alt="" />';
+		}
 
 	/// Manage files
 		if ($course->id !== SITEID and has_capability('moodle/course:managefiles', $context)) {

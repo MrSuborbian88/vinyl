@@ -10,7 +10,7 @@ $CFG->dbpass	= '';
 $CFG->dbpersist =  false;
 $CFG->prefix	= 'mdl_';
 
-$CFG->wwwroot   = 'http://128.113.91.132';
+$CFG->wwwroot   = 'http://128.113.201.115';
 $CFG->dirroot   = 'C:\Users\plochd\Documents\Course Files Spring 2009\Software Design and Documentation\moodlecopy\server\moodle';
 $CFG->dataroot  = 'C:\Users\plochd\Documents\Course Files Spring 2009\Software Design and Documentation\moodlecopy\server/moodledata';
 $CFG->admin	 = 'admin';
