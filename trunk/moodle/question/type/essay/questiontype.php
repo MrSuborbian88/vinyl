@@ -170,5 +170,5 @@ class question_essay_qtype extends default_questiontype {
 //////////////////////////////////////////////////////////////////////////
 //// INITIATION - Without this line the question type is not in use... ///
 //////////////////////////////////////////////////////////////////////////
-question_register_questiontype(new question_essay_qtype());
+//question_register_questiontype(new question_essay_qtype());
 ?>
