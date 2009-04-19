@@ -1,8 +1,8 @@
 <?php // $Id: mod.php,v 1.127.2.3 2009/02/05 13:41:18 stronk7 Exp $
 
 //  Moves, adds, updates, duplicates or deletes modules in a course
-//VINL changes: changed the amount that the move right and move left commands change by (times 2 now)
-//added a maximum number of indents that can be added (maximum now 40)
+//VINL changes: changed the amount that the move right and move left commands change by (times 2 now) line 326
+//added a maximum number of indents that can be added (maximum now 40) line 332
 
     require("../config.php");
     require_once("lib.php");
