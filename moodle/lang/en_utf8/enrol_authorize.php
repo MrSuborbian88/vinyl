@@ -37,7 +37,7 @@ $string['adminneworder'] = 'Dear Admin,
   and then the user is to be enrolled to course; otherwise it will be expired
   on $a->expireon and cannot be captured after this day.
 
-  You can also accept/deny the payment to enrol the student immediately following this link:
+  You can also accept/deny the payment to enroll the student immediately following this link:
   $a->url';
 $string['adminnewordersubject'] = '$a->course; New Pending Order: $a->orderid';
 $string['adminpendingorders'] = 'You have disabled scheduled-capture feature.<br />Total $a->count transactions with the status of \'Authorized/Pending Capture\' are to be cancelled unless you check them.<br />To accept/deny payments, go to <a href=\'$a->url\'>Payment Management</a> page.';
@@ -83,13 +83,13 @@ $string['ccno'] = 'Credit Card Number';
 $string['cctype'] = 'Credit Card Type';
 $string['ccvv'] = 'Card Verification';
 $string['ccvvhelp'] = 'Look at the back of card (last 3 digits)';
-$string['choosemethod'] = 'If you know the enrolment key of the cource, please enter it below;<br />Otherwise you need to pay for this course.';
+$string['choosemethod'] = 'If you know the enrollment key of the cource, please enter it below;<br />Otherwise you need to pay for this course.';
 $string['chooseone'] = 'Fill one or both of the following two fields. The password isn\'t shown.';
 $string['costdefaultdesc'] = '<strong>In course settings, enter -1</strong> to use this default cost to course cost field.';
 $string['cutofftime'] = 'Transaction Cut-Off Time. When the last transaction is picked up for settlement?';
 $string['dataentered'] = 'Data entered';
 $string['delete'] = 'Destroy';
-$string['description'] = 'The Authorize.net module allows you to set up paid courses via payment providers. If the cost for any course is zero, then students are not asked to pay for entry. Two ways to set the course cost (1) a site-wide cost as a default for the whole site or (2) a course setting that you can set for each course individually. The course cost overrides the site cost.<br /><br /><b>Note:</b> If you enter an enrolment key in the course settings, then students will also have the option to enrol using a key. This is useful if you have a mixture of paying and non-paying students.';
+$string['description'] = 'The Authorize.net module allows you to set up paid courses via payment providers. If the cost for any course is zero, then students are not asked to pay for entry. Two ways to set the course cost (1) a site-wide cost as a default for the whole site or (2) a course setting that you can set for each course individually. The course cost overrides the site cost.<br /><br /><b>Note:</b> If you enter an enrollment key in the course settings, then students will also have the option to enroll using a key. This is useful if you have a mixture of paying and non-paying students.';
 $string['echeckabacode'] = 'Bank ABA Number';
 $string['echeckaccnum'] = 'Bank Account Number';
 $string['echeckacctype'] = 'Bank Account Type';
@@ -192,10 +192,10 @@ $string['testmode'] = '[TEST MODE]';
 $string['testwarning'] = 'Capturing/Voiding/Refunding seems working in test mode, but no record was updated or inserted in database.';
 $string['transid'] = 'TransactionID';
 $string['underreview'] = 'Under Review';
-$string['unenrolstudent'] = 'Unenrol student?';
+$string['unenrolstudent'] = 'Unenroll student?';
 $string['uploadcsv'] = 'Upload a CSV file';
-$string['usingccmethod'] = 'Enrol using <a href=\"$a->url\"><strong>Credit Card</strong></a>';
-$string['usingecheckmethod'] = 'Enrol using <a href=\"$a->url\"><strong>eCheck</strong></a>';
+$string['usingccmethod'] = 'Enroll using <a href=\"$a->url\"><strong>Credit Card</strong></a>';
+$string['usingecheckmethod'] = 'Enroll using <a href=\"$a->url\"><strong>eCheck</strong></a>';
 $string['void'] = 'Void';
 $string['voidyes'] = 'The transaction will be cancelled. Are you sure?';
 $string['welcometocoursesemail'] = 'Dear student,

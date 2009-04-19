@@ -222,18 +222,18 @@ $string['mnetdisabled'] = 'Moodle Network is <strong>disabled</strong>.';
 $string['authmnetdisabled'] = 'Moodle Networking <em>Authentication plugin</em>is <strong>disabled</strong>.';
 $string['authmnetautoadddisabled'] = '<em>Auto-add users</em> in Moodle Networking Authentication plugin is <strong>disabled</strong>.';
 $string['mnetenrol'] = 'Enrolments';
-$string['remoteenrolhosts_desc'] = 'Enrol and unenrol users from your Moodle installation
+$string['remoteenrolhosts_desc'] = 'Enroll and unenroll users from your Moodle installation
 									on Moodle Hosts that allow you to do so via the Moodle
 									Network enrolment plugin.';
 $string['host'] = 'host';
 $string['enrolments'] = 'enrolments';
-$string['editenrolments'] = 'enrol';
+$string['editenrolments'] = 'enroll';
 $string['logs'] = 'logs';
 $string['courses'] = 'courses';
 
-$string['enrolcourses_desc'] = 'Courses offered for remote enrolment by this host.';
-$string['enrolcourseenrol_desc'] = 'Enrol/unenrol users from this course using Moodle Network enrolments.
-									Note that users may have been enrolled in this course via other enrolment
+$string['enrolcourses_desc'] = 'Courses offered for remote enrollment by this host.';
+$string['enrolcourseenrol_desc'] = 'Enroll/unenroll users from this course using Moodle Network enrollments.
+									Note that users may have been enrolled in this course via other enrollment
 									methods if the remote hosts allows them. Such enrolments are listed under
 									<em>Other enrolled users</em>';
 $string['host'] = 'host';

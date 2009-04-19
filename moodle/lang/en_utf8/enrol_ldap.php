@@ -10,7 +10,7 @@ $string['description'] = '<p>You can use an LDAP server to control your enrolmen
 						  LDAP, with each group having multiple membership fields 
 						  (<em>member</em> or <em>memberUid</em>) that contain a unique
 						  identification of the user.</p>
-						  <p>To use LDAP enrolment, your users <strong>must</strong> 
+						  <p>To use LDAP enrollment, your users <strong>must</strong> 
 						  to have a valid  idnumber field. The LDAP groups must have 
 						  that idnumber in the member fields for a user to be enrolled 
 						  in the course.
@@ -36,7 +36,7 @@ $string['enrol_ldap_course_idnumber'] = 'Map to the unique identifier in LDAP, u
 										 <em>cn</em> or <em>uid</em>. It is 
 										 recommended to lock the value if you are using 
 										 automatic course creation.';
-$string['enrol_ldap_course_settings'] = 'Course enrolment settings';
+$string['enrol_ldap_course_settings'] = 'Course enrollment settings';
 $string['enrol_ldap_course_shortname'] = 'Optional: LDAP field to get the shortname from.';
 $string['enrol_ldap_course_summary'] = 'Optional: LDAP field to get the summary from.';
 $string['enrol_ldap_editlock'] = 'Lock value';
@@ -57,7 +57,7 @@ $string['enrol_ldap_student_contexts'] = 'List of contexts where groups with stu
 $string['enrol_ldap_student_memberattribute'] = 'Member attribute, when users belongs
 										  (is enrolled) to a group. Usually \'member\'
 										  or \'memberUid\'.';
-$string['enrol_ldap_student_settings'] = 'Student enrolment settings';
+$string['enrol_ldap_student_settings'] = 'Student enrollment settings';
 $string['enrol_ldap_teacher_contexts'] = 'List of contexts where groups with teacher
 										  enrolments are located. Separate different 
 										  contexts with \';\'. For example: 
@@ -65,7 +65,7 @@ $string['enrol_ldap_teacher_contexts'] = 'List of contexts where groups with tea
 $string['enrol_ldap_teacher_memberattribute'] = 'Member attribute, when users belongs
 										  (is enrolled) to a group. Usually \'member\'
 										  or \'memberUid\'.';
-$string['enrol_ldap_teacher_settings'] = 'Teacher enrolment settings';
+$string['enrol_ldap_teacher_settings'] = 'Teacher enrollment settings';
 $string['enrol_ldap_template'] = 'Optional: auto-created courses can copy 
 								  their settings from a template course.';
 $string['enrol_ldap_updatelocal'] = 'Update local data';

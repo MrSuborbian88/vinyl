@@ -1,5 +1,7 @@
 <?php  // $Id: questiontype.php,v 1.20.2.8 2008/11/28 06:07:24 tjhunt Exp $
-
+// VINL Code
+//   Daniel Souza - 04/19/2009
+// - Disabled this question type.
 //////////////////
 ///   ESSAY   ///
 /////////////////

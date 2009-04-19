@@ -1,5 +1,10 @@
 <?PHP // $Id: moodle.php,v 1.141.2.55 2009/01/27 06:35:44 tjhunt Exp $
 	  // moodle.php - created with Moodle 1.7 beta + (2006101003)
+// VINL Code
+//   Daniel Souza - 04/14/2009
+// - Added descriptions for Tool Tips
+//	 Daniel Souza = 04/19/2009
+// - Changed enrol to enroll
 
 
 $string['abouttobeinstalled'] = 'about to be installed';
@@ -54,7 +59,7 @@ $string['adminhelpconfigvariables'] = 'Configure variables that affect general o
 $string['adminhelpcourses'] = 'Define courses and categories and assign people to them, edit pending courses';
 $string['adminhelpeditorsettings'] = 'Define basic settings for HTML editor';
 $string['adminhelpedituser'] = 'Browse the list of user accounts and edit any of them';
-$string['adminhelpenrolments'] = 'Choose internal or external ways to control enrolments';
+$string['adminhelpenrolments'] = 'Choose internal or external ways to control enrollments';
 $string['adminhelpenvironment'] = 'Check how your server suits current and future installation requirements';
 $string['adminhelpfailurelogs'] = 'Browse logs of failed logins';
 $string['adminhelphealthcenter'] = 'Automatic detection of site problems';
@@ -121,9 +126,9 @@ $string['assessment'] = 'Assessment';
 $string['assignadmins'] = 'Assign admins';
 $string['assigncreators'] = 'Assign creators';
 $string['assignsiteroles'] = 'Assign site-wide roles';
-$string['assignstudents'] = 'Enrol students';
-$string['assignstudentsnote'] = 'Note: it may not be necessary to use this page, since it is possible for students to enrol themselves in this course.';
-$string['assignstudentspass'] = 'All you may need to do is notify your students of the enrolment key for this course, which is currently set to: \'$a\'';
+$string['assignstudents'] = 'Enroll students';
+$string['assignstudentsnote'] = 'Note: it may not be necessary to use this page, since it is possible for students to enroll themselves in this course.';
+$string['assignstudentspass'] = 'All you may need to do is notify your students of the enrollment key for this course, which is currently set to: \'$a\'';
 $string['assignteachers'] = 'Assign teachers';
 $string['authentication'] = 'Authentication';
 $string['authenticateduser'] = 'Authenticated user';
@@ -158,7 +163,7 @@ $string['backupkeephelp'] = 'How many recent backups for each course do you want
 $string['backuplogdetailed'] = 'Detailed execution log';
 $string['backuploglaststatus'] = 'Last execution log';
 $string['backuplogshelp'] = 'If enabled, then course logs will be included in automated backups';
-$string['backupmetacoursehelp'] = 'If enabled, then metacourse info (inherited enrolments) will be included in automated backups';
+$string['backupmetacoursehelp'] = 'If enabled, then metacourse info (inherited enrollments) will be included in automated backups';
 $string['backupnameformat'] = '%%Y%%m%%d-%%H%%M';
 $string['backupnoneusersinfo'] = 'Notice: You have selected to backup no users (\"none\"), so all the modules backup have been switched to \"without user data\" mode. Please note that the \"exercise\" and \"workshop\" modules aren\'t compatible with this type of backup, so they have been deactivated completely.';
 $string['backupnonisowarning'] = 'Warning: this backup is from a non-Unicode version of Moodle (pre 1.6).  If this backup contains any non-ISO-8859-1 texts then they may be CORRUPTED if you try to restore them to this Unicode version of Moodle.  See the <a href=\"http://docs.moodle.org/en/Backup_FAQ\">Backup FAQ</a> for more information about how to recover this backup correctly.';
@@ -215,7 +220,7 @@ $string['childcoursenotfound'] = 'Child course not found!';
 $string['childcourses'] = 'Child courses';
 $string['choose'] = 'Choose';
 $string['choosecourse'] = 'Choose a course';
-$string['chooseenrolmethod'] = 'Choose enrolment plugin';
+$string['chooseenrolmethod'] = 'Choose enrollment plugin';
 $string['chooselivelogs'] = 'Or watch current activity';
 $string['chooselogs'] = 'Choose which logs you want to see';
 $string['choosereportfilter'] = 'Choose a filter for the report';
@@ -568,31 +573,31 @@ $string['enable'] = 'Enable';
 $string['encryptedcode'] = 'Encrypted code';
 $string['enroldate'] = 'Date range';
 $string['enrolenddate'] = 'End date';
-$string['enrolenddaterror'] = 'Enrolment end date cannot be earlier than start date';
+$string['enrolenddaterror'] = 'Enrollment end date cannot be earlier than start date';
 $string['enrollable'] = 'Course enrollable';
 $string['enrolledincourse'] = 'Enrolled in course \"$a\"';
 $string['enrolledincourserole'] = 'Enrolled in \"$a->course\" as \"$a->role\"';
 $string['enrolledincoursenot'] = 'Not enrolled in course \"$a\"';
 $string['enrolledincoursenotrole'] = 'Error enrolling into \"$a->course\" as \"$a->role\"';
-$string['enrollfirst'] = 'You have to enrol in one of the courses before you can use the site activities';
-$string['enrolme'] = 'Enrol me in this course';
-$string['enrolmentconfirmation'] = 'You are about to enrol yourself as a member of this course.<br />Are you sure you wish to do this?';
-$string['enrolmentend'] = 'Enrolment Ends';
-$string['enrolmentkey'] = 'Enrolment key';
-$string['enrolmentkeyfrom'] = 'This course requires an \'enrolment key\' - a one-time<br />
+$string['enrollfirst'] = 'You have to enroll in one of the courses before you can use the site activities';
+$string['enrolme'] = 'Enroll me in this course';
+$string['enrolmentconfirmation'] = 'You are about to enroll yourself as a member of this course.<br />Are you sure you wish to do this?';
+$string['enrolmentend'] = 'Enrollment Ends';
+$string['enrolmentkey'] = 'Enrollment key';
+$string['enrolmentkeyfrom'] = 'This course requires an \'enrollment key\' - a one-time<br />
 password that you should have received from $a';
-$string['enrolmentkeyfromguest'] = 'This course requires an \'enrolment key\' - as a guest<br />
+$string['enrolmentkeyfromguest'] = 'This course requires an \'enrollment key\' - as a guest<br />
 you must enter it each time you enter the course. You should have received it from $a';
-$string['enrolmentkeyhint'] = 'That enrolment key was incorrect, please try again<br />
+$string['enrolmentkeyhint'] = 'That enrollment key was incorrect, please try again<br />
 (Here\'s a hint - it starts with \'$a\')';
-$string['enrolmentnew'] = 'New enrolment in $a';
+$string['enrolmentnew'] = 'New enrollment in $a';
 $string['enrolmentnewuser'] = '$a->user has enrolled in course \"$a->course\"';
-$string['enrolmentnointernal'] = 'Manual enrolments are currently not enabled';
+$string['enrolmentnointernal'] = 'Manual enrollments are currently not enabled';
 $string['enrolmentnotyet'] = 'Sorry, you can not access this course until <br /> $a';
-$string['enrolmentplugins'] = 'Enrolment Plugins';
-$string['enrolments'] = 'Enrolments';
-$string['enrolmentstart'] = 'Enrolment Started';
-$string['enrolperiod'] = 'Enrolment duration';
+$string['enrolmentplugins'] = 'Enrollment Plugins';
+$string['enrolments'] = 'Enrollments';
+$string['enrolmentstart'] = 'Enrollment Started';
+$string['enrolperiod'] = 'Enrollment duration';
 $string['enrolstartdate'] = 'Start date';
 $string['entercourse'] = 'Click to enter this course';
 $string['enteremailaddress'] = 'Enter in your email address to reset your
@@ -611,7 +616,7 @@ $string['existingcoursedeleting'] = 'Existing course, deleting it first';
 $string['existingcreators'] = 'Existing course creators';
 $string['existingstudents'] = 'Enrolled students';
 $string['existingteachers'] = 'Existing teachers';
-$string['expirynotify'] = 'Enrolment expiry notification';
+$string['expirynotify'] = 'Enrollment expiry notification';
 $string['expirynotifyemail'] = 'The following students in this course are expiring after exactly $a->threshold days:
 
 $a->current
@@ -620,20 +625,20 @@ The following students in this course are expiring in less than $a->threshold da
 
 $a->past
 
-You may go to the following page to extend their enrolment period:
+You may go to the following page to extend their enrollment period:
 $a->extendurl';
 $string['expirynotifystudents'] = 'Notify students';
 $string['expirynotifystudentsemail'] = 'Dear $a->studentstr:
 
-This is a notification that your enrolment in the course $a->course will expire in $a->threshold days.
+This is a notification that your enrollment in the course $a->course will expire in $a->threshold days.
 
 Please contact $a->teacherstr for any further enquiries.';
 $string['expirythreshold'] = 'Threshold';
 $string['explanation'] = 'Explanation';
-$string['extendenrol'] = 'Extend enrolment (individual)';
-$string['groupextendenrol'] = 'Extend enrolment (common)';
-$string['courseenrolstartdate'] = 'Course enrolment start date';
-$string['courseenrolenddate'] = 'Course enrolment end date';
+$string['extendenrol'] = 'Extend enrollment (individual)';
+$string['groupextendenrol'] = 'Extend enrollment (common)';
+$string['courseenrolstartdate'] = 'Course enrollment start date';
+$string['courseenrolenddate'] = 'Course enrollment end date';
 $string['startingfrom'] = 'Starting from';
 $string['extendperiod'] = 'Extended period';
 $string['failedloginattempts'] = '$a->attempts failed logins since your last login';
@@ -814,7 +819,7 @@ $string['importdatafinished'] = 'Import complete! Continue to your course';
 $string['importdatafrom'] = 'Find a course to import data from:';\
 $string['importdescription'] = 'Import activities from another course.';
 $string['importgroups'] = 'Import groups';
-$string['importmetacoursenote'] = 'Use this form to add courses to your meta course (this will import the enrolments)';
+$string['importmetacoursenote'] = 'Use this form to add courses to your meta course (this will import the enrollments)';
 $string['inactive'] = 'Inactive';
 $string['include'] = 'Include';
 $string['includeallusers'] = 'Include All Users';
@@ -878,7 +883,7 @@ $string['loginsite'] = 'Login to the site';
 $string['loginsteps'] = 'Hi! For full access to courses you\'ll need to take
    a minute to create a new account for yourself on this web site.
    Each of the individual courses may also have a one-time
-   \"enrolment key\", which you won\'t need until later. Here are
+   \"enrollment key\", which you won\'t need until later. Here are
    the steps:
    <ol>
    <li>Fill out the <a href=\"$a\">New Account</a> form with your details.</li>
@@ -886,8 +891,8 @@ $string['loginsteps'] = 'Hi! For full access to courses you\'ll need to take
    <li>Read your email, and click on the web link it contains.</li>
    <li>Your account will be confirmed and you will be logged in.</li>
    <li>Now, select the course you want to participate in.</li>
-   <li>If you are prompted for an \"enrolment key\" - use the one
-   that your teacher has given you. This will \"enrol\" you in the
+   <li>If you are prompted for an \"enrollment key\" - use the one
+   that your teacher has given you. This will \"enroll\" you in the
    course.</li>
    <li>You can now access the full course. From now on you will only need
    to enter your personal username and password (in the form on this page)
@@ -917,7 +922,7 @@ $string['managedatabase'] = 'Database';
 $string['managefilters'] = 'Filters';
 $string['managemeta'] = 'Is this a meta course?';
 $string['managemetadisabled'] = 'This is disabled because this course is already in a meta course';
-$string['managemetaexplan'] = '(This means that enrolments are inherited from other courses)';
+$string['managemetaexplan'] = '(This means that enrollments are inherited from other courses)';
 $string['managemodules'] = 'Modules';
 $string['manageroles'] = 'Roles and permissions';
 $string['markedthistopic'] = 'This topic is highlighted as the current topic';
@@ -936,7 +941,7 @@ $string['messageselectadd'] = 'Add / send message';
 $string['metaaddcourse'] = 'Add this course';
 $string['metaalreadycourses'] = 'Courses already assigned';
 $string['metaalreadyhascourses'] = 'This meta course already has child courses.';
-$string['metaalreadyhasenrolments'] = 'This course already has normal enrolments.';
+$string['metaalreadyhasenrolments'] = 'This course already has normal enrollments.';
 $string['metaalreadyinmeta'] = 'This course is already part of a meta course.';
 $string['metaassigncourses'] = 'Assign courses';
 $string['metacourse'] = 'Metacourse';
@@ -1281,7 +1286,7 @@ $string['requestcourse'] = 'Request a course';
 $string['requestedby'] = 'Requested by';
 $string['requestreason'] = 'Reason for course request';
 $string['required'] = 'Required';
-$string['requireskey'] = 'This course requires an enrolment key';
+$string['requireskey'] = 'This course requires an enrollment key';
 $string['requirespayment'] = 'This course requires payment for access';
 $string['reset'] = 'Reset';
 $string['resetcomponent'] = 'Component';
@@ -1442,7 +1447,7 @@ $string['statsreport1'] = 'Logins';
 $string['statsreport10'] = 'User activity';
 $string['statsreport11'] = 'Most active courses';
 $string['statsreport12'] = 'Most active courses (weighted)';
-$string['statsreport13'] = 'Most participatory courses (enrolments)';
+$string['statsreport13'] = 'Most participatory courses (enrollments)';
 $string['statsreport14'] = 'Most participatory courses (views/posts)';
 $string['statsreport2'] = 'Views (all roles)';
 $string['statsreport3'] = 'Posts (all roles)';
@@ -1540,13 +1545,13 @@ $string['trysearching'] = 'Try searching instead.';
 $string['turneditingoff'] = 'Turn editing off';
 $string['turneditingon'] = 'Turn editing on';
 $string['undecided'] = 'Undecided';
-$string['unenrol'] = 'Unenrol';
-$string['unenroldescription'] = 'Unenrol allows you to leave a course.';
-$string['unenrolroleusers'] = 'Unenrol users';
-$string['unenrolallstudents'] = 'Unenrol all students';
-$string['unenrolallstudentssure'] = 'Are you sure you want to completely unenrol all students from this course?';
-$string['unenrolme'] = 'Unenrol me from $a';
-$string['unenrolsure'] = 'Are you sure you want to unenrol $a from this course?';
+$string['unenrol'] = 'Unenroll';
+$string['unenroldescription'] = 'Unenroll allows you to leave a course.';
+$string['unenrolroleusers'] = 'Unenroll users';
+$string['unenrolallstudents'] = 'Unenroll all students';
+$string['unenrolallstudentssure'] = 'Are you sure you want to completely unenroll all students from this course?';
+$string['unenrolme'] = 'Unenroll me from $a';
+$string['unenrolsure'] = 'Are you sure you want to unenroll $a from this course?';
 $string['unfinished'] = 'Unfinished';
 $string['unknowncategory'] = 'Unknown category';
 $string['unlimited'] = 'Unlimited';
@@ -1691,7 +1696,7 @@ $string['years'] = 'years';
 $string['yes'] = 'Yes';
 $string['youareabouttocreatezip'] = 'You are about to create a zip file containing';
 $string['youaregoingtorestorefrom'] = 'You are about to start the restore process for';
-$string['youneedtoenrol'] = 'To perform that action you need to enrol in this course.';
+$string['youneedtoenrol'] = 'To perform that action you need to enroll in this course.';
 $string['yourlastlogin'] = 'Your last login was';
 $string['yourself'] = 'yourself';
 $string['yourteacher'] = 'your $a';

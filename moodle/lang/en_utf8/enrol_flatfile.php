@@ -25,7 +25,7 @@ It could look something like this:
 </pre>';
 $string['enrolname'] = 'Flat file';
 $string['filelockedmail'] = 'The text file you are using for file-based enrolments ($a) can not be deleted by the cron process.  This usually means the permissions are wrong on it.  Please fix the permissions so that Moodle can delete the file, otherwise it might be processed repeatedly.';
-$string['filelockedmailsubject'] = 'Important error: Enrolment file';
+$string['filelockedmailsubject'] = 'Important error: Enrollment file';
 $string['location'] = 'File location';
 $string['mailadmin'] = 'Notify admin by email';
 $string['mailusers'] = 'Notify users by email';
