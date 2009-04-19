@@ -1,5 +1,7 @@
 <?php  // $Id: questiontype.php,v 1.41.2.16 2009/01/26 01:27:16 pichetp Exp $
-
+// VINL Code
+//   Daniel Souza - 04/19/2009
+// - Disabled this question type.
 ///////////////////
 /// MULTIANSWER /// (Embedded - cloze)
 ///////////////////

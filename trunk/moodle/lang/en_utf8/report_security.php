@@ -29,7 +29,7 @@ $string['check_cookiesecure_name'] = 'Secure cookies';
 $string['check_cookiesecure_ok'] = 'Secure cookies enabled.';
 
 $string['check_courserole_anything'] = 'The \"doanything\" capability must not be allowed in this <a href=\"$a\">context</a>.';
-$string['check_courserole_details'] = '<p>Each course has one default enrolment role specified. Please make sure no risky capabilities are allowed for this role.</p>
+$string['check_courserole_details'] = '<p>Each course has one default enrollment role specified. Please make sure no risky capabilities are allowed for this role.</p>
 <p>The only supported legacy type for the default course role is <em>Student</em>.</p>';
 $string['check_courserole_error'] = 'Incorrectly defined default course roles detected!';
 $string['check_courserole_legacy'] = 'Unsupported legacy type detected in the <a href=\"$a\">role</a>.';
@@ -39,7 +39,7 @@ $string['check_courserole_ok'] = 'Default course role definitions is OK.';
 $string['check_courserole_risky'] = 'Risky capabilities detected in <a href=\"$a\">context</a>.';
 
 $string['check_defaultcourserole_anything'] = 'The \"doanything\" capability must not be allowed in this <a href=\"$a\">context</a>.';
-$string['check_defaultcourserole_details'] = '<p>The default student role for course enrolment specifies the default role for courses. Please make sure no risky capabilities are allowed in this role.</p>
+$string['check_defaultcourserole_details'] = '<p>The default student role for course enrollment specifies the default role for courses. Please make sure no risky capabilities are allowed in this role.</p>
 <p>The only supported legacy type for default role is <em>Student</em>.</p>';
 $string['check_defaultcourserole_error'] = 'Incorrectly defined default course role \"$a\" detected!';
 $string['check_defaultcourserole_legacy'] = 'Unsupported legacy type detected.';

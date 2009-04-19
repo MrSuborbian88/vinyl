@@ -1,4 +1,7 @@
 <?php  // $Id: questiontype.php,v 1.12.2.7 2008/11/28 06:07:25 tjhunt Exp $
+// VINL Code
+//   Daniel Souza - 04/19/2009
+// - Disabled this question type.
 /**
  * Class for the random question type.
  *

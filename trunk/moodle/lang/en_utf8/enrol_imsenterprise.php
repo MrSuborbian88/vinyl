@@ -3,7 +3,7 @@
 
 
 $string['aftersaving...'] = 'Once you have saved your settings, you may wish to';
-$string['allowunenrol'] = 'Allow the IMS data to <strong>unenrol</strong> students/teachers';
+$string['allowunenrol'] = 'Allow the IMS data to <strong>unenroll</strong> students/teachers';
 $string['basicsettings'] = 'Basic settings';
 $string['coursesettings'] = 'Course data options';
 $string['createnewcategories'] = 'Create new (hidden) course categories if not found in Moodle';
@@ -15,7 +15,7 @@ $string['description'] = 'This method will repeatedly check for and process a sp
 $string['doitnow'] = 'perform an IMS Enterprise import right now';
 $string['enrolname'] = 'IMS Enterprise file';
 $string['filelockedmail'] = 'The text file you are using for IMS-file-based enrolments ($a) can not be deleted by the cron process.  This usually means the permissions are wrong on it.  Please fix the permissions so that Moodle can delete the file, otherwise it might be processed repeatedly.';
-$string['filelockedmailsubject'] = 'Important error: Enrolment file';
+$string['filelockedmailsubject'] = 'Important error: Enrollment file';
 $string['fixcasepersonalnames'] = 'Change personal names to Title Case';
 $string['fixcaseusernames'] = 'Change usernames to lower case';
 $string['imsrolesdescription'] = 'The IMS Enterprise specification includes 8 distinct role types. Please choose how you want them to be assigned in Moodle, including whether any of them should be ignored.';
