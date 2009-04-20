@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace>
+	<settings>
+		<label>QuizCreator</label>
+	</settings>
+	<users>
+		<user>
+			<path>QuizCreator.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>Quiz Creator.jcp</path>
+		</project>
+	</projects>
+</workspace>
