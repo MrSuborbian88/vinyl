@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import org.htmlparser.*;
 import org.htmlparser.util.*;
+import com.myjavatools.web.ClientHttpRequest;
 
 public class QuizCreator extends JApplet
 {
@@ -50,7 +51,7 @@ public class QuizCreator extends JApplet
 
 	// PHP Data:
 	public static int courseID;
-	public static String sessKey;
+	public static String CFGRoot;
 
 	// Relative Data:
 	public static String categoryName;
@@ -67,6 +68,16 @@ public class QuizCreator extends JApplet
 
 	public void init()
 	{
+		try
+		{
+			courseID = Integer.parseInt(getParameter("courseid"));
+			CFGRoot = getParameter("cfgroot");
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+
 		categoryName = "";
 		questionsArr = new ArrayList<Question>();
 
@@ -356,31 +367,257 @@ public class QuizCreator extends JApplet
 		tabs.setSelectedComponent(DNDCONTAIN);
 	}
 
+	/**public String valid(String parse)
+	{
+		for (int i = 0; i < parse.length(); i++)
+		{
+			char getChar = parse.charAt(i);
+			if (getChar == ' ')
+			{
+				parse = parse.substring(0, i)+"%20"+parse.substring(i+1);
+				i += 2;
+			}
+			else if (getChar == '.')
+			{
+				parse = parse.substring(0, i)+"&#046;"+parse.substring(i+1);
+				i+=2;
+			}
+		}
+		return parse;
+	}*/
 	public void ultimateSubmit()
 	{
 		categoryName = QSPECS.quizName.getText().trim();
 		if (categoryName.equals("") || categoryName.equals("You must enter a quiz name"))
 		{
 			QSPECS.quizName.setText("You must enter a quiz name");
+			QSPECS.quizName.requestFocus();
 			return;
 		}
+		//categoryName = valid(categoryName);
+
+		int n = 5;
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		JFrame progress = new JFrame("Preparing (Step 1 of "+n+")...");
+		progress.pack();
+		progress.setSize(480, progress.getHeight());
+		Dimension dprime = progress.getSize();
+		progress.setLocation((d.width-dprime.width)/2, (d.height-dprime.height)/2);
+		progress.show();
 
 		try
 		{
-			URL url = new URL("http://128.113.91.132/question/quizcreator.php?courseid=3");
+			progress.setTitle("Getting Category ID (Step 2 of "+n+")...");
+			progress.repaint();
+
+			URL url = new URL(CFGRoot + "question/edit.php?courseid=" + courseID);
 			URLConnection conn = url.openConnection();
+			Parser parse = new Parser(conn);
+			RecursiveIterator itr = new RecursiveIterator(parse.elements());
 
-			Parser p = new Parser(conn);
-			NodeIterator nit = p.elements();
-
-			while (nit.hasMoreNodes())
+			int category = -314159;
+			String fullCategory = null;
+			while (itr.hasMoreNodes())
 			{
-				System.out.println(nit.nextNode().toHtml(true));
+				Node node = itr.nextNode();
+				if (node instanceof Tag)
+				{
+					Tag tag = (Tag)node;
+					if (tag.getTagName().equalsIgnoreCase("select") && tag.getAttribute("id") != null && tag.getAttribute("id").equals("catmenu_jump"))
+					{
+						NodeList list = tag.getChildren();
+						for (int i = 0; i < list.size(); i++)
+						{
+							Node node2 = list.elementAt(i);
+							if (node2 instanceof Tag)
+							{
+								Tag tag2 = (Tag)node2;
+								if (tag2.getTagName().equalsIgnoreCase("option") && tag2.getAttribute("selected") != null)
+								{
+									String getCat = tag2.getAttribute("value");
+									getCat = getCat.substring(getCat.indexOf("category=")+9);
+									int index = getCat.indexOf(",");
+									if (index != -1)
+									{
+										category = Integer.parseInt(getCat.substring(0,index));
+										index = getCat.indexOf("&");
+										if (index != -1) fullCategory = getCat.substring(0, index);
+										else fullCategory = getCat;
+										break;
+									}
+									index = getCat.indexOf("&");
+									if (index != -1)
+									{
+										category = Integer.parseInt(getCat.substring(0, index));
+										fullCategory = getCat.substring(0, index);
+										break;
+									}
+									category = Integer.parseInt(getCat);
+									fullCategory = getCat;
+									break;
+								}
+							}
+						}
+					}
+				}
 			}
+			if (category == -314159) throw new Exception("Failed to acquire category ID");
+
+			int size = -1;
+			synchronized (questionsArr)
+			{
+				size = questionsArr.size();
+			}
+
+			progress.setTitle("Acquiring Session Key (Step 3 of "+n+")...");
+			url = new URL(CFGRoot + "question/question.php?courseid="+courseID+"&qtype=shortanswer&category="+category);
+			conn = url.openConnection();
+			parse = new Parser(conn);
+			itr = new RecursiveIterator(parse.elements());
+			String sessKey = "dieinafire";
+			while (itr.hasMoreNodes())
+			{
+				Node node = itr.nextNode();
+				if (node instanceof Tag)
+				{
+					Tag tag = (Tag)node;
+					if (tag.getAttribute("name") != null && tag.getAttribute("name").equals("sesskey"))
+					{
+						sessKey = tag.getAttribute("value");
+						break;
+					}
+				}
+			}
+			if (sessKey.equals("dieinafire")) throw new Exception("Failed to acquire sessKey");
+
+			for (int i = 0; i < size; i++)
+			{
+				progress.setTitle("Creating Question "+(i+1)+" of "+size+" (Step 4 of "+n+")...");
+				progress.repaint();
+
+				Question quest = null;
+				synchronized (questionsArr)
+				{
+					quest = questionsArr.get(i);
+				}
+
+				String qtype = null;
+				MultipleChoice MC = null; ShortAnswer SA = null; Numerical NUM = null;
+
+				if (quest instanceof MultipleChoice)
+				{
+					MC = (MultipleChoice)quest;
+					qtype = "multiplechoice";
+				}
+				else if (quest instanceof ShortAnswer)
+				{
+					SA = (ShortAnswer)quest;
+					qtype = "shortanswer";
+				}
+				else
+				{
+					NUM = (Numerical)quest;
+					qtype = "numerical";
+				}
+
+				url = new URL(CFGRoot + "question/question.php");
+				conn = url.openConnection();
+				ClientHttpRequest CHR = new ClientHttpRequest(conn);
+
+				ArrayList<Object> objects = new ArrayList<Object>();
+				objects.add("courseid"); objects.add(""+courseID);
+				objects.add("category"); objects.add(fullCategory);
+				objects.add("name"); objects.add("QQC_"+categoryName+"_QN_"+(i+1));
+				objects.add("qtype"); objects.add(qtype);
+				objects.add("id"); objects.add("");
+				objects.add("inpopup"); objects.add("0");
+				objects.add("versioning"); objects.add("");
+				objects.add("movecontext"); objects.add("0");
+				objects.add("cmid"); objects.add("0");
+				objects.add("_qf__question_edit_"+qtype+"_form"); objects.add("1");
+				objects.add("questiontextformat"); objects.add("0");
+				objects.add("defaultgrade"); objects.add("1");
+				objects.add("penalty"); objects.add("0.1");
+				objects.add("usecase"); objects.add("0");
+				objects.add("submitbutton"); objects.add("1");
+				objects.add("sesskey"); objects.add(sessKey);
+
+				if (qtype.equals("multiplechoice"))
+				{
+					int noAnswers = MC.choices.size();
+
+					objects.add("noanswers"); objects.add(""+noAnswers);
+					objects.add("questiontext"); objects.add(MC.qText);
+					objects.add("shuffleanswers"); objects.add(MC.shuffle ? "1" : "0");
+					objects.add("answernumbering"); objects.add("abc");
+
+					int numcorrect = 0;
+					for (MCAnswer MCA : MC.choices) if (MCA.isCorrect) numcorrect++;
+					double correct = 1.0/numcorrect;
+					objects.add("single"); objects.add((numcorrect == 1) ? "1" : "0");
+
+					for (int j = 0; j < noAnswers; j++)
+					{
+						MCAnswer MCA = MC.choices.get(j);
+						objects.add("answer["+j+"]"); objects.add(MCA.answer);
+						objects.add("feedback["+j+"]"); objects.add("");
+						objects.add("fraction["+j+"]");
+							objects.add(((numcorrect == 1) ? (MCA.isCorrect ? 1.0 : -1.0/(noAnswers-numcorrect)) : (MCA.isCorrect ? correct : -correct))+"");
+					}
+				}
+				else if (qtype.equals("shortanswer"))
+				{
+					objects.add("noanswers"); objects.add("1");
+					objects.add("answer[0]"); objects.add(SA.answer);
+					objects.add("fraction[0]"); objects.add("1");
+					objects.add("feedback[0]"); objects.add("");
+					objects.add("questiontext"); objects.add(SA.qText);
+				}
+				else
+				{
+					objects.add("noanswers"); objects.add("1");
+					objects.add("nounits"); objects.add("1");
+					objects.add("questiontext"); objects.add(NUM.qText);
+					objects.add("answer[0]"); objects.add(""+NUM.answer);
+					objects.add("tolerance[0]"); objects.add(""+NUM.linearTolerance);
+					objects.add("fraction[0]"); objects.add("1");
+					objects.add("unit[0]"); objects.add("");
+					objects.add("multiplier[0]"); objects.add("1.0");
+				}
+
+				/**String newURL = CFGRoot + "question/question.php?";
+				for (int j = 0; j < objects.size(); j+=2)
+				{
+					if (j != 0) newURL += "&";
+					newURL += objects.get(j)+"="+valid((String)objects.get(j+1));
+				}
+				url = new URL(newURL);
+				conn = url.openConnection();
+				parse = new Parser(conn);
+				NodeIterator itr2 = parse.elements();
+
+				while (itr2.hasMoreNodes())
+				{
+					Node node = itr2.nextNode();
+					System.out.println(node.toHtml(true));
+				}*/
+
+				try
+				{
+					CHR.post((Object[])objects.toArray());
+				}
+				catch (Exception e) { } // I Ignore YOU!!!
+			}
+
+			progress.dispose();
+			JOptionPane.showMessageDialog(this, "You will now be redirected to the Quiz page", "Quiz Successfully Created", JOptionPane.INFORMATION_MESSAGE);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			progress.dispose();
+
+			JOptionPane.showMessageDialog(this, "An error occured:\n"+e, "Error - Sorry :(", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -1916,6 +2153,39 @@ public class QuizCreator extends JApplet
 			}
 
 			renderQuestionBox(g2d, x, y, maxWidth, strArr, indentArr, fontArr, backgroundArr, foregroundArr, border, lineRender);
+		}
+
+	}
+
+	public class RecursiveIterator
+	{
+
+		public Stack<NodeIterator> stack;
+
+		public RecursiveIterator(NodeIterator base) throws ParserException
+		{
+			stack = new Stack<NodeIterator>();
+			if (base.hasMoreNodes()) stack.push(base);
+		}
+
+		public boolean hasMoreNodes() throws ParserException
+		{
+			return (stack.size() != 0);
+		}
+
+		public Node nextNode() throws ParserException
+		{
+			NodeIterator top = stack.pop();
+
+			Node result = top.nextNode();
+
+			NodeList list = result.getChildren();
+			NodeIterator children = null;
+			if (list != null) children = list.elements();
+			if (top.hasMoreNodes()) stack.push(top);
+			if (children != null && children.hasMoreNodes()) stack.push(children);
+
+			return result;
 		}
 
 	}
