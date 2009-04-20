@@ -40,8 +40,9 @@
 	}
 
 	echo "<div id='applet'>";
-	echo "<center><br><applet code='QuizCreator.class' width=640 height=480>";
-	echo "<param name=\"courseid\" value=\"".optional_param("courseid", 0, PARAM_INT)."\">";
+	echo "<center><br><applet code='../QuizCreator.class' width=640 height=480>";
+	echo "<param name=\"courseid\" value=\"".optional_param("courseid", 0, PARAM_INT)."\" />";
+	echo "<param name=\"cfgroot\" value=\"".$CFG->wwwroot."/\" />";
 	echo "</applet></center>";
 	echo "</div>";
 
