@@ -70,13 +70,13 @@ class question_edit_multichoice_form extends question_edit_form {
 
 		$mform->addElement('header', 'overallfeedbackhdr', get_string('overallfeedback', 'qtype_multichoice'));
 
-		//$mform->addElement('htmleditor', 'correctfeedback', get_string('correctfeedback', 'qtype_multichoice'),
-		//						array('course' => $this->coursefilesid));
-		//$mform->setType('correctfeedback', PARAM_RAW);
+		$mform->addElement('htmleditor', 'correctfeedback', get_string('correctfeedback', 'qtype_multichoice'),
+								array('course' => $this->coursefilesid));
+		$mform->setType('correctfeedback', PARAM_RAW);
 
-		//$mform->addElement('htmleditor', 'partiallycorrectfeedback', get_string('partiallycorrectfeedback', 'qtype_multichoice'),
-		//						array('course' => $this->coursefilesid));
-		//$mform->setType('partiallycorrectfeedback', PARAM_RAW);
+		$mform->addElement('htmleditor', 'partiallycorrectfeedback', get_string('partiallycorrectfeedback', 'qtype_multichoice'),
+								array('course' => $this->coursefilesid));
+		$mform->setType('partiallycorrectfeedback', PARAM_RAW);
 
 		$mform->addElement('htmleditor', 'incorrectfeedback', get_string('incorrectfeedback', 'qtype_multichoice'),
 								array('course' => $this->coursefilesid));
@@ -99,8 +99,8 @@ class question_edit_multichoice_form extends question_edit_form {
 			$default_values['single'] =  $question->options->single;
 			$default_values['answernumbering'] =  $question->options->answernumbering;
 			$default_values['shuffleanswers'] =  $question->options->shuffleanswers;
-			//$default_values['correctfeedback'] =  $question->options->correctfeedback;
-			//$default_values['partiallycorrectfeedback'] =  $question->options->partiallycorrectfeedback;
+			$default_values['correctfeedback'] =  $question->options->correctfeedback;
+			$default_values['partiallycorrectfeedback'] =  $question->options->partiallycorrectfeedback;
 			$default_values['incorrectfeedback'] =  $question->options->incorrectfeedback;
 			$question = (object)((array)$question + $default_values);
 		}

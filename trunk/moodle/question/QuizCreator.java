@@ -396,7 +396,7 @@ public class QuizCreator extends JApplet
 		}
 		//categoryName = valid(categoryName);
 
-		int n = 5;
+		int n = 8;
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		JFrame progress = new JFrame("Preparing (Step 1 of "+n+")...");
 		progress.pack();
@@ -507,7 +507,7 @@ public class QuizCreator extends JApplet
 				if (quest instanceof MultipleChoice)
 				{
 					MC = (MultipleChoice)quest;
-					qtype = "multiplechoice";
+					qtype = "multichoice";
 				}
 				else if (quest instanceof ShortAnswer)
 				{
@@ -542,12 +542,13 @@ public class QuizCreator extends JApplet
 				objects.add("submitbutton"); objects.add("1");
 				objects.add("sesskey"); objects.add(sessKey);
 
-				if (qtype.equals("multiplechoice"))
+				if (qtype.equals("multichoice"))
 				{
 					int noAnswers = MC.choices.size();
 
 					objects.add("noanswers"); objects.add(""+noAnswers);
 					objects.add("questiontext"); objects.add(MC.qText);
+					objects.add("shuffleanswers"); objects.add(MC.shuffle ? "0" : "1");
 					objects.add("shuffleanswers"); objects.add(MC.shuffle ? "1" : "0");
 					objects.add("answernumbering"); objects.add("abc");
 
@@ -562,8 +563,12 @@ public class QuizCreator extends JApplet
 						objects.add("answer["+j+"]"); objects.add(MCA.answer);
 						objects.add("feedback["+j+"]"); objects.add("");
 						objects.add("fraction["+j+"]");
-							objects.add(((numcorrect == 1) ? (MCA.isCorrect ? 1.0 : -1.0/(noAnswers-numcorrect)) : (MCA.isCorrect ? correct : -correct))+"");
+							objects.add((MCA.isCorrect ? correct : -correct)+"");
 					}
+
+					objects.add("correctfeedback"); objects.add("");
+					objects.add("partiallycorrectfeedback"); objects.add("");
+					objects.add("incorrectfeedback"); objects.add("");
 				}
 				else if (qtype.equals("shortanswer"))
 				{
@@ -609,6 +614,124 @@ public class QuizCreator extends JApplet
 				catch (Exception e) { } // I Ignore YOU!!!
 			}
 
+			// Quiz Creation
+			// http://128.113.99.237/course/mod.php?id=3&section=0&sesskey=tvHfrApaM3&add=quiz
+
+			progress.setTitle("Preparing Quiz Data (Step 4 of "+n+")...");
+			progress.repaint();
+
+			ArrayList<Object> objects = new ArrayList<Object>();
+			/**url = new URL(CFGRoot + "course/modedit.php?id="+courseID+"&section=0&sesskey="+sessKey+"&add=quiz");
+			conn = url.openConnection();
+			parse = new Parser(conn);
+			itr = new RecursiveIterator(parse.elements());*/
+			String timeopenday = null, timeopenmonth = null, timeopenyear = null, timeopenhour = null, timeopenminute = null;
+			String timecloseday = null, timeclosemonth = null, timecloseyear = null, timeclosehour = null, timecloseminute = null;
+
+			GregorianCalendar greg = new GregorianCalendar();
+
+			timeopenday = timecloseday = ""+greg.get(Calendar.DAY_OF_MONTH);
+			timeopenmonth = timeclosemonth = ""+(greg.get(Calendar.MONTH)+1);
+			timeopenyear = timecloseyear = ""+greg.get(Calendar.YEAR);
+			timeopenhour = timeclosehour = ""+greg.get(Calendar.HOUR_OF_DAY);
+			timeopenminute = timecloseminute = ""+greg.get(Calendar.MINUTE);
+
+			/**while (itr.hasMoreNodes())
+			{
+				Node node = itr.nextNode();
+
+				if (node instanceof Tag)
+				{
+					Tag tag = (Tag)node;
+					timeopenday = getSelectedOptionValue(tag, timeopenday, "timeopen[day]");
+					timeopenmonth = getSelectedOptionValue(tag, timeopenmonth, "timeopen[month]");
+					timeopenyear = getSelectedOptionValue(tag, timeopenyear, "timeopen[year]");
+					timeopenhour = getSelectedOptionValue(tag, timeopenhour, "timeopen[hour]");
+					timeopenminute = getSelectedOptionValue(tag, timeopenminute, "timeopen[minute]");
+					timecloseday = getSelectedOptionValue(tag, timecloseday, "timeclose[day]");
+					timeclosemonth = getSelectedOptionValue(tag, timeclosemonth, "timeclose[month]");
+					timecloseyear = getSelectedOptionValue(tag, timecloseyear, "timeclose[year]");
+					timeclosehour = getSelectedOptionValue(tag, timeclosehour, "timeclose[hour]");
+					timecloseminute = getSelectedOptionValue(tag, timecloseminute, "timeclose[minute]");
+				}
+			}*/
+
+			objects.add("mform_showadvanced_last"); objects.add("");
+			objects.add("grade"); objects.add("100");
+			objects.add("course"); objects.add(courseID+"");
+			objects.add("coursemodule"); objects.add("");
+			objects.add("section"); objects.add("0");
+			objects.add("module"); objects.add("13");
+			objects.add("modulename"); objects.add("quiz");
+			objects.add("instance"); objects.add("");
+			objects.add("add"); objects.add("quiz");
+			objects.add("update"); objects.add("0");
+			objects.add("return"); objects.add("0");
+			objects.add("boundary_repeats"); objects.add("1");
+			objects.add("sesskey"); objects.add(sessKey);
+			objects.add("_qf__mod_quiz_mod_form"); objects.add("1");
+
+			objects.add("name"); objects.add(categoryName);
+			objects.add("intro"); objects.add("");
+
+			objects.add("timeopen[day]"); objects.add(timeopenday);
+			objects.add("timeopen[month]"); objects.add(timeopenmonth);
+			objects.add("timeopen[year]"); objects.add(timeopenyear);
+			objects.add("timeopen[hour]"); objects.add(timeopenhour);
+			objects.add("timeopen[minute]"); objects.add(timeopenminute);
+			objects.add("timeopen[off]"); objects.add("1");
+			objects.add("timeclose[day]"); objects.add(timecloseday);
+			objects.add("timeclose[month]"); objects.add(timeclosemonth);
+			objects.add("timeclose[year]"); objects.add(timecloseyear);
+			objects.add("timeclose[hour]"); objects.add(timeclosehour);
+			objects.add("timeclose[minute]"); objects.add(timecloseminute);
+			objects.add("timeclose[off]"); objects.add("1");
+
+			objects.add("timelimit"); objects.add("0");
+			objects.add("delay1"); objects.add("0");
+			objects.add("delay2"); objects.add("0");
+			objects.add("questionsperpage"); objects.add("10");
+			objects.add("shufflequestions"); objects.add(QSPECS.shuffleQuiz.isSelected() ? "1" : "0");
+			objects.add("shuffleanswers"); objects.add("0");
+
+			objects.add("attempts"); objects.add("1");
+			objects.add("attemptonlast"); objects.add("0");
+			objects.add("adaptive"); objects.add("0");
+			objects.add("grademethod"); objects.add("1");
+			objects.add("penaltyscheme"); objects.add("1");
+			objects.add("decimalpoints"); objects.add("2");
+
+			String[] perm1 = {"immediately", "open", "closed"};
+			String[] perm2 = {"responses", "answers", "feedback", "generalfeedback", "score", "overallfeedback"};
+			for (String s1 : perm1) for (String s2 : perm2) { objects.add(s2+s1); objects.add("1"); }
+
+			objects.add("popup"); objects.add("1");
+			objects.add("quizpassword"); objects.add("");
+			objects.add("subnet"); objects.add("");
+			objects.add("groupmode"); objects.add("0");
+			objects.add("cmidnumber"); objects.add(""); // Hmm...
+			objects.add("visible"); objects.add("1");
+			objects.add("gradecat"); objects.add("2"); // Hmm...
+
+			objects.add("feedbacktext[0]"); objects.add("");
+			objects.add("feedbackboundaries[0]"); objects.add("");
+			objects.add("feedbacktext[1]"); objects.add("");
+
+			progress.setTitle("Instantiating Quiz (Step 5 of "+n+")...");
+			progress.repaint();
+
+			url = new URL(CFGRoot + "course/modedit.php");
+			conn = url.openConnection();
+			ClientHttpRequest CHR = new ClientHttpRequest(conn);
+			try
+			{
+				CHR.post((Object[])objects.toArray());
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			} // I ignore YOU TOO!!!
+
 			progress.dispose();
 			JOptionPane.showMessageDialog(this, "You will now be redirected to the Quiz page", "Quiz Successfully Created", JOptionPane.INFORMATION_MESSAGE);
 		}
@@ -619,6 +742,29 @@ public class QuizCreator extends JApplet
 
 			JOptionPane.showMessageDialog(this, "An error occured:\n"+e, "Error - Sorry :(", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+
+	public String getSelectedOptionValue(Tag tag, String prev, String reqName) throws Exception
+	{
+		if (prev != null) return prev;
+		if (tag.getTagName().equalsIgnoreCase("SELECT") && tag.getAttribute("name") != null && tag.getAttribute("name").equals(reqName))
+		{
+			RecursiveIterator itr2 = new RecursiveIterator(tag.getChildren().elements());
+			while (itr2.hasMoreNodes())
+			{
+				Node node2 = itr2.nextNode();
+				if (node2 instanceof Tag)
+				{
+					Tag tag2 = (Tag)node2;
+					if (tag2.getTagName().equalsIgnoreCase("OPTION") && tag2.getAttribute("selected") != null)
+					{
+						System.out.println(reqName + ": " + tag2.getAttribute("value"));
+						return tag2.getAttribute("value");
+					}
+				}
+			}
+		}
+		return prev;
 	}
 
 	public class DragAndDropEditor extends JPanel implements MouseListener, MouseMotionListener
@@ -1528,7 +1674,7 @@ public class QuizCreator extends JApplet
 		{
 			for (int i = 0; i < numAnswers; i++)
 			{
-				JCheckBox JCB = new JCheckBox("(Correct?) - Answer "+(boxes.size()+1)+": ");
+				JCheckBox JCB = new JCheckBox("(Correct?) - Answer "+(char)(((int)('a'))+boxes.size())+": ");
 				JCB.setSelected(boxes.size() == 0);
 				JCB.setFont(FONT);
 				boxes.add(JCB);
@@ -1554,6 +1700,7 @@ public class QuizCreator extends JApplet
 
 			fields.add(soloList((Component)qtext));
 			fields.add(soloList((Component)actQtext));
+			fields.add(soloList((Component)shuffle));
 
 			for (int i = 0; i < boxes.size(); i++)
 			{
@@ -1649,7 +1796,7 @@ public class QuizCreator extends JApplet
 			int size = choices.size()+1;
 
 			String[] strArr = new String[size];
-			strArr[0] = qText; for (int i = 1; i < size; i++) strArr[i] = "  "+i+")  "+choices.get(i-1).answer;
+			strArr[0] = qText; for (int i = 0; i < size-1; i++) strArr[i+1] = "  "+((char)(((int)'a')+i))+")  "+choices.get(i).answer;
 			int[] indentArr = new int[size];
 			indentArr[0] = 5; for (int i = 1; i < size; i++) indentArr[i] = MCINDENT;
 			Font[] fontArr = new Font[size]; for (int i = 0; i < size; i++) fontArr[i] = TINY;
