@@ -732,6 +732,87 @@ public class QuizCreator extends JApplet
 				e.printStackTrace();
 			} // I ignore YOU TOO!!!
 
+			progress.setTitle("Harvesting Question ID's (Step 6 of "+n+")...");
+			progress.repaint();
+
+			url = new URL(CFGRoot + "question/edit.php?qperpage=1000&courseid="+courseID);
+			conn = url.openConnection();
+			parse = new Parser(conn);
+			itr = new RecursiveIterator(parse.elements());
+
+			HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+			while (itr.hasMoreNodes())
+			{
+				Node node = itr.nextNode();
+				if (node instanceof Text && node.getParent() != null && node.getParent().getParent() != null &&
+					((Text)node).getText().startsWith("QQC_"+categoryName+"_QN_"))
+				{
+					Tag tag = (Tag)(node.getParent().getParent());
+					NodeList children = tag.getChildren();
+					if (children == null) continue;
+					String txt = ((Text)node).getText();
+					Integer qnum = new Integer(Integer.parseInt(txt.substring(txt.lastIndexOf("_")+1)));
+
+					RecursiveIterator itr2 = new RecursiveIterator(children.elements());
+					outer: while (itr2.hasMoreNodes())
+					{
+						Node node2 = itr2.nextNode();
+						if (node2 instanceof Tag)
+						{
+							Tag tag2 = (Tag)node2;
+							if (tag2.getTagName().equalsIgnoreCase("a"))
+							{
+								String link = tag2.getAttribute("href");
+								int index = link.indexOf("?id=");
+								link = link.substring(index+4);
+								link = link.substring(0, link.indexOf("&"));
+								Integer qid = new Integer(Integer.parseInt(link));
+								map.put(qnum, qid);
+
+								break outer;
+							}
+						}
+					}
+				}
+			}
+
+			progress.setTitle("Getting Quiz ID (Step 7 of "+n+")...");
+			progress.repaint();
+
+			url = new URL(CFGRoot + "course/view.php?id="+courseID);
+			conn = url.openConnection();
+			parse = new Parser(conn);
+			itr = new RecursiveIterator(parse.elements());
+
+			int quizID = -1;
+			while (itr.hasMoreNodes())
+			{
+				Node node = itr.nextNode();
+				if (node instanceof Text && ((Text)node).getText().equals(categoryName))
+				{
+					if (node.getParent() != null && node.getParent().getParent() != null && node.getParent().getParent().getParent() != null)
+					{
+						Node liverify = node.getParent().getParent().getParent();
+						if (liverify instanceof Tag)
+						{
+							Tag tagv = (Tag)liverify;
+							if (!tagv.getTagName().equalsIgnoreCase("LI")) continue;
+							if (tagv.getAttribute("class") == null || !tagv.getAttribute("class").equals("activity quiz")) continue;
+
+							Tag link = (Tag)node.getParent().getParent();
+							String txt = link.getAttribute("href"); txt = txt.substring(txt.indexOf("=")+1);
+							quizID = Integer.parseInt(txt);
+						}
+					}
+				}
+			}
+
+			for (int i = 1; i <= size; i++)
+			{
+				progress.setTitle("Adding Question "+i+" of "+size+" (Step 8 of "+n+")...");
+				addQuestionToQuiz(quizID+"", map.get(new Integer(i))+"", sessKey);
+			}
+
 			progress.dispose();
 			JOptionPane.showMessageDialog(this, "You will now be redirected to the Quiz page", "Quiz Successfully Created", JOptionPane.INFORMATION_MESSAGE);
 		}
@@ -741,6 +822,31 @@ public class QuizCreator extends JApplet
 			progress.dispose();
 
 			JOptionPane.showMessageDialog(this, "An error occured:\n"+e, "Error - Sorry :(", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	public void addQuestionToQuiz(String quizid, String questid, String sessKey) throws Exception
+	{
+		//Requires a quiz id in quizid
+		//Requires a question id in questid
+		//Requires a session key in sesskey
+
+		URL quizurl = new URL(CFGRoot + "mod/quiz/edit.php");
+		URLConnection quizconn = quizurl.openConnection();
+		ClientHttpRequest quizCHR = new ClientHttpRequest(quizconn);
+
+		ArrayList<Object> questobjects = new ArrayList<Object>();
+		questobjects.add("cmid"); questobjects.add(quizid);
+		questobjects.add("addquestion"); questobjects.add(questid);
+		questobjects.add("sesskey"); questobjects.add(sessKey);
+
+		try
+		{
+			quizCHR.post((Object[])questobjects.toArray());
+		}
+		catch (Exception e)
+		{
+
 		}
 	}
 
