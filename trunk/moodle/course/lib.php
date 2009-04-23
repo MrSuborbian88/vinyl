@@ -1,6 +1,7 @@
 <?php  // $Id: lib.php,v 1.538.2.69 2009/01/14 04:47:21 dongsheng Exp $
    // Library of useful functions
 	//VINL change: line 2781: added a maximum value for displaying the right move arrow
+	//VINL change: lines 298-302, 350, 410-414, 459: removed IP Address column from Report. 
 
 
 define('COURSE_MAX_LOG_DISPLAY', 150);		  // days
@@ -295,7 +296,6 @@ function print_log($course, $user=0, $date=0, $order="l.time ASC", $page=0, $per
 		echo "<th class=\"c0 header\" scope=\"col\">".get_string('course')."</th>\n";
 	}
 	echo "<th class=\"c1 header\" scope=\"col\">".get_string('time')."</th>\n";
-//	echo "<th class=\"c2 header\" scope=\"col\">".get_string('ip_address')."</th>\n";
 	echo "<th class=\"c2 header\" scope=\"col\">".get_string('fullname')."</th>\n";
 	echo "<th class=\"c3 header\" scope=\"col\">".get_string('action')."</th>\n";
 	echo "<th class=\"c4 header\" scope=\"col\">".get_string('info')."</th>\n";
@@ -346,9 +346,6 @@ function print_log($course, $user=0, $date=0, $order="l.time ASC", $page=0, $per
 		}
 		echo "<td class=\"cell c1\" align=\"right\">".userdate($log->time, '%a').
 			 ' '.userdate($log->time, $strftimedatetime)."</td>\n";
-//		echo "<td class=\"cell c2\">\n";
-//		link_to_popup_window("/iplookup/index.php?ip=$log->ip&amp;user=$log->userid", 'iplookup',$log->ip, 440, 700);
-//		echo "</td>\n";
 		$fullname = fullname($log, has_capability('moodle/site:viewfullnames', get_context_instance(CONTEXT_COURSE, $course->id)));
 		echo "<td class=\"cell c2\">\n";
 		echo "	<a href=\"$CFG->wwwroot/user/view.php?id={$log->userid}&amp;course={$log->course}\">$fullname</a>\n";
@@ -411,7 +408,6 @@ function print_mnet_log($hostid, $course, $user=0, $date=0, $order="l.time ASC",
 		echo "<th class=\"c0 header\">".get_string('course')."</th>\n";
 	}
 	echo "<th class=\"c1 header\">".get_string('time')."</th>\n";
-//	echo "<th class=\"c2 header\">".get_string('ip_address')."</th>\n";
 	echo "<th class=\"c2 header\">".get_string('fullname')."</th>\n";
 	echo "<th class=\"c3 header\">".get_string('action')."</th>\n";
 	echo "<th class=\"c4 header\">".get_string('info')."</th>\n";
@@ -454,9 +450,6 @@ function print_mnet_log($hostid, $course, $user=0, $date=0, $order="l.time ASC",
 		}
 		echo "<td class=\"r$row c1\" align=\"right\">".userdate($log->time, '%a').
 			 ' '.userdate($log->time, $strftimedatetime)."</td>\n";
-//		echo "<td class=\"r$row c2\" >\n";
-//		link_to_popup_window("/iplookup/index.php?ip=$log->ip&amp;user=$log->userid", 'iplookup',$log->ip, 400, 700);
-//		echo "</td>\n";
 		$fullname = fullname($log, has_capability('moodle/site:viewfullnames', get_context_instance(CONTEXT_COURSE, $course->id)));
 		echo "<td class=\"r$row c2\" >\n";
 		echo "	<a href=\"$CFG->wwwroot/user/view.php?id={$log->userid}\">$fullname</a>\n";

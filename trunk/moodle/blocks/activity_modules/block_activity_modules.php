@@ -1,5 +1,7 @@
 <?php //$Id: block_activity_modules.php,v 1.15.2.3 2008/03/03 11:41:01 moodler Exp $
-
+// VINL Code
+//   Daniel Souza - 04/23/2009
+// - Fixed Tool Tips
 class block_activity_modules extends block_list {
 	function init() {
 		$this->title = get_string('activities');
