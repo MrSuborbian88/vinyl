@@ -40,7 +40,7 @@ class block_activity_modules extends block_list {
 
 		foreach ($modfullnames as $modname => $modfullname) {
 			if ($modname != 'label') {
-				$this->content->items[] = '<a title="'.get_string('forumdescription').'  "href="'.$CFG->wwwroot.'/mod/'.$modname.'/index.php?id='.$this->instance->pageid.'">'.$modfullname.'</a>';
+				$this->content->items[] = '<a title="'.get_string($modname.'description').'  "href="'.$CFG->wwwroot.'/mod/'.$modname.'/index.php?id='.$this->instance->pageid.'">'.$modfullname.'</a>';
 				$this->content->icons[] = '<img src="'.$CFG->modpixpath.'/'.$modname.'/icon.gif" class="icon" alt="" />';
 			}
 		}
