@@ -9,15 +9,29 @@ import org.htmlparser.*;
 import org.htmlparser.util.*;
 import com.myjavatools.web.ClientHttpRequest;
 
+/**
+ *	VINL Code - Created 04/17/09
+ *
+ *	This is the Java Code for the Quick Quiz Creator Applet.  To draw it, use the following HTML (pseudo)code:
+ *	<applet code="pathname/QuizCreator.class" width=640 height=480>
+ *		<param name="courseid" value="#">
+ *		<param name="cfgroot" value="http://www.yoursite.com/vinlcodebase/">
+ *	</applet>
+ *
+ *	This code is commented only where necessary so that the user can understand the general structure
+ *	Much of the GUI-intensive code, pertaining to javax.swing, java.awt, and java.awt.event, remains
+ *	relatively undocumented.  You should familiarize yourself with these packages before trying to edit
+ *	the Quick Quiz Creator
+ */
 public class QuizCreator extends JApplet
 {
 
-	// GUI Data:
+	// GUI Constants:
 	public static final Font FONT = new Font("Arial", Font.PLAIN, 12);
 	public static final Font TINY = new Font("Arial", Font.PLAIN, 10);
+	public static final BufferedImage SCR_UP, SCR_DOWN, DELETE; // Icons for Drag and Drop Panel
 
-	public static final BufferedImage SCR_UP, SCR_DOWN, DELETE;
-
+	// Construct Icons raw from Graphics2D
 	static
 	{
 		SCR_UP = new BufferedImage(16, 16, BufferedImage.TYPE_USHORT_555_RGB);
@@ -49,16 +63,18 @@ public class QuizCreator extends JApplet
 		g2d.dispose();
 	}
 
-	// PHP Data:
+	// PHP Data: (included as arguments to Applet)
 	public static int courseID;
 	public static String CFGRoot;
 
-	// Relative Data:
+	// Universal Data: (Used when building quiz)
+	// @see ultimateSubmit()
 	public static String categoryName;
 	public static ArrayList<Question> questionsArr;
 
+	// GUI Elements
+	// These make up the Applet
 	public static QuizSpecsPanel QSPECS;
-
 	public static JTabbedPane tabs;
 	public static DragAndDropEditor DNDGUI;
 	public static JPanel DNDCONTAIN;
@@ -66,8 +82,10 @@ public class QuizCreator extends JApplet
 	public static JPanel QECONTAIN;
 	public static JScrollPane QESCONTAIN;
 
+	// Initialization method, called by default at startup
 	public void init()
 	{
+		// Retrieve parameters
 		try
 		{
 			courseID = Integer.parseInt(getParameter("courseid"));
@@ -78,13 +96,13 @@ public class QuizCreator extends JApplet
 			throw new RuntimeException(e);
 		}
 
+		// Initialize Universal Data
 		categoryName = "";
 		questionsArr = new ArrayList<Question>();
 
+		// Initialize and Configure GUI components
 		QSPECS = new QuizSpecsPanel();
-
 		tabs = new JTabbedPane();
-
 		DNDGUI = new DragAndDropEditor();
 		DNDCONTAIN = new JPanel();
 		DNDCONTAIN.setLayout(new BorderLayout());
@@ -97,22 +115,29 @@ public class QuizCreator extends JApplet
 		QECONTAIN.add(QESCONTAIN, BorderLayout.CENTER);
 		tabs.add("Question Editor", QECONTAIN);
 
+		// Add GUI Components to Applet
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(QSPECS, BorderLayout.NORTH);
 		getContentPane().add(tabs);
 
+		// Hack to force maximum size of JPanel DNDCONTAIN
 		DNDGUI.setSize(10000, 10000);
 		DNDCONTAIN.setSize(10000, 10000);
-
 		validate();
 		repaint();
-
 		DNDGUI.init(DNDCONTAIN.getBounds());
 	}
 
+	// GUI constants for FontMetric retrieval, in the absence of a local instance
 	public static final BufferedImage sample = new BufferedImage(1, 1, BufferedImage.TYPE_USHORT_555_RGB);
 	public static final Graphics2D sampleG2D = sample.createGraphics();
 
+	/**
+	 *	Method: computeRenderHeight
+	 *
+	 *	Given the String, Font, maximum width integer (pixels), and indentation for lines after the first (pixels),
+	 *	This method computes how much vertical space it will take to render the String on multiple lines
+	 */
 	public static int computeRenderHeight(String str, Font font, int maxWidth, int indent)
 	{
 		String primDelim = " \n";
@@ -175,6 +200,21 @@ public class QuizCreator extends JApplet
 
 		return curY+fm.getDescent()+2;
 	}
+
+	/**
+	 *	Method: renderMultiLine
+	 *
+	 *	Takes a String and renders it at a given base x,y coordinate with a fixed maximum width (pixels)
+	 *	Parameters:
+	 *		g2d			= The context
+	 *		x,y			= Coordinate basis
+	 *		str			= The string to be rendered
+	 *		font			= The font style to use
+	 *		maxWidth 	= The maximum width (pixels) for a line
+	 *		indent		= The indentation (pixels) for subsequent lines forced by wrapping
+	 *		background	= Background color (simple filled rectangle)
+	 *		foreground	= Font color
+	 */
 	public static void renderMultiLine(Graphics2D g2d, int x, int y, String str, Font font, int maxWidth, int indent, Color background, Color foreground)
 	{
 		int height = computeRenderHeight(str, font, maxWidth, indent);
@@ -247,11 +287,14 @@ public class QuizCreator extends JApplet
 		}
 	}
 
+	// These strings go in a JComboBox.  User selects one to create a new question of the requested type
 	public static final String[] STRING_ARR = {"Add New Question...",
 															 "Multiple Choice",
 															 "Fill in the Blank",
 															 "Numerical"};
 
+	// Class: QuizSpecsPanel
+	// Organizer for GUI elements, accepting input on certain settings for the Quiz
 	public class QuizSpecsPanel extends JPanel
 	{
 
@@ -333,6 +376,7 @@ public class QuizCreator extends JApplet
 			quizName.requestFocus();
 		}
 
+		// Beautiful Hack
 		public Dimension getPreferredSize()
 		{
 			return getSize();
@@ -340,13 +384,16 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Constants for DNDGUI states
 	public static final int ABANDONED = 0,
 									FROZEN = 1,
 									NEUTRAL = 2,
 									SCROLL_PRESS = 3,
 									DRAG = 4;
+	// Space (pixels) between questions and the edges, and questions with each other
 	public static final int SPACE = 6;
 
+	// Thread-safe method to Add a question to the Panel, and also the Universal Data
 	public void addQuestion(Question question)
 	{
 		synchronized (questionsArr)
@@ -355,6 +402,9 @@ public class QuizCreator extends JApplet
 		}
 		DNDGUI.repaint();
 	}
+
+	// DNDGUI method to release the panel from a FROZEN state
+	// FROZEN is invoked when the user double-clicks to edit a question
 	public void unfreezeQuestion(Question replace, int index)
 	{
 		synchronized (questionsArr)
@@ -367,7 +417,9 @@ public class QuizCreator extends JApplet
 		tabs.setSelectedComponent(DNDCONTAIN);
 	}
 
-	/**public String valid(String parse)
+	/** Method no longer in use
+
+	public String valid(String parse)
 	{
 		for (int i = 0; i < parse.length(); i++)
 		{
@@ -385,26 +437,45 @@ public class QuizCreator extends JApplet
 		}
 		return parse;
 	}*/
+
+	/**
+	 *	The big cahuna
+	 *
+	 *	This is method is called when the "Submit" button is pressed
+	 *	WARNING! - This method invokes a separate Thread, so by clicking the button multiple times, you
+	 *		could cause PHP errors, which cannot possibly be reported by an Applet
+	 *		Multithreading necessary to prevent connectTimeOut from failing
+	 */
 	public void ultimateSubmit()
 	{
+		// Verify Quiz Name
 		categoryName = QSPECS.quizName.getText().trim();
-		if (categoryName.equals("") || categoryName.equals("You must enter a quiz name"))
+		if (categoryName.equals("") || categoryName.equals("Enter Quiz Name") || categoryName.equals("You must enter a quiz name"))
 		{
 			QSPECS.quizName.setText("You must enter a quiz name");
 			QSPECS.quizName.requestFocus();
 			return;
 		}
+
+		// Method deprecated, ClientHttpRequest handles text --> HTML-safe text conversions
 		//categoryName = valid(categoryName);
 
-		int n = 8;
+		// Create a Progress Window at center screen
+		// Each step should take 1.5 - 4 seconds on average
+		// n = Number of steps
+		final int n = 8;
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		JFrame progress = new JFrame("Preparing (Step 1 of "+n+")...");
+		// User normally doesn't see this, because Step 2 occurs almost instantly
+		final JFrame progress = new JFrame("Preparing (Step 1 of "+n+")...");
 		progress.pack();
 		progress.setSize(480, progress.getHeight());
 		Dimension dprime = progress.getSize();
 		progress.setLocation((d.width-dprime.width)/2, (d.height-dprime.height)/2);
 		progress.show();
 
+		// MultiThreading, to prevent EventDispatcher deadlock errors or halting
+		// Also ensures that the JFrame progress responds to updates promptly
+		Thread t = new Thread() { public void run() {
 		try
 		{
 			progress.setTitle("Getting Category ID (Step 2 of "+n+")...");
@@ -417,7 +488,7 @@ public class QuizCreator extends JApplet
 
 			int category = -314159;
 			String fullCategory = null;
-			while (itr.hasMoreNodes())
+			while (itr.hasMoreNodes()) // Ugly hack to retrieve default category ID.  PHP is not friendly
 			{
 				Node node = itr.nextNode();
 				if (node instanceof Tag)
@@ -470,12 +541,14 @@ public class QuizCreator extends JApplet
 			}
 
 			progress.setTitle("Acquiring Session Key (Step 3 of "+n+")...");
+			progress.repaint();
+
 			url = new URL(CFGRoot + "question/question.php?courseid="+courseID+"&qtype=shortanswer&category="+category);
 			conn = url.openConnection();
 			parse = new Parser(conn);
 			itr = new RecursiveIterator(parse.elements());
-			String sessKey = "dieinafire";
-			while (itr.hasMoreNodes())
+			String sessKey = "dieinafire"; // Don't ask
+			while (itr.hasMoreNodes()) // Much less ugly hack to retrieve session key
 			{
 				Node node = itr.nextNode();
 				if (node instanceof Tag)
@@ -490,6 +563,7 @@ public class QuizCreator extends JApplet
 			}
 			if (sessKey.equals("dieinafire")) throw new Exception("Failed to acquire sessKey");
 
+			// Add questions, 1 by 1, by submitting form data
 			for (int i = 0; i < size; i++)
 			{
 				progress.setTitle("Creating Question "+(i+1)+" of "+size+" (Step 4 of "+n+")...");
@@ -520,10 +594,7 @@ public class QuizCreator extends JApplet
 					qtype = "numerical";
 				}
 
-				url = new URL(CFGRoot + "question/question.php");
-				conn = url.openConnection();
-				ClientHttpRequest CHR = new ClientHttpRequest(conn);
-
+				// This part was not fun
 				ArrayList<Object> objects = new ArrayList<Object>();
 				objects.add("courseid"); objects.add(""+courseID);
 				objects.add("category"); objects.add(fullCategory);
@@ -590,7 +661,9 @@ public class QuizCreator extends JApplet
 					objects.add("multiplier[0]"); objects.add("1.0");
 				}
 
-				/**String newURL = CFGRoot + "question/question.php?";
+				/** Code below obsolete.  Strict HTTP posts are needed to submit form Data, URL reads are not enough
+
+				String newURL = CFGRoot + "question/question.php?";
 				for (int j = 0; j < objects.size(); j+=2)
 				{
 					if (j != 0) newURL += "&";
@@ -607,24 +680,14 @@ public class QuizCreator extends JApplet
 					System.out.println(node.toHtml(true));
 				}*/
 
-				try
-				{
-					CHR.post((Object[])objects.toArray());
-				}
-				catch (Exception e) { } // I Ignore YOU!!!
+				controlledPost(CFGRoot+"question/question.php", objects);
 			}
 
-			// Quiz Creation
-			// http://128.113.99.237/course/mod.php?id=3&section=0&sesskey=tvHfrApaM3&add=quiz
-
+			// This step is also practically instanteous, as there are no URL calls, just OO-instantiation
 			progress.setTitle("Preparing Quiz Data (Step 4 of "+n+")...");
 			progress.repaint();
 
 			ArrayList<Object> objects = new ArrayList<Object>();
-			/**url = new URL(CFGRoot + "course/modedit.php?id="+courseID+"&section=0&sesskey="+sessKey+"&add=quiz");
-			conn = url.openConnection();
-			parse = new Parser(conn);
-			itr = new RecursiveIterator(parse.elements());*/
 			String timeopenday = null, timeopenmonth = null, timeopenyear = null, timeopenhour = null, timeopenminute = null;
 			String timecloseday = null, timeclosemonth = null, timecloseyear = null, timeclosehour = null, timecloseminute = null;
 
@@ -636,7 +699,13 @@ public class QuizCreator extends JApplet
 			timeopenhour = timeclosehour = ""+greg.get(Calendar.HOUR_OF_DAY);
 			timeopenminute = timecloseminute = ""+greg.get(Calendar.MINUTE);
 
-			/**while (itr.hasMoreNodes())
+			/** Parsing of default times ditched in favor of Gregorian Calendar.  Saves the time-costly use of a Parser
+
+			url = new URL(CFGRoot + "course/modedit.php?id="+courseID+"&section=0&sesskey="+sessKey+"&add=quiz");
+			conn = url.openConnection();
+			parse = new Parser(conn);
+			itr = new RecursiveIterator(parse.elements());
+			while (itr.hasMoreNodes())
 			{
 				Node node = itr.nextNode();
 
@@ -656,7 +725,10 @@ public class QuizCreator extends JApplet
 				}
 			}*/
 
+			// This part was even less fun
+			// Try sifting through several 100's of lines of HTML to get these, see how you like it
 			objects.add("mform_showadvanced_last"); objects.add("");
+			objects.add("MAX_FILE_SIZE"); objects.add("16777216");
 			objects.add("grade"); objects.add("100");
 			objects.add("course"); objects.add(courseID+"");
 			objects.add("coursemodule"); objects.add("");
@@ -688,11 +760,12 @@ public class QuizCreator extends JApplet
 			objects.add("timeclose[off]"); objects.add("1");
 
 			objects.add("timelimit"); objects.add("0");
+			objects.add("timelimitenable"); objects.add("1");
 			objects.add("delay1"); objects.add("0");
 			objects.add("delay2"); objects.add("0");
 			objects.add("questionsperpage"); objects.add("10");
 			objects.add("shufflequestions"); objects.add(QSPECS.shuffleQuiz.isSelected() ? "1" : "0");
-			objects.add("shuffleanswers"); objects.add("0");
+			objects.add("shuffleanswers"); objects.add("1");
 
 			objects.add("attempts"); objects.add("1");
 			objects.add("attemptonlast"); objects.add("0");
@@ -700,7 +773,9 @@ public class QuizCreator extends JApplet
 			objects.add("grademethod"); objects.add("1");
 			objects.add("penaltyscheme"); objects.add("1");
 			objects.add("decimalpoints"); objects.add("2");
+			objects.add("submitbutton2"); objects.add("1");
 
+			// Yay Permutation Algorithm!
 			String[] perm1 = {"immediately", "open", "closed"};
 			String[] perm2 = {"responses", "answers", "feedback", "generalfeedback", "score", "overallfeedback"};
 			for (String s1 : perm1) for (String s2 : perm2) { objects.add(s2+s1); objects.add("1"); }
@@ -709,29 +784,27 @@ public class QuizCreator extends JApplet
 			objects.add("quizpassword"); objects.add("");
 			objects.add("subnet"); objects.add("");
 			objects.add("groupmode"); objects.add("0");
-			objects.add("cmidnumber"); objects.add(""); // Hmm...
+			objects.add("cmidnumber"); objects.add(""); // In HTML, <input name="cmidnumber"> has no value parameter.  This is problematic
+																	  // However, the code seems to work fine like this
 			objects.add("visible"); objects.add("1");
-			objects.add("gradecat"); objects.add("2"); // Hmm...
+			objects.add("gradecat"); objects.add("2"); // In HTML, <select name="gradecat"> has one option tag, value="2", but it is not selected
+																	 // As with cmidnumber, this is problematic, but it seems to work fine
 
 			objects.add("feedbacktext[0]"); objects.add("");
 			objects.add("feedbackboundaries[0]"); objects.add("");
 			objects.add("feedbacktext[1]"); objects.add("");
 
+			// Actually submit the quiz
+			// NOTE: The QQC has been known to fail here, for reasons yet unknown
+			// Implemented a Threading "hack" in the controlledPost method to overcome it, and it seems to work
 			progress.setTitle("Instantiating Quiz (Step 5 of "+n+")...");
 			progress.repaint();
 
-			url = new URL(CFGRoot + "course/modedit.php");
-			conn = url.openConnection();
-			ClientHttpRequest CHR = new ClientHttpRequest(conn);
-			try
-			{
-				CHR.post((Object[])objects.toArray());
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			} // I ignore YOU TOO!!!
+			controlledPost(CFGRoot+"course/modedit.php", objects);
 
+			// Harvesting is a pretty word
+			// Note: The QQC will fail here if there are over 1000 questions in the default category
+			// Note: If there are over 1000 questions, somebody has too much time on their hands
 			progress.setTitle("Harvesting Question ID's (Step 6 of "+n+")...");
 			progress.repaint();
 
@@ -741,7 +814,7 @@ public class QuizCreator extends JApplet
 			itr = new RecursiveIterator(parse.elements());
 
 			HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-			while (itr.hasMoreNodes())
+			while (itr.hasMoreNodes()) // More ugly Parser hacks...
 			{
 				Node node = itr.nextNode();
 				if (node instanceof Text && node.getParent() != null && node.getParent().getParent() != null &&
@@ -776,6 +849,7 @@ public class QuizCreator extends JApplet
 				}
 			}
 
+			// Retrieve the Quiz ID
 			progress.setTitle("Getting Quiz ID (Step 7 of "+n+")...");
 			progress.repaint();
 
@@ -785,7 +859,7 @@ public class QuizCreator extends JApplet
 			itr = new RecursiveIterator(parse.elements());
 
 			int quizID = -1;
-			while (itr.hasMoreNodes())
+			while (itr.hasMoreNodes()) // More much less ugly Parser hacks...
 			{
 				Node node = itr.nextNode();
 				if (node instanceof Text && ((Text)node).getText().equals(categoryName))
@@ -807,48 +881,95 @@ public class QuizCreator extends JApplet
 				}
 			}
 
+			// Add the questions 1 by 1 to the quiz
 			for (int i = 1; i <= size; i++)
 			{
 				progress.setTitle("Adding Question "+i+" of "+size+" (Step 8 of "+n+")...");
+
 				addQuestionToQuiz(quizID+"", map.get(new Integer(i))+"", sessKey);
 			}
 
 			progress.dispose();
-			JOptionPane.showMessageDialog(this, "You will now be redirected to the Quiz page", "Quiz Successfully Created", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(QuizCreator.this, "Go to the Course Page to preview/edit your quiz", "Quiz Successfully Created", JOptionPane.INFORMATION_MESSAGE);
+
+			// NOTE:
+			// Trying to implement a getAppletContext().showDocument(URL) call to redirect the page here, but a known bug
+			// in controlledPost() seems to be getting in the way
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			progress.dispose();
 
-			JOptionPane.showMessageDialog(this, "An error occured:\n"+e, "Error - Sorry :(", JOptionPane.ERROR_MESSAGE);
-		}
+			JOptionPane.showMessageDialog(QuizCreator.this, "An error occured:\n"+e, "Error - Sorry :(", JOptionPane.ERROR_MESSAGE);
+		} } };
+		t.start();
 	}
 
+	/**
+	 * Method: controlledPost
+	 *
+	 *	Gut-wrenching hack to compensate for the setConnectTimeout(10000) failure in ClientHttpRequest
+	 */
+	public void controlledPost(String address, ArrayList<Object> param) throws Exception
+	{
+		class BoolCapsule
+		{
+			public volatile boolean value;
+		}
+
+		URL url = new URL(address);
+		URLConnection conn = url.openConnection();
+		final ClientHttpRequest CHR = new ClientHttpRequest(conn);
+		final BoolCapsule link = new BoolCapsule();
+		link.value = false;
+
+		final ArrayList<Object> PARAM = new ArrayList<Object>(param);
+		Thread maxim = new Thread()
+		{
+			public void run()
+			{
+				try
+				{
+					CHR.post((Object[])PARAM.toArray());
+					link.value = true;
+				}
+				catch (Exception e) // This will ALWAYS happen if the connection succeeds
+										  // This is caused by a "strictRedirect" error when the Form post is made
+										  // HTML wants to forcibly change the page URL, but the Applet doesn't let this happen
+										  // No known way around this exception catching hack
+				{
+					link.value = true;
+					// I ignore you
+				}
+			}
+		};
+
+		maxim.start();
+
+		long prev = System.currentTimeMillis();
+		while ((System.currentTimeMillis()-prev) < 10000 && !link.value)
+			try { Thread.sleep(100); } catch (InterruptedException ie) { }
+
+		maxim.stop();
+	}
+
+	// Auxiliary method for adding questions to the Quiz, used in ultimateSubmit()
 	public void addQuestionToQuiz(String quizid, String questid, String sessKey) throws Exception
 	{
 		//Requires a quiz id in quizid
 		//Requires a question id in questid
 		//Requires a session key in sesskey
 
-		URL quizurl = new URL(CFGRoot + "mod/quiz/edit.php");
-		URLConnection quizconn = quizurl.openConnection();
-		ClientHttpRequest quizCHR = new ClientHttpRequest(quizconn);
-
 		ArrayList<Object> questobjects = new ArrayList<Object>();
 		questobjects.add("cmid"); questobjects.add(quizid);
 		questobjects.add("addquestion"); questobjects.add(questid);
 		questobjects.add("sesskey"); questobjects.add(sessKey);
 
-		try
-		{
-			quizCHR.post((Object[])questobjects.toArray());
-		}
-		catch (Exception e)
-		{
-
-		}
+		controlledPost(CFGRoot+"mod/quiz/edit.php", questobjects);
 	}
+
+	/** Method unnecessary - see GregorianCalendar in ultimateSubmit()
 
 	public String getSelectedOptionValue(Tag tag, String prev, String reqName) throws Exception
 	{
@@ -864,15 +985,23 @@ public class QuizCreator extends JApplet
 					Tag tag2 = (Tag)node2;
 					if (tag2.getTagName().equalsIgnoreCase("OPTION") && tag2.getAttribute("selected") != null)
 					{
-						System.out.println(reqName + ": " + tag2.getAttribute("value"));
 						return tag2.getAttribute("value");
 					}
 				}
 			}
 		}
 		return prev;
-	}
+	}*/
 
+	/**
+	 *	Class: DragAndDropEditor
+	 *
+	 *	Manual Drag-and-drop interface for modifying the order of a quiz
+	 *	Drag to the top-left to delete stuff
+	 *
+	 *	No comments in this class: This is hardcore Graphics, GUI, and awt.event stuff
+	 *	I.E., if I need to explain it to you, you wouldn't understand anyway
+	 */
 	public class DragAndDropEditor extends JPanel implements MouseListener, MouseMotionListener
 	{
 
@@ -941,8 +1070,7 @@ public class QuizCreator extends JApplet
 					if (curY + height >= 0 || curY <= HEIGHT)
 					{
 						boolean alpha = ((transientIndex == i) && (state == FROZEN || state == DRAG));
-						boolean lineRender = ((replacementIndex < transientIndex) && (replacementIndex == i)) ||
-													((replacementIndex > transientIndex) && (replacementIndex+1 == i));
+						boolean lineRender = (replacementIndex != transientIndex) && (replacementIndex == i);
 
 						Color color = Color.black;
 						if (transientIndex == i)
@@ -1422,23 +1550,34 @@ public class QuizCreator extends JApplet
 
 	}
 
+	/**
+	 *	Class: QuestionEditor
+	 *
+	 *	Second Tabbed panel in the JTabbedPane tabs
+	 *	QuestionEditor houses 1 or 0 QuestionForm(s) at a time
+	 */
 	public class QuestionEditor extends JPanel
 	{
 
 		public QuestionForm currentForm = null;
 
+		// Beautiful Hack Redux
 		public Dimension getPreferredSize()
 		{
 			return getSize();
 		}
 
+		// Prepares the argument QuestionForm and displays it
 		public void installForm(QuestionForm form)
 		{
 			installForm(form, false);
 		}
 
+		// Root method:
+		// The suppressInit param should be set to true iff a form is reinstalling itself to accomodate changes to the Component list
 		public void installForm(QuestionForm form, boolean suppressInit)
 		{
+			// Replace form, check Uninstall
 			if (currentForm != null && form != null)
 			{
 				QuestionForm savior = currentForm;
@@ -1446,20 +1585,39 @@ public class QuizCreator extends JApplet
 				savior.uninstall();
 			}
 
+			// Remove previous Components
 			removeAll();
 			setLayout(null);
 
 			currentForm = form;
 			if (form == null) return;
 
+			// Position components based on a pseudo FlowLayout implementation, the past them
+			// Do it Line-by-Line
 			int maxX = 0;
 			int progY = 5;
 			for (ArrayList<Component> list : form.getFields())
 			{
 				int maxheight = 0;
-				for (Component comp : list)
+				for (int i = 0; i < list.size(); i++)
 				{
+					Component comp = list.get(i);
 					comp.setSize(comp.getPreferredSize());
+
+					// Override JTextArea and put it in a JScrollPane
+					// JTextArea does not support Scrolling on its own, so this is necessary
+					if (comp instanceof JTextArea)
+					{
+						JScrollPane JSP = new JScrollPane(comp, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+						JTextArea JTA = (JTextArea)comp;
+						JTA.setLineWrap(true);
+						JTA.setWrapStyleWord(true);
+						JSP.setSize(new Dimension(JTA.getSize().width+4, JTA.getSize().height+4));
+						comp = JSP;
+						list.remove(i);
+						if (i == list.size()) list.add(comp); else list.add(i, comp);
+					}
+
 					if (maxheight < comp.getHeight()) maxheight = comp.getHeight();
 				}
 				int progX = 5;
@@ -1474,6 +1632,7 @@ public class QuizCreator extends JApplet
 				progY += maxheight+5;
 			}
 
+			// Finalize and display
 			if (!suppressInit) form.init(this);
 
 			setSize(maxX, progY);
@@ -1485,16 +1644,20 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Abstract class for all QuestionForm implementation
 	abstract class QuestionForm implements ActionListener
 	{
 
 		public QuestionEditor head;
 
+		// Default Submission Listener
 		public void actionPerformed(ActionEvent ae)
 		{
 			submit();
 		}
 
+		// Called externally by QuestionEditor
+		// Use it to call requestFocus() and stuff - do Component instantiation in constructor
 		public void init(QuestionEditor head)
 		{
 			this.head = head;
@@ -1505,26 +1668,40 @@ public class QuizCreator extends JApplet
 			head.installForm(this, true);
 			head.repaint();
 		}
+
+		// Override this if you want
+		// This method is called if/when the current form is forcibly replaced by a new one,
+		//   without firing the submit() method
 		public void uninstall()
 		{
 
 		}
-		public void suicide()
+
+		// destroy() and delete() are just so boring
+		public void kamikaze()
 		{
 			head.installForm(null);
 		}
 
+		// Return a matrix ArrayList of Components
+		// Each "row" is a line of Components, in the form of an array
 		public abstract ArrayList<ArrayList<Component>> getFields();
+
+		// Listeners have to be set up for this method
 		public abstract void submit();
 
 	}
 
+	// Auxiliary method to save time/space/continuum
 	public static <T> ArrayList<T> soloList(T element)
 	{
 		ArrayList<T> result = new ArrayList<T>();
 		result.add(element);
 		return result;
 	}
+
+	// If input is missing/erroneous, call one of these on it
+	// Turns the input field red, and outputs provided error message
 	public static void errorify(JTextField component, String txt)
 	{
 		component.setText(txt);
@@ -1535,7 +1712,7 @@ public class QuizCreator extends JApplet
 		final JTextField COMPONENT = component;
 		component.addKeyListener(new KeyAdapter()
 		{
-			public void keyPressed(KeyEvent ke)
+			public void keyReleased(KeyEvent ke)
 			{
 				COMPONENT.setBackground(Color.white);
 				COMPONENT.setForeground(Color.black);
@@ -1552,7 +1729,7 @@ public class QuizCreator extends JApplet
 		final JTextArea COMPONENT = component;
 		component.addKeyListener(new KeyAdapter()
 		{
-			public void keyPressed(KeyEvent ke)
+			public void keyReleased(KeyEvent ke)
 			{
 				COMPONENT.setBackground(Color.white);
 				COMPONENT.setForeground(Color.black);
@@ -1560,6 +1737,57 @@ public class QuizCreator extends JApplet
 		});
 	}
 
+	// Fully Abstract Question class
+	// Data in here used during ultimateSubmit()
+	abstract class Question
+	{
+
+		// Construct an "edit" form when this question is double-clicked
+		// Parameter index stores the position of the invoking Question in the questionsArr Universal Data
+		public abstract QuestionForm replaceForm(int index);
+
+		// Compute the height, preferable using computeRenderHeight
+		// Also, recommend use a Dynamic storage variable to save computing time
+		// maxWidth variable will not change in subsequent calls
+		public abstract int computeHeight(int maxWidth);
+
+		// Render, given the parametric conditions
+		// Variables are the same as in renderMultiLine
+		// If alpha=true, use a 0.5f AlphaComposite/Color
+		public abstract void render(Graphics2D g2d, int x, int y, int maxWidth, boolean alpha, boolean lineRender, Color border);
+
+	}
+
+	public static final int MCINDENT = 20;
+
+	// Utility render method for drawing a Question box, given the multitude of parameters
+	// Arrays should all be the same size, and fulfill the same roles as they do in renderMultiLine() way up higher in this document
+	public static void renderQuestionBox(Graphics2D g2d, int x, int y, int width, String[] strArr, int[] indentArr, Font[] fontArr,
+													 Color[] background, Color[] foreground, Color border, boolean lineRender)
+	{
+		int yprime = y;
+		for (int i = 0; i < strArr.length; i++)
+		{
+			renderMultiLine(g2d, x, yprime, strArr[i], fontArr[i], width, indentArr[i], background[i], foreground[i]);
+			yprime += computeRenderHeight(strArr[i], fontArr[i], width, indentArr[i]);
+		}
+
+		g2d.setStroke(new BasicStroke(2));
+
+		if (lineRender)
+		{
+			g2d.setColor(Color.green);
+			g2d.drawLine(x-SPACE/2, y-SPACE/2, x+width+SPACE/2, y-SPACE/2);
+		}
+		if (border != null)
+		{
+			g2d.setColor(border);
+			g2d.drawRect(x, y, width, yprime-y);
+		}
+	}
+
+	// Multiple Choice Question Form
+	// Nothing really noteworthy of commenting in here
 	public class MCQuestionForm extends QuestionForm
 	{
 
@@ -1646,7 +1874,7 @@ public class QuizCreator extends JApplet
 
 			return new KeyAdapter()
 			{
-				public void keyPressed(KeyEvent ke)
+				public void keyReleased(KeyEvent ke)
 				{
 					if (ke.getKeyCode() == KeyEvent.VK_TAB)
 					{
@@ -1695,7 +1923,7 @@ public class QuizCreator extends JApplet
 		{
 			if (replaceIndex == -1)
 			{
-				suicide();
+				kamikaze();
 				tabs.setSelectedComponent(DNDCONTAIN);
 			}
 			else
@@ -1825,42 +2053,9 @@ public class QuizCreator extends JApplet
 
 	}
 
-	abstract class Question
-	{
-
-		public abstract QuestionForm replaceForm(int index);
-
-		public abstract int computeHeight(int maxWidth);
-		public abstract void render(Graphics2D g2d, int x, int y, int maxWidth, boolean alpha, boolean lineRender, Color border);
-
-	}
-
-	public static final int MCINDENT = 20;
-
-	public static void renderQuestionBox(Graphics2D g2d, int x, int y, int width, String[] strArr, int[] indentArr, Font[] fontArr,
-													 Color[] background, Color[] foreground, Color border, boolean lineRender)
-	{
-		int yprime = y;
-		for (int i = 0; i < strArr.length; i++)
-		{
-			renderMultiLine(g2d, x, yprime, strArr[i], fontArr[i], width, indentArr[i], background[i], foreground[i]);
-			yprime += computeRenderHeight(strArr[i], fontArr[i], width, indentArr[i]);
-		}
-
-		g2d.setStroke(new BasicStroke(2));
-
-		if (lineRender)
-		{
-			g2d.setColor(Color.green);
-			g2d.drawLine(x-SPACE/2, y-SPACE/2, x+width+SPACE/2, y-SPACE/2);
-		}
-		if (border != null)
-		{
-			g2d.setColor(border);
-			g2d.drawRect(x, y, width, yprime-y);
-		}
-	}
-
+	// Multiple Choice Question
+	// Specific Question implementations and forms will not have internal comments
+	// All the noteworthy stuff is taken care of in the abstract superclasses
 	class MultipleChoice extends Question
 	{
 
@@ -1924,6 +2119,7 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Auxiliary class for MultipleChoice
 	public class MCAnswer
 	{
 
@@ -1942,6 +2138,7 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Short Answer form
 	public class SAQuestionForm extends QuestionForm
 	{
 
@@ -1956,7 +2153,7 @@ public class QuizCreator extends JApplet
 
 		public KeyListener keyL = new KeyAdapter()
 		{
-			public void keyPressed(KeyEvent ke)
+			public void keyReleased(KeyEvent ke)
 			{
 				if (ke.getKeyCode() == KeyEvent.VK_TAB || ke.getKeyCode() == KeyEvent.VK_ENTER)
 				{
@@ -2021,7 +2218,7 @@ public class QuizCreator extends JApplet
 		{
 			if (replaceIndex == -1)
 			{
-				suicide();
+				kamikaze();
 				tabs.setSelectedComponent(DNDCONTAIN);
 			}
 			else
@@ -2101,6 +2298,7 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Short Answer Question
 	class ShortAnswer extends Question
 	{
 
@@ -2163,6 +2361,7 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Numerical Answer Form
 	public class NUMQuestionForm extends QuestionForm
 	{
 
@@ -2179,7 +2378,7 @@ public class QuizCreator extends JApplet
 
 		public KeyListener keyL = new KeyAdapter()
 		{
-			public void keyPressed(KeyEvent ke)
+			public void keyReleased(KeyEvent ke)
 			{
 				if (ke.getKeyCode() == KeyEvent.VK_TAB || ke.getKeyCode() == KeyEvent.VK_ENTER)
 				{
@@ -2255,7 +2454,7 @@ public class QuizCreator extends JApplet
 		{
 			if (replaceIndex == -1)
 			{
-				suicide();
+				kamikaze();
 				tabs.setSelectedComponent(DNDCONTAIN);
 			}
 			else
@@ -2345,6 +2544,7 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Numerical Answer Question
 	class Numerical extends Question
 	{
 
@@ -2410,6 +2610,8 @@ public class QuizCreator extends JApplet
 
 	}
 
+	// Auxiliary class to the NodeIterator in the htmlparser package
+	// Recursively enumerates the Nodes in a Parsed URL
 	public class RecursiveIterator
 	{
 

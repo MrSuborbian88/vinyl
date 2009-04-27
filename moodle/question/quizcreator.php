@@ -1,15 +1,14 @@
 <?php // $Id: edit.php,v 1.21.2.1 2007/11/02 16:20:22 tjhunt Exp $
+
 /**
-* Page to edit the question bank
-*
-* TODO: add logging
-*
-* @author Martin Dougiamas and many others. This has recently been extensively
-*		 rewritten by Gustav Delius and other members of the Serving Mathematics project
-*		 {@link http://maths.york.ac.uk/serving_maths}
-* @license http://www.gnu.org/copyleft/gpl.html GNU Public License
-* @package questionbank
-*/
+ * Page to display Quick Quiz Creator
+ * Author: Project VINL Team :)
+ *
+ * Copied code from "question/edit.php" and modified the <body> output to print the Applet
+ * WARNING: Known Bug -
+ *	After uploading a Quiz with the QQC, you need to close the page and open VINL in
+ *	a new tab/window in order to continue browsing
+ */
 
 	require_once("../config.php");
 	require_once("editlib.php");
@@ -39,8 +38,9 @@
 		print_header_simple($streditingquestions, '', $navigation);
 	}
 
+	// HTML Code for the QQC
 	echo "<div id='applet'>";
-	echo "<center><br><applet archive='QuizCreator.jar' code='QuizCreator.class' width=640 height=480>";
+	echo "<center><br><applet code='QuizCreator.class' width=640 height=480>";
 	echo "<param name=\"courseid\" value=\"".optional_param("courseid", 0, PARAM_INT)."\" />";
 	echo "<param name=\"cfgroot\" value=\"".$CFG->wwwroot."/\" />";
 	echo "</applet></center>";
