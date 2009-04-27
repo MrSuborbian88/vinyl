@@ -72,6 +72,7 @@ public class ClientHttpRequest {
   public ClientHttpRequest(URLConnection connection) throws IOException {
     this.connection = connection;
     connection.setDoOutput(true);
+    connection.setConnectTimeout(10000);
     connection.setRequestProperty("Content-Type",
                                   "multipart/form-data; boundary=" + boundary);
   }

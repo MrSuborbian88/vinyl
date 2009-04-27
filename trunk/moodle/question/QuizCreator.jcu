@@ -12,55 +12,10 @@
 				<path>format</path>
 			</folderitem>
 			<folderitem>
-				<path>format\aiken</path>
-			</folderitem>
-			<folderitem>
-				<path>format\blackboard</path>
-			</folderitem>
-			<folderitem>
-				<path>format\blackboard_6</path>
-			</folderitem>
-			<folderitem>
-				<path>format\coursetestmanager</path>
-			</folderitem>
-			<folderitem>
-				<path>format\examview</path>
-			</folderitem>
-			<folderitem>
-				<path>format\gift</path>
-			</folderitem>
-			<folderitem>
-				<path>format\hotpot</path>
-			</folderitem>
-			<folderitem>
 				<path>format\learnwise</path>
 			</folderitem>
 			<folderitem>
-				<path>format\missingword</path>
-			</folderitem>
-			<folderitem>
-				<path>format\multianswer</path>
-			</folderitem>
-			<folderitem>
-				<path>format\qti2</path>
-			</folderitem>
-			<folderitem>
-				<path>format\qti2\templates</path>
-			</folderitem>
-			<folderitem>
-				<path>format\webct</path>
-			</folderitem>
-			<folderitem>
-				<path>format\xhtml</path>
-			</folderitem>
-			<folderitem>
-				<path>format\xml</path>
-			</folderitem>
-			<folderitem>
 				<path>htmlparser1_6</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\bin</path>
 			</folderitem>
 			<folderitem>
 				<path>htmlparser1_6\docs</path>
@@ -189,46 +144,13 @@
 				<path>htmlparser1_6\docs\javadoc\org\htmlparser\visitors\class-use</path>
 			</folderitem>
 			<folderitem>
-				<path>htmlparser1_6\docs\javadoc\resources</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\pics</path>
-			</folderitem>
-			<folderitem>
 				<path>htmlparser1_6\docs\wiki</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\index.php</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\default</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\default\buttons</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\MacOSX</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\MacOSX\buttons</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\MacOSX\buttons\en</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\docs\wiki\themes\MacOSX\images</path>
 			</folderitem>
 			<folderitem>
 				<path>htmlparser1_6\lib</path>
 			</folderitem>
 			<folderitem>
 				<path>htmlparser1_6\resources</path>
-			</folderitem>
-			<folderitem>
-				<path>htmlparser1_6\resources\logofiles</path>
 			</folderitem>
 			<folderitem>
 				<path>org</path>
@@ -238,9 +160,6 @@
 			</folderitem>
 			<folderitem>
 				<path>org\htmlparser\beans</path>
-			</folderitem>
-			<folderitem>
-				<path>org\htmlparser\beans\images</path>
 			</folderitem>
 			<folderitem>
 				<path>org\htmlparser\filters</path>
@@ -270,16 +189,10 @@
 				<path>org\htmlparser\parserapplications\filterbuilder</path>
 			</folderitem>
 			<folderitem>
-				<path>org\htmlparser\parserapplications\filterbuilder\images</path>
-			</folderitem>
-			<folderitem>
 				<path>org\htmlparser\parserapplications\filterbuilder\layouts</path>
 			</folderitem>
 			<folderitem>
 				<path>org\htmlparser\parserapplications\filterbuilder\wrappers</path>
-			</folderitem>
-			<folderitem>
-				<path>org\htmlparser\parserapplications\filterbuilder\wrappers\images</path>
 			</folderitem>
 			<folderitem>
 				<path>org\htmlparser\sax</path>
@@ -336,16 +249,10 @@
 				<path>type\calculated\db</path>
 			</folderitem>
 			<folderitem>
-				<path>type\datasetdependent</path>
-			</folderitem>
-			<folderitem>
 				<path>type\description</path>
 			</folderitem>
 			<folderitem>
 				<path>type\essay</path>
-			</folderitem>
-			<folderitem>
-				<path>type\essay\db</path>
 			</folderitem>
 			<folderitem>
 				<path>type\match</path>
@@ -375,12 +282,6 @@
 				<path>type\numerical\db</path>
 			</folderitem>
 			<folderitem>
-				<path>type\numerical\simpletest</path>
-			</folderitem>
-			<folderitem>
-				<path>type\random</path>
-			</folderitem>
-			<folderitem>
 				<path>type\randomsamatch</path>
 			</folderitem>
 			<folderitem>
@@ -393,16 +294,133 @@
 				<path>type\shortanswer\db</path>
 			</folderitem>
 			<folderitem>
-				<path>type\shortanswer\simpletest</path>
-			</folderitem>
-			<folderitem>
 				<path>type\truefalse</path>
 			</folderitem>
 			<folderitem>
 				<path>type\truefalse\db</path>
 			</folderitem>
+			<fileitem>
+				<path>ClientHttpRequest.java</path>
+				<collapsedfolds>174;107;237;173;143;111;103;489;475;471;459;455;445;441;433;429;420;416;407;403;396;392;385;380;366;361;349;344;334;329;321;315;306;300;291;286;279;274;267;255;243;235;230;216;212;206;190;183;168;155;148;141;136;131;126;122;116;100;95;89;85;79;65;54;46;36;31;14;2</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>QuizCreator.java</path>
+				<collapsedfolds>0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;519;510;505;1486;1476;835;502;1482;1473;1293;869;832;499;1471;1344;1291;866;829;630;556;496;1469;1339;1289;1075;864;820;663;651;643;615;590;585;580;572;553;493;1608;1533;1467;1444;1439;1417;1334;1287;1278;1171;1102;1092;1069;884;861;816;701;566;550;537;490;341;336;331;263;257;243;179;173;159;1623;1601;1530;1524;1513;1465;1437;1411;1322;1267;1256;1168;1090;1064;478;363;329;277;255;241;191;171;157;1598;1580;1522;1511;1435;1409;1320;1264;1251;1221;1194;1166;1143;1135;1130;1123;1060;361;327;239;155;1680;1674;1665;1660;1653;1577;1564;1507;1403;1376;1365;1359;1247;1242;1231;1218;1207;1184;1152;1049;1021;915;452;409;398;379;305;236;152;93;88;2614;2547;2301;2122;2058;1765;1647;1558;1004;957;913;908;448;419;407;396;297;217;203;140;134;85;34;11</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>org\htmlparser\Node.java</path>
+				<collapsedfolds>292;274;267;259;252;245;238;231;224;209;196;190;183;176;169;160;153;145;109;94;80;68;46;33</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>org\htmlparser\Tag.java</path>
+				<collapsedfolds>28</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>org\htmlparser\lexer\InputStreamSource.java</path>
+				<collapsedfolds>272;353;295;264;538;351;346;338;327;300;259;532;432;391;324;256;177;150;145;687;682;670;665;653;643;636;628;614;606;599;588;574;567;557;548;524;511;504;497;490;482;477;473;463;456;451;442;418;407;387;378;374;364;318;310;247;224;219;215;210;206;198;190;172;161;125;115;110;101;96;88;83;78;73;68;63;58;52;46;39;28</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>org\htmlparser\lexer\Lexer.java</path>
+				<collapsedfolds>1429;1424;506;1437;1421;599;504;384;1435;1419;1263;1030;1012;789;749;592;550;525;496;484;379;1609;1596;1581;1563;1548;1484;1471;1456;1404;1384;1371;1292;1287;1255;1136;1130;1126;1118;1106;1101;1093;1088;1080;1075;1065;1060;1055;1050;1039;1028;1021;1010;816;810;787;781;742;587;572;538;463;375;1677;1670;1628;1545;1503;1368;1244;1007;803;773;762;737;688;460;370;365;360;355;1668;1662;1626;1542;1501;1365;1324;1238;1173;1003;732;682;457;346;337;1656;1643;1528;1518;1347;1337;1318;1309;1230;1186;1167;1157;990;923;916;911;904;899;892;887;881;876;870;865;858;853;837;827;724;712;674;663;658;646;641;634;629;618;441;428;423;404;330;320;315;306;300;291;286;282;277;273;267;263;258;254;247;243;238;234;226;222;217;213;205;201;196;188;176;171;167;156;151;144;139;128;118;113;108;103;93;84;77;70;60;44;28</collapsedfolds>
+			</fileitem>
+			<fileitem>
+				<path>org\htmlparser\lexer\Page.java</path>
+				<collapsedfolds>925;920;761;757;750;449;445;273;983;918;815;780;775;768;747;726;722;707;577;568;563;557;460;456;442;269;1232;1201;1192;1165;1161;1154;1103;1099;1092;1058;1054;989;976;935;915;904;822;812;741;719;713;702;665;545;540;536;466;436;404;389;352;347;342;337;324;265;1226;1222;1217;1211;1183;1177;1148;1135;1130;1125;1120;1115;1084;1072;1050;1037;1032;1027;1022;1017;1012;1007;1002;997;967;957;952;946;895;882;877;867;862;839;834;830;805;794;693;677;657;653;648;644;639;635;630;626;621;615;610;602;516;511;506;501;493;487;483;477;474;427;415;382;368;320;311;253;228;223;219;214;206;195;191;186;180;167;160;147;137;118;113;110;104;99;94;89;84;77;71;65;56;47;28</collapsedfolds>
+			</fileitem>
 		</project>
 	</projects>
+	<open_files>
+		<docitem>
+			<path>QuizCreator.java</path>
+			<source>true</source>
+			<index>0</index>
+			<active>true</active>
+		</docitem>
+		<docitem>
+			<path>ClientHttpRequest.java</path>
+			<source>true</source>
+			<index>1</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\Parser.java</path>
+			<source>true</source>
+			<index>2</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>PreCompile.java</path>
+			<source>true</source>
+			<index>3</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\Tag.java</path>
+			<source>true</source>
+			<index>4</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\Node.java</path>
+			<source>true</source>
+			<index>5</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\util\NodeList.java</path>
+			<source>true</source>
+			<index>6</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>..\..\..\..\..\..\jdk1.6.0_07\src.zip!java\util\Calendar.java</path>
+			<source>true</source>
+			<index>7</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\Remark.java</path>
+			<source>true</source>
+			<index>8</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\util\IteratorImpl.java</path>
+			<source>true</source>
+			<index>9</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\lexer\Lexer.java</path>
+			<source>true</source>
+			<index>10</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\lexer\Page.java</path>
+			<source>true</source>
+			<index>11</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\lexer\InputStreamSource.java</path>
+			<source>true</source>
+			<index>12</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>org\htmlparser\scanners\ScriptScanner.java</path>
+			<source>true</source>
+			<index>13</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>..\..\..\..\..\..\jdk1.6.0_07\src.zip!javax\swing\JTextArea.java</path>
+			<source>true</source>
+			<index>14</index>
+			<active>false</active>
+		</docitem>
+	</open_files>
 	<build_files>
 		<builditem>
 			<path>htmlparser1_6\build.xml</path>

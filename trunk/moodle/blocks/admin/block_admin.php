@@ -198,7 +198,7 @@ class block_admin extends block_list {
 			}
 		}
 
-	/// VINL Code - Kwik Kwiz Kreator
+	/// VINL Code - Quick Quiz Creator
 		if ($course->id != SITEID and has_capability('moodle/question:add', $context) and has_capability('moodle/question:managecategory', $context))
 		{
 			$this->content->items[]='<a title='.get_string('quizcreatordescription').'  "href="'.$CFG->wwwroot.'/question/quizcreator.php?courseid='.$this->instance->pageid.

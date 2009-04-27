@@ -2959,10 +2959,9 @@ function print_footer($course=NULL, $usercourse=NULL, $return=false) {
 		} else if ($course === 'home') {   // special case for site home page - please do not remove
 			$course = get_site();
 			$homelink  = '<div class="sitelink">'.
-			   //'<a title="Moodle '. $CFG->release .'" //href="http://moodle.org/">'.
+			   '<a title="Project VINL" href="http://code.google.com/p/vinl-docs/">'.
 			   '<img style="width:100px;height:30px" src="pix/moodlelogo.gif" alt="moodlelogo" /></a></div>';
 			$home  = true;
-
 		} else {
 			$homelink = '<div class="homelink"><a '.$CFG->frametarget.' href="'.$CFG->wwwroot.
 						'/course/view.php?id='.$course->id.'">'.format_string($course->shortname).'</a></div>';
@@ -6864,7 +6863,10 @@ function doc_link($path='', $text='', $iconpath='') {
 
 	$lang = str_replace('_utf8', '', current_language());
 
-	$str = '<a href="' .$CFG->docroot. '/' .$lang. '/' .$path. '"' .$target. '>';
+	if ($path != "question/quizcreator")
+		$str = '<a href="' .$CFG->docroot. '/' .$lang. '/' .$path. '"' .$target. '>';
+	else
+		$str = '<a href="http://code.google.com/p/vinl-docs/wiki/QuestionBank">';
 
 	if (empty($iconpath)) {
 		$iconpath = $CFG->httpswwwroot . '/pix/docs.gif';

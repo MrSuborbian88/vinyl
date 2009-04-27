@@ -6,8 +6,8 @@
 		<root_path>\</root_path>
 		<output_path>\</output_path>
 		<source_path>\</source_path>
-		<jdkprofile_ref/>
-		<compiler_ref/>
+		<jdkprofile_ref>JDK version 1.6.0_07</jdkprofile_ref>
+		<compiler_ref>&lt;Default&gt;</compiler_ref>
 		<ant_ref/>
 	</settings>
 	<ant_events/>
@@ -317,12 +317,18 @@
 				<path>type\truefalse\db</path>
 			</folderitem>
 			<fileitem>
+				<path>ClientHttpRequest.java</path>
+			</fileitem>
+			<fileitem>
 				<path>comment.html</path>
 				<url>comment.html</url>
 				<browser>true</browser>
 			</fileitem>
 			<fileitem>
 				<path>htmlparser1_6_20060610.zip</path>
+			</fileitem>
+			<fileitem>
+				<path>PreCompile.java</path>
 			</fileitem>
 			<fileitem>
 				<path>QuizCreator.java</path>
@@ -3854,5 +3860,72 @@
 			</fileitem>
 		</include>
 	</files>
-	<tasks/>
+	<tasks>
+		<todotaskitem>
+			<description>Hack to force maximum size of JPanel DNDCONTAIN</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>125</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>Hack</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>381</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack to retrieve default category ID.  PHP is not friendly</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>493</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack to retrieve default category ID.  PHP is not friendly</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>493</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack to retrieve session key</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>553</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack to retrieve session key</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>553</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack&quot; in the controlledPost method to overcome it, and it seems to work</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>801</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack to compensate for the setConnectTimeout(10000) failure in ClientHttpRequest</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>913</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>942</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>hack</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>942</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+		<todotaskitem>
+			<description>Hack Redux</description>
+			<filepath>QuizCreator.java</filepath>
+			<line>1566</line>
+			<timestamp>1240519408</timestamp>
+		</todotaskitem>
+	</tasks>
 </project>
