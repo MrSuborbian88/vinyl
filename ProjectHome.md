@@ -1,0 +1,1 @@
+VINYL (VINYL is not yet LMS) is an attempt to improve upon WebCT, LMS, Blackboard, and integrate all their features in one, easy to use interface.
